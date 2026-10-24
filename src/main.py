@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import logging
+import os
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from .analysis import analyze_all
+from .archive import ARCHIVE_NAME, Archive
 from .config import Config, ConfigError, load_config
 from .ingestion import ingest
 from .llm import GroqLLM
@@ -14,10 +16,12 @@ from .prefilter import prefilter
 from .publish import publish
 from .scoring import rank
 from .script_gen import generate_script
-from .security import security_scan
+from .security import scan_all
 from .storage import Storage
 
 logger = logging.getLogger("scout")
+
+SECURITY_WORKERS = int(os.getenv("SECURITY_WORKERS", "4"))
 
 
 class PipelineError(RuntimeError):
@@ -67,10 +71,13 @@ def run_pipeline(
     storage: Storage | None = None,
     llm: GroqLLM | None = None,
     client=None,
+    archive: Archive | None = None,
 ) -> RunStats:
     stats = RunStats()
     storage = storage or Storage(config.data_dir)
     llm = llm or GroqLLM(config.groq_api_key, config.groq_model, config.groq_fallbacks)
+    if archive is None:
+        archive = Archive(config.output_dir / ARCHIVE_NAME)
 
     # 1. Ingestion — критичный этап
     try:
@@ -95,19 +102,22 @@ def run_pipeline(
     except Exception as exc:  # noqa: BLE001
         logger.warning("Storage недоступен (%s), продолжаю без дедупликации", exc)
         fresh = filtered
+
+    # архив: репозиторий, однажды вышедший в выпуске, больше не повторяется
+    if archive is not None:
+        fresh = archive.exclude(fresh)
     stats.fresh = len(fresh)
     if not fresh:
-        logger.info("Все кандидаты уже обработаны за последние 3 дня — выпуск не нужен")
+        logger.info("Новых репозиториев нет: все кандидаты уже выходили или обработаны недавно — выпуск не нужен")
         return stats
 
-    # 3. Security (некритичный)
-    security: dict = {}
-    for raw in fresh:
-        try:
-            security[raw.full_name] = security_scan(raw, cache=storage)
-            stats.scanned += 1
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("Security упал на %s (%s), репозиторий идёт без отчёта", raw.full_name, exc)
+    # 3. Security (некритичный, параллельно)
+    try:
+        security = scan_all(fresh, cache=storage, workers=SECURITY_WORKERS)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Security-этап упал целиком (%s), репозитории идут без отчётов", exc)
+        security = {}
+    stats.scanned = len(security)
 
     # 4. LLM-анализ (некритичный)
     try:
@@ -124,6 +134,9 @@ def run_pipeline(
         top = rank(fresh, analyses, security, config)
     except Exception as exc:  # noqa: BLE001
         raise PipelineError(f"Scoring упал: {exc}") from exc
+    if not top:
+        logger.warning("Scoring не дал ни одного репозитория — выпуск не публикуется")
+        return stats
 
     # 6. Сценарий
     script, source = generate_script(top, config.prompts_dir, llm=llm)

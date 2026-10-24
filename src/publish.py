@@ -6,6 +6,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from .archive import ARCHIVE_NAME, Archive
 from .models import RepoRaw, ScoredRepo
 
 logger = logging.getLogger(__name__)
@@ -109,4 +110,8 @@ def publish(
     rebuild_index(Path(output_dir))
     if root_readme is not None:
         update_root_readme(Path(root_readme), date_str, len(repos), Path(output_dir))
+    # архив уже выходивших репозиториев — часть репозитория, а не кэш
+    archive = Archive(Path(output_dir) / ARCHIVE_NAME)
+    archive.add_release(date_str, repos)
+    archive.save()
     return release

@@ -126,7 +126,7 @@ def scan_directory(path: Path) -> tuple[SecurityReport, dict]:
     skipped: list[str] = []
 
     if _which("semgrep"):
-        proc = _run(["semgrep", "--config=auto", "--json", "--quiet", "--error"], path)
+        proc = _run(["semgrep", "--config=auto", "--json", "--quiet", "--metrics=off", "--error"], path)
         data = _json_of(proc)
         raw["semgrep"] = data
         total, crit, hi = parse_semgrep(data)
@@ -183,6 +183,25 @@ def _details(findings: dict[str, int], critical: int, high: int, skipped: list[s
     if skipped:
         text += f". Не запускались: {', '.join(skipped)}"
     return text
+
+
+def scan_all(repos: list[RepoRaw], cache=None, workers: int = 4) -> dict[str, SecurityReport]:
+    """Сканирует репозитории параллельно: клоны и semgrep — основная стоимость прогона."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    results: dict[str, SecurityReport] = {}
+    if not repos:
+        return results
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        futures = {pool.submit(security_scan, repo, cache): repo.full_name for repo in repos}
+        for done, future in enumerate(as_completed(futures), start=1):
+            name = futures[future]
+            try:
+                results[name] = future.result()
+                logger.info("Security: %s/%s проверено (%s)", done, len(repos), name)
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("Security: %s упал (%s), пропускаю отчёт", name, exc)
+    return results
 
 
 def _clone(full_name: str, dest: Path) -> bool:
