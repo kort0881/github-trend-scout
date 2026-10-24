@@ -6,18 +6,42 @@ import time
 
 logger = logging.getLogger(__name__)
 
-RETRY_DELAY = 30
+RETRY_DELAY = 20
+JSON_RETRY_DELAY = 2
 
 
 class LLMError(RuntimeError):
     pass
 
 
-class GroqLLM:
-    """Обёртка над Groq SDK: json_object и текст, backoff на rate-limit, фолбэк по моделям.
+def _is_daily_quota(exc: Exception) -> bool:
+    text = str(exc).lower()
+    return "per day" in text or "tpd" in text
 
-    Groq выводит модели из каталога (так ушла llama-3.3-70b-versatile), поэтому
-    список моделей — цепочка: при model_not_found переключаемся на следующую.
+
+def _is_model_missing(exc: Exception) -> bool:
+    text = str(exc)
+    return "model_not_found" in text or "does not exist" in text or "decommissioned" in text
+
+
+def _is_json_rejected(exc: Exception) -> bool:
+    text = str(exc)
+    return "json_validate_failed" in text or "Failed to validate JSON" in text
+
+
+def _is_rate_limit(exc: Exception) -> bool:
+    text = str(exc)
+    return "RateLimit" in type(exc).__name__ or "429" in text or "rate_limit" in text
+
+
+class GroqLLM:
+    """Обёртка над Groq SDK.
+
+    Groq выводит модели из каталога (так ушла llama-3.3-70b-versatile) и строго
+    валидирует JSON, поэтому перебор идёт по двум осям: модель и режим
+    (строгий json_object / обычный текст с разбором). Ошибки собираются по всем
+    попыткам — иначе настоящая причина (json_validate_failed) терялась за 404
+    от резервной модели.
     """
 
     def __init__(
@@ -37,6 +61,51 @@ class GroqLLM:
     def model(self) -> str:
         return self.models[0]
 
+    def _request(self, model: str, messages: list[dict], *, json_mode: bool, temperature: float, max_tokens: int) -> str:
+        kwargs: dict = {
+            "model": model,
+            "messages": messages,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+        if json_mode:
+            kwargs["response_format"] = {"type": "json_object"}
+        # gpt-oss тратит бюджет на reasoning: без low-режима ответ обрезается и JSON невалиден
+        if model.startswith("openai/gpt-oss"):
+            kwargs["reasoning_effort"] = "low"
+        resp = self.client.chat.completions.create(**kwargs)
+        content = (resp.choices[0].message.content or "").strip()
+        if not content:
+            raise ValueError(f"{model}: пустой ответ (бюджет токенов ушёл в reasoning?)")
+        return content
+
+    def _call(self, model: str, messages: list[dict], *, json_mode: bool, temperature: float, max_tokens: int) -> str:
+        """Один вызов модели с повторами только на rate-limit/сетевых ошибках."""
+        last_exc: Exception | None = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self._request(
+                    model, messages, json_mode=json_mode, temperature=temperature, max_tokens=max_tokens
+                )
+            except Exception as exc:  # noqa: BLE001 - SDK-исключения различаются по версиям
+                last_exc = exc
+                if _is_model_missing(exc) or _is_json_rejected(exc):
+                    raise
+                if attempt == self.max_retries:
+                    break
+                delay = RETRY_DELAY if _is_rate_limit(exc) else 5
+                logger.warning(
+                    "Groq %s на %s (попытка %s/%s): %s — пауза %ss",
+                    "rate-limit" if _is_rate_limit(exc) else "ошибка",
+                    model,
+                    attempt,
+                    self.max_retries,
+                    str(exc)[:200],
+                    delay,
+                )
+                time.sleep(delay)
+        raise LLMError(f"{model}: {last_exc}")
+
     def complete(
         self,
         system: str,
@@ -46,56 +115,53 @@ class GroqLLM:
         temperature: float = 0.3,
         max_tokens: int = 4096,
     ) -> str:
-        last_exc: Exception | None = None
-        for model in list(self.models):
-            kwargs: dict = {
-                "model": model,
-                "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-            }
-            if json_mode:
-                kwargs["response_format"] = {"type": "json_object"}
+        messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+        errors: list[str] = []
+        for model in self.models:
+            try:
+                text = self._call(model, messages, json_mode=json_mode, temperature=temperature, max_tokens=max_tokens)
+                if model != self.models[0]:
+                    logger.warning("Groq: работаю на резервной модели %s", model)
+                return text
+            except Exception as exc:  # noqa: BLE001
+                errors.append(f"{model}{'/json' if json_mode else ''}: {str(exc)[:160]}")
+                if _is_model_missing(exc):
+                    logger.warning("Groq: модели %s нет в каталоге, пробую следующую", model)
+                    continue
+                if json_mode and _is_json_rejected(exc):
+                    try:
+                        return self._call(
+                            model, messages, json_mode=False, temperature=temperature, max_tokens=max_tokens
+                        )
+                    except Exception as inner:  # noqa: BLE001
+                        errors.append(f"{model}/plain: {str(inner)[:160]}")
+                continue
+        raise LLMError("Groq недоступен: " + " | ".join(errors))
 
-            for attempt in range(1, self.max_retries + 1):
+    def complete_json(self, system: str, user: str, *, temperature: float = 0.2, max_tokens: int = 1500) -> dict:
+        messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+        errors: list[str] = []
+        for model in self.models:
+            for json_mode in (True, False):
                 try:
-                    resp = self.client.chat.completions.create(**kwargs)
-                    if model != self.models[0]:
-                        logger.warning("Groq: работаю на резервной модели %s", model)
-                    return (resp.choices[0].message.content or "").strip()
-                except Exception as exc:  # noqa: BLE001 - SDK-исключения различаются по версиям
-                    last_exc = exc
-                    text = str(exc)
-                    if "model_not_found" in text or "does not exist" in text:
-                        logger.warning("Groq: модели %s нет в каталоге, пробую следующую", model)
-                        break
-                    rate_limited = "RateLimit" in type(exc).__name__ or "429" in text
-                    logger.warning(
-                        "Groq %s на %s (попытка %s/%s): %s",
-                        "rate-limit" if rate_limited else "ошибка",
-                        model,
-                        attempt,
-                        self.max_retries,
-                        text[:300],
+                    text = self._call(
+                        model, messages, json_mode=json_mode, temperature=temperature, max_tokens=max_tokens
                     )
-                    if attempt == self.max_retries:
+                except Exception as exc:  # noqa: BLE001
+                    errors.append(f"{model}{'/json' if json_mode else ''}: {str(exc)[:140]}")
+                    if _is_model_missing(exc):
                         break
-                    time.sleep(RETRY_DELAY if rate_limited else 5)
-        raise LLMError(f"Groq недоступен на моделях {self.models}: {last_exc}")
-
-    def complete_json(self, system: str, user: str, *, temperature: float = 0.2) -> dict:
-        try:
-            text = self.complete(system, user, json_mode=True, temperature=temperature)
-        except LLMError as exc:
-            # Groq валидирует JSON строго (json_validate_failed) — пробуем без response_format
-            if "json_validate_failed" not in str(exc) and "Failed to validate JSON" not in str(exc):
-                raise
-            logger.info("Groq: строгий JSON-режим не принял ответ, повторяю без response_format")
-            text = self.complete(system, user, json_mode=False, temperature=temperature)
-        return parse_json_object(text)
+                    continue
+                try:
+                    data = parse_json_object(text)
+                except ValueError as exc:
+                    errors.append(f"{model}{'/json' if json_mode else ''}: {exc}")
+                    time.sleep(JSON_RETRY_DELAY)
+                    continue
+                if model != self.models[0] or not json_mode:
+                    logger.info("Groq: ответ получен на %s (json_mode=%s)", model, json_mode)
+                return data
+        raise LLMError("Groq недоступен: " + " | ".join(errors))
 
 
 def parse_json_object(text: str) -> dict:

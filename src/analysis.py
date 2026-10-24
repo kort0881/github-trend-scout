@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -12,7 +13,9 @@ from .models import RepoAnalysis, RepoRaw, SecurityReport
 
 logger = logging.getLogger(__name__)
 
-MAX_WORKERS = 3
+MAX_WORKERS = 1
+PROMPT_README_CHARS = 2000
+REQUEST_STAGGER = 8.0
 
 
 def _read_prompt(prompts_dir: Path, name: str) -> str:
@@ -35,7 +38,7 @@ def repo_block(raw: RepoRaw, security: SecurityReport | None = None) -> str:
     if security is not None:
         lines.append(f"безопасность: {security.details}")
     lines.append("README (фрагмент):")
-    lines.append(raw.readme_excerpt or "(README недоступен)")
+    lines.append((raw.readme_excerpt or "(README недоступен)")[:PROMPT_README_CHARS])
     return "\n".join(lines)
 
 
@@ -84,10 +87,11 @@ def analyze_all(
     results: dict[str, RepoAnalysis] = {}
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        futures = {
-            pool.submit(analyze_repo, raw, security, llm, config.prompts_dir): raw.full_name
-            for raw, security in items
-        }
+        futures = {}
+        for index, (raw, security) in enumerate(items):
+            if index:
+                time.sleep(REQUEST_STAGGER)  # ровный темп, без всплесков в лимит Groq
+            futures[pool.submit(analyze_repo, raw, security, llm, config.prompts_dir)] = raw.full_name
         for future in as_completed(futures):
             name = futures[future]
             try:

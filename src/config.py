@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
 DEFAULT_MODEL = "openai/gpt-oss-120b"
-DEFAULT_FALLBACKS = ["llama-3.3-70b-versatile"]
+DEFAULT_FALLBACKS = ["qwen/qwen3.8-27b", "llama-3.3-70b-versatile"]
 
 
 class ConfigError(RuntimeError):
@@ -27,6 +27,7 @@ class Config:
     min_stars: int
     lookback_days: int
     candidate_limit: int
+    min_release_repos: int
     root: Path
 
     @property
@@ -74,5 +75,6 @@ def load_config() -> Config:
         min_stars=_int_env("MIN_STARS", 100),
         lookback_days=_int_env("LOOKBACK_DAYS", 3),
         candidate_limit=_int_env("CANDIDATE_LIMIT", 50),
+        min_release_repos=_int_env("MIN_RELEASE_REPOS", 3),
         root=ROOT,
     )

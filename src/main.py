@@ -137,6 +137,12 @@ def run_pipeline(
     if not top:
         logger.warning("Scoring не дал ни одного репозитория — выпуск не публикуется")
         return stats
+    if len(top) < config.min_release_repos:
+        logger.warning(
+            "В выпуск прошло только %s репозиториев (порог %s) — выпуск не публикуется. Кандидаты: %s",
+            len(top), config.min_release_repos, ", ".join(item.raw.full_name for item in top),
+        )
+        return stats
 
     # 6. Сценарий
     script, source = generate_script(top, config.prompts_dir, llm=llm)

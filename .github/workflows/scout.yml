@@ -2,7 +2,7 @@ name: scout
 
 on:
   schedule:
-    - cron: "0 6 */3 * *"
+    - cron: "0 6 */4 * *"
   workflow_dispatch:
 
 permissions:
@@ -68,6 +68,7 @@ jobs:
           GROQ_MODEL: ${{ vars.GROQ_MODEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAX_REPOS: "10"
+          MIN_RELEASE_REPOS: "3"
           MIN_STARS: "100"
           LOOKBACK_DAYS: "3"
         run: python -m src.main
