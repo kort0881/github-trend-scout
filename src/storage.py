@@ -12,6 +12,8 @@ from .models import RepoRaw
 logger = logging.getLogger(__name__)
 
 CACHE_TTL_SECONDS = 24 * 3600
+# версия логики разбора сканеров: при её смене кэш отчётов игнорируется
+CACHE_VERSION = 2
 
 
 class Storage:
@@ -91,12 +93,20 @@ class Storage:
             data = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             return None
+        if data.get("cache_version") != CACHE_VERSION:
+            logger.info("Кэш %s устарел (версия разбора изменилась) — пересканирую", full_name)
+            return None
         report = data.get("report")
         return report if isinstance(report, dict) else None
 
     def set_raw(self, full_name: str, report: dict, raw: dict | None = None) -> None:
         path = self._cache_file(full_name)
-        payload = {"report": report, "raw": raw or {}, "saved_at": datetime.now(timezone.utc).isoformat()}
+        payload = {
+            "cache_version": CACHE_VERSION,
+            "report": report,
+            "raw": raw or {},
+            "saved_at": datetime.now(timezone.utc).isoformat(),
+        }
         try:
             path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         except OSError as exc:
