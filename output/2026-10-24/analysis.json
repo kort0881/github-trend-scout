@@ -1,219 +1,17 @@
 [
   {
     "raw": {
-      "full_name": "alchaincyf/huashu-motion",
-      "html_url": "https://github.com/alchaincyf/huashu-motion",
-      "description": "让你的agent一键直出商业级产品宣传片：会作曲，能指着画面改。Commercial-grade launch films by your coding agent — point at the frame to change it.",
-      "stars": 1562,
-      "forks": 154,
-      "language": "JavaScript",
-      "license": "MIT",
-      "created_at": "2026-10-18T12:19:27Z",
-      "pushed_at": "2026-10-22T12:19:37Z",
-      "topics": [
-        "agent-skills",
-        "animation",
-        "claude-code",
-        "codex",
-        "gsap",
-        "launch-video",
-        "motion-graphics",
-        "skills"
-      ],
-      "readme_excerpt": "<div align=\"center\">\n\n**简体中文** | [English](README.en.md)\n\n<img src=\"docs/media/hero.gif\" alt=\"huashu-motion发布片开场：一整面墙的片子，说一句，出一支片\" width=\"100%\" />\n\n# huashu-motion\n\n> *「一键直出商业级产品宣传片。」*\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)\n[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)\n[![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20WorkBuddy%20·%20Grok%20Bot%20·%20Muse%20·%20Dots-blueviolet)](#安装)\n\n**让你的agent做动画、作曲，指着画面改。**\n\n跟Claude Code、Codex这些agent说一句「给我的产品做个30秒的发布片」，<br>\n它会先读你的产品，给你三个方向挑，写出整支片子，自己写谱配乐，<br>\n然后在浏览器里打开一个编辑器等你。哪里不满意，在画面上点一下，写下要改什么，它就只改那一处。\n\n```sh\nnpx skills add alchaincyf/huashu-motion\n```\n\n[看效果](#看效果) · [安装](#安装) · [能做什么](#能做什么) · [怎么做到的](#怎么做到的) · [背后的故事](#背后的故事)\n\n</div>\n\n---\n\n## 看效果\n\n这篇README里的每一段动画都是huashu-motion做的。上面那段取自它给自己做的53秒发布片，👉 [下载完整发布片（MP4，带声音）](https://github.com/alchaincyf/huashu-motion/releases/latest)，下面Grok Bot（非官方）、huashu-design、DeepSeek、Claude Duet（非官方）这几支的完整版也在同一个页面。\n\n### 指着画面改\n\n<img src=\"docs/media/point-to-edit.gif\" alt=\"在编辑器里按C，点中开场画面，写下「第一帧开场的效果我觉得很差，还不如核心聚焦在typing呢」，agent接单改完，预览停在原处刷新\" width=\"100%\" />\n\n按C，在画面上点一下，写下要改什么。评论发过去的时候带着时间点、场景、点中的元素和它在源码里的位置，agent先把那一帧和你点的那一小块截图放大看一眼，再只改那一处，改完回一句人话，预览停在原来的位置刷新。每一版都留着，⌘Z随时撤回；标题、数字、颜色、停留时长这些会变成编辑器右边的输入框，自己改，不用等agent。\n\n（这段里的编辑器和终端是照真实界面重建的，代码细节是示意；评论是真实提过的意见。）\n\n### 先写谱，再拍片\n\n<img src=\"docs/media/score-first.gif\" alt=\"agent写的ABC乐谱变成五线谱往前走，红色场景标记落在哪一拍，画面就在哪一拍切\" width=\"100%\" />\n\n做发布片用的是作曲家模式：agent按节奏单先写一份谱（ABC记谱法，纯文本的乐谱），谱里的标记对齐每个场景，再由三角钢琴、弦乐和鼓组的采样演奏出来（真乐器采样要先跑一次`om samples build`，不跑就用合成音色）；画面上每个东西落地的那一帧，再配一个音效。配乐全部在本机现场生成，不调用任何收费接口。\n\n### 一天，二十支\n\n<img src=\"docs/media/sixteen-cuts.gif\" alt=\"16个镜头来自七支不同的片子，按拍子快切\" width=\"100%\" />\n\n16个镜头，来自同一天做的七支片子，按拍子切。\n\n<img src=\"docs/media/grok-bot.gif\" alt=\"Grok Bot粉丝片：Sending to Chief…的气泡钉住不动，背后每个agent各占一屏颜色，最后汇成八宫格\" width=\"100%\" />\n\nGrok Bot（粉丝自制，非官方）· 30秒：傍晚交代任务，夜里几个agent各干各的，早上7点手机上收到汇报。这段是汇报一张张送往Chief of Staff的那几拍。\n\n<table><tr>\n<td width=\"50%\"><img src=\"docs/media/huashu-design.gif\" alt=\"huashu-design宣传片：一句「给社区旧书店做一份众筹PPT」钉在画面中间，背后的风格按拍子一格一格地换\" width=\"100%\" /><br/>huashu-design 3.0 · 一句提示词钉住不动，背后的风格按拍子换</td>\n<td width=\"50%\" align=\"center\"><img src=\"docs/media/catlight-pro.gif\" alt=\"小猫补光灯Pro竖屏片：八种补光色，一拍换一种\" width=\"60%\" /><br/>小猫补光灯Pro · 八种补光色，一拍换一种</td>\n</tr></table>\n\n### 不依赖Opus：DeepSeek V4.1 Flash也能做\n\n<img src=\"docs/media/deepseek-flash.gif\" alt=\"DeepSeek V4.1 Flash做的动效片：鲸鱼logo、MOTION、MASK、GLITCH，一个圆点贯穿全片\" width=\"100%\" />\n\n这支22秒的动效片，是把Claude Code背后的模型换成DeepSeek V4.1 Flash（1017版）做的。中间我给了三轮意见（比如加上DeepSeek的鲸鱼logo、删掉几个镜头），带配乐和音效，前后不到半小时，按当时的价格花了1块9毛5（缓存命中率99.4%）。统一的配色、贯穿全片的那颗圆点、卡在124BPM上的配乐，是skill带出来的，我一句都没提过。方法写进了skill，便宜的模型也能拍出像样的片子。\n\n### Claude Duet（粉丝自制，非官方）：一次给足需求，全程没找我确认\n\n<img src=\"docs/media/claude-duet.gif\" alt=\"Claude Duet粉丝片：像素小人Claude Code在终端里等你敲键，炸散后收拢成Duet的图标，通知先来找你，入夜后一条连笔线穿过各个应用替你把活干完\" width=\"100%\" />\n\nAnthropic发布Claude Duet当天做的，29秒英文版。像素小人Claude Code在终端里等你敲键，变形成Duet以后主动来找你，你睡着了它接着干。完整版在[Release页面](https://github.com/alchaincyf/huashu-motion/releases/latest)。\n\n---\n\n## 样片是怎么做出来的\n\n很多人问这些样片用的是什么提示词。下面是我当时的原话，一字没改，语音输入的错字也留着；本机路径和截图换成了方括号里的说明，跟这支片无关的话删掉了，用……标出；圆括号里是我补的上下文。\n\n可以看出来，效果不全来自第一句话：有的片子我一次把需求说清楚，就放手让它做；有的片子我盯着改了好几轮。一句话也能出片，想到这个水准，要么第一句给足，要么后面有人当导演。\n\n<details>\n<summary><b>Claude Duet</b>（非官方）· 一份需求、两条追加，中间没有修改意见</summary>\n\n> anthropic刚刚发布了claude duet，我希望你帮我充分调研信息，然后帮我做三个版本的视频 /huashu-motion  \n> 版本一：16：9 英文版本，30秒以内  \n> 版本二：16：9 中文版本 我希望除了品牌信息外，主要元素都是中文 ，30秒以内  \n> 版本三：带中文口播，2：3比例，主要界面内容包含官方英文，以及我们制作的中文版本，目标是发在抖音上给用户介绍Claude duet，1分钟以内\n>\n> 这三个版本我们都需要体现三个方面，但你可以通过不同的方式强调和和体现：  \n> 1、Claude duet和Claude code这种coding agent之间的区别  \n> 2、目前的使用门槛：大致是pro、max会员可以用上，但是需要申请waitlist  \n> 3、ChatGPT dots、muse、grok bot这三个都是personal agent，一定程度上可以认为面对前面三个personal agent，claude选择了claude duet出击。[一张Claude Code像素形象的截图] 这是Claude code原本的形象，我觉得你可以用一个比较视觉化的，动效出色的语言比较有趣的去表达这件事。  \n> 三个版本都需要被认为超过了90分才能算制作完成。以及第三个版本我们做完后，你制作封面和标题简介，然后发到抖音和视频号\n>\n> 除了huashu-motion之外，你也可以使用 /huashu-video-pipeline  /huashu-art-motion 这两个s",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "alchaincyf/huashu-motion",
-      "summary": "Проект позволяет агентам (Claude Code, Codex и др.) в один клик генерировать коммерческие рекламные ролики с анимацией и оригинальной музыкой. Пользователь может интерактивно менять отдельные кадры, указывая на них в браузерном редакторе. Всё происходит локально без обращения к платным сервисам.",
-      "usefulness": "Полезен маркетологам, продакт-менеджерам и разработчикам, которым нужно быстро создать качественное промо‑видео без привлечения видеодизайнеров. Подходит для демонстраций продуктов, презентаций и соцсетей.",
-      "uniqueness": "Комбинация генерации сценария, музыки и анимации в одном инструменте, а также возможность точечного редактирования через указание на кадр – редкость среди аналогов, которые обычно требуют отдельные шаги и внешние сервисы.",
-      "pros": [
-        "Полный цикл от идеи до готового ролика\",\"Интерактивное редактирование отдельного кадра\",\"Поддержка нескольких AI‑агентов и локальная генерация музыки\",\"Подробный README с примерами и GIF‑демо"
-      ],
-      "cons": [
-        "Документация ограничена README, нет отдельного руководства по API\",\"Требуется локальная установка и совместимость с конкретными агентами\",\"Отсутствие автоматических тестов и CI‑проверок"
-      ],
-      "audience": [
-        "animation",
-        "video",
-        "ai",
-        "cli",
-        "frontend"
-      ],
-      "score": 9.0
-    },
-    "final_score": 4.11
-  },
-  {
-    "raw": {
-      "full_name": "Gathin23/cleanyourtv",
-      "html_url": "https://github.com/Gathin23/cleanyourtv",
-      "description": "Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.",
-      "stars": 29112,
-      "forks": 3325,
-      "language": "Java",
-      "license": "NOASSERTION",
-      "created_at": "2026-10-17T08:12:35Z",
-      "pushed_at": "2026-10-24T08:55:54Z",
-      "topics": [
-        "adb",
-        "adblock",
-        "android-tv",
-        "android-tv-launcher",
-        "apple-tv",
-        "bloatware-removal",
-        "claude-code",
-        "debloat",
-        "fire-tv",
-        "google-tv",
-        "launcher",
-        "privacy",
-        "smart-tv",
-        "sony-bravia",
-        "tcl",
-        "vibe-coding",
-        "xiaomi"
-      ],
-      "readme_excerpt": "<p align=\"center\">\n  <a href=\"https://cleanyour.tv\"><img src=\"https://raw.githubusercontent.com/Gathin23/cleanyourtv/main/docs/banner.png\" alt=\"CleanYourTV. Your TV, minus the ads. Strip the bloatware from any Android TV or Google TV over Wi-Fi and replace the ad-filled home screen with a clean launcher that looks like an Apple TV. No root, no cable, nothing uninstalled, and a one-line restore.\" width=\"800\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Gathin23/cleanyourtv/stargazers\"><img src=\"https://img.shields.io/github/stars/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/pulls?q=is%3Amerged\"><img src=\"https://img.shields.io/github/issues-search?query=repo%3AGathin23%2Fcleanyourtv%20is%3Apr%20is%3Amerged&style=flat&cacheSeconds=1800&label=merged%20PRs&color=cfffcf&labelColor=15181e\" alt=\"Merged PRs\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/network/members\"><img src=\"https://img.shields.io/github/forks/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/graphs/contributors\"><img src=\"https://img.shields.io/github/contributors/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Contributors\"></a>\n  <a href=\"README.zh-CN.md\"><img src=\"https://img.shields.io/badge/README-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-cfffcf?style=flat&labelColor=15181e\" alt=\"简体中文\"></a>\n  <a href=\"README.vi.md\"><img src=\"https://img.shields.io/badge/README-Ti%E1%BA%BFng%20Vi%E1%BB%87t-cfffcf?style=flat&labelColor=15181e\" alt=\"Tiếng Việt\"></a>\n  <a href=\"README.ja.md\"><img src=\"https://img.shields.io/badge/README-%E6%97%A5%E6%9C%AC%E8%AA%9E-cfffcf?style=flat&labelColor=15181e\" alt=\"日本語\"></a>\n  <a href=\"https://buymeacoffee.com/gathint\"><img src=\"https://img.shields.io/badge/support-%E2%9D%A4-ff5e8a?style=flat&labelColor=15181e\" alt=\"Support, buy me a coffee\"></a>\n  <a href=\"https://www.producthunt.com/products/cleanyourtv\"><img src=\"https://img.shields.io/badge/Product%20Hunt-upvote%20%E2%96%B2-da552f?style=flat&logo=producthunt&logoColor=white&labelColor=15181e\" alt=\"CleanYourTV on Product Hunt\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/310225\"><img src=\"docs/trending-badge.png\" alt=\"#1 trending repo of the week, via trendshift.io\" width=\"360\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/PRESS.md\"><img src=\"docs/card.jpg\" alt=\"260 TV models · 77 brands · 25 languages · 497 KB launcher. Featured in TechCrunch, TechRadar, Tom's Guide, Mashable, Android Authority, XDA, FlatpanelsHD, It's FOSS, Phandroid, GIGAZINE, Xataka, WinFuture, Frandroid, Macitynet, Techaeris, TechPP and 171 more: 187 articles from 31 countries. Before: stock Google TV home with a sponsored ad. After: the Clean Your TV launcher.\" width=\"800\"></a>\n</p>\n\n**The viral tweet:** [x.com/gathint/status/2111379569030939102](https://x.com/gathint/status/2111379569030939102)\n\nOn 17 October 2026 I posted a before and after of my parents' TV, cleaned up by Claude Code over Wi-Fi.\nIt reached 7.4M views, people started doing the same to their own TVs, and their replies turned into\nthe lists here: 170+ TV models from 200+ contributors in four days. The repo was called tv-vibehack\nuntil the 19th; old links work.\n\n**Themes, switches and add-ons:** [cleanyour.tv/addons](https://cleanyour.tv/addons)\n\n**Official links:** the website is [cleanyour.tv](https://cleanyour.tv) and the code, launcher and\ntools live only in this repo. Other domains using the name, such as cleanyourtv.com, are not run by\nthis project ([#1004](https://github.com/Gathin23/cleanyourtv/issues/1004)).\n\n## How it works\n\nAndroid TVs have the same debug bridge as Android phones. Switch on USB debugging in the TV's\ndeveloper options, allow your computer once, and the rest is standard Android tooling:\n\n| Step | What happens |\n|---|---|\n| **Back&n",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "Gathin23/cleanyourtv",
-      "summary": "CleanYourTV is a Java‑based launcher that removes bloatware and ads from Android TV and Google TV devices over Wi‑Fi using ADB. It replaces the default home screen with an Apple‑TV‑style interface and provides a one‑line restore option. No rooting or physical connection is required.",
-      "usefulness": "Designed for end‑users of Android/Google TV who want a cleaner, ad‑free experience, as well as power users who prefer a minimalist launcher without flashing firmware.",
-      "uniqueness": "Unlike many custom ROMs, it works entirely over Wi‑Fi, requires no root, and offers an Apple‑TV‑like UI while preserving the original system. The project also gained viral attention and community contributions across 170+ TV models.",
-      "pros": [
-        "No root or cable needed – works via ADB over Wi‑Fi",
-        "Apple‑TV‑style clean launcher UI",
-        "One‑line restore to original state",
-        "Extensive community contributions and press coverage"
-      ],
-      "cons": [
-        "License is unspecified (NOASSERTION)",
-        "Limited to Android/Google TV platforms",
-        "Requires enabling USB debugging, which may be technical for some users"
-      ],
-      "audience": [
-        "android-tv",
-        "launcher",
-        "cli",
-        "privacy",
-        "debloat"
-      ],
-      "score": 8.5
-    },
-    "final_score": 3.973
-  },
-  {
-    "raw": {
-      "full_name": "simbasjungles/free-my-tv",
-      "html_url": "https://github.com/simbasjungles/free-my-tv",
-      "description": "A fast, ad-free home screen for Google TV, LG webOS and Samsung Tizen. One button to undo.",
-      "stars": 4054,
-      "forks": 629,
-      "language": "Java",
-      "license": "MIT",
-      "created_at": "2026-10-19T19:29:01Z",
-      "pushed_at": "2026-10-24T01:20:17Z",
-      "topics": [
-        "android-tv",
-        "claude-code",
-        "google-tv",
-        "home-screen",
-        "launcher",
-        "no-ads",
-        "open-source",
-        "samsung-tizen",
-        "tizen",
-        "tmdb",
-        "webos"
-      ],
-      "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/assets/icon-512.png\" width=\"96\" alt=\"\">\n\n# Free My TV\n\n**A fast, ad-free home screen for Google TV, LG and Samsung TVs.**\n\nTrending picks from your own apps, the weather at a glance, and a look that follows the sunset.<br>\nOpen source. Built with Claude Code. One button to undo.\n\n[**freemytv.io**](https://freemytv.io) · [Install](#install) · [LG TVs](#lg-tvs-webos) · [Samsung TVs](#samsung-tvs-tizen) · [Any TV](#any-tv) · [Make it yours](#make-it-yours)\n\n<img src=\".github/preview.webp\" width=\"880\" alt=\"The Free My TV home screen: a glass shelf of apps, trending picks, and a drawer with the weather and crypto prices\">\n\n</div>\n\n## What you get\n\n- **No ads.** No sponsored rows, banners or autoplaying promos. Not one.\n- **Your apps, front and center.** The streaming apps you actually use, on a glass shelf. Pick them and their order right on the TV.\n- **Trending, not sponsored.** Three fresh picks every hour from what's trending this week and the latest releases, only from apps you already have. Movies and Shows get their own tabs.\n- **Weather and markets, one press away.** The hour-by-hour forecast, sunrise and sunset, and live crypto prices.\n- **Light by day, dark by night.** It follows your city's real sunset, the way your phone does.\n- **A screensaver to match.** Full-screen photos of the picks with a big glass clock.\n- **Your own photos** (Google TV and Android TV). Send them from your computer (up to 100): the screensaver shows them, and without picks one is the home screen's background each hour.\n- **Fast.** 60 fps, every frame in 16.6 ms, on the TV's own chip. The home screen uses 96 MB of memory instead of 242 MB (−60%).<br><sub>Measured on a 98″ TCL Google TV running Android 14.</sub>\n- **Set up on the TV.** Language, your city, temperature, theme, the weather and prices cards, which coins, and the apps on the shelf, in Free My TV's own settings.\n- **Safe.** No root. Nothing is uninstalled. One button brings back the factory home screen.\n\n## Install\n\nAbout ten minutes. You need a Google TV or Android TV (Android 8 or newer) and a computer on the same Wi-Fi.\n\n### The easy way: an AI assistant\n\n1. **On the TV**, turn on developer mode: Settings → System → About → press *Android TV OS build* 7 times. Then Settings → System → Developer options → turn on **USB debugging**. Write down the TV's IP address (Settings → Network & Internet).\n2. **On your computer**, open an AI coding assistant ([Claude Code](https://claude.com/claude-code), Codex or Antigravity) and say:\n   > Install Free My TV (github.com/simbasjungles/free-my-tv) on my TV at 192.168.1.50. I live in Lisbon.\n\n   It downloads the code, installs the tools it needs, builds the app and puts it on your TV, and asks before anything important. Swap in your TV's IP and your city.\n3. **On the TV**, open *Free My TV* → *Home Screen* → *Free My TV*. That's when the TV asks *Allow USB debugging?* for Free My TV: tick *Always allow* and accept.\n\n### The manual way\n\n1. **On the TV**, do step 1 above.\n2. **Tools:** a JDK (17+), the Android SDK command-line tools (build-tools 34, platform android-34) and adb. On a Mac:\n   ```bash\n   brew install --cask temurin android-commandlinetools android-platform-tools\n   sdkmanager \"build-tools;34.0.0\" \"platforms;android-34\"\n   ```\n   On Linux, get OpenJDK 17, Android's command-line tools and adb from your package manager, then run the same `sdkmanager` line. On Windows, use Git Bash (which Claude Code uses there) or WSL.\n3. **Build:**\n   ```bash\n   ./build.sh\n   ```\n   The first run creates `config.properties`. Set your city and your [TMDB key](#the-tmdb-key) there, then run it again.\n4. **Install:**\n   ```bash\n   adb connect 192.168.1.50:5555\n   adb install -r FreeMyTV.apk\n   ```\n   If the install seems stuck, look at the TV: on Android 14, Google Play Protect may hold it with *Risky app blocked* (\"built for an older version of Android\"), since Free My TV targets Android 13. Choose *More details* → *Inst",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "simbasjungles/free-my-tv",
-      "summary": "Free My TV is an open‑source, ad‑free home screen replacement for Google TV, LG webOS and Samsung Tizen. It displays your installed streaming apps on a glass‑shelf UI, adds weather, crypto prices and a dynamic sunset‑based theme, and runs at 60 fps with low memory usage. Installation can be done manually via ADB or automatically with an AI coding assistant like Claude Code.",
-      "usefulness": "Для пользователей умных телевизоров, желающих избавиться от рекламных рядов и получить быстрый, настраиваемый лаунчер с дополнительными виджетами (погода, криптовалюты).",
-      "uniqueness": "Отличается интеграцией AI‑ассистента для автоматической установки, динамической сменой темы по закату и минимальным потреблением памяти по сравнению со штатным лаунчером.",
-      "pros": [
-        "Ad‑free experience",
-        "60 fps smooth UI with low RAM usage",
-        "One‑click undo to factory launcher",
-        "Open‑source MIT license"
-      ],
-      "cons": [
-        "Поддержка только Android TV, webOS и Tizen; требуется включать режим разработчика и использовать ADB",
-        "Установка может быть сложной без AI‑ассистента",
-        "Отсутствие автоматических тестов/CI в репозитории"
-      ],
-      "audience": [
-        "android-tv",
-        "tv",
-        "launcher",
-        "home-screen",
-        "open-source"
-      ],
-      "score": 8.5
-    },
-    "final_score": 3.93
-  },
-  {
-    "raw": {
-      "full_name": "ikow/php2shell-poc",
-      "html_url": "https://github.com/ikow/php2shell-poc",
-      "description": "CVE-2026-109618/109619 — 5 RCE chains + detection rules (Suricata, Sigma, ModSecurity). PHP session.upload_progress pre-auth exploit research.",
-      "stars": 1715,
-      "forks": 599,
+      "full_name": "assetnote/php2shell-scanner",
+      "html_url": "https://github.com/assetnote/php2shell-scanner",
+      "description": "High fidelity scanner for php2shell (CVE-2026-109618 and CVE-2026-109619)",
+      "stars": 494,
+      "forks": 103,
       "language": "Python",
       "license": "MIT",
-      "created_at": "2026-10-21T07:55:16Z",
-      "pushed_at": "2026-10-22T22:41:36Z",
-      "topics": [
-        "cve-2026-109618",
-        "cve-2026-109619",
-        "detection-rules",
-        "exploit",
-        "php-exploit",
-        "php-security",
-        "php2shell",
-        "poc",
-        "rce",
-        "session-upload-progress",
-        "suricata-rules",
-        "vulnerability-research",
-        "waf-rules",
-        "wordpress-security"
-      ],
-      "readme_excerpt": "<p align=\"center\">\n  <img src=\"docs/cover.png\" alt=\"php2shell\" width=\"700\">\n</p>\n\n<h1 align=\"center\">php2shell</h1>\n<p align=\"center\">\n  <strong>CVE-2026-109618 & CVE-2026-109619 — PHP Pre-Auth RCE Exploit & Detection Toolkit</strong>\n</p>\n<p align=\"center\">\n  <a href=\"https://github.com/ikow/php2shell-poc/stargazers\"><img src=\"https://img.shields.io/github/stars/ikow/php2shell-poc?style=flat-square\" alt=\"Stars\"></a>\n  <img src=\"https://img.shields.io/badge/CVSS-9.2%20Critical-red?style=flat-square\" alt=\"CVSS 9.2\">\n  <img src=\"https://img.shields.io/badge/PHP-5.4%E2%80%938.5-orange?style=flat-square\" alt=\"Affected Versions\">\n  <img src=\"https://img.shields.io/badge/Fixed-8.2.35%20%7C%208.3.36%20%7C%208.4.27%20%7C%208.5.12-green?style=flat-square\" alt=\"Fixed Versions\">\n  <img src=\"https://img.shields.io/badge/Exploits-3%20public%20%7C%202%20paid-blue?style=flat-square\" alt=\"Exploits\">\n</p>\n\n<p align=\"center\">\n  <a href=\"#exploits\">Exploits</a> · <a href=\"#detection-rules\">Detection</a> · <a href=\"#quick-start\">Lab</a> · <a href=\"https://qideng.substack.com/p/php2shell-dissecting-phps-critical\">Writeup</a>\n</p>\n\n---\n\nFive independent RCE chains exploiting PHP's `session.upload_progress` and the Zend engine's OOM bailout. **14 years of vulnerable code** — PHP 5.4.0 (2012) through 8.5.11. Pre-auth. No application vulnerability required for some chains.\n\nImpacts **78% of all websites** — including WordPress (43%), Joomla, Drupal, Laravel, Magento, and every default PHP installation.\n\n**Author:** [Qi Deng](https://github.com/ikow) &nbsp;|&nbsp; **Writeup:** [Substack](https://qideng.substack.com/p/php2shell-dissecting-phps-critical) &nbsp;|&nbsp; **Date:** 2026-10-21\n\n## CVE Details\n\n| CVE | GHSA | CVSS | Description |\n|-----|------|------|-------------|\n| CVE-2026-109618 | [GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) | 9.2 | OOM → `longjmp()` leaves Zend engine state invalid → RCE |\n| CVE-2026-109619 | [GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) | 9.2 | Stale global state across FPM worker requests → UAF → RCE |\n\n**Patch:** [Commit 3584a98](https://github.com/php/php-src/commit/3584a98bda) — 300 files changed across the Zend engine.\n\n## Attack Chains\n\n| Chain | Vector | Pre-auth | Conditions | SAPI |\n|-------|--------|:--------:|------------|------|\n| **A** | Session injection + LFI | Yes | App has any LFI sink | All |\n| **B** | var_destroy UAF → handler overwrite | No | App calls `unserialize()` | All |\n| **C** | Handler mismatch → `__destruct` | Yes | Two dirs with different serialize_handler | FPM |\n| **D** | OOM corruption → stale `EG()` | Yes | **None** — any endpoint | mod_php |\n| **E** | FPM session OOM → stale `BG()` | Yes | Producer: any `session_start()` endpoint; Consumer: **any** endpoint | FPM |\n\nChain D is the most critical: **zero-dependency pre-auth RCE** against any Apache mod_php installation.\n\nChain E is nearly as broad on FPM: the producer needs any endpoint that calls `session_start()` (near-universal — WordPress, Laravel, Joomla, Drupal all do), and the **consumer can be any PHP endpoint** — the `rfc1867` upload_progress handler runs during SAPI startup before application code. Verified: `nosession.php` (no `session_start()` in code) triggers 502 crash when consuming stale `BG(unserialize)` state.\n\n## Exploits\n\nThree RCE exploits (Chains A, B, C) are included in [`exploit/`](exploit/):\n\n| File | Chain | What It Does |\n|------|-------|-------------|\n| `chain_a_session_lfi.py` | A | Injects PHP code via upload filename → LFI includes session file → RCE |\n| `chain_b_uaf_rce.php` | B | var_destroy UAF → discovers `zif_system` via EG() → overwrites `var_dump` handler via `/proc/self/mem` → RCE |\n| `chain_c_mismatch_rce.py` | C | Pollutes FPM worker `PS(serializer)` → injects serialized object via filename → `__destruct` fires on decode failure → RCE |\n\nChains D and E exploits are available to [paid subscribers](https:",
+      "created_at": "2026-10-22T03:53:20Z",
+      "pushed_at": "2026-10-24T03:40:18Z",
+      "topics": [],
+      "readme_excerpt": "# php2shell-scanner\n\nA command-line tool for detecting CVE-2026-109618 and CVE-2026-109619 in PHP applications.\n\n## How It Works\n\nThe scanner sends a minimal multipart control request followed by up to three crafted multipart probes. The probes use PHP array keys nested 62 levels deep and increase from 1 MiB to 20 MiB, matching the detection logic used by Assetnote's internal scanner.\n\nA target is reported vulnerable when the probe produces a PHP memory-exhaustion error, a differential empty HTTP 500, a PHP-FPM worker failure, or an advertised PHP version known to be unpatched. Initial 5xx responses, common request-rejection statuses, and nonempty HTTP 500 responses without the PHP fatal-error signature are not treated as crash signals.\n\nThe scanner tests `/index.php` by default. A path supplied in the URL is preserved, and `--path` or `--path-file` can test custom paths. phpMyAdmin targets are automatically retested at `/show_config_errors.php`. Redirects are not followed unless `--follow-redirects` is set.\n\n### SAPI Modes\n\nThe default `--sapi auto` mode applies both mod_php and PHP-FPM verdict rules, matching the combined behavior of Assetnote's postmodules. Use `--sapi mod_php` or `--sapi fpm` to restrict detection to a known SAPI.\n\n### Network Impact\n\nEach tested path may receive a 42-byte control request and three probes totalling about 29 MiB. Probing stops as soon as the verdict is settled, and duplicate input URLs are scanned once.\n\n## Requirements\n\n- Python 3.9+\n- h11\n- tqdm\n\n## Installation\n\n```\npip install -r requirements.txt\n```\n\n### Docker\n\nBuild the image:\n\n```\ndocker build -t php2shell-scanner .\n```\n\nRun it with the same options as `scanner.py`:\n\n```\ndocker run --rm php2shell-scanner -u https://example.com\n```\n\nMount the current directory to read host lists and write results:\n\n```\ndocker run --rm -v \"$PWD:/data\" -w /data php2shell-scanner -l hosts.txt -o results.json\n```\n\n## Usage\n\nScan a single host:\n\n```\npython3 scanner.py -u https://example.com\n```\n\nScan a list of hosts:\n\n```\npython3 scanner.py -l hosts.txt\n```\n\nScan with multiple threads and save results:\n\n```\npython3 scanner.py -l hosts.txt -t 20 -o results.json\n```\n\nScan with custom headers:\n\n```\npython3 scanner.py -u https://example.com -H \"Authorization: Bearer token\" -H \"Cookie: session=abc\"\n```\n\nScan a custom path:\n\n```\npython3 scanner.py -u https://example.com --path /phpinfo.php\npython3 scanner.py -u https://example.com --path /index.php --path /admin.php\npython3 scanner.py -u https://example.com --path-file paths.txt\n```\n\nUse only PHP-FPM verdict rules:\n\n```\npython3 scanner.py -u https://example.com --sapi fpm\n```\n\n## Options\n\n```\n-u, --url         Single URL to check\n-l, --list        File containing hosts (one per line)\n-t, --threads     Number of concurrent threads (default: 10)\n--timeout         Request timeout in seconds (default: 60)\n-o, --output      Output file for results (JSON)\n--all-results     Save all results, not just vulnerable hosts\n-k, --insecure    Disable TLS certificate verification\n--follow-redirects Follow HTTP redirects (up to 10 hops)\n-H, --header      Custom header (can be used multiple times)\n-v, --verbose     Show verdict reasons and response snippets\n-q, --quiet       Only output vulnerable hosts\n--no-color        Disable colored output\n--sapi            Verdict rules: auto, mod_php, or fpm (default: auto)\n--path            Custom path to test (can be used multiple times)\n--path-file       File containing paths to test (one per line)\n```\n\n## Credits\n\nThe first, original discovery of php2shell is attributed to the Calif team. You can read their write up here: [https://calif.io/php2shell/](https://calif.io/php2shell/).\n\nThe scanner was built by the Assetnote Security Research Team using logic built for [Searchlight's Exposure Platform](https://www.slcyber.io/exposure).\n\n## Output\n\nResults are printed to the terminal. When using `-o`, vulnerable hosts are saved to a JSON file with the verdict reason and redacted HTTP request",
       "archived": false
     },
     "security": {
@@ -223,260 +21,91 @@
       "critical_count": 0,
       "high_count": 0,
       "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
     },
     "analysis": {
-      "full_name": "ikow/php2shell-poc",
-      "summary": "php2shell is a toolkit that provides proof‑of‑concept exploits for CVE‑2026‑109618 and CVE‑2026‑109619, enabling pre‑authentication remote code execution via PHP's session.upload_progress. It also ships detection rules for Suricata, Sigma and ModSecurity to help identify the attacks.",
-      "usefulness": "Useful for security researchers, red‑team operators and defenders who need to understand, test or detect these high‑severity PHP RCE vulnerabilities across many web applications.",
-      "uniqueness": "Combines five independent RCE chains covering 14 years of PHP versions, includes both public and paid exploits, and bundles ready‑to‑use detection rules for multiple IDS/WAF platforms in a single repository.",
+      "full_name": "assetnote/php2shell-scanner",
+      "summary": "A command‑line scanner written in Python that detects the recent php2shell vulnerabilities (CVE‑2026‑109618 and CVE‑2026‑109619) in PHP applications. It sends a minimal control request followed by up to three deep‑nested multipart probes and analyses the responses for memory‑exhaustion or PHP‑FPM failures.",
+      "usefulness": "Useful for security researchers, penetration testers and DevOps engineers who need to quickly identify vulnerable PHP installations in web assets.",
+      "uniqueness": "Implements high‑fidelity detection using 62‑level nested array keys and multiple verdict rules for both mod_php and PHP‑FPM, and provides a lightweight Docker image for easy deployment.",
       "pros": [
-        "Comprehensive exploit chains covering many PHP versions",
-        "Includes detection rules for Suricata, Sigma and ModSecurity",
-        "Well‑documented with write‑up and usage guide",
-        "High impact coverage (≈78% of websites)"
+        "Detailed CLI options and multi‑threading",
+        "Docker support for isolated execution",
+        "Clear README with examples",
+        "MIT license, no known security issues"
       ],
       "cons": [
-        "Contains exploit code – not intended for production use",
-        "Paid exploits are not publicly available",
-        "No automated test suite or CI checks"
+        "Focused only on two specific CVEs",
+        "Requires Python 3.9+ or Docker",
+        "Documentation limited to CLI usage, no API or GUI"
       ],
       "audience": [
         "security",
-        "exploit",
-        "detection",
-        "ids",
-        "waf",
-        "php",
-        "cli"
-      ],
-      "score": 8.5
-    },
-    "final_score": 3.912
-  },
-  {
-    "raw": {
-      "full_name": "pengchujin/aerial-tv",
-      "html_url": "https://github.com/pengchujin/aerial-tv",
-      "description": "给国产电视的一块干净桌面：参照 tvOS 设计的开源 Android TV 桌面，没有广告，开机自动接管。A tvOS-style launcher for Xiaomi, TCL and other China-market TVs.",
-      "stars": 4082,
-      "forks": 308,
-      "language": "Kotlin",
-      "license": "MIT",
-      "created_at": "2026-10-20T09:13:06Z",
-      "pushed_at": "2026-10-24T06:03:21Z",
-      "topics": [],
-      "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/brand/icon.png\" width=\"96\" alt=\"Aerial 图标\">\n\n# Aerial\n\n**给国产电视的一块干净桌面。**\n\n参照 Apple TV 做的 Android TV 桌面：没有广告，没有推荐流，只有你的 App、壁纸和航拍屏保。<br>\n适合小米、TCL 等国产电视，开机自动进入，待机也不会被清理。\n\n**中文** · [English](README.en.md)\n\n<a href=\"https://aerial.qust.me\"><img alt=\"官网\" src=\"https://img.shields.io/badge/%E5%AE%98%E7%BD%91-1f6feb?style=for-the-badge&logo=safari&logoColor=white\"></a>\n<a href=\"https://github.com/pengchujin/aerial-tv/releases/latest\"><img alt=\"下载 APK\" src=\"https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%20APK-34a853?style=for-the-badge&logo=android&logoColor=white\"></a>\n<a href=\"#安装\"><img alt=\"安装\" src=\"https://img.shields.io/badge/%E5%AE%89%E8%A3%85-d97757?style=for-the-badge&logo=gnubash&logoColor=white\"></a>\n\n<a href=\"https://github.com/pengchujin/aerial-tv/releases/latest\"><img alt=\"版本\" src=\"https://img.shields.io/github/v/release/pengchujin/aerial-tv?style=flat-square&label=%E7%89%88%E6%9C%AC&color=2997ff\"></a>\n<a href=\"LICENSE\"><img alt=\"许可证 MIT\" src=\"https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-555555?style=flat-square\"></a>\n<img alt=\"Android TV 5.0+\" src=\"https://img.shields.io/badge/Android%20TV-5.0%2B-3ddc84?style=flat-square&logo=android&logoColor=white\">\n\n![Aerial 首页](site/img/home.jpg)\n\n| 电视自带的桌面 | 换上 Aerial 之后 |\n|:---:|:---:|\n| <img src=\"site/img/stock-xiaomi.jpg\" alt=\"电视自带的桌面：满屏剧集推荐、会员和限免角标\"> | <img src=\"site/img/home.jpg\" alt=\"Aerial 首页\"> |\n\n</div>\n\n## 功能\n\n<p align=\"center\">\n  <img src=\"site/img/focus.jpg\" width=\"49%\" alt=\"第一排的玻璃底板\">\n  <img src=\"site/img/grid.jpg\" width=\"49%\" alt=\"往下滚动后的应用网格，中间有一个文件夹\">\n</p>\n\n- **首页**：常用的一排 App 放在屏幕下方的玻璃底板上，往下是全部 App。小米「应用中心」「米家」这类藏起来的系统 App 也在。\n- **整理**：长按 OK 键（或按菜单键）可以移动、放进文件夹、隐藏、卸载。固定到主屏幕的 HDMI 可以选接的是 Apple TV、PlayStation、Switch、Xbox、电脑等，换成对应的图标，也能在手机上起名字；文件夹也可以在手机上改名。\n- **控制中心**：在第一排按上键到右上角打开，有信号源、网络、设置、音量、亮度和个性化。\n- **屏保**：Apple TV 的 114 段航拍影片，电视支持时播 4K 或 4K 杜比视界，也可以换成照片、时钟或从手机添加的本地视频（[说明](docs/SCREENSAVER_VIDEOS.md)）。\n- **壁纸**：必应每日精选、14 张内置壁纸、用手机扫码传的照片，或者航拍：停在主屏幕 10 秒后在磁贴后面播放，按任意键停在当前画面。\n- **个性化**：单排或双排、时钟大小和位置、App 名称、焦点样式、按键声音，都能改。\n\n<p align=\"center\">\n  <img src=\"site/img/folder.jpg\" width=\"49%\" alt=\"打开的文件夹\">\n  <img src=\"site/img/control-center.jpg\" width=\"49%\" alt=\"控制中心\">\n</p>\n\n<p align=\"center\">\n  <img src=\"site/img/screensaver-aerial.jpg\" width=\"49%\" alt=\"航拍屏保\">\n  <img src=\"site/img/wallpaper.jpg\" width=\"49%\" alt=\"个性化面板\">\n</p>\n\n## 安装\n\n不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。\n\n### 1. 打开电视的 ADB 调试\n\n| 电视 | 怎么打开 |\n|---|---|\n| **小米 / Redmi** | 设置 → 关于 → 连续按「产品型号」进入开发者模式，再到 设置 → 账号与安全，打开「ADB 调试」和「安装未知来源的应用」 |\n| **TCL / 雷鸟** | 设置 → 关于 → 本机信息，快速按遥控器「上下左右」，在底部的「更多」里打开 ADB |\n| **海尔 / 模卡** | 按电视机身上的信号源键，再用遥控器按「左左上右」，在工厂菜单里打开「ADB 调试开关」，别动其他选项 |\n| **OPPO（含 S1）** | 设置 → 系统 → 关于本机 → 设备型号，按「上上右右」再按确认；再到 设置 → 系统 → 开发者选项，打开「USB 调试」。IP 在 设置 → 网络 → 已连接的网络 最下面 |\n| **其他 Android TV** | 设置 → 设备偏好设置 → 关于 → 连按「内部版本号」7 次，再在开发者选项里打开「USB 调试」 |\n\n电视的 IP 在「设置 → 网络 → 已连接的网络」里。第一次连接时，电视会问是否允许调试，选「始终允许」。\n更细的分品牌说明（包括打不开 ADB 的机型）见 [docs/devices/adb-by-brand.md](docs/devices/adb-by-brand.md)。\n\n### 2. 安装\n\n**让 Agent 装（推荐）**：把下面这段发给能在电脑上运行命令的 Agent（WorkBuddy、豆包电脑版、千问电脑版、Trae、Claude Code、Codex 等）：\n\n```text\n请帮我把开源电视桌面 Aerial 装到我的电视上，并设为开机进入的桌面。\n电视 IP：<电视IP>\n保持 ADB 常开：要\n\n安装说明在这里：https://aerial.qust.me/agent.md\n（打不开时用 https://raw.githubusercontent.com/pengchujin/aerial-tv/main/site/agent.md ）\n\n请先完整读完安装说明再动手，然后在我的电脑上亲自运行命令，不要只把步骤告诉我。需要我在电视上操作时提醒我。\n最后按说明里的「验收」，把这几条命令的原始输出原样贴给我：\n- adb shell \"cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.HOME\"\n- adb shell settings get secure enabled_accessibility_services\n- 按主页键后的 adb shell \"dumpsys window | grep mCurrentFocus\"\n```\n\n手机上的豆包、网页版聊天只会把步骤告诉你，不会执行；要用能跑命令的电脑版 / 工作版（豆包电脑版或豆包工作版、WorkBuddy、千问电脑版、Trae、Claude Code、Codex 等）。Agent 说装好了，看它贴出的 `mCurrentFocus` 输出里有没有 `app.orchard.tv`。\n\n**没有电脑**：有用户用手机上的甲壳虫 ADB 助手、超级小爱装成功过，本仓库没有逐一实测。步骤和上面的 Windows 步骤一样，装好后建议再用电脑跑一遍验收。\n\n**一行命令（macOS / Linux）**：\n\n```bash\ncurl -fsSL https://aerial.qust.me/install.sh | KEEP_ADB=1 TV=192.168.1.20 bash\n```\n\n**手动**：下载 [aerial",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "pengchujin/aerial-tv",
-      "summary": "Aerial – открытый лаунчер для Android TV, стилизованный под tvOS. Предоставляет чистый домашний экран без рекламы, с поддержкой приложений, обоев и скринсейвера. Автоматически захватывает запуск и работает на популярных китайских телевизорах.",
-      "usefulness": "Полезен владельцам Android TV (Xiaomi, TCL, OPPO и др.) в Китае, желающим заменить штатный рекламный интерфейс на минималистичный и настраиваемый домашний экран.",
-      "uniqueness": "Отличается tvOS‑подобным дизайном, интеграцией скринсейвера с 4K‑видео Apple TV и возможностью полной кастомизации без рут‑прав, чего нет у большинства стандартных лаунчеров Android TV.",
-      "pros": [
-        "Полный набор функций: приложение, обои, скринсейвер, контроль‑центр",
-        "Не требует root и не меняет системные приложения",
-        "Поддержка множества брендов телевизоров через ADB",
-        "MIT‑лицензия и активное сообщество"
-      ],
-      "cons": [
-        "Документация в основном на китайском, английская версия ограничена",
-        "Поддержка ограничена Android TV‑устройствами, нет кроссплатформенных вариантов",
-        "Отсутствие автоматических тестов и CI‑пайплайна"
-      ],
-      "audience": [
-        "android",
-        "tv",
-        "ui",
-        "launcher",
-        "mobile"
-      ],
-      "score": 8.0
-    },
-    "final_score": 3.731
-  },
-  {
-    "raw": {
-      "full_name": "humblemuzzu/dumbtv",
-      "html_url": "https://github.com/humblemuzzu/dumbtv",
-      "description": "Take the ads, tracking and clutter out of your Fire TV over ADB, no root. Every step can be undone. Comes with its own open-source home screen.",
-      "stars": 1420,
-      "forks": 127,
-      "language": "Java",
-      "license": "NOASSERTION",
-      "created_at": "2026-10-18T17:04:12Z",
-      "pushed_at": "2026-10-22T22:15:22Z",
-      "topics": [
-        "ad-blocking",
-        "adb",
-        "android-tv",
-        "debloat",
-        "dns-filter",
-        "fire-os",
-        "fire-tv",
-        "firetv",
-        "launcher",
-        "privacy",
-        "smart-tv",
-        "telemetry"
-      ],
-      "readme_excerpt": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/logo-dark.svg\">\n    <img src=\"docs/assets/logo-light.svg\" alt=\"dumbtv\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\"><b>Your TV should do what you paid for.</b><br>\nAds, tracking and clutter out of your Fire TV. Your apps and HDMI inputs stay.</p>\n\n<p align=\"center\">\n  <a href=\"https://dumbtv.org\"><b>dumbtv.org</b></a> ·\n  <a href=\"https://dumbtv.org/start\">Get started</a> ·\n  <a href=\"https://dumbtv.org/blocked\">What it blocks</a> ·\n  <a href=\"https://dumbtv.org/tv\">Devices</a> ·\n  <a href=\"https://dumbtv.org/help\">Get help</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/humblemuzzu/dumbtv/stargazers\"><img src=\"https://img.shields.io/github/stars/humblemuzzu/dumbtv?style=flat&color=4C8DFF\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/humblemuzzu/dumbtv/releases/latest\"><img src=\"https://img.shields.io/github/v/release/humblemuzzu/dumbtv?label=dumbtv%20home&color=4C8DFF\" alt=\"Latest launcher release\"></a>\n  <a href=\"https://github.com/humblemuzzu/dumbtv/actions/workflows/validate.yml\"><img src=\"https://github.com/humblemuzzu/dumbtv/actions/workflows/validate.yml/badge.svg\" alt=\"CI\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-4C8DFF\" alt=\"MIT licence\"></a>\n  <a href=\"#thanks\"><img src=\"https://img.shields.io/github/contributors/humblemuzzu/dumbtv?color=4C8DFF\" alt=\"Contributors\"></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/assets/hero.png\" alt=\"dumbtv home on a television: a clock, an Apps row and an Inputs row\" width=\"880\">\n</p>\n\n<p align=\"center\"><sub>As seen in\n<a href=\"https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/\">TechCrunch</a> ·\n<a href=\"https://www.techradar.com/entertainment/streaming/your-tv-should-do-what-you-paid-for-people-are-vibe-coding-apps-to-banish-ads-from-their-smart-tvs-and-android-tv-and-its-catching-on\">TechRadar</a> ·\n<a href=\"https://www.tomsguide.com/ai/people-are-using-ai-to-turn-their-smart-tvs-into-dumb-tvs-and-you-might-want-to-do-the-same\">Tom's Guide</a> ·\n<a href=\"https://gizmodo.com/people-using-ai-to-make-smart-tvs-dumb-again-is-the-most-2026-thing-ever-2000828213\">Gizmodo</a> ·\n<a href=\"https://www.xda-developers.com/people-are-now-vibe-coding-their-smart-tvs-to-strip-them-of-ads-and-unwanted-features/\">XDA</a> ·\n<a href=\"https://itsfoss.com/news/debloat-smart-tv/\">It's FOSS</a> ·\n<a href=\"docs/PRESS.md\">and more than 100 others</a></sub></p>\n\n---\n\n## The story\n\nI had a Fire TV Edition television that had become painful to use. Menus lagged,\napps took ages to open, and the home screen was mostly ads. When I looked, it had\n129 MB of free memory, and much of the rest went to apps that started on their own\nand to Amazon services that report what you watch.\n\nSo I asked a coding agent to clean it up over ADB, and\n[posted what happened](https://x.com/DevMuzzammil/status/2111595814099591535). People\nasked for the scripts, so I put them here and\n[shared them](https://x.com/DevMuzzammil/status/2111912547318395338). Since then,\nowners of about twenty other TVs and sticks have run it and sent back what they\nfound.\n\ndumbtv is that cleanup, made safe to run on someone else's TV.\n\n## What it does\n\nOn a Fire TV stick, Cube or Fire TV Edition television, from your computer, with\nno root:\n\n- **Removes the ads and tracking.** Disables Amazon's sponsored rows, ad\n  services, screen fingerprinting (ACR), telemetry and experiments, and turns off\n  ad tracking and usage reporting.\n- **Blocks what cannot be disabled.** A small open-source DNS filter on the TV\n  stops Amazon's telemetry and automatic updates from reaching their servers.\n  Everything else, including your streaming apps, works as before.\n- **Replaces the home screen** with [dumbtv home](launcher/README.md): your apps,\n  your inputs and a clock. 54 KB, open source, no internet access, no permissions.\n- **Leaves your apps alone.** Nothing you watch is removed un",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "humblemuzzu/dumbtv",
-      "summary": "dumbtv is a tool that removes ads, tracking, and unwanted services from Amazon Fire TV devices via ADB without requiring root access. It also provides an open‑source lightweight home screen replacement and a DNS filter to block telemetry. All changes are reversible.",
-      "usefulness": "Для владельцев Fire TV, желающих избавиться от рекламных и телеметрических компонентов, а также получить чистый и быстрый интерфейс.",
-      "uniqueness": "Работает без root, использует ADB, сочетает скрипты очистки с собственным лаунчером и DNS‑фильтром, что редко встречается в аналогах.",
-      "pros": [
-        "Не требует root",
-        "Операции можно отменить",
-        "Включён лёгкий открытый лаунчер",
-        "DNS‑фильтр блокирует телеметрию"
-      ],
-      "cons": [
-        "Поддержка только устройств Fire TV",
-        "Документация могла бы быть более подробной для продвинутых настроек",
-        "Отсутствие автоматических обновлений лаунчера"
-      ],
-      "audience": [
-        "android-tv",
-        "fire-tv",
         "cli",
-        "privacy",
-        "home-screen"
+        "devops",
+        "python"
       ],
       "score": 8.0
     },
-    "final_score": 3.708
+    "final_score": 3.685
   },
   {
     "raw": {
-      "full_name": "Ansub/tv-detox",
-      "html_url": "https://github.com/Ansub/tv-detox",
-      "description": "Make an old Android TV fast again with Claude Code or Codex: a tiny ad-free home screen plus the prompt to clean it up",
-      "stars": 1413,
-      "forks": 145,
-      "language": "Java",
-      "license": "MIT",
-      "created_at": "2026-10-18T06:42:29Z",
-      "pushed_at": "2026-10-24T07:07:45Z",
-      "topics": [],
-      "readme_excerpt": "<div align=\"center\">\n\n# TV Detox\n\n<a href=\"https://www.skool.com/staffed-claude-code-ai-5304\"><img src=\"https://img.shields.io/badge/Join_the_community_%E2%86%92-FFD400?style=for-the-badge\" alt=\"Join the community\" width=\"340\"></a>\n\n### Make an old, slow Android TV fast again.\n\nClaude Code or Codex does the work. You just press OK on the remote.\n\n[![Release](https://img.shields.io/github/v/release/Ansub/tv-detox?color=black)](https://github.com/Ansub/tv-detox/releases/latest)\n[![Tests](https://img.shields.io/github/actions/workflow/status/Ansub/tv-detox/build.yml?branch=main&label=tests)](https://github.com/Ansub/tv-detox/actions)\n[![License](https://img.shields.io/badge/license-MIT-black)](LICENSE)\n[![YouTube](https://img.shields.io/badge/YouTube-@ansubkhan-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@ansubkhan)\n\n**As seen on**\n\n[![The Verge](https://img.shields.io/badge/The_Verge-5200FF?style=for-the-badge)](https://www.theverge.com/tech/1016116/vibe-coding-tv-os)\n[![Android Authority](https://img.shields.io/badge/Android_Authority-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://www.androidauthority.com/android-tv-vibe-hacking-remove-ads-bloatware-3725338/)\n[![Mashable](https://img.shields.io/badge/Mashable-00AEEF?style=for-the-badge)](https://mashable.com/tech/smart-tv-ads-claude-code-ai-cleanup)\n[![t3n](https://img.shields.io/badge/t3n-E6007E?style=for-the-badge)](https://t3n.de/news/claude-alter-fernseher-android-tv-1768831/)\n[![Tom's Guide](https://img.shields.io/badge/Tom's_Guide-E1261C?style=for-the-badge)](https://www.tomsguide.com/ai/people-are-using-ai-to-turn-their-smart-tvs-into-dumb-tvs-and-you-might-want-to-do-the-same)\n[![Yahoo Tech](https://img.shields.io/badge/Yahoo_Tech-6001D2?style=for-the-badge)](https://tech.yahoo.com/ai/article/sick-of-seeing-ads-and-clutter-on-your-smart-tv-the-internet-says-ai-can-fix-that-181417392.html)\n[![GIGA](https://img.shields.io/badge/GIGA-E2001A?style=for-the-badge)](https://www.giga.de/tech/ist-euer-smart-tv-zu-langsam-dieses-ki-tool-kann-helfen--01M5HH1C89TWAQX4FYXJBDBQAF)\n[![Computer Hoy](https://img.shields.io/badge/Computer_Hoy-0A64A0?style=for-the-badge)](https://computerhoy.20minutos.es/dispositivos/tv-detox-app-gratis-elimina-obsolescencia-programada-tu-smart-tv-claude-hace-trabajo-tu-solo-tienes-que-pulsar-ok-mando-distancia_7050469_0.html)\n[![AI Times](https://img.shields.io/badge/AI_Times-111111?style=for-the-badge)](https://www.aitimes.com/news/articleView.html?idxno=216547)\n\n[All press coverage →](press.md)\n\n<img src=\"docs/home-screen.png\" alt=\"The TV Detox home screen\" width=\"100%\">\n\n</div>\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\"><b>🧹 Removes the junk</b><br>Bloatware, ads and sponsored rows, gone.</td>\n<td width=\"33%\" valign=\"top\"><b>📺 A calm home screen</b><br>Your apps, your HDMI inputs and a clock. Nothing else.</td>\n<td width=\"33%\" valign=\"top\"><b>↩️ Undo anytime</b><br>Apps are turned off, never deleted.</td>\n</tr>\n</table>\n\n## Watch it work\n\n<a href=\"https://www.youtube.com/watch?v=fP2SGGVsaB0\"><img src=\"https://img.youtube.com/vi/fP2SGGVsaB0/maxresdefault.jpg\" alt=\"Watch: Claude Made My Old Android TV Feel Brand New\" width=\"100%\"></a>\n\n**[▶ Claude Made My Old Android TV Feel Brand New](https://www.youtube.com/watch?v=fP2SGGVsaB0)** · the full setup on a real TV, in 4 minutes.\n\n## Get started\n\n**1. Turn on developer mode on the TV.**\nSettings → Device Preferences → About → press **Build** 7 times. Then turn on **USB debugging** in **Developer options**. [Stuck?](#help)\nRead the [notes and warnings](#notes-and-warnings) first.\n\n**2. Open [Claude Code](https://claude.com/claude-code) or [Codex](https://openai.com/codex) on your laptop.**\nThe laptop and TV must be on the same Wi-Fi.\n\n**3. Paste this in.**\n\n```text\nHelp me clean up my Android TV and make it faster.\nMy TV is a <brand and model>.\n\n1. Before you change anything, tell me in plain words:\n   this turns off system apps, and that has some risk.\n   A few TVs got s",
-      "archived": false
-    },
-    "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
-      "gitleaks_findings": 0,
-      "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
-    },
-    "analysis": {
-      "full_name": "Ansub/tv-detox",
-      "summary": "TV Detox is an Android TV app that replaces the stock home screen with a minimal, ad‑free interface. It uses Claude Code or OpenAI Codex to automatically disable bloatware, ads and sponsored rows, while keeping apps reversible. The app provides a simple “OK” remote button to trigger the cleanup.",
-      "usefulness": "Designed for owners of older or sluggish Android TVs who want to improve performance and visual clutter without manual tinkering. Useful for hobbyists and developers looking for a quick AI‑assisted optimization.",
-      "uniqueness": "Leverages generative AI (Claude Code/Codex) to decide which system apps to disable, offering a one‑click cleanup that most traditional TV launchers lack. The undo feature ensures changes are reversible.",
-      "pros": [
-        "High star count and strong media coverage",
-        "One‑click AI‑driven cleanup",
-        "Reversible – apps are only disabled, not removed",
-        "Simple remote‑only interaction"
-      ],
-      "cons": [
-        "Works only on Android TV devices",
-        "Requires access to Claude Code or Codex (potential cost)",
-        "Documentation limited to README; no extensive developer guide"
-      ],
-      "audience": [
-        "android",
-        "tv",
-        "ai",
-        "mobile"
-      ],
-      "score": 8.0
-    },
-    "final_score": 3.708
-  },
-  {
-    "raw": {
-      "full_name": "wesbos/3d-model-anything",
-      "html_url": "https://github.com/wesbos/3d-model-anything",
-      "description": "Capture iPhone LiDAR and photos, reconstruct editable Three.js rooms, and explore them in a browser.",
-      "stars": 1307,
-      "forks": 217,
+      "full_name": "rossark0/rossark-motion-skill",
+      "html_url": "https://github.com/rossark0/rossark-motion-skill",
+      "description": "Turn any SVG into a professional 60 fps animation. A Claude Code skill that brings anything drawn to life: live faces, full-body acting and whole scenes, in React Native and SwiftUI.",
+      "stars": 408,
+      "forks": 31,
       "language": "Swift",
-      "license": "NOASSERTION",
-      "created_at": "2026-10-21T19:38:50Z",
-      "pushed_at": "2026-10-22T13:10:22Z",
+      "license": "MIT",
+      "created_at": "2026-10-22T03:33:03Z",
+      "pushed_at": "2026-10-22T06:38:46Z",
       "topics": [],
-      "readme_excerpt": "# 3D Model Anything\n\n[![Watch the video: 3D Model Anything](docs/images/thumb-1.png)](https://www.youtube.com/watch?v=JGQCcCzuS88)\n\nCapture a room on an iPhone, then use its geometry and photographs to build an editable Three.js scene with an AI coding agent.\n\n[Open the office viewer](https://wesbos.github.io/3d-model-anything/) · [App support](https://wesbos.github.io/3d-model-anything/support.html)\n\nThis repository includes the **3D Model Anything iPhone app**, a **Three.js viewer**, the **scan-to-threejs agent skill**, and **Wes’s detailed office demo**.\n\nThe app records the evidence. The skill guides an agent through measurement, modeling and matched-camera visual comparisons. This is an iterative reconstruction workflow, not a one-click scan-to-perfect-model converter. The current workflow focuses on rooms and interiors.\n\n## Run the viewer\n\nUse Node.js 22.12+ (or a newer supported release).\n\n```sh\nnpm ci\nnpm run dev\n```\n\nOpen http://localhost:5188. Explore the office in dollhouse, walking, overhead, wireframe and knolling views. The playground is at `/play.html?room=office-v4&mode=fpv`.\n\n```sh\nnpm run build\nnpm run preview\n```\n\nThe demo includes the reconstructed office and selected textures. Original scans and photo collections are not distributed; Scan and Overlay are disabled for this example. Those modes remain available for your own rooms with reference assets.\n\n## Capture your own space\n\nSee [the iPhone app](apps/house-capture/README.md) for building with Xcode, device requirements, scanning and sharing. Scanning needs a LiDAR-equipped iPhone or iPad. Non-LiDAR devices can import and review scans.\n\nThe app is source-available here; an App Store release is a separate distribution step. Do not assume an App Store download is available yet.\n\nExport a room or session through the system share sheet and extract it into an ignored `data/captures-in/<room>/` directory. Exports keep the existing `house-capture/5` contract; changing the app name does not change the files.\n\n## Use the skill\n\nThe skill lives at `.agents/skills/scan-to-threejs/SKILL.md`. Open this repository in an agent that supports local skills and ask it to use **scan-to-threejs** with your extracted export. You can also copy that skill directory into your agent's skill directory; the companion viewer/runtime in this repo is still needed for its capture workflow.\n\nExample request:\n\n> Use scan-to-threejs to rebuild the room in data/captures-in/my-room. Inspect the measurements and photos, create an editable scene, and compare rendered views with the original photographs.\n\nStart with [the format guide](.agents/skills/scan-to-threejs/references/house-capture.md) and [project layout](.agents/skills/scan-to-threejs/references/project-layout.md). Helpers need Python 3; photo comparisons need Pillow, and optional depth reconstruction needs NumPy, Open3D and Pillow. Capture scripts use the `agent-browser` CLI.\n\nA new room goes in `demos/<id>/` and is registered in `demos/index.ts`. The office example retains its earlier reconstruction layers (`office-v2`, `office-latest`, `office-v4`) to preserve the final geometry.\n\n## Privacy and licensing\n\nOnly the office example is distributed. No other rooms, connected-house layout, original scan bundles, or development Git history are included. Keep your captures private; inspect assets before publishing your own demo.\n\nReusable source code and the skill are MIT licensed. The supplied office images/textures have separate [asset terms](ASSETS-LICENSE.md). Third-party marks, artwork and depicted products are not licensed by the code license.\n\nSee [release status](docs/release-status.md) for validation and iPhone distribution steps.\n",
+      "readme_excerpt": "<a href=\"demo/reveal.mp4\">\n<img width=\"360\" alt=\"A blue silhouette floats in with dangling feet, then a kid in a striped kit drops in, lands, kicks a ball that rolls in from the right, waves, grins and hops\" src=\"demo/reveal.gif\" />\n</a>\n\n# Motion For Anything You Draw\n\nFor designers and engineers who want to bring their apps and drawings to life.\n\nMaking a drawing move is easy. Making it feel alive is hard: it has to breathe, look around, blink, shift its weight and act, without ever freezing or jumping. This skill helps your agent get there.\n\nIt started as the method I used to bring the illustrations in my app to life, and grew into a way to animate anything drawn: characters and creatures, plants, cloth, fire, smoke, water, weather, lights, machines, icons, logos, charts and whole scenes.\n\nThe animation above is drawn and animated entirely in code, with the templates in this repo.\n\n## Install\n\n```bash\nnpx skills@latest add rossark0/rossark-motion-skill\n```\n\n## Why use it?\n\nAgents don't animate like animators.\n\nAsk an agent to bring a character to life and it will often swap one drawing for another, so the face teleports from one expression to the next. It moves through each pose with its own eased tween, so the body stops dead at every pose. Everything moves in sync, like a machine. Blinks are so short they flicker, everything bounces, and a thin line shows across the face where two shapes meet.\n\nAll these small things add up, and the result looks like a slideshow instead of something alive.\n\nThis skill lists those mistakes and how to fix them: one clock for the whole scene, parts that turn around their real pivots, trailing parts that follow a beat later, idle life that never stops, smooth paths through key poses, small amplitudes and strong curves. When you have a reference video, it measures the motion frame by frame before building, because what makes a reference feel alive is often too small to see.\n\nFor motion in an interface, it follows [Emil Kowalski's](https://github.com/emilkowalski/skills) rules and Benji Taylor's [Family values](https://benji.org/family-values).\n\n## Reference\n\n- **[SKILL.md](./SKILL.md)**: The skill. Principles, recipes for every kind of subject, live faces, full-body acting, scenes that tell an action, motion in an interface, pitfalls, working from a reference video, and a workflow.\n- **[MOTION.md](./MOTION.md)**: A notes file for your project. Copy it next to your art and fill in Part 2 as you go: where the code is, your rules, what your art can't do, and how you check changes. The skill reads it first.\n- **[motion.ts](./templates/react-native/motion.ts)** and **[Motion.swift](./templates/swiftui/Motion.swift)**: The engine, for React Native and SwiftUI. Loop and one-shot clocks, `track`, `flow` (smooth acting through key poses), `seg`, `wave`, `loop`, `bell`, `seeded` and the curves.\n- **[liveFace.tsx](./templates/react-native/liveFace.tsx)** and **[LiveFace.swift](./templates/swiftui/LiveFace.swift)**: Live eyes and mouths that glide, blink and smile. You give them the geometry and the colours.\n- **[sheet.sh](./tools/sheet.sh)**: Contact sheets of a video at its full frame rate, to study timing or check your own render.\n- **[track_edges.py](./tools/track_edges.py)**: Measures a subject's edges frame by frame, to catch motion too small for the eye: a 2% jiggle, a float, a sway.\n- **[sample_colors.py](./tools/sample_colors.py)**: Reads exact colours from a video frame.\n- **[demo/](./demo)**: The scenes on this page, a phone frame and an offline renderer that turns them into MP4 and GIF.\n\n## Demos\n\n**Reveal** ([source](demo/RevealScene.swift), [MP4](demo/reveal.mp4)), at the top of this page. Full-body acting in a phone frame, on one clock, in a 9-second loop at 60 fps:\n- a mystery silhouette floats in, its feet hanging limp, its shadow breathing with the height;\n- the kid hovers, falls with gravity, squashes on landing and keeps the volume;\n- poses flow into each other with `flow`, idle life n",
       "archived": false
     },
     "security": {
       "semgrep_findings": 0,
-      "bandit_findings": 0,
+      "bandit_findings": 7,
       "gitleaks_findings": 0,
       "critical_count": 0,
       "high_count": 0,
       "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+      "details": "Находки — semgrep: 0, bandit: 7, gitleaks: 0; critical=0, high=0"
     },
     "analysis": {
-      "full_name": "wesbos/3d-model-anything",
-      "summary": "The project provides an iPhone app that captures rooms using LiDAR or photos and reconstructs them into editable Three.js scenes, plus a web viewer and an AI‑driven scan‑to‑threejs skill. It enables users to explore reconstructed interiors in a browser and integrate the workflow with AI agents.",
-      "usefulness": "Designed for developers and designers building AR/VR, interior‑design, or architecture tools who need a pipeline from mobile LiDAR capture to web‑based 3D visualization and AI‑assisted modeling.",
-      "uniqueness": "Combines on‑device LiDAR capture, an open‑source Three.js viewer, and a dedicated AI skill for iterative reconstruction—an end‑to‑end workflow not commonly found in single‑purpose scanning tools.",
+      "full_name": "rossark0/rossark-motion-skill",
+      "summary": "The project turns any SVG into a smooth 60 fps animation using a Claude Code skill, with support for React Native and SwiftUI. It provides a set of templates and tools to generate lifelike motion, including live faces, full‑body acting, and scene choreography.",
+      "usefulness": "Designed for designers and engineers who want to animate drawings in mobile apps or interfaces without manual key‑frame work, especially those using SwiftUI or React Native.",
+      "uniqueness": "Combines SVG‑to‑animation conversion with a Claude Code skill, offering a unified engine for both React Native and SwiftUI and built‑in utilities for motion analysis (edge tracking, color sampling).",
       "pros": [
-        "Comprehensive end‑to‑end pipeline (capture, processing, viewer)",
-        "Open‑source code with MIT‑compatible licensing",
-        "Active recent commits and clear README",
-        "AI skill integration for automated modeling"
+        "One‑command installation via npx",
+        "Comprehensive documentation (SKILL.md, MOTION.md)",
+        "Cross‑platform engine for React Native and SwiftUI",
+        "Built‑in tools for timing analysis and color extraction"
       ],
       "cons": [
-        "No official App Store release yet, limiting easy distribution",
-        "Requires LiDAR‑equipped iPhone/iPad for full functionality",
-        "License metadata shows NOASSERTION, causing some ambiguity"
+        "Niche focus on animation; not a general‑purpose library",
+        "Primary language Swift limits direct use in other ecosystems",
+        "Python helper scripts add extra dependencies"
       ],
       "audience": [
         "mobile",
-        "ar",
-        "3d",
-        "web",
-        "ai"
+        "frontend",
+        "animation",
+        "cli"
       ],
       "score": 8.0
     },
-    "final_score": 3.706
+    "final_score": 3.681
   },
   {
     "raw": {
       "full_name": "xevrion/hatchzip",
       "html_url": "https://github.com/xevrion/hatchzip",
       "description": "Extract huge archives in place: the archive shrinks as your files hatch, so you only need room for the output. ZIP, 7z, tar, split archives.",
-      "stars": 1242,
-      "forks": 25,
+      "stars": 1255,
+      "forks": 26,
       "language": "Rust",
       "license": "Apache-2.0",
       "created_at": "2026-10-21T17:29:28Z",
@@ -499,56 +128,60 @@
       "archived": false
     },
     "security": {
-      "semgrep_findings": 0,
-      "bandit_findings": 0,
+      "semgrep_findings": 3,
+      "bandit_findings": 8,
       "gitleaks_findings": 0,
       "critical_count": 0,
-      "high_count": 0,
-      "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+      "high_count": 1,
+      "passed": false,
+      "details": "Находки — semgrep: 3, bandit: 8, gitleaks: 0, osv: 6; critical=0, high=1"
     },
     "analysis": {
       "full_name": "xevrion/hatchzip",
-      "summary": "HatchZip extracts large archives directly in place, shrinking the archive as files are unpacked so only the final output size is needed on disk. It supports ZIP, 7z, tar and split archives on Linux, Windows and macOS.",
-      "usefulness": "Useful for users who need to unpack massive archives on storage‑constrained systems, such as gamers, sysadmins, or developers handling large data bundles.",
-      "uniqueness": "Unlike traditional extractors, HatchZip reads from the end of the archive and truncates it on‑the‑fly, guaranteeing crash‑safety and minimal peak disk usage.",
+      "summary": "HatchZip — утилита командной строки, позволяющая распаковывать огромные архивы «на месте», уменьшая их размер по мере извлечения файлов. Поддерживает форматы ZIP, 7z, tar и split‑архивы, работает на Linux, Windows и macOS.",
+      "usefulness": "Полезна для системных администраторов, геймеров и разработчиков, которым нужно распаковывать большие архивы на дисках с ограниченным свободным пространством, а также для сценариев CI/CD, где экономия места критична.",
+      "uniqueness": "Отличается от традиционных распаковщиков тем, что архив сокращается по мере извлечения, позволяя избежать двойного использования места и обеспечивая возможность возобновления после краха.",
       "pros": [
-        "Zero‑copy extraction reduces required free space",
-        "Cross‑platform CLI and GUI installers",
-        "Crash‑safe – can resume after interruption",
-        "Fast extraction compared to standard tools"
+        "Экономия дискового пространства при распаковке",
+        "Поддержка нескольких форматов и платформ",
+        "Безопасность: проверка места и возможность возобновления",
+        "Быстрая работа, сравнимая с unzip"
       ],
       "cons": [
-        "Windows binary is not code‑signed yet",
-        "Documentation is limited to README and short docs",
-        "No built‑in support for encrypted archives"
+        "Обнаружена одна уязвимость высокого уровня (high) в сканерах безопасности",
+        "Проект очень молодой, возможна недоработка в некоторых edge‑case",
+        "GUI пока ограничен и не подписан кодом"
       ],
       "audience": [
         "cli",
         "archive",
-        "filesystem",
         "rust",
-        "windows",
-        "linux",
-        "macos"
+        "devops",
+        "tool"
       ],
       "score": 8.0
     },
-    "final_score": 3.705
+    "final_score": 3.605
   },
   {
     "raw": {
-      "full_name": "colinhacks/reylo",
-      "html_url": "https://github.com/colinhacks/reylo",
-      "description": "Import .sql files into TypeScript with full type inference and zero codegen.",
-      "stars": 1105,
-      "forks": 8,
+      "full_name": "Hugo-Dz/spritefusion-sprite-normals",
+      "html_url": "https://github.com/Hugo-Dz/spritefusion-sprite-normals",
+      "description": "A tool to generate normal maps from any sprite and animated sprite sheet.",
+      "stars": 648,
+      "forks": 48,
       "language": "Rust",
       "license": "MIT",
-      "created_at": "2026-10-21T00:16:54Z",
-      "pushed_at": "2026-10-24T04:54:52Z",
-      "topics": [],
-      "readme_excerpt": "<h1 align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"site/public/readme-logo-dark.svg\" />\n    <img src=\"site/public/readme-logo-light.svg\" width=\"160\" alt=\"Reylo\" />\n  </picture>\n</h1>\n\n<p align=\"center\">Import <code>.sql</code> files into your TypeScript code with full type inference</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/colinhacks/reylo/actions/workflows/test.yml\"><img src=\"https://github.com/colinhacks/reylo/actions/workflows/test.yml/badge.svg?branch=main\" alt=\"test status\" /></a>\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/github/license/colinhacks/reylo?style=flat\" alt=\"License: MIT\" /></a>\n  <a href=\"https://www.npmjs.com/package/reylo\"><img src=\"https://img.shields.io/github/v/release/colinhacks/reylo?label=npm\" alt=\"npm version\" /></a>\n  <a href=\"https://github.com/colinhacks/reylo\"><img src=\"https://img.shields.io/github/stars/colinhacks/reylo\" alt=\"GitHub stars\" /></a>\n</p>\n\n<div align=\"center\">\n  <a href=\"https://reylo.dev\">Read the docs →</a>\n</div>\n\n<br/>\n\n<p align=\"center\">\n  <img src=\"site/public/readme-demo.gif\" alt=\"An editor: hovering a query's result shows its type, which follows the SQL as the SQL changes\" />\n</p>\n\n<br/>\n\nIf you have a file like this:\n\n```sql\n-- get_author.sql\nselect u.id, u.name, count(p.id)::int as post_count\nfrom users u\nleft join posts p on p.user_id = u.id\nwhere u.id = :id::int\ngroup by u.id\n```\n\nYou can import it directly from a TypeScript file like this:\n\n```ts\n// main.ts\nimport postgres from \"postgres\";\nimport getAuthor from \"./get_author.sql\";\n\nconst db = postgres(process.env.DATABASE_URL);\n\nconst author = await getAuthor.run(db, { id: 1 });\n// { id: number; name: string; post_count: number } | null\n```\n\nReylo is powered by TypeScript [content mappers](https://github.com/microsoft/typescript-go/pull/4712), introduced in TypeScript 7.1 (currently [in beta](https://devblogs.microsoft.com/typescript/announcing-typescript-7-1-beta/)), which let you dynamically define static types for external file types and integrate them directly into TypeScript compilation.\n\nReylo is the perfect option for the agent era:\n\n- 💪 **The full power of SQL** — any statement, function, operator or syntax your database supports, in its own dialect.\n- 🌵 **DRY** — the types come from the SQL itself: no hand-written row types, no schema file to keep in sync.\n- 🎯 **Checked against your database** — a misspelled column, a wrong parameter or a dropped table is a type error, in `tsc` and in your editor.\n- 🤖 **Agent-friendly** — each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed.\n- 🧩 **Postgres, MySQL and SQLite** — bring your own driver: `pg`, postgres.js, `mysql2`, `better-sqlite3`, `Bun.sql`, Cloudflare D1 and [more](#supported-drivers).\n- ⚡ **No codegen** — the type checker asks Reylo directly: no generated files, no watcher.\n\n## Setup\n\nTo install Reylo, you'll need:\n\n- **TypeScript 7.1 (currently in beta).** The first release with content mappers.\n- **Node 24 or later.**\n- **A running dev database.** Postgres, MySQL 8.0.22 or later, or a SQLite file: Reylo reads your current schema from it.\n\nInstall Reylo, the engine for your database and TypeScript 7.1:\n\n```sh\nnpm install reylo\nnpm install -D @reylosql/postgres  # or mysql, sqlite\nnpm install -D typescript@beta\n```\n\nAdd Reylo to `tsconfig.json`, for `.sql` files and for its project file, `.reylo.yaml` or `.reylo.yml`:\n\n```jsonc\n// tsconfig.json\n{\n  \"compilerOptions\": { /* ... */ },\n  \"contentMappers\": [\n    { \"package\": \"reylo\", \"extensions\": [\".sql\", \".reylo.yaml\", \".reylo.yml\"] }\n  ]\n}\n```\n\nThen type-check with `--runExternalCode`, which lets `tsc` run content mappers:\n\n```jsonc\n// package.json\n{\n  \"scripts\": {\n    \"typecheck\": \"tsc --noEmit --runExternalCode\"\n  }\n}\n```\n\nPoint Reylo at your dev database with `DATABASE_URL`, in your environment or in `.env`. Its scheme tells Reylo which database you ",
+      "created_at": "2026-10-19T13:26:45Z",
+      "pushed_at": "2026-10-20T10:31:00Z",
+      "topics": [
+        "gamedev",
+        "normal-map",
+        "normal-mapping",
+        "pixel-art",
+        "sprites"
+      ],
+      "readme_excerpt": "# Sprite Fusion Sprite Normals\n\n- **Online version**: https://www.spritefusion.com/sprite-normals\n- **API**: https://www.spritefusion.com/docs/pixel-art-generator/api/generate-and-transform-images#normal-maps\n- **MCP**: https://www.spritefusion.com/docs/pixel-art-generator/api/mcp\n\nA tool to generate normal maps for pixel art sprites and animations. Written in Rust, available as a CLI and a WebAssembly library.\n\n<img src=\"./static/hero.webp\" alt=\"Sprite Normals\" style=\"width: 100%; image-rendering: pixelated;\">\n\n## Why ?\n\n**Normal maps let 2D sprites react to dynamic lighting. Ideal for 2.5D games.**\n\nFeatures:\n\n- ✅ Generate surface relief from a sprite's silhouette and shading.\n- ✅ Keep the original pixel resolution and transparency.\n- ✅ Process sprites, sprite sheets, and animations locally.\n\n## Perfect for\n\n- **2D games** with moving lights and normal-mapped sprites.\n- **Pixel art animations** that need matching normal-map frames.\n- **Asset pipelines** using a native CLI or browser-based processing.\n\n## 💻 CLI\n\n### Build from source\n\nRequires [Rust](https://www.rust-lang.org/) 1.85 or newer. From this directory:\n\n```bash\ncargo build --release --locked\n```\n\nThe binary is available at `target/release/spritefusion-sprite-normals`. To install it locally:\n\n```bash\ncargo install --path . --locked\n```\n\n### Usage\n\n```text\nspritefusion-sprite-normals <INPUT>... [OPTIONS]\n```\n\n- `<INPUT>`: PNG sprites or sheets, GIF, or APNG files.\n- `-o <OUTPUT>`: Output normal PNG for one input.\n- `--output-dir <DIR>`: Output directory for a batch.\n- `--normal-strength <VALUE>`: Overall strength. Defaults to `1.5`.\n- `--detail-strength <VALUE>`: Relief from painted shading. Defaults to `6`.\n- `--detail-scale <PIXELS>`: Shading smoothing. Defaults to `0.6`.\n- `--shape-strength <VALUE>`: Silhouette volume. Defaults to `1.15`.\n- `--frame-size <WIDTHxHEIGHT>`: Isolate uniform PNG sheet cells.\n- `--normal-format directx`: Reverse the green channel. Defaults to OpenGL.\n- `--force`: Replace existing outputs. Input files are protected.\n\n```bash\nspritefusion-sprite-normals sprite.png -o sprite_n.png\nspritefusion-sprite-normals sprites/*.png --output-dir normals\nspritefusion-sprite-normals sprite.png -o sprite_n.png --normal-strength 2\nspritefusion-sprite-normals sheet.png --frame-size 32x32 -o sheet_n.png\nspritefusion-sprite-normals walk.gif -o walk_n.png\n```\n\nWithout an output path, maps are saved beside their inputs as `<name>_n.png`. Run `spritefusion-sprite-normals --help` for every option.\n\n### Animations\n\nGIF and APNG inputs, and PNG sheets with `--frame-size`, produce three files:\n\n- `walk_n.png`: lossless normal-map atlas.\n- `walk_n.color.png`: color atlas with the same frame layout.\n- `walk_n.frames.json`: atlas dimensions, frame dimensions, columns, frame count, and timing.\n\nFrames are arranged in row-major order. `delays_ms` contains `[numerator, denominator]` pairs in milliseconds. PNG sheets keep their layout and receive a default 100 ms frame delay. Source loop counts are not exported.\n\nNormal PNGs are data textures: disable sRGB sampling in your engine. Use artwork at its native pixel resolution. Generation estimates relief from color and shape; painted highlights can also become surface detail.\n\n## 🌐 Web (WASM)\n\nBuild with the `wasm32-unknown-unknown` Rust target and [wasm-bindgen](https://wasm-bindgen.github.io/wasm-bindgen/) CLI `0.2.126`:\n\n```bash\ncargo build --release --target wasm32-unknown-unknown --no-default-features --locked\nwasm-bindgen target/wasm32-unknown-unknown/release/spritefusion_sprite_normals.wasm --target web --out-dir pkg\n```\n\nUse the generated package in your project:\n\n```js\nimport init, { generate_normal_map } from \"./pkg/spritefusion_sprite_normals.js\";\n\nawait init();\nconst result = generate_normal_map(inputBytes, JSON.stringify({ strength: 1.5 }));\ntry {\n  const normalPng = result.normal_png;\n  const colorPng = result.color_png;\n  const metadata = JSON.parse(result.metadata);\n  // Use these bytes to save files or crea",
       "archived": false
     },
     "security": {
@@ -558,32 +191,347 @@
       "critical_count": 0,
       "high_count": 0,
       "passed": true,
-      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
     },
     "analysis": {
-      "full_name": "colinhacks/reylo",
-      "summary": "Reylo lets you import .sql files directly into TypeScript code with full type inference, eliminating the need for manual type definitions or code generation. It uses TypeScript content mappers (beta in TS 7.1) to derive types from the actual SQL queries and the connected database schema.",
-      "usefulness": "Helps TypeScript backend developers and data‑access layer authors keep SQL queries type‑safe without extra schema files, improving developer productivity and reducing runtime errors.",
-      "uniqueness": "First tool to provide zero‑codegen, full‑type inference for arbitrary SQL via TypeScript content mappers, supporting multiple databases (Postgres, MySQL, SQLite) and working at compile time rather than runtime.",
+      "full_name": "Hugo-Dz/spritefusion-sprite-normals",
+      "summary": "Sprite Fusion Sprite Normals is a Rust‑based tool that generates normal maps from 2D sprites, sprite sheets and animated GIF/APNG files. It is distributed as a command‑line utility and as a WebAssembly library for browser use.",
+      "usefulness": "Helps 2D game developers and pixel‑art creators add dynamic lighting to sprites, integrates into asset pipelines via CLI or web, and supports batch processing of animations.",
+      "uniqueness": "Provides both a native CLI and a WASM module in a single crate, retains original pixel resolution and transparency, and outputs auxiliary color atlases and frame metadata for animated sprites—features rarely combined in existing Rust graphics tools.",
       "pros": [
-        "Zero code generation – types are resolved during type‑checking",
-        "Supports any SQL dialect supported by the target database",
-        "Types are derived directly from queries, staying in sync automatically",
-        "Works with popular drivers (pg, mysql2, better‑sqlite3, etc.)"
+        "Fast Rust implementation\",\"CLI and WASM interfaces\",\"Supports animated sprites and sprite sheets\",\"Outputs color atlas and JSON metadata\""
       ],
       "cons": [
-        "Requires TypeScript 7.1 beta, which is not yet stable",
-        "Project is very new (created Oct 2026), so ecosystem and community are still forming",
-        "Documentation is decent but relies on external site; no built‑in examples for all drivers"
+        "Very recent project (launched Oct 2026) – limited real‑world testing",
+        "Documentation limited to README; no extensive guides or API docs"
       ],
       "audience": [
-        "backend",
-        "typescript",
+        "gamedev",
         "cli",
-        "database"
+        "wasm",
+        "graphics",
+        "pixel-art"
       ],
       "score": 8.0
     },
-    "final_score": 3.702
+    "final_score": 3.591
+  },
+  {
+    "raw": {
+      "full_name": "aicodeking/leanrea",
+      "html_url": "https://github.com/aicodeking/leanrea",
+      "description": "One 8 KB skill that replaces REA (Reverse Engineer Anything): plain CLI tools, no MCP. Benchmarked: 38% faster, 35% cheaper.",
+      "stars": 1908,
+      "forks": 289,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-17T02:53:24Z",
+      "pushed_at": "2026-10-19T11:34:21Z",
+      "topics": [],
+      "readme_excerpt": "# leanrea\n\n**One 8 KB skill file that does what [REA](https://github.com/morluto/rea) does: no MCP server, no 207 tools, no setup.**\n\nREA (Reverse Engineer Anything) puts an MCP layer between your agent and tools it can already use: asar, otool, nm, `go version -m`, jadx, apktool, Ghidra, tshark, binwalk, sqlite3. leanrea drops that layer. It tells the agent which command is fastest for each kind of target, gives it ready-to-paste recon commands, and lists the traps that REA's code handles for you. The agent then runs the real tools itself.\n\n|  | REA 6.5.0 | leanrea |\n|---|---|---|\n| What gets installed | 25 MB npm package + MCP server | one `SKILL.md` |\n| Instructions | 23.5 KB skill + 48.8 KB references | 8 KB |\n| Tools added to the agent | 207 (3.35 MB of definitions) | 0 (uses Bash) |\n| Context for \"Reply OK\", all tools loaded | 400.7k tokens, $1.60 | 34.5k tokens, $0.09 |\n\n## Benchmark\n\nClaude Code headless (`claude -p`), Sonnet 5.5, macOS arm64. 4 reverse-engineering tasks × 3 reps × 3 arms, with the arms run side by side. Answers are graded against hand-made keys.\n\n| arm | total wall time | cost | turns | tokens | score |\n|---|---|---|---|---|---|\n| **leanrea** | **388 s** | **$2.17** | **55** | **2.40 M** | 74/75 |\n| no skill | 479 s | $2.21 | 81 | 3.11 M | 67/75 (one refusal) |\n| REA (MCP + its skill) | 627 s | $3.36 | 124 | 5.93 M | 75/75 |\n\nAgainst REA, leanrea had **38% less wall time, 35% lower cost, 56% fewer turns and 60% fewer tokens, at the same accuracy**. Its one partial miss named an older IPC channel instead of the v2 one (both channels exist).\n\nThe tasks:\n- **electron**: trace a feature through a real Electron app's app.asar (native function → main-process class → IPC channels).\n- **native**: inventory the exports, a TCC permission check and the single-instance lock of that app's native addon (`.node`).\n- **go**: toolchain and dependency versions of a stripped `gh` binary.\n- **deep**: from disassembly alone, the exact socket path format, wire protocol and peer authentication of that lock.\n\nThe same operation run through REA's CLI vs the raw command:\n\n| operation | REA | raw |\n|---|---|---|\n| Go build info | 0.56 s | `go version -m`: 0.06 s |\n| Mach-O overview | 3.32 s | otool + dyld_info + nm: 0.04 s |\n| Electron app analysis (real desktop app) | fails on asar integrity until you pass a flag, then **47.9 s and 140 MB of JSON** | asar extract + `rg -uu`: 4.8 s, 24 KB |\n\nFull tables, the context-overhead runs and caveats: [bench/BENCHMARK.md](bench/BENCHMARK.md). Raw per-run metrics: [bench/results/final.jsonl](bench/results/final.jsonl).\n\n**Caveats:**\n- Only 3 reps per cell, one model, one machine.\n- REA was tested in its best case: Claude Code's deferred tool search loads MCP tools on demand. Agents that load every tool pay the 400k-token row.\n- Ghidra, Hopper and jadx weren't installed, so the native tasks ran on Xcode tools for both arms.\n- The plain model is already good at this. leanrea's gain over no skill (about 19% faster, 32% fewer turns) is smaller than its gain over REA.\n\n## Install\n\n```sh\nnpx skills add aicodeking/leanrea\n```\n\nThis uses the [skills CLI](https://skills.sh). It finds the `leanrea` skill and asks which agents to install it for: Claude Code, Codex, Cursor, Gemini CLI, OpenCode and the others it supports.\n\nCommon variants:\n```sh\nnpx skills add aicodeking/leanrea -g                    # install for your user, in every project\nnpx skills add aicodeking/leanrea -a claude-code -y     # Claude Code only, no prompts\nnpx skills add aicodeking/leanrea -g -a '*' -y          # every supported agent, user level\nnpx skills update leanrea                               # pull the latest version later\n```\n\nManual install, if you prefer:\n```sh\ngit clone https://github.com/aicodeking/leanrea\nmkdir -p ~/.claude/skills && cp -R leanrea/leanrea ~/.claude/skills/\n```\nIf an agent has no skills support, paste `leanrea/SKILL.md` into its rules or system prompt; it is plain text.\n\nUse it:\n```\n/leanrea How d",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 9,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 9, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "aicodeking/leanrea",
+      "summary": "leanrea is an 8 KB skill file that replaces the REA framework, allowing AI agents to run raw reverse‑engineering commands without the MCP layer. It provides ready‑to‑paste Bash commands and selects the fastest tool for each target, resulting in faster and cheaper execution.",
+      "usefulness": "Designed for AI agents and developers who need to perform reverse‑engineering, binary analysis, or system inspection with minimal overhead and cost. It reduces token usage and execution time compared with full REA setups.",
+      "uniqueness": "Eliminates the heavyweight MCP server and 207 tool definitions used by REA, relying solely on Bash and existing system tools. The skill is delivered as a tiny plain‑text file, making installation and updates trivial.",
+      "pros": [
+        "Tiny 8 KB skill file",
+        "No extra tool installations required",
+        "Benchmarked 38 % faster and 35 % cheaper than REA",
+        "Simple installation via skills CLI"
+      ],
+      "cons": [
+        "Documentation limited to README fragment",
+        "Bandit static analysis reports 9 issues",
+        "Benchmark based on a single model and few repetitions"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security"
+      ],
+      "score": 7.5
+    },
+    "final_score": 3.412
+  },
+  {
+    "raw": {
+      "full_name": "Domainsun/awesome-chinese-secondhand-slang",
+      "html_url": "https://github.com/Domainsun/awesome-chinese-secondhand-slang",
+      "description": "🐟 中国二手交易暗语全书与避坑合规指南 (闲鱼 / 转转 / 小红书 4,476+ 条实战暗号变体、卖家潜台词透视与买家验货防割指南)",
+      "stars": 489,
+      "forks": 35,
+      "language": null,
+      "license": "MIT",
+      "created_at": "2026-10-17T14:29:01Z",
+      "pushed_at": "2026-10-19T11:19:14Z",
+      "topics": [
+        "antifraud",
+        "awesome",
+        "awesome-list",
+        "chinese-slang",
+        "ecommerce",
+        "goofish",
+        "risk-control",
+        "secondhand",
+        "xianyu"
+      ],
+      "readme_excerpt": "# 🐟 Awesome Chinese Secondhand Slang (中国二手暗语全书与避坑合规指南)\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/PRs-welcome-brightgreen.svg\" alt=\"PRs Welcome\" />\n  <img src=\"https://img.shields.io/badge/License-MIT-blue.svg\" alt=\"License: MIT\" />\n  <img src=\"https://img.shields.io/badge/Variants-5,082%2C569%2B%20实战暗号-amber.svg\" alt=\"4,569+ Variants\" />\n  <img src=\"https://img.shields.io/badge/Topics-149%20核心品类-purple.svg\" alt=\"110 Topics\" />\n  <img src=\"https://img.shields.io/badge/Platform-闲鱼%20%7C%20转转%20%7C%20小红书-blue.svg\" alt=\"Platforms\" />\n  <img src=\"https://img.shields.io/badge/Status-Actively%20Maintained-emerald.svg\" alt=\"Maintenance\" />\n</p>\n\n> 📚 **收录闲鱼（Goofish）、转转、小红书等二手交易平台 4,569+ 条实战暗号变体 · 114 大核心品类主题、卖家潜台词透视、买家避坑验货指南与合规替代词库。**\n>\n> 无论是**买家想捡漏防被割韭菜**，还是**合法卖家想合规防封号**，这里都是最全、最新的中文二手交易暗语开源百科。\n\n---\n\n> ### 🚀 在线即时排雷与暗号自动转译平台\n>\n> 嫌查字典麻烦？需要**整段文案一键排雷检测**？自动**将违禁敏感词转为当前最新存活暗语**？实时查看**词条存活状态与生成避坑海报**？\n>\n> 👉 **[点击进入「闲鱼黑话与闲鱼暗语大全」在线检索中枢 (https://anyu.luckhub.cc)](https://anyu.luckhub.cc)**\n>\n> *(💡 官方线上中枢已开通：收录闲鱼黑话、闲鱼暗语全量 4,500+ 条变体，支持买家一键解码套路、卖家文案合规排雷转译、免登录秒级接头)*\n\n---\n\n## 📖 目录 (Table of Contents)\n\n- [一、 为什么要了解二手暗语？](#一-为什么要了解二手暗语)\n- [二、 核心分类黑话速查表](#二-核心分类黑话速查表)\n  - [1. 🤖 AI 账号与数码极客](#1--ai-账号与数码极客)\n  - [2. 📱 手机成色与配件排雷](#2--手机成色与配件排雷)\n  - [3. 👟 潮牌穿搭与轻奢古着](#3--潮牌穿搭与轻奢古着)\n  - [4. 🎮 二次元潮玩与谷圈周边](#4--二次元潮玩与谷圈周边)\n  - [5. 🤝 交易套路与买卖行话](#5--交易套路与买卖行话)\n- [三、 拼音首字母缩写速查 (A-Z)](#三-拼音首字母缩写速查-a-z)\n- [四、 开发者与数据接口 (JSON API)](#四-开发者与数据接口-json-api)\n- [五、 如何参与贡献 (Contributing)](#五-如何参与贡献-contributing)\n- [六、 免责声明 (Disclaimer)](#六-免责声明-disclaimer)\n\n---\n\n## 一、 为什么要了解二手暗语？\n\n在二手电商（尤其是闲鱼）的生态中，形成了两套截然不同的使用动机：\n\n1. **对于买家（防割韭菜、看破套路）**：\n   - 很多卖家利用黑话制造信息差，隐瞒商品瑕疵。例如：\n     - 听到 `买包烟成色`，以为是“外观略有磨损”，实际上是“外壳摔烂、内屏暗病、随时报废”；\n     - 听到 `全绿`，以为是“全原装正品”，实际上是“华强北爱思助手改底层数据骗小白”。\n2. **对于卖家（合法防封、规则合规）**：\n   - 二手平台算法风控极其严苛，标题和详情稍有不慎（如出现官方违禁词、同城约见敏感词）就会导致限流、降权甚至直接封号；\n   - 卖家需要使用公认的、合规的、平台允许的日常替代词或谐音（如 `xd价` 代替 最低价，`后台踢我` 代替 私信）。\n\n---\n\n## 二、 核心分类黑话速查表\n\n### 1. 🤖 AI 账号与数码极客\n\n| 暗语 / 黑话 | 真实商品 / 含义 | 存活状态 | 卖家潜台词与套路 | 买家避坑建议 |\n| :--- | :--- | :---: | :--- | :--- |\n| **cld / 克牢弟 / 双子座** | Claude 会员账号 / API 额度 | 🟢 现行可用 | 躲避平台对海外 AI 模型的全词拦截 | 谨防黑卡共享车，优先找支持独享邮箱绑定的卖家 |\n| **小而美 / 绿泡泡** | 微信 (WeChat) | 🟡 抽检限流 | 企图脱离平台脱保交易 | 坚决不走微信转账，严防切单诈骗，坚持平台内交易 |\n| **矿渣 / 锻炼过 / 战术成色** | 矿机淘汰显卡 (挖矿卡) | 🟢 现行可用 | 承认显卡高负荷老化，企图低价出脱 | 显卡核心易脱焊暗病，需索要烤机压力测试视频 |\n| **黑卡买游戏 / 阿区代充** | Steam 跨区或盗刷信用卡购游戏 | 🔴 平台拦截 | 成本极低，红信封号风险全由买家承担 | 极易被 Valve 官方收回游戏并账号红信，切勿贪便宜 |\n\n### 2. 📱 手机成色与配件排雷\n\n| 暗语 / 黑话 | 真实商品 / 含义 | 存活状态 | 卖家潜台词与套路 | 买家避坑建议 |\n| :--- | :--- | :---: | :--- | :--- |\n| **买包烟成色 / 战损成色** | 严重破损、外壳碎裂的机器 | 🟢 现行可用 | 外观稀烂，内屏可能漏液或有暗病 | 仅适合拆零件或不在乎外观的备用机，慎买 |\n| **卡贴机 / 有锁机** | 美版/日版运营商合约网络锁手机 | 🟢 现行可用 | 信号差、无法随意升级抹掉系统 | 需配合卡贴激活，小白用户慎入，随时可能黑屏弹激活 |\n| **全绿 / 爱思全绿** | 验机助手检测全通过 | 🟡 抽检限流 | 华强北可通过写码器修改底层参数造假 | 全绿不等于全原装，必须拆机或走官方“验货宝”复检 |\n\n### 3. 👟 潮牌穿搭与轻奢古着\n\n| 暗语 / 黑话 | 真实商品 / 含义 | 存活状态 | 卖家潜台词与套路 | 买家避坑建议 |\n| :--- | :--- | :---: | :--- | :--- |\n| **高A / 顶级A / 1:1高A** | 高仿仿冒品（非专柜正品） | 🔴 平台拦截 | 企图以“高仿”吸引贪便宜买家，甚至真假混卖 | 平台严打仿品，名牌包鞋切勿轻信所谓的“代工厂原单” |\n| **同源版型 / 纯原 / 打板** | 莆田/东莞仿制原版鞋服 | 🟡 抽检限流 | 避开假货词拦截的替代暗语 | 若标价接近正品，务必走“得物”或“中检”权威鉴定 |\n\n### 4. 🎮 二次元潮玩与谷圈周边\n\n| 暗语 / 黑话 | 真实商品 / 含义 | 存活状态 | 卖家潜台词与套路 | 买家避坑建议 |\n| :--- | :--- | :---: | :--- | :--- |\n| **捆绑出 / 1带2** | 热门谷子必须搭配冷门滞销款 | 🟢 现行可用 | 借热门角色清库存滞销货 | 核算捆绑包的总价是否划算，勿冲动消费 |\n| **C服 / 道具服** | Cosplay 服装或漫展道具 | 🟢 现行可用 | 环信缩写派行话，多为漫展穿过一两次 | 仔细核对尺码（胸围/肩宽），二手贴身衣物注意卫生消毒 |\n| **自吃 / 刀自吃** | 卖家自行降价亏本出掉 | 🟢 现行可用 | 急于回血套现 | 可以适度小刀砍价，容易捡漏 |\n\n### 5. 🤝 交易套路与买卖行话\n\n| 暗语 / 黑话 | 真实商品 / 含义 | 存活状态 | 卖家潜台词与套路 | 买家避坑建议 |\n| :--- | :--- | :---: | :--- | :--- |\n| **xd价 / 兄弟价** | 最低底价出 | 🟢 现行可用 | 制造爽快成交心理，实际不一定真是全网底价 | 比价全网同款平均成交价后再做决定 |\n| **懂的来 / 懂的自然懂** | 涉嫌灰色套路或特殊规避货品 | 🟡 抽检限流 | 不在明面透露瑕疵，买家问责时推卸责任 | 遇到此类描述必须在聊天记录中问清成色与来源并留证 |\n| **面交喝茶 / 咖啡时间** | 约定线下见面私下交易 | 🔴 平台拦截 | 避开线上证据留存或暗示特殊交易 | 严格走平台担保，杜绝任何私下转账与不安全线下邀约 |\n\n---\n\n## 三、 拼音首字母缩写速查 (A-Z)\n\n| 缩写 | 平台常见含义 | 典型领域 | 说明 |\n| :---: | :--- | :---: | :--- |\n| **cld** | Claude 会员 / AI 账号 | AI 数码 | 海外 AI 账号隐语 |\n| **ga** | 高A (高仿品) | 潮牌服饰 | 仿冒品缩写 |\n| **cf** | Cos",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Domainsun/awesome-chinese-secondhand-slang",
+      "summary": "The project is an open‑source encyclopedia of Chinese second‑hand marketplace slang, covering over 4,500 variants across platforms like Xianyu, Zhuanzhuan and Xiaohongshu. It provides categorized tables, buyer/seller guidelines, and a JSON API with an online search‑and‑translation tool.",
+      "usefulness": "Helps buyers decode hidden seller jargon to avoid fraud and helps sellers use compliant language to prevent account bans on Chinese resale platforms.",
+      "uniqueness": "Combines a massive, continuously updated slang dataset with an interactive web service and a public JSON API, something rarely found in the Chinese e‑commerce fraud‑prevention space.",
+      "pros": [
+        "4,500+ slang entries with categories",
+        "Online real‑time detection and translation tool",
+        "Public JSON API for integration",
+        "MIT license and active maintenance"
+      ],
+      "cons": [
+        "Documentation limited to README – no extensive usage examples",
+        "Primarily Chinese language – limited for non‑Chinese developers",
+        "No test suite or code library, just data"
+      ],
+      "audience": [
+        "ecommerce",
+        "data",
+        "risk-control",
+        "web"
+      ],
+      "score": 7.5
+    },
+    "final_score": 3.385
+  },
+  {
+    "raw": {
+      "full_name": "lesnolie/Tigris",
+      "html_url": "https://github.com/lesnolie/Tigris",
+      "description": "Tigris — tvOS 27 style launcher for Android TV: Liquid Glass dock, Top Shelf, glass Control Center, photo screensaver. Agent-installable.",
+      "stars": 426,
+      "forks": 35,
+      "language": "Kotlin",
+      "license": "MIT",
+      "created_at": "2026-10-20T10:12:05Z",
+      "pushed_at": "2026-10-24T06:45:38Z",
+      "topics": [],
+      "readme_excerpt": "# Tigris\n\n> **最新正式版 v2.0.6（2026-10-24）**：新增「最近打开的 App 自动置顶」开关，默认关闭，允许手动固定应用顺序；正式安装包与校验文件统一带版本号。详见 [2.0.6 更新说明](docs/releases/v2.0.6.md)。上版 [2.0.5 桌面守护优化](docs/releases/v2.0.5.md) 仍然保留，雷鸟 #14 仍待对应型号复测。\n\n<p align=\"center\">\n  <a href=\"https://tigris-tv.pages.dev/\">\n    <img src=\"website/public/img/favicon.svg\" alt=\"Tigris 官方网站图标\" width=\"112\" />\n  </a>\n</p>\n\n**语言：** [简体中文](README.md) · [English](README.en.md)\n\n把 Android TV 的桌面换成 tvOS 26 的样子：沉底的 Liquid Glass Dock、Top Shelf 式顶部内容、毛玻璃控制中心、风景照片背景和相框屏保。\n\n> 十二生肖开源系列第三个项目：虎。Tigris 是拉丁语和希腊语里的“老虎”。\n\n- 官网：**[tigris-tv.pages.dev](https://tigris-tv.pages.dev)**\n- 最新正式版：**[v2.0.6 Release](https://github.com/lesnolie/Tigris/releases/tag/v2.0.6)**（[标准版 APK](https://github.com/lesnolie/Tigris/releases/download/v2.0.6/Tigris-v2.0.6.apk) · [TCL / 雷鸟守护版 APK](https://github.com/lesnolie/Tigris/releases/download/v2.0.6/Tigris-guard-v2.0.6.apk) · [SHA-256 校验文件](https://github.com/lesnolie/Tigris/releases/download/v2.0.6/SHA256SUMS-v2.0.6.txt)）\n\n[![观看 Tigris 宣传片](docs/screenshots/film.jpg)](https://tigris-tv.pages.dev/#film)\n\n▶ [观看 42 秒宣传片](https://tigris-tv.pages.dev/#film)（在官网播放，有声音）\n\n---\n\n## 1. 展示与功能\n\n![主屏幕](docs/screenshots/home.jpg)\n\n| 顶部内容（Top Shelf） | 展开全部 App |\n|---|---|\n| ![顶部内容](docs/screenshots/shelf.jpg) | ![展开全部 App](docs/screenshots/grid.jpg) |\n| **控制中心** | **相框 / 屏保** |\n| ![控制中心](docs/screenshots/cc.jpg) | ![相框屏保](docs/screenshots/frame.jpg) |\n\n### v2.0.6 更新内容\n\n- **应用顺序可以固定**：主屏幕设置 → App →「最近打开的 App 自动置顶」。默认关闭，不再因为启动应用而改变顺序；需要自动置顶时可自行开启。切换选项不会重置现有布局和文件夹。\n- **正式安装包带版本号**：标准版 `Tigris-v2.0.6.apk`、守护版 `Tigris-guard-v2.0.6.apk`；同版本的校验文件为 `SHA256SUMS-v2.0.6.txt`。应用内更新与安装脚本兼容新版和旧版命名。\n- **稳定升级**：沿用现有正式版签名，兼容签名一致的覆盖安装；不需要卸载清数据。完整变化见 [v2.0.6 更新说明](docs/releases/v2.0.6.md)。\n\n### 2.0.4 新增\n\n- **应用文件夹**：长按应用创建文件夹，支持移入、移出、改名和解散。\n- **上传头像**：主屏幕设置 → 上传头像，用手机扫码上传或恢复默认头像。\n- **统一更新中心**：在同一个页面检查 Tigris 和 MiracastReceiver 的 GitHub 正式版，可手动下载，也可尝试自动安装。\n- **下滑磨砂效果**：应用列表下滑时背景逐渐虚化，Dock 保留玻璃底板并随第一排自然滑出屏幕；右上角时间和控件同步离屏，不吸顶、不占用焦点。\n- **内置默认素材**：内置默认开机视频和设置页背景；设置背景的主体向左偏移，为右侧按钮留出空间。自定义素材优先，已有配置保留。\n\n### 核心功能\n\n- **主屏幕**：5 列 16:9 圆角图标，选中时弹性放大、倾斜并带高光和投影。右上角显示时间、网络与可选头像；时间支持 12 / 24 小时制，也可改成左上角大时钟或隐藏。\n- **Liquid Glass Dock**：第一排应用放在液态玻璃 Dock 中，下一排露出上沿。玻璃模糊、边缘折射和高光会按当前背景预先生成，低配电视可改用更省性能的样式。\n- **顶部内容**：选中 Dock 中的云视听小电视或斗鱼时，上半屏轮播对应的热门内容。数据来自服务公开的网页接口，使用前需要安装对应的 TV 版 App。\n- **主屏幕设置**：仿 tvOS 的分组布局，可分别调整时钟、聚焦动画、控制中心样式、背景、相框、开机动画、头像和桌面守护。\n- **最近打开自动置顶（可开启）**：v2.0.6 首次安装或从旧版升级时默认关闭；可在「主屏幕设置 → App → 最近打开的 App 自动置顶」开启，之后成功打开的 App 或文件夹会移到第一位。关闭后固定当前排序，长按「编辑主屏幕」可自行调整；已有的个人布局和开关选择会保留。\n- **编辑、文件夹与删除**：长按图标可移动、放入文件夹或删除。电视预装 App 也可用 `pm uninstall --user 0` 从当前用户空间移除，并可在设置中恢复；系统运行必需组件受到保护。\n- **控制中心**：遥控器返回键或右上角按钮打开，提供网络、待机、关机、重启、释放内存、相框、设置、亮度、音量和 HDMI 输入源。低配机型可切换成深色面板。\n- **背景与手机上传**：支持必应每日风景、360 壁纸、Wallhaven 全年龄二次元、公有领域名画、纯色渐变、手机相册照片和自定义图片链接。手机扫码页面还支持上传头像、开机视频和设置页背景。\n- **相框与航拍屏保**：照片全屏轮播，画面缓慢平移缩放，时间文字定时移动以减少 OLED 烙印；也可在线播放 Apple TV 航拍视频，支持左右键切换，断网时回到照片。\n- **HDMI 输入源上屏**：在控制中心把常用 HDMI 口固定到主屏幕，按一下即可切换。\n- **软件更新与投屏**：每 6 小时检查 Tigris 和 [MiracastReceiver](https://github.com/weekdayjast/MiracastReceiver) 的正式版。更新前验证包名、系统版本、递增版本号和签名；不会自动卸载、不清数据、不接受降级。电视系统仍可能要求一次安装来源授权或每次确认。\n- **内存清理**：支持定时清理和待机清理，保留名单可在设置中修改。\n\n### 素材与商标说明\n\n仓库为界面展示打包了默认开机视频，并在线播放 Apple TV 航拍内容。这些素材不附带 Apple 或任何第三方的额外授权，也不代表 Tigris 与 Apple 有关联。对外分发、商用或再发布时，请确认素材授权；也可以在设置中改用 Tigris 字样动画或上传自己拥有权利的视频。截图中的影视封面、摄影作品和第三方图标版权归各自权利人所有。\n\n## 2. 安装指南\n\n> [!CAUTION]\n> **不要停用或卸载电视原厂桌面。** 尤其是小米 / Redmi 的 `com.mitv.tvhome`（PatchWall）；强行停用后，部分电视会开机黑屏，只能通过 ADB 恢复。正确做法是保留原桌面，使用 Tigris 的默认 HOME 或桌面守护。\n>\n> **手动修改前先记录原配置。** 至少保存默认 HOME、屏保、无障碍服务和通知监听的原值。`install.sh` 会自动保存快照；手动安装请自行记录，缺少记录时不要猜包名。\n>\n> **只在自己的局域网开启 ADB。** 不要把电视调试端口暴露到公网。\n>\n> **签名不一致时不要直接卸载。** `INSTALL_FAILED_UPDATE_INCOMPATIBLE` 表示新 APK 与原包签名不同；直接卸载会丢失设置和授权。应先找到原签名密钥重新签名。\n\nTigris 官方包要求 **Android 9 / API 28 或更高**，不支持 LG webOS、三星 Tizen、华为鸿蒙智慧屏等非 Android 系统。\n\n### 2.1 打开电视的 ADB 调试\n\n1. 让电脑和电视连接同一个局域网。\n2. 在电视的网络或关于页面找到 IP 地址，例如 `192.168.1.20`。\n3. 按品牌打开 ADB。\n\n| 电视 | 开启方法 |\n|---|---|\n| **索尼 BRAVIA** | 设置 → 系统 → 关于 → 在 Android TV 操作系统版本上连按确认键 7 次；再到 设置",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 27,
+      "bandit_findings": 3,
+      "gitleaks_findings": 5,
+      "critical_count": 0,
+      "high_count": 33,
+      "passed": false,
+      "details": "Находки — semgrep: 27, bandit: 3, gitleaks: 5; critical=0, high=33"
+    },
+    "analysis": {
+      "full_name": "lesnolie/Tigris",
+      "summary": "Tigris – это лаунчер для Android TV, имитирующий внешний вид tvOS 27 с жидкостным стеклянным доком, Top Shelf и контрол‑центром. Проект поставляется в виде APK, поддерживает кастомизацию обоев, экранов‑сейверов и автоматическое обновление.",
+      "usefulness": "Полезен владельцам Android TV, желающим получить более эстетичный и функциональный интерфейс, а также разработчикам, ищущим открытый пример кастомного лаунчера для TV‑устройств.",
+      "uniqueness": "Отличается полной репликацией стиля tvOS, включая жидкостный стеклянный док, Top Shelf и встроенный контрол‑центр, чего почти нет в других Android‑TV лаунчерах.",
+      "pros": [
+        "Богатый набор UI‑фич (док, контрол‑центр, экран‑сейвер)",
+        "Поддержка папок, кастомных обоев и фото‑сейвера",
+        "Автоматическое обновление и проверка подписи",
+        "MIT‑лицензия, активные релизы и 426 звёзд"
+      ],
+      "cons": [
+        "33 high‑severity уязвимости, обнаруженные сканерами",
+        "Требуется ADB и осторожная установка, особенно на некоторых моделях TV",
+        "Отсутствие тем и ограниченная поддержка только Android TV"
+      ],
+      "audience": [
+        "android",
+        "tv",
+        "ui",
+        "launcher",
+        "mobile"
+      ],
+      "score": 7.0
+    },
+    "final_score": 3.182
+  },
+  {
+    "raw": {
+      "full_name": "Jakeschincariol/day-trader-skill",
+      "html_url": "https://github.com/Jakeschincariol/day-trader-skill",
+      "description": "11 Claude skills for day trading: scan thousands of charts, track breaking news, time every entry and exit, and replay every outcome before you risk a dollar.",
+      "stars": 921,
+      "forks": 201,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-20T14:17:54Z",
+      "pushed_at": "2026-10-20T14:18:00Z",
+      "topics": [
+        "backtesting",
+        "claude",
+        "claude-skills",
+        "day-trading",
+        "stock-market"
+      ],
+      "readme_excerpt": "# The Day Trader skill\n\n11 Claude skills for day trading: scan thousands of charts, track breaking news, time every entry and exit, and replay every outcome before you risk a dollar.\n\nFree, MIT, no signup, no API key. The tools are plain Python that read free\npublic data: Yahoo Finance charts, Nasdaq Trader's symbol lists, SEC EDGAR\nand the House Clerk.\n\nOne scans thousands of charts for setups. Another tracks breaking news on\nevery stock you watch. One watches a setup bar by bar and tells you the moment\nto get in, and another sets your stop and your target before you do. And the\ncraziest one is the Time Machine: before you risk a dollar, it replays the\nrest of the session 10,000 times from the stock's own recent bars, plus every\npast day the same setup fired, and tells you the honest odds.\n\nAnd no trade goes through until you say yes. Nothing in this pack can place\nan order on its own. Paper trading is the default.\n\n> **Looking for the original Trader skill?** Copy an investor's 13F, the\n> stock screener, tax lots and rebalancing live in\n> [github.com/Jakeschincariol/trader-skill](https://github.com/Jakeschincariol/trader-skill).\n> This repo is its day-trading sequel: the Trader skill v2.\n\n## Install\n\nPaste this into Claude:\n\n```\nhttps://github.com/Jakeschincariol/day-trader-skill\n\ninstall skill\n```\n\nOr as a plugin, in Claude Code:\n\n```\n/plugin marketplace add Jakeschincariol/day-trader-skill\n/plugin install day-trader-skill@day-trader-skill\n```\n\nClaude Code namespaces plugin skills, so installed as a plugin they show up as\n`/day-trader-skill:trader-scanner` and so on. Copy the folders instead if you want\nplain `/trader-scanner`:\n\n```bash\ngit clone https://github.com/Jakeschincariol/day-trader-skill.git\ncp -r day-trader-skill/trader-* ~/.claude/skills/\n```\n\nProject-local instead of global: copy the same folders into your repo's\n`.claude/skills/`. No Claude Code at all? Paste any single `SKILL.md` at the\ntop of a chat and it runs as a mode. You lose the Python tools, but the method\nworks.\n\nThe tools need Python 3.8 or newer. Nothing to pip install. The SEC tools\n(news filings, the analyst) ask you to identify yourself: put your name and\nemail in `trader/config.json` (`\"sec_user_agent\": \"Your Name you@example.com\"`)\nor in the `SEC_USER_AGENT` environment variable.\n\n## The eleven\n\n| command | job | what it does |\n| --- | --- | --- |\n| `/trader-scanner` | Chart Scanner | Scans thousands of charts for setups: opening-range breakouts, flags, oversold bounces. |\n| `/trader-news` | News Monitor | Tracks breaking news on every stock you watch and flags what moves it. |\n| `/trader-entry` | Entry Timer | Watches a setup bar by bar and tells you the moment to get in. |\n| `/trader-exit` | Exit Planner | Sets your stop and your target before you enter, so you know when to get out. |\n| `/trader-timemachine` | Time Machine | Replays every possible outcome of a trade before you risk a dollar: 10,000 simulated sessions plus every past time the setup fired. |\n| `/trader-risk` | Risk Manager | Checks every trade against your limits and stops anything over them. |\n| `/trader-budget` | Budget Manager | Sizes every position to your budget and your max loss per trade. |\n| `/trader-broker` | Order Executor | Sends approved orders to your broker, paper trading by default, never without your yes. |\n| `/trader-alerts` | Price Alerts | Rings when a price, a stop or the opening bell hits. |\n| `/trader-analyst` | Earnings Analyst | Reads earnings reports and sums up what changed. |\n| `/trader-pelosi` | Pelosi Tracker | Reads Congress's stock-trade disclosures the minute they are filed. |\n\n## How to use it\n\nEverything lands in a `trader/` folder in your project, and each skill reads\nwhat the last one wrote:\n\n```\nscanner -> news -> entry -> exit -> timemachine -> budget -> risk -> broker   (one trade)\nalerts: stop, target, flat by the close                                       (while it is open)\nnews / analyst / pelosi                                       ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 8,
+      "bandit_findings": 20,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 9,
+      "passed": false,
+      "details": "Находки — semgrep: 8, bandit: 20, gitleaks: 0; critical=0, high=9"
+    },
+    "analysis": {
+      "full_name": "Jakeschincariol/day-trader-skill",
+      "summary": "The repository provides 11 Claude skills that automate various day‑trading tasks such as chart scanning, news monitoring, entry/exit timing, risk management and a “time‑machine” simulation. All tools are plain Python, MIT‑licensed and run without external API keys, intended to be used inside Claude’s AI environment or as local plugins.",
+      "usefulness": "Designed for day traders and quantitative hobbyists who want AI‑assisted, scriptable workflows for market analysis, risk control and paper‑trading without relying on paid data services.",
+      "uniqueness": "Combines Claude AI skill integration with a comprehensive suite of trading utilities, including a massive Monte‑Carlo‑style outcome replay, which is uncommon among open‑source trading toolkits.",
+      "pros": [
+        "MIT‑licensed, free and no API keys required",
+        "Rich set of 11 ready‑to‑use trading skills",
+        "Easy installation via Claude or direct plugin copy",
+        "Uses only public data sources (Yahoo Finance, SEC, etc.)"
+      ],
+      "cons": [
+        "9 high‑severity security findings reported by Bandit/Semgrep",
+        "Tied to Claude AI ecosystem, limiting broader adoption",
+        "Requires manual configuration of SEC user‑agent for some tools"
+      ],
+      "audience": [
+        "finance",
+        "cli",
+        "ai",
+        "automation",
+        "backtesting"
+      ],
+      "score": 7.0
+    },
+    "final_score": 3.098
+  },
+  {
+    "raw": {
+      "full_name": "dominikmartn/harp",
+      "html_url": "https://github.com/dominikmartn/harp",
+      "description": "Run many Claude Code and Codex agents side by side, in one sidebar that tells you which one needs you. An unofficial fork of Warp.",
+      "stars": 597,
+      "forks": 40,
+      "language": "Rust",
+      "license": "AGPL-3.0",
+      "created_at": "2026-10-20T10:39:43Z",
+      "pushed_at": "2026-10-21T10:29:54Z",
+      "topics": [],
+      "readme_excerpt": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"images/hero-dark.png\">\n    <img src=\"images/hero-light.png\" width=\"800\" alt=\"Harp: the app icon and name above a Harp window with sessions grouped in the sidebar and a Claude Code session at work, with agents working, waiting for you, done and set aside\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  Run many Claude Code and Codex agents side by side, in one calm sidebar that tells you which one needs you.\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE-AGPL\"><img alt=\"License: AGPL-3.0\" src=\"https://img.shields.io/badge/license-AGPL--3.0-blue\"></a>\n  <img alt=\"Platform: macOS\" src=\"https://img.shields.io/badge/platform-macOS-lightgrey\">\n</p>\n\nHarp is an unofficial fork of the open-source [Warp](https://github.com/warpdotdev/warp) terminal.\nIt replaces the tab bar with a sidebar built for long-running coding agents and keeps the rest of\nWarp as it is.\n\n## What it adds\n\n<table>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <picture>\n        <source media=\"(prefers-color-scheme: dark)\" srcset=\"images/sidebar-dark.png\">\n        <img src=\"images/sidebar.png\" width=\"100%\" alt=\"Sidebar rows showing needs you, background work, working, done and inactive\">\n      </picture>\n      <picture>\n        <source media=\"(prefers-color-scheme: dark)\" srcset=\"images/working-rings-dark.gif\">\n        <img src=\"images/working-rings-light.gif\" width=\"100%\" alt=\"Working rings turning next to sessions whose agents are running\">\n      </picture>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <h3>Agent states at a glance</h3>\n      <p>Each row shows whether its Claude Code or Codex session is working, waiting for you or\n      done, with an unread mark until you look. A dot means background work is still running;\n      a moon marks a tab you set aside. Cmd+R renames a tab.</p>\n      <h3>Groups that stay put</h3>\n      <p>Put tabs into named groups. With the tmux integration on, the group and the order are\n      stored on the tmux sessions, so they survive a restart and other tmux clients see the\n      same layout.</p>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <picture>\n        <source media=\"(prefers-color-scheme: dark)\" srcset=\"images/limit-rings-dark.png\">\n        <img src=\"images/limit-rings.png\" width=\"100%\" alt=\"Usage-limit rings for Claude and Codex in the sidebar footer\">\n      </picture>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <h3>Limit rings</h3>\n      <p>Two rings per provider in the footer: the 5 hour window and the weekly limit. Hover one\n      for the numbers and reset times. Codex's come from its own session logs, Claude's from\n      Claude Code's status line (see <a href=\"#limit-rings\">below</a>). Harp fetches nothing and\n      reads no credentials.</p>\n      <h3>Phone-friendly tmux</h3>\n      <p>Tabs attached to tmux follow their session: name, group, read and inactive flags.\n      A session started elsewhere, for example from your phone over ssh, can ask for a tab\n      with <code>tmux set-option @warp_adopt 1</code>.</p>\n    </td>\n  </tr>\n</table>\n\nEverything else is upstream Warp, including its AI and cloud features (agents, Warp Drive, session\nsharing, login). They talk to Warp's servers exactly as upstream does; Harp adds no servers of its\nown. Logging in through Harp is untested.\n\n## Install\n\n**Download:** grab the latest `Harp-<version>.dmg` from [Releases](../../releases/latest) and drag\nHarp into Applications. Harp has its own bundle id (`com.dominikmartn.Harp`), URL scheme (`harp://`)\nand settings folder (`~/.harp`), so it runs next to Warp without sharing anything.\n\n**Updates:** Harp checks the latest GitHub release every 10 minutes, the same way Warp checks its\nown server. When the release's version is newer than `version` in `app/Cargo.toml` of the running\nbuild, Harp downloads its DMG in the background, checks that it is signed by Harp's Developer ID\nteam, and offers to restart into it. To try this on an install",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Клон не удался — репозиторий не проверен"
+    },
+    "analysis": {
+      "full_name": "dominikmartn/harp",
+      "summary": "Harp is an unofficial macOS fork of the Warp terminal that replaces the tab bar with a sidebar for managing multiple Claude Code and Codex AI agents. It adds visual agent state indicators, grouping, tmux integration and usage‑limit rings while keeping Warp’s core features.",
+      "usefulness": "Helps developers and power users who run long‑running AI coding agents to monitor and organize them directly in the terminal, especially when using tmux or needing quick status at a glance.",
+      "uniqueness": "Provides a dedicated sidebar UI for AI agents inside a terminal, a feature not present in upstream Warp, and includes built‑in limit‑ring visualizations and phone‑friendly tmux support.",
+      "pros": [
+        "Sidebar shows agent states and limits",
+        "Tmux integration preserves groups across sessions",
+        "Automatic background updates via GitHub releases",
+        "Leverages existing Warp features without adding servers"
+      ],
+      "cons": [
+        "Very new project with limited documentation beyond README",
+        "Only macOS support",
+        "Security scan unavailable and login flow untested"
+      ],
+      "audience": [
+        "cli",
+        "ai",
+        "productivity",
+        "macos"
+      ],
+      "score": 6.5
+    },
+    "final_score": 3.089
+  },
+  {
+    "raw": {
+      "full_name": "realskyrin/ns-game-apple-arm-port",
+      "html_url": "https://github.com/realskyrin/ns-game-apple-arm-port",
+      "description": "Agent skill for native Nintendo Switch game porting to Apple Silicon macOS, iPadOS and iOS with Rust and Metal",
+      "stars": 493,
+      "forks": 72,
+      "language": null,
+      "license": "MIT",
+      "created_at": "2026-10-18T04:22:18Z",
+      "pushed_at": "2026-10-23T00:15:35Z",
+      "topics": [],
+      "readme_excerpt": "# NS 游戏 Apple ARM 原生移植 Skill\n\n面向 AI 编程助手的指令型 skill，用于将 Nintendo Switch 游戏适配到 Apple Silicon macOS、iPadOS 和 iOS。以 Rust 原生兼容层与 Metal 为核心，覆盖版本识别、AArch64 离线改写、Horizon 服务、NVN → Metal、输入音频、部署及实机验收。\n\n## 安装与使用\n\n将仓库克隆到助手的 skills 目录。例如安装到 Codex：\n\n```bash\ngit clone https://github.com/realskyrin/ns-game-apple-arm-port.git ~/.codex/skills/ns-game-apple-arm-port\n```\n\n重新加载助手后，在目标游戏移植项目中使用：\n\n```text\n使用 $ns-game-apple-arm-port 检查当前游戏版本和移植基础，按 Rust 与 Metal 架构先集中完成当前目标内的全量代码修改，再统一测试、集中修复与定向复测，并记录实际运行证据与未验证项。\n```\n\n也可以直接让助手读取 [SKILL.md](SKILL.md)。目标仓库、资源位置与设备由具体任务提供。\n\n## 默认工作节奏\n\n1. 盘点当前目标的已知缺口和依赖，连续完成跨模块实现、调用方与平台配置。\n2. 修改完成后统一检查、构建、测试和游戏验收，汇总失败；实现期间不逐文件或逐补丁启动测试。\n3. 按根因集中修复，定向复测失败项和受影响项，再用最终构建确认受影响的游戏路径。\n\n只有缺失关键事实、后续实现无法可靠继续时，才提前执行最小探针。全量修改以当前任务为边界，最终仍需真实运行证据，不将代码完成或构建成功等同于可玩。\n\n## 内容\n\n- [SKILL.md](SKILL.md)：工作流程、语言架构、诊断与交付要求。\n- [架构与推进](references/architecture-and-workflow.md)：Rust 模块边界、版本适配与最短验证路径。\n- [执行层与平台](references/runtime-and-platforms.md)：装载、ABI、服务、线程、平台部署与音频。\n- [图形与排障](references/graphics-and-debugging.md)：NVN → Metal、纹理一致性、shader 与性能诊断。\n- [验收与案例](references/validation-and-cases.md)：证据阶梯、记录模板与可迁移经验。\n- [Codex 元数据](agents/openai.yaml)：名称、简介与默认提示词。\n\n本仓库提供移植方法与诊断指导，不包含游戏、密钥、固件、兼容层实现或构建产物。游戏资源保持本地；仅交付有权分发的内容。构建、启动、画面、输入、音频与可玩性分别以实际证据验收。\n\n## 致谢与参考\n\n本 Skill 将本地游戏移植实践整理为通用工作方法。感谢以下项目公开原生执行、兼容层和平台适配的设计与实现；其中经验来源与相关工程参考分别说明如下：\n\n- **[c22dev/mush8](https://github.com/c22dev/mush8)**：本 Skill 的 Rust/Cargo 模块划分提炼自基于 mush8 的本地 BOTW 移植实践。mush8 的 ARM64 离线改写、Horizon 宿主、NVN → Metal，以及 macOS 运行时装载与 iOS 构建期链接的分工，是相关架构经验的来源。\n- **[jhaizhou-ops/d2r-mobile](https://github.com/jhaizhou-ops/d2r-mobile)**：本 Skill 所总结的早期 iPad 移植实践曾参考其原游戏 ARM64 代码改写、宿主服务、离线 shader 转换与 iOS 壳层路线；跨游戏复用的是方法与边界，游戏专用地址、补丁和逻辑仍需独立核实。\n- **[ly05010419/MacNativeGames](https://github.com/ly05010419/MacNativeGames)**：作为相关工程参考，展示了用户自备资源、按版本核验模块、原生执行与 Metal 图形适配、独立缓存/存档，以及区分构建检查和真实游戏验收的实践。它与本 Skill 的路线相呼应；当前未确认它是本 Skill 原始编写时的直接来源。\n\n以上致谢说明思路与实践的关联，不表示这些项目为本 Skill 背书，也不表示本仓库包含其运行时代码。\n\n## 许可证\n\n本仓库的原创 Skill 指令、文档与元数据采用 [MIT License](LICENSE)。\n\n参考项目及其代码仍遵循各自许可证：mush8 为 GPL v3，d2r-mobile 与 MacNativeGames 为 MIT；其中第三方组件以各项目的许可声明为准。本仓库的 MIT 许可不覆盖这些外部代码或任何游戏程序、资源、密钥及固件。\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "realskyrin/ns-game-apple-arm-port",
+      "summary": "Проект представляет собой набор инструкций и шаблонов (skill) для AI‑ассистентов, позволяющих переносить нативные Nintendo Switch игры на платформы Apple Silicon (macOS, iPadOS, iOS) с использованием Rust и Metal. В репозитории содержатся методики, рабочие процессы, ссылки на внешние реализации и метаданные для интеграции в ассистенты типа Codex.",
+      "usefulness": "Полезен разработчикам, занимающимся портированием игр на Apple‑устройства, а также командам, использующим AI‑ассистентов для автоматизации сложных задач миграции кода и графики.",
+      "uniqueness": "Отличается тем, что фокусируется не на готовой реализации, а на формализованном наборе инструкций (skill) для AI‑помощников, объединяя Rust‑модульную структуру и Metal‑адаптацию в едином рабочем процессе.",
+      "pros": [
+        "Подробная документация и пошаговые инструкции",
+        "Интеграция с AI‑ассистентами через skill‑файлы",
+        "Ориентировано на Rust + Metal, актуально для Apple Silicon",
+        "MIT‑лицензия, открытый доступ"
+      ],
+      "cons": [
+        "Отсутствие готового кода‑реализации, только методика",
+        "Документация преимущественно на китайском, ограничивает международную аудиторию",
+        "Нет примеров тестов или CI‑pipeline"
+      ],
+      "audience": [
+        "game-development",
+        "rust",
+        "metal",
+        "ai-assistant",
+        "porting"
+      ],
+      "score": 6.5
+    },
+    "final_score": 3.085
   }
 ]
