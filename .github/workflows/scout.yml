@@ -1,0 +1,72 @@
+name: scout
+
+on:
+  schedule:
+    - cron: "0 6 */3 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scout
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Установка зависимостей Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install semgrep bandit
+
+      - name: Установка gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64.tar.gz \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+
+      - name: Установка osv-scanner
+        run: |
+          curl -sSL -o /tmp/osv-scanner \
+            https://github.com/google/osv-scanner/releases/latest/download/osv-scanner_linux_amd64
+          chmod +x /tmp/osv-scanner
+          sudo mv /tmp/osv-scanner /usr/local/bin/osv-scanner
+          osv-scanner --version
+
+      - name: Кэш состояния (SQLite + кэш сканеров)
+        uses: actions/cache@v4
+        with:
+          path: data/
+          key: scout-state-${{ github.run_id }}
+          restore-keys: |
+            scout-state-
+
+      - name: Запуск пайплайна
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_REPOS: "10"
+          MIN_STARS: "100"
+          LOOKBACK_DAYS: "3"
+        run: python -m src.main
+
+      - name: Коммит результата
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "output README.md"
+          message: "chore: release ${{ github.run_id }}"
+          default_author: github_actions
+          push: true

@@ -1,0 +1,589 @@
+[
+  {
+    "raw": {
+      "full_name": "alchaincyf/huashu-motion",
+      "html_url": "https://github.com/alchaincyf/huashu-motion",
+      "description": "让你的agent一键直出商业级产品宣传片：会作曲，能指着画面改。Commercial-grade launch films by your coding agent — point at the frame to change it.",
+      "stars": 1562,
+      "forks": 154,
+      "language": "JavaScript",
+      "license": "MIT",
+      "created_at": "2026-10-18T12:19:27Z",
+      "pushed_at": "2026-10-22T12:19:37Z",
+      "topics": [
+        "agent-skills",
+        "animation",
+        "claude-code",
+        "codex",
+        "gsap",
+        "launch-video",
+        "motion-graphics",
+        "skills"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n**简体中文** | [English](README.en.md)\n\n<img src=\"docs/media/hero.gif\" alt=\"huashu-motion发布片开场：一整面墙的片子，说一句，出一支片\" width=\"100%\" />\n\n# huashu-motion\n\n> *「一键直出商业级产品宣传片。」*\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)\n[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)\n[![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20WorkBuddy%20·%20Grok%20Bot%20·%20Muse%20·%20Dots-blueviolet)](#安装)\n\n**让你的agent做动画、作曲，指着画面改。**\n\n跟Claude Code、Codex这些agent说一句「给我的产品做个30秒的发布片」，<br>\n它会先读你的产品，给你三个方向挑，写出整支片子，自己写谱配乐，<br>\n然后在浏览器里打开一个编辑器等你。哪里不满意，在画面上点一下，写下要改什么，它就只改那一处。\n\n```sh\nnpx skills add alchaincyf/huashu-motion\n```\n\n[看效果](#看效果) · [安装](#安装) · [能做什么](#能做什么) · [怎么做到的](#怎么做到的) · [背后的故事](#背后的故事)\n\n</div>\n\n---\n\n## 看效果\n\n这篇README里的每一段动画都是huashu-motion做的。上面那段取自它给自己做的53秒发布片，👉 [下载完整发布片（MP4，带声音）](https://github.com/alchaincyf/huashu-motion/releases/latest)，下面Grok Bot（非官方）、huashu-design、DeepSeek、Claude Duet（非官方）这几支的完整版也在同一个页面。\n\n### 指着画面改\n\n<img src=\"docs/media/point-to-edit.gif\" alt=\"在编辑器里按C，点中开场画面，写下「第一帧开场的效果我觉得很差，还不如核心聚焦在typing呢」，agent接单改完，预览停在原处刷新\" width=\"100%\" />\n\n按C，在画面上点一下，写下要改什么。评论发过去的时候带着时间点、场景、点中的元素和它在源码里的位置，agent先把那一帧和你点的那一小块截图放大看一眼，再只改那一处，改完回一句人话，预览停在原来的位置刷新。每一版都留着，⌘Z随时撤回；标题、数字、颜色、停留时长这些会变成编辑器右边的输入框，自己改，不用等agent。\n\n（这段里的编辑器和终端是照真实界面重建的，代码细节是示意；评论是真实提过的意见。）\n\n### 先写谱，再拍片\n\n<img src=\"docs/media/score-first.gif\" alt=\"agent写的ABC乐谱变成五线谱往前走，红色场景标记落在哪一拍，画面就在哪一拍切\" width=\"100%\" />\n\n做发布片用的是作曲家模式：agent按节奏单先写一份谱（ABC记谱法，纯文本的乐谱），谱里的标记对齐每个场景，再由三角钢琴、弦乐和鼓组的采样演奏出来（真乐器采样要先跑一次`om samples build`，不跑就用合成音色）；画面上每个东西落地的那一帧，再配一个音效。配乐全部在本机现场生成，不调用任何收费接口。\n\n### 一天，二十支\n\n<img src=\"docs/media/sixteen-cuts.gif\" alt=\"16个镜头来自七支不同的片子，按拍子快切\" width=\"100%\" />\n\n16个镜头，来自同一天做的七支片子，按拍子切。\n\n<img src=\"docs/media/grok-bot.gif\" alt=\"Grok Bot粉丝片：Sending to Chief…的气泡钉住不动，背后每个agent各占一屏颜色，最后汇成八宫格\" width=\"100%\" />\n\nGrok Bot（粉丝自制，非官方）· 30秒：傍晚交代任务，夜里几个agent各干各的，早上7点手机上收到汇报。这段是汇报一张张送往Chief of Staff的那几拍。\n\n<table><tr>\n<td width=\"50%\"><img src=\"docs/media/huashu-design.gif\" alt=\"huashu-design宣传片：一句「给社区旧书店做一份众筹PPT」钉在画面中间，背后的风格按拍子一格一格地换\" width=\"100%\" /><br/>huashu-design 3.0 · 一句提示词钉住不动，背后的风格按拍子换</td>\n<td width=\"50%\" align=\"center\"><img src=\"docs/media/catlight-pro.gif\" alt=\"小猫补光灯Pro竖屏片：八种补光色，一拍换一种\" width=\"60%\" /><br/>小猫补光灯Pro · 八种补光色，一拍换一种</td>\n</tr></table>\n\n### 不依赖Opus：DeepSeek V4.1 Flash也能做\n\n<img src=\"docs/media/deepseek-flash.gif\" alt=\"DeepSeek V4.1 Flash做的动效片：鲸鱼logo、MOTION、MASK、GLITCH，一个圆点贯穿全片\" width=\"100%\" />\n\n这支22秒的动效片，是把Claude Code背后的模型换成DeepSeek V4.1 Flash（1017版）做的。中间我给了三轮意见（比如加上DeepSeek的鲸鱼logo、删掉几个镜头），带配乐和音效，前后不到半小时，按当时的价格花了1块9毛5（缓存命中率99.4%）。统一的配色、贯穿全片的那颗圆点、卡在124BPM上的配乐，是skill带出来的，我一句都没提过。方法写进了skill，便宜的模型也能拍出像样的片子。\n\n### Claude Duet（粉丝自制，非官方）：一次给足需求，全程没找我确认\n\n<img src=\"docs/media/claude-duet.gif\" alt=\"Claude Duet粉丝片：像素小人Claude Code在终端里等你敲键，炸散后收拢成Duet的图标，通知先来找你，入夜后一条连笔线穿过各个应用替你把活干完\" width=\"100%\" />\n\nAnthropic发布Claude Duet当天做的，29秒英文版。像素小人Claude Code在终端里等你敲键，变形成Duet以后主动来找你，你睡着了它接着干。完整版在[Release页面](https://github.com/alchaincyf/huashu-motion/releases/latest)。\n\n---\n\n## 样片是怎么做出来的\n\n很多人问这些样片用的是什么提示词。下面是我当时的原话，一字没改，语音输入的错字也留着；本机路径和截图换成了方括号里的说明，跟这支片无关的话删掉了，用……标出；圆括号里是我补的上下文。\n\n可以看出来，效果不全来自第一句话：有的片子我一次把需求说清楚，就放手让它做；有的片子我盯着改了好几轮。一句话也能出片，想到这个水准，要么第一句给足，要么后面有人当导演。\n\n<details>\n<summary><b>Claude Duet</b>（非官方）· 一份需求、两条追加，中间没有修改意见</summary>\n\n> anthropic刚刚发布了claude duet，我希望你帮我充分调研信息，然后帮我做三个版本的视频 /huashu-motion  \n> 版本一：16：9 英文版本，30秒以内  \n> 版本二：16：9 中文版本 我希望除了品牌信息外，主要元素都是中文 ，30秒以内  \n> 版本三：带中文口播，2：3比例，主要界面内容包含官方英文，以及我们制作的中文版本，目标是发在抖音上给用户介绍Claude duet，1分钟以内\n>\n> 这三个版本我们都需要体现三个方面，但你可以通过不同的方式强调和和体现：  \n> 1、Claude duet和Claude code这种coding agent之间的区别  \n> 2、目前的使用门槛：大致是pro、max会员可以用上，但是需要申请waitlist  \n> 3、ChatGPT dots、muse、grok bot这三个都是personal agent，一定程度上可以认为面对前面三个personal agent，claude选择了claude duet出击。[一张Claude Code像素形象的截图] 这是Claude code原本的形象，我觉得你可以用一个比较视觉化的，动效出色的语言比较有趣的去表达这件事。  \n> 三个版本都需要被认为超过了90分才能算制作完成。以及第三个版本我们做完后，你制作封面和标题简介，然后发到抖音和视频号\n>\n> 除了huashu-motion之外，你也可以使用 /huashu-video-pipeline  /huashu-art-motion 这两个s",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "alchaincyf/huashu-motion",
+      "summary": "Проект позволяет агентам (Claude Code, Codex и др.) в один клик генерировать коммерческие рекламные ролики с анимацией и оригинальной музыкой. Пользователь может интерактивно менять отдельные кадры, указывая на них в браузерном редакторе. Всё происходит локально без обращения к платным сервисам.",
+      "usefulness": "Полезен маркетологам, продакт-менеджерам и разработчикам, которым нужно быстро создать качественное промо‑видео без привлечения видеодизайнеров. Подходит для демонстраций продуктов, презентаций и соцсетей.",
+      "uniqueness": "Комбинация генерации сценария, музыки и анимации в одном инструменте, а также возможность точечного редактирования через указание на кадр – редкость среди аналогов, которые обычно требуют отдельные шаги и внешние сервисы.",
+      "pros": [
+        "Полный цикл от идеи до готового ролика\",\"Интерактивное редактирование отдельного кадра\",\"Поддержка нескольких AI‑агентов и локальная генерация музыки\",\"Подробный README с примерами и GIF‑демо"
+      ],
+      "cons": [
+        "Документация ограничена README, нет отдельного руководства по API\",\"Требуется локальная установка и совместимость с конкретными агентами\",\"Отсутствие автоматических тестов и CI‑проверок"
+      ],
+      "audience": [
+        "animation",
+        "video",
+        "ai",
+        "cli",
+        "frontend"
+      ],
+      "score": 9.0
+    },
+    "final_score": 4.11
+  },
+  {
+    "raw": {
+      "full_name": "Gathin23/cleanyourtv",
+      "html_url": "https://github.com/Gathin23/cleanyourtv",
+      "description": "Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.",
+      "stars": 29112,
+      "forks": 3325,
+      "language": "Java",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-17T08:12:35Z",
+      "pushed_at": "2026-10-24T08:55:54Z",
+      "topics": [
+        "adb",
+        "adblock",
+        "android-tv",
+        "android-tv-launcher",
+        "apple-tv",
+        "bloatware-removal",
+        "claude-code",
+        "debloat",
+        "fire-tv",
+        "google-tv",
+        "launcher",
+        "privacy",
+        "smart-tv",
+        "sony-bravia",
+        "tcl",
+        "vibe-coding",
+        "xiaomi"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <a href=\"https://cleanyour.tv\"><img src=\"https://raw.githubusercontent.com/Gathin23/cleanyourtv/main/docs/banner.png\" alt=\"CleanYourTV. Your TV, minus the ads. Strip the bloatware from any Android TV or Google TV over Wi-Fi and replace the ad-filled home screen with a clean launcher that looks like an Apple TV. No root, no cable, nothing uninstalled, and a one-line restore.\" width=\"800\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Gathin23/cleanyourtv/stargazers\"><img src=\"https://img.shields.io/github/stars/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/pulls?q=is%3Amerged\"><img src=\"https://img.shields.io/github/issues-search?query=repo%3AGathin23%2Fcleanyourtv%20is%3Apr%20is%3Amerged&style=flat&cacheSeconds=1800&label=merged%20PRs&color=cfffcf&labelColor=15181e\" alt=\"Merged PRs\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/network/members\"><img src=\"https://img.shields.io/github/forks/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/Gathin23/cleanyourtv/graphs/contributors\"><img src=\"https://img.shields.io/github/contributors/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e\" alt=\"Contributors\"></a>\n  <a href=\"README.zh-CN.md\"><img src=\"https://img.shields.io/badge/README-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-cfffcf?style=flat&labelColor=15181e\" alt=\"简体中文\"></a>\n  <a href=\"README.vi.md\"><img src=\"https://img.shields.io/badge/README-Ti%E1%BA%BFng%20Vi%E1%BB%87t-cfffcf?style=flat&labelColor=15181e\" alt=\"Tiếng Việt\"></a>\n  <a href=\"README.ja.md\"><img src=\"https://img.shields.io/badge/README-%E6%97%A5%E6%9C%AC%E8%AA%9E-cfffcf?style=flat&labelColor=15181e\" alt=\"日本語\"></a>\n  <a href=\"https://buymeacoffee.com/gathint\"><img src=\"https://img.shields.io/badge/support-%E2%9D%A4-ff5e8a?style=flat&labelColor=15181e\" alt=\"Support, buy me a coffee\"></a>\n  <a href=\"https://www.producthunt.com/products/cleanyourtv\"><img src=\"https://img.shields.io/badge/Product%20Hunt-upvote%20%E2%96%B2-da552f?style=flat&logo=producthunt&logoColor=white&labelColor=15181e\" alt=\"CleanYourTV on Product Hunt\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/310225\"><img src=\"docs/trending-badge.png\" alt=\"#1 trending repo of the week, via trendshift.io\" width=\"360\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/PRESS.md\"><img src=\"docs/card.jpg\" alt=\"260 TV models · 77 brands · 25 languages · 497 KB launcher. Featured in TechCrunch, TechRadar, Tom's Guide, Mashable, Android Authority, XDA, FlatpanelsHD, It's FOSS, Phandroid, GIGAZINE, Xataka, WinFuture, Frandroid, Macitynet, Techaeris, TechPP and 171 more: 187 articles from 31 countries. Before: stock Google TV home with a sponsored ad. After: the Clean Your TV launcher.\" width=\"800\"></a>\n</p>\n\n**The viral tweet:** [x.com/gathint/status/2111379569030939102](https://x.com/gathint/status/2111379569030939102)\n\nOn 17 October 2026 I posted a before and after of my parents' TV, cleaned up by Claude Code over Wi-Fi.\nIt reached 7.4M views, people started doing the same to their own TVs, and their replies turned into\nthe lists here: 170+ TV models from 200+ contributors in four days. The repo was called tv-vibehack\nuntil the 19th; old links work.\n\n**Themes, switches and add-ons:** [cleanyour.tv/addons](https://cleanyour.tv/addons)\n\n**Official links:** the website is [cleanyour.tv](https://cleanyour.tv) and the code, launcher and\ntools live only in this repo. Other domains using the name, such as cleanyourtv.com, are not run by\nthis project ([#1004](https://github.com/Gathin23/cleanyourtv/issues/1004)).\n\n## How it works\n\nAndroid TVs have the same debug bridge as Android phones. Switch on USB debugging in the TV's\ndeveloper options, allow your computer once, and the rest is standard Android tooling:\n\n| Step | What happens |\n|---|---|\n| **Back&n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "Gathin23/cleanyourtv",
+      "summary": "CleanYourTV is a Java‑based launcher that removes bloatware and ads from Android TV and Google TV devices over Wi‑Fi using ADB. It replaces the default home screen with an Apple‑TV‑style interface and provides a one‑line restore option. No rooting or physical connection is required.",
+      "usefulness": "Designed for end‑users of Android/Google TV who want a cleaner, ad‑free experience, as well as power users who prefer a minimalist launcher without flashing firmware.",
+      "uniqueness": "Unlike many custom ROMs, it works entirely over Wi‑Fi, requires no root, and offers an Apple‑TV‑like UI while preserving the original system. The project also gained viral attention and community contributions across 170+ TV models.",
+      "pros": [
+        "No root or cable needed – works via ADB over Wi‑Fi",
+        "Apple‑TV‑style clean launcher UI",
+        "One‑line restore to original state",
+        "Extensive community contributions and press coverage"
+      ],
+      "cons": [
+        "License is unspecified (NOASSERTION)",
+        "Limited to Android/Google TV platforms",
+        "Requires enabling USB debugging, which may be technical for some users"
+      ],
+      "audience": [
+        "android-tv",
+        "launcher",
+        "cli",
+        "privacy",
+        "debloat"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.973
+  },
+  {
+    "raw": {
+      "full_name": "simbasjungles/free-my-tv",
+      "html_url": "https://github.com/simbasjungles/free-my-tv",
+      "description": "A fast, ad-free home screen for Google TV, LG webOS and Samsung Tizen. One button to undo.",
+      "stars": 4054,
+      "forks": 629,
+      "language": "Java",
+      "license": "MIT",
+      "created_at": "2026-10-19T19:29:01Z",
+      "pushed_at": "2026-10-24T01:20:17Z",
+      "topics": [
+        "android-tv",
+        "claude-code",
+        "google-tv",
+        "home-screen",
+        "launcher",
+        "no-ads",
+        "open-source",
+        "samsung-tizen",
+        "tizen",
+        "tmdb",
+        "webos"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/assets/icon-512.png\" width=\"96\" alt=\"\">\n\n# Free My TV\n\n**A fast, ad-free home screen for Google TV, LG and Samsung TVs.**\n\nTrending picks from your own apps, the weather at a glance, and a look that follows the sunset.<br>\nOpen source. Built with Claude Code. One button to undo.\n\n[**freemytv.io**](https://freemytv.io) · [Install](#install) · [LG TVs](#lg-tvs-webos) · [Samsung TVs](#samsung-tvs-tizen) · [Any TV](#any-tv) · [Make it yours](#make-it-yours)\n\n<img src=\".github/preview.webp\" width=\"880\" alt=\"The Free My TV home screen: a glass shelf of apps, trending picks, and a drawer with the weather and crypto prices\">\n\n</div>\n\n## What you get\n\n- **No ads.** No sponsored rows, banners or autoplaying promos. Not one.\n- **Your apps, front and center.** The streaming apps you actually use, on a glass shelf. Pick them and their order right on the TV.\n- **Trending, not sponsored.** Three fresh picks every hour from what's trending this week and the latest releases, only from apps you already have. Movies and Shows get their own tabs.\n- **Weather and markets, one press away.** The hour-by-hour forecast, sunrise and sunset, and live crypto prices.\n- **Light by day, dark by night.** It follows your city's real sunset, the way your phone does.\n- **A screensaver to match.** Full-screen photos of the picks with a big glass clock.\n- **Your own photos** (Google TV and Android TV). Send them from your computer (up to 100): the screensaver shows them, and without picks one is the home screen's background each hour.\n- **Fast.** 60 fps, every frame in 16.6 ms, on the TV's own chip. The home screen uses 96 MB of memory instead of 242 MB (−60%).<br><sub>Measured on a 98″ TCL Google TV running Android 14.</sub>\n- **Set up on the TV.** Language, your city, temperature, theme, the weather and prices cards, which coins, and the apps on the shelf, in Free My TV's own settings.\n- **Safe.** No root. Nothing is uninstalled. One button brings back the factory home screen.\n\n## Install\n\nAbout ten minutes. You need a Google TV or Android TV (Android 8 or newer) and a computer on the same Wi-Fi.\n\n### The easy way: an AI assistant\n\n1. **On the TV**, turn on developer mode: Settings → System → About → press *Android TV OS build* 7 times. Then Settings → System → Developer options → turn on **USB debugging**. Write down the TV's IP address (Settings → Network & Internet).\n2. **On your computer**, open an AI coding assistant ([Claude Code](https://claude.com/claude-code), Codex or Antigravity) and say:\n   > Install Free My TV (github.com/simbasjungles/free-my-tv) on my TV at 192.168.1.50. I live in Lisbon.\n\n   It downloads the code, installs the tools it needs, builds the app and puts it on your TV, and asks before anything important. Swap in your TV's IP and your city.\n3. **On the TV**, open *Free My TV* → *Home Screen* → *Free My TV*. That's when the TV asks *Allow USB debugging?* for Free My TV: tick *Always allow* and accept.\n\n### The manual way\n\n1. **On the TV**, do step 1 above.\n2. **Tools:** a JDK (17+), the Android SDK command-line tools (build-tools 34, platform android-34) and adb. On a Mac:\n   ```bash\n   brew install --cask temurin android-commandlinetools android-platform-tools\n   sdkmanager \"build-tools;34.0.0\" \"platforms;android-34\"\n   ```\n   On Linux, get OpenJDK 17, Android's command-line tools and adb from your package manager, then run the same `sdkmanager` line. On Windows, use Git Bash (which Claude Code uses there) or WSL.\n3. **Build:**\n   ```bash\n   ./build.sh\n   ```\n   The first run creates `config.properties`. Set your city and your [TMDB key](#the-tmdb-key) there, then run it again.\n4. **Install:**\n   ```bash\n   adb connect 192.168.1.50:5555\n   adb install -r FreeMyTV.apk\n   ```\n   If the install seems stuck, look at the TV: on Android 14, Google Play Protect may hold it with *Risky app blocked* (\"built for an older version of Android\"), since Free My TV targets Android 13. Choose *More details* → *Inst",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "simbasjungles/free-my-tv",
+      "summary": "Free My TV is an open‑source, ad‑free home screen replacement for Google TV, LG webOS and Samsung Tizen. It displays your installed streaming apps on a glass‑shelf UI, adds weather, crypto prices and a dynamic sunset‑based theme, and runs at 60 fps with low memory usage. Installation can be done manually via ADB or automatically with an AI coding assistant like Claude Code.",
+      "usefulness": "Для пользователей умных телевизоров, желающих избавиться от рекламных рядов и получить быстрый, настраиваемый лаунчер с дополнительными виджетами (погода, криптовалюты).",
+      "uniqueness": "Отличается интеграцией AI‑ассистента для автоматической установки, динамической сменой темы по закату и минимальным потреблением памяти по сравнению со штатным лаунчером.",
+      "pros": [
+        "Ad‑free experience",
+        "60 fps smooth UI with low RAM usage",
+        "One‑click undo to factory launcher",
+        "Open‑source MIT license"
+      ],
+      "cons": [
+        "Поддержка только Android TV, webOS и Tizen; требуется включать режим разработчика и использовать ADB",
+        "Установка может быть сложной без AI‑ассистента",
+        "Отсутствие автоматических тестов/CI в репозитории"
+      ],
+      "audience": [
+        "android-tv",
+        "tv",
+        "launcher",
+        "home-screen",
+        "open-source"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.93
+  },
+  {
+    "raw": {
+      "full_name": "ikow/php2shell-poc",
+      "html_url": "https://github.com/ikow/php2shell-poc",
+      "description": "CVE-2026-109618/109619 — 5 RCE chains + detection rules (Suricata, Sigma, ModSecurity). PHP session.upload_progress pre-auth exploit research.",
+      "stars": 1715,
+      "forks": 599,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-21T07:55:16Z",
+      "pushed_at": "2026-10-22T22:41:36Z",
+      "topics": [
+        "cve-2026-109618",
+        "cve-2026-109619",
+        "detection-rules",
+        "exploit",
+        "php-exploit",
+        "php-security",
+        "php2shell",
+        "poc",
+        "rce",
+        "session-upload-progress",
+        "suricata-rules",
+        "vulnerability-research",
+        "waf-rules",
+        "wordpress-security"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"docs/cover.png\" alt=\"php2shell\" width=\"700\">\n</p>\n\n<h1 align=\"center\">php2shell</h1>\n<p align=\"center\">\n  <strong>CVE-2026-109618 & CVE-2026-109619 — PHP Pre-Auth RCE Exploit & Detection Toolkit</strong>\n</p>\n<p align=\"center\">\n  <a href=\"https://github.com/ikow/php2shell-poc/stargazers\"><img src=\"https://img.shields.io/github/stars/ikow/php2shell-poc?style=flat-square\" alt=\"Stars\"></a>\n  <img src=\"https://img.shields.io/badge/CVSS-9.2%20Critical-red?style=flat-square\" alt=\"CVSS 9.2\">\n  <img src=\"https://img.shields.io/badge/PHP-5.4%E2%80%938.5-orange?style=flat-square\" alt=\"Affected Versions\">\n  <img src=\"https://img.shields.io/badge/Fixed-8.2.35%20%7C%208.3.36%20%7C%208.4.27%20%7C%208.5.12-green?style=flat-square\" alt=\"Fixed Versions\">\n  <img src=\"https://img.shields.io/badge/Exploits-3%20public%20%7C%202%20paid-blue?style=flat-square\" alt=\"Exploits\">\n</p>\n\n<p align=\"center\">\n  <a href=\"#exploits\">Exploits</a> · <a href=\"#detection-rules\">Detection</a> · <a href=\"#quick-start\">Lab</a> · <a href=\"https://qideng.substack.com/p/php2shell-dissecting-phps-critical\">Writeup</a>\n</p>\n\n---\n\nFive independent RCE chains exploiting PHP's `session.upload_progress` and the Zend engine's OOM bailout. **14 years of vulnerable code** — PHP 5.4.0 (2012) through 8.5.11. Pre-auth. No application vulnerability required for some chains.\n\nImpacts **78% of all websites** — including WordPress (43%), Joomla, Drupal, Laravel, Magento, and every default PHP installation.\n\n**Author:** [Qi Deng](https://github.com/ikow) &nbsp;|&nbsp; **Writeup:** [Substack](https://qideng.substack.com/p/php2shell-dissecting-phps-critical) &nbsp;|&nbsp; **Date:** 2026-10-21\n\n## CVE Details\n\n| CVE | GHSA | CVSS | Description |\n|-----|------|------|-------------|\n| CVE-2026-109618 | [GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) | 9.2 | OOM → `longjmp()` leaves Zend engine state invalid → RCE |\n| CVE-2026-109619 | [GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) | 9.2 | Stale global state across FPM worker requests → UAF → RCE |\n\n**Patch:** [Commit 3584a98](https://github.com/php/php-src/commit/3584a98bda) — 300 files changed across the Zend engine.\n\n## Attack Chains\n\n| Chain | Vector | Pre-auth | Conditions | SAPI |\n|-------|--------|:--------:|------------|------|\n| **A** | Session injection + LFI | Yes | App has any LFI sink | All |\n| **B** | var_destroy UAF → handler overwrite | No | App calls `unserialize()` | All |\n| **C** | Handler mismatch → `__destruct` | Yes | Two dirs with different serialize_handler | FPM |\n| **D** | OOM corruption → stale `EG()` | Yes | **None** — any endpoint | mod_php |\n| **E** | FPM session OOM → stale `BG()` | Yes | Producer: any `session_start()` endpoint; Consumer: **any** endpoint | FPM |\n\nChain D is the most critical: **zero-dependency pre-auth RCE** against any Apache mod_php installation.\n\nChain E is nearly as broad on FPM: the producer needs any endpoint that calls `session_start()` (near-universal — WordPress, Laravel, Joomla, Drupal all do), and the **consumer can be any PHP endpoint** — the `rfc1867` upload_progress handler runs during SAPI startup before application code. Verified: `nosession.php` (no `session_start()` in code) triggers 502 crash when consuming stale `BG(unserialize)` state.\n\n## Exploits\n\nThree RCE exploits (Chains A, B, C) are included in [`exploit/`](exploit/):\n\n| File | Chain | What It Does |\n|------|-------|-------------|\n| `chain_a_session_lfi.py` | A | Injects PHP code via upload filename → LFI includes session file → RCE |\n| `chain_b_uaf_rce.php` | B | var_destroy UAF → discovers `zif_system` via EG() → overwrites `var_dump` handler via `/proc/self/mem` → RCE |\n| `chain_c_mismatch_rce.py` | C | Pollutes FPM worker `PS(serializer)` → injects serialized object via filename → `__destruct` fires on decode failure → RCE |\n\nChains D and E exploits are available to [paid subscribers](https:",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "ikow/php2shell-poc",
+      "summary": "php2shell is a toolkit that provides proof‑of‑concept exploits for CVE‑2026‑109618 and CVE‑2026‑109619, enabling pre‑authentication remote code execution via PHP's session.upload_progress. It also ships detection rules for Suricata, Sigma and ModSecurity to help identify the attacks.",
+      "usefulness": "Useful for security researchers, red‑team operators and defenders who need to understand, test or detect these high‑severity PHP RCE vulnerabilities across many web applications.",
+      "uniqueness": "Combines five independent RCE chains covering 14 years of PHP versions, includes both public and paid exploits, and bundles ready‑to‑use detection rules for multiple IDS/WAF platforms in a single repository.",
+      "pros": [
+        "Comprehensive exploit chains covering many PHP versions",
+        "Includes detection rules for Suricata, Sigma and ModSecurity",
+        "Well‑documented with write‑up and usage guide",
+        "High impact coverage (≈78% of websites)"
+      ],
+      "cons": [
+        "Contains exploit code – not intended for production use",
+        "Paid exploits are not publicly available",
+        "No automated test suite or CI checks"
+      ],
+      "audience": [
+        "security",
+        "exploit",
+        "detection",
+        "ids",
+        "waf",
+        "php",
+        "cli"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.912
+  },
+  {
+    "raw": {
+      "full_name": "pengchujin/aerial-tv",
+      "html_url": "https://github.com/pengchujin/aerial-tv",
+      "description": "给国产电视的一块干净桌面：参照 tvOS 设计的开源 Android TV 桌面，没有广告，开机自动接管。A tvOS-style launcher for Xiaomi, TCL and other China-market TVs.",
+      "stars": 4082,
+      "forks": 308,
+      "language": "Kotlin",
+      "license": "MIT",
+      "created_at": "2026-10-20T09:13:06Z",
+      "pushed_at": "2026-10-24T06:03:21Z",
+      "topics": [],
+      "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/brand/icon.png\" width=\"96\" alt=\"Aerial 图标\">\n\n# Aerial\n\n**给国产电视的一块干净桌面。**\n\n参照 Apple TV 做的 Android TV 桌面：没有广告，没有推荐流，只有你的 App、壁纸和航拍屏保。<br>\n适合小米、TCL 等国产电视，开机自动进入，待机也不会被清理。\n\n**中文** · [English](README.en.md)\n\n<a href=\"https://aerial.qust.me\"><img alt=\"官网\" src=\"https://img.shields.io/badge/%E5%AE%98%E7%BD%91-1f6feb?style=for-the-badge&logo=safari&logoColor=white\"></a>\n<a href=\"https://github.com/pengchujin/aerial-tv/releases/latest\"><img alt=\"下载 APK\" src=\"https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%20APK-34a853?style=for-the-badge&logo=android&logoColor=white\"></a>\n<a href=\"#安装\"><img alt=\"安装\" src=\"https://img.shields.io/badge/%E5%AE%89%E8%A3%85-d97757?style=for-the-badge&logo=gnubash&logoColor=white\"></a>\n\n<a href=\"https://github.com/pengchujin/aerial-tv/releases/latest\"><img alt=\"版本\" src=\"https://img.shields.io/github/v/release/pengchujin/aerial-tv?style=flat-square&label=%E7%89%88%E6%9C%AC&color=2997ff\"></a>\n<a href=\"LICENSE\"><img alt=\"许可证 MIT\" src=\"https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-555555?style=flat-square\"></a>\n<img alt=\"Android TV 5.0+\" src=\"https://img.shields.io/badge/Android%20TV-5.0%2B-3ddc84?style=flat-square&logo=android&logoColor=white\">\n\n![Aerial 首页](site/img/home.jpg)\n\n| 电视自带的桌面 | 换上 Aerial 之后 |\n|:---:|:---:|\n| <img src=\"site/img/stock-xiaomi.jpg\" alt=\"电视自带的桌面：满屏剧集推荐、会员和限免角标\"> | <img src=\"site/img/home.jpg\" alt=\"Aerial 首页\"> |\n\n</div>\n\n## 功能\n\n<p align=\"center\">\n  <img src=\"site/img/focus.jpg\" width=\"49%\" alt=\"第一排的玻璃底板\">\n  <img src=\"site/img/grid.jpg\" width=\"49%\" alt=\"往下滚动后的应用网格，中间有一个文件夹\">\n</p>\n\n- **首页**：常用的一排 App 放在屏幕下方的玻璃底板上，往下是全部 App。小米「应用中心」「米家」这类藏起来的系统 App 也在。\n- **整理**：长按 OK 键（或按菜单键）可以移动、放进文件夹、隐藏、卸载。固定到主屏幕的 HDMI 可以选接的是 Apple TV、PlayStation、Switch、Xbox、电脑等，换成对应的图标，也能在手机上起名字；文件夹也可以在手机上改名。\n- **控制中心**：在第一排按上键到右上角打开，有信号源、网络、设置、音量、亮度和个性化。\n- **屏保**：Apple TV 的 114 段航拍影片，电视支持时播 4K 或 4K 杜比视界，也可以换成照片、时钟或从手机添加的本地视频（[说明](docs/SCREENSAVER_VIDEOS.md)）。\n- **壁纸**：必应每日精选、14 张内置壁纸、用手机扫码传的照片，或者航拍：停在主屏幕 10 秒后在磁贴后面播放，按任意键停在当前画面。\n- **个性化**：单排或双排、时钟大小和位置、App 名称、焦点样式、按键声音，都能改。\n\n<p align=\"center\">\n  <img src=\"site/img/folder.jpg\" width=\"49%\" alt=\"打开的文件夹\">\n  <img src=\"site/img/control-center.jpg\" width=\"49%\" alt=\"控制中心\">\n</p>\n\n<p align=\"center\">\n  <img src=\"site/img/screensaver-aerial.jpg\" width=\"49%\" alt=\"航拍屏保\">\n  <img src=\"site/img/wallpaper.jpg\" width=\"49%\" alt=\"个性化面板\">\n</p>\n\n## 安装\n\n不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。\n\n### 1. 打开电视的 ADB 调试\n\n| 电视 | 怎么打开 |\n|---|---|\n| **小米 / Redmi** | 设置 → 关于 → 连续按「产品型号」进入开发者模式，再到 设置 → 账号与安全，打开「ADB 调试」和「安装未知来源的应用」 |\n| **TCL / 雷鸟** | 设置 → 关于 → 本机信息，快速按遥控器「上下左右」，在底部的「更多」里打开 ADB |\n| **海尔 / 模卡** | 按电视机身上的信号源键，再用遥控器按「左左上右」，在工厂菜单里打开「ADB 调试开关」，别动其他选项 |\n| **OPPO（含 S1）** | 设置 → 系统 → 关于本机 → 设备型号，按「上上右右」再按确认；再到 设置 → 系统 → 开发者选项，打开「USB 调试」。IP 在 设置 → 网络 → 已连接的网络 最下面 |\n| **其他 Android TV** | 设置 → 设备偏好设置 → 关于 → 连按「内部版本号」7 次，再在开发者选项里打开「USB 调试」 |\n\n电视的 IP 在「设置 → 网络 → 已连接的网络」里。第一次连接时，电视会问是否允许调试，选「始终允许」。\n更细的分品牌说明（包括打不开 ADB 的机型）见 [docs/devices/adb-by-brand.md](docs/devices/adb-by-brand.md)。\n\n### 2. 安装\n\n**让 Agent 装（推荐）**：把下面这段发给能在电脑上运行命令的 Agent（WorkBuddy、豆包电脑版、千问电脑版、Trae、Claude Code、Codex 等）：\n\n```text\n请帮我把开源电视桌面 Aerial 装到我的电视上，并设为开机进入的桌面。\n电视 IP：<电视IP>\n保持 ADB 常开：要\n\n安装说明在这里：https://aerial.qust.me/agent.md\n（打不开时用 https://raw.githubusercontent.com/pengchujin/aerial-tv/main/site/agent.md ）\n\n请先完整读完安装说明再动手，然后在我的电脑上亲自运行命令，不要只把步骤告诉我。需要我在电视上操作时提醒我。\n最后按说明里的「验收」，把这几条命令的原始输出原样贴给我：\n- adb shell \"cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.HOME\"\n- adb shell settings get secure enabled_accessibility_services\n- 按主页键后的 adb shell \"dumpsys window | grep mCurrentFocus\"\n```\n\n手机上的豆包、网页版聊天只会把步骤告诉你，不会执行；要用能跑命令的电脑版 / 工作版（豆包电脑版或豆包工作版、WorkBuddy、千问电脑版、Trae、Claude Code、Codex 等）。Agent 说装好了，看它贴出的 `mCurrentFocus` 输出里有没有 `app.orchard.tv`。\n\n**没有电脑**：有用户用手机上的甲壳虫 ADB 助手、超级小爱装成功过，本仓库没有逐一实测。步骤和上面的 Windows 步骤一样，装好后建议再用电脑跑一遍验收。\n\n**一行命令（macOS / Linux）**：\n\n```bash\ncurl -fsSL https://aerial.qust.me/install.sh | KEEP_ADB=1 TV=192.168.1.20 bash\n```\n\n**手动**：下载 [aerial",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "pengchujin/aerial-tv",
+      "summary": "Aerial – открытый лаунчер для Android TV, стилизованный под tvOS. Предоставляет чистый домашний экран без рекламы, с поддержкой приложений, обоев и скринсейвера. Автоматически захватывает запуск и работает на популярных китайских телевизорах.",
+      "usefulness": "Полезен владельцам Android TV (Xiaomi, TCL, OPPO и др.) в Китае, желающим заменить штатный рекламный интерфейс на минималистичный и настраиваемый домашний экран.",
+      "uniqueness": "Отличается tvOS‑подобным дизайном, интеграцией скринсейвера с 4K‑видео Apple TV и возможностью полной кастомизации без рут‑прав, чего нет у большинства стандартных лаунчеров Android TV.",
+      "pros": [
+        "Полный набор функций: приложение, обои, скринсейвер, контроль‑центр",
+        "Не требует root и не меняет системные приложения",
+        "Поддержка множества брендов телевизоров через ADB",
+        "MIT‑лицензия и активное сообщество"
+      ],
+      "cons": [
+        "Документация в основном на китайском, английская версия ограничена",
+        "Поддержка ограничена Android TV‑устройствами, нет кроссплатформенных вариантов",
+        "Отсутствие автоматических тестов и CI‑пайплайна"
+      ],
+      "audience": [
+        "android",
+        "tv",
+        "ui",
+        "launcher",
+        "mobile"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.731
+  },
+  {
+    "raw": {
+      "full_name": "humblemuzzu/dumbtv",
+      "html_url": "https://github.com/humblemuzzu/dumbtv",
+      "description": "Take the ads, tracking and clutter out of your Fire TV over ADB, no root. Every step can be undone. Comes with its own open-source home screen.",
+      "stars": 1420,
+      "forks": 127,
+      "language": "Java",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-18T17:04:12Z",
+      "pushed_at": "2026-10-22T22:15:22Z",
+      "topics": [
+        "ad-blocking",
+        "adb",
+        "android-tv",
+        "debloat",
+        "dns-filter",
+        "fire-os",
+        "fire-tv",
+        "firetv",
+        "launcher",
+        "privacy",
+        "smart-tv",
+        "telemetry"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/logo-dark.svg\">\n    <img src=\"docs/assets/logo-light.svg\" alt=\"dumbtv\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\"><b>Your TV should do what you paid for.</b><br>\nAds, tracking and clutter out of your Fire TV. Your apps and HDMI inputs stay.</p>\n\n<p align=\"center\">\n  <a href=\"https://dumbtv.org\"><b>dumbtv.org</b></a> ·\n  <a href=\"https://dumbtv.org/start\">Get started</a> ·\n  <a href=\"https://dumbtv.org/blocked\">What it blocks</a> ·\n  <a href=\"https://dumbtv.org/tv\">Devices</a> ·\n  <a href=\"https://dumbtv.org/help\">Get help</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/humblemuzzu/dumbtv/stargazers\"><img src=\"https://img.shields.io/github/stars/humblemuzzu/dumbtv?style=flat&color=4C8DFF\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/humblemuzzu/dumbtv/releases/latest\"><img src=\"https://img.shields.io/github/v/release/humblemuzzu/dumbtv?label=dumbtv%20home&color=4C8DFF\" alt=\"Latest launcher release\"></a>\n  <a href=\"https://github.com/humblemuzzu/dumbtv/actions/workflows/validate.yml\"><img src=\"https://github.com/humblemuzzu/dumbtv/actions/workflows/validate.yml/badge.svg\" alt=\"CI\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-4C8DFF\" alt=\"MIT licence\"></a>\n  <a href=\"#thanks\"><img src=\"https://img.shields.io/github/contributors/humblemuzzu/dumbtv?color=4C8DFF\" alt=\"Contributors\"></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/assets/hero.png\" alt=\"dumbtv home on a television: a clock, an Apps row and an Inputs row\" width=\"880\">\n</p>\n\n<p align=\"center\"><sub>As seen in\n<a href=\"https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/\">TechCrunch</a> ·\n<a href=\"https://www.techradar.com/entertainment/streaming/your-tv-should-do-what-you-paid-for-people-are-vibe-coding-apps-to-banish-ads-from-their-smart-tvs-and-android-tv-and-its-catching-on\">TechRadar</a> ·\n<a href=\"https://www.tomsguide.com/ai/people-are-using-ai-to-turn-their-smart-tvs-into-dumb-tvs-and-you-might-want-to-do-the-same\">Tom's Guide</a> ·\n<a href=\"https://gizmodo.com/people-using-ai-to-make-smart-tvs-dumb-again-is-the-most-2026-thing-ever-2000828213\">Gizmodo</a> ·\n<a href=\"https://www.xda-developers.com/people-are-now-vibe-coding-their-smart-tvs-to-strip-them-of-ads-and-unwanted-features/\">XDA</a> ·\n<a href=\"https://itsfoss.com/news/debloat-smart-tv/\">It's FOSS</a> ·\n<a href=\"docs/PRESS.md\">and more than 100 others</a></sub></p>\n\n---\n\n## The story\n\nI had a Fire TV Edition television that had become painful to use. Menus lagged,\napps took ages to open, and the home screen was mostly ads. When I looked, it had\n129 MB of free memory, and much of the rest went to apps that started on their own\nand to Amazon services that report what you watch.\n\nSo I asked a coding agent to clean it up over ADB, and\n[posted what happened](https://x.com/DevMuzzammil/status/2111595814099591535). People\nasked for the scripts, so I put them here and\n[shared them](https://x.com/DevMuzzammil/status/2111912547318395338). Since then,\nowners of about twenty other TVs and sticks have run it and sent back what they\nfound.\n\ndumbtv is that cleanup, made safe to run on someone else's TV.\n\n## What it does\n\nOn a Fire TV stick, Cube or Fire TV Edition television, from your computer, with\nno root:\n\n- **Removes the ads and tracking.** Disables Amazon's sponsored rows, ad\n  services, screen fingerprinting (ACR), telemetry and experiments, and turns off\n  ad tracking and usage reporting.\n- **Blocks what cannot be disabled.** A small open-source DNS filter on the TV\n  stops Amazon's telemetry and automatic updates from reaching their servers.\n  Everything else, including your streaming apps, works as before.\n- **Replaces the home screen** with [dumbtv home](launcher/README.md): your apps,\n  your inputs and a clock. 54 KB, open source, no internet access, no permissions.\n- **Leaves your apps alone.** Nothing you watch is removed un",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "humblemuzzu/dumbtv",
+      "summary": "dumbtv is a tool that removes ads, tracking, and unwanted services from Amazon Fire TV devices via ADB without requiring root access. It also provides an open‑source lightweight home screen replacement and a DNS filter to block telemetry. All changes are reversible.",
+      "usefulness": "Для владельцев Fire TV, желающих избавиться от рекламных и телеметрических компонентов, а также получить чистый и быстрый интерфейс.",
+      "uniqueness": "Работает без root, использует ADB, сочетает скрипты очистки с собственным лаунчером и DNS‑фильтром, что редко встречается в аналогах.",
+      "pros": [
+        "Не требует root",
+        "Операции можно отменить",
+        "Включён лёгкий открытый лаунчер",
+        "DNS‑фильтр блокирует телеметрию"
+      ],
+      "cons": [
+        "Поддержка только устройств Fire TV",
+        "Документация могла бы быть более подробной для продвинутых настроек",
+        "Отсутствие автоматических обновлений лаунчера"
+      ],
+      "audience": [
+        "android-tv",
+        "fire-tv",
+        "cli",
+        "privacy",
+        "home-screen"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.708
+  },
+  {
+    "raw": {
+      "full_name": "Ansub/tv-detox",
+      "html_url": "https://github.com/Ansub/tv-detox",
+      "description": "Make an old Android TV fast again with Claude Code or Codex: a tiny ad-free home screen plus the prompt to clean it up",
+      "stars": 1413,
+      "forks": 145,
+      "language": "Java",
+      "license": "MIT",
+      "created_at": "2026-10-18T06:42:29Z",
+      "pushed_at": "2026-10-24T07:07:45Z",
+      "topics": [],
+      "readme_excerpt": "<div align=\"center\">\n\n# TV Detox\n\n<a href=\"https://www.skool.com/staffed-claude-code-ai-5304\"><img src=\"https://img.shields.io/badge/Join_the_community_%E2%86%92-FFD400?style=for-the-badge\" alt=\"Join the community\" width=\"340\"></a>\n\n### Make an old, slow Android TV fast again.\n\nClaude Code or Codex does the work. You just press OK on the remote.\n\n[![Release](https://img.shields.io/github/v/release/Ansub/tv-detox?color=black)](https://github.com/Ansub/tv-detox/releases/latest)\n[![Tests](https://img.shields.io/github/actions/workflow/status/Ansub/tv-detox/build.yml?branch=main&label=tests)](https://github.com/Ansub/tv-detox/actions)\n[![License](https://img.shields.io/badge/license-MIT-black)](LICENSE)\n[![YouTube](https://img.shields.io/badge/YouTube-@ansubkhan-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@ansubkhan)\n\n**As seen on**\n\n[![The Verge](https://img.shields.io/badge/The_Verge-5200FF?style=for-the-badge)](https://www.theverge.com/tech/1016116/vibe-coding-tv-os)\n[![Android Authority](https://img.shields.io/badge/Android_Authority-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://www.androidauthority.com/android-tv-vibe-hacking-remove-ads-bloatware-3725338/)\n[![Mashable](https://img.shields.io/badge/Mashable-00AEEF?style=for-the-badge)](https://mashable.com/tech/smart-tv-ads-claude-code-ai-cleanup)\n[![t3n](https://img.shields.io/badge/t3n-E6007E?style=for-the-badge)](https://t3n.de/news/claude-alter-fernseher-android-tv-1768831/)\n[![Tom's Guide](https://img.shields.io/badge/Tom's_Guide-E1261C?style=for-the-badge)](https://www.tomsguide.com/ai/people-are-using-ai-to-turn-their-smart-tvs-into-dumb-tvs-and-you-might-want-to-do-the-same)\n[![Yahoo Tech](https://img.shields.io/badge/Yahoo_Tech-6001D2?style=for-the-badge)](https://tech.yahoo.com/ai/article/sick-of-seeing-ads-and-clutter-on-your-smart-tv-the-internet-says-ai-can-fix-that-181417392.html)\n[![GIGA](https://img.shields.io/badge/GIGA-E2001A?style=for-the-badge)](https://www.giga.de/tech/ist-euer-smart-tv-zu-langsam-dieses-ki-tool-kann-helfen--01M5HH1C89TWAQX4FYXJBDBQAF)\n[![Computer Hoy](https://img.shields.io/badge/Computer_Hoy-0A64A0?style=for-the-badge)](https://computerhoy.20minutos.es/dispositivos/tv-detox-app-gratis-elimina-obsolescencia-programada-tu-smart-tv-claude-hace-trabajo-tu-solo-tienes-que-pulsar-ok-mando-distancia_7050469_0.html)\n[![AI Times](https://img.shields.io/badge/AI_Times-111111?style=for-the-badge)](https://www.aitimes.com/news/articleView.html?idxno=216547)\n\n[All press coverage →](press.md)\n\n<img src=\"docs/home-screen.png\" alt=\"The TV Detox home screen\" width=\"100%\">\n\n</div>\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\"><b>🧹 Removes the junk</b><br>Bloatware, ads and sponsored rows, gone.</td>\n<td width=\"33%\" valign=\"top\"><b>📺 A calm home screen</b><br>Your apps, your HDMI inputs and a clock. Nothing else.</td>\n<td width=\"33%\" valign=\"top\"><b>↩️ Undo anytime</b><br>Apps are turned off, never deleted.</td>\n</tr>\n</table>\n\n## Watch it work\n\n<a href=\"https://www.youtube.com/watch?v=fP2SGGVsaB0\"><img src=\"https://img.youtube.com/vi/fP2SGGVsaB0/maxresdefault.jpg\" alt=\"Watch: Claude Made My Old Android TV Feel Brand New\" width=\"100%\"></a>\n\n**[▶ Claude Made My Old Android TV Feel Brand New](https://www.youtube.com/watch?v=fP2SGGVsaB0)** · the full setup on a real TV, in 4 minutes.\n\n## Get started\n\n**1. Turn on developer mode on the TV.**\nSettings → Device Preferences → About → press **Build** 7 times. Then turn on **USB debugging** in **Developer options**. [Stuck?](#help)\nRead the [notes and warnings](#notes-and-warnings) first.\n\n**2. Open [Claude Code](https://claude.com/claude-code) or [Codex](https://openai.com/codex) on your laptop.**\nThe laptop and TV must be on the same Wi-Fi.\n\n**3. Paste this in.**\n\n```text\nHelp me clean up my Android TV and make it faster.\nMy TV is a <brand and model>.\n\n1. Before you change anything, tell me in plain words:\n   this turns off system apps, and that has some risk.\n   A few TVs got s",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "Ansub/tv-detox",
+      "summary": "TV Detox is an Android TV app that replaces the stock home screen with a minimal, ad‑free interface. It uses Claude Code or OpenAI Codex to automatically disable bloatware, ads and sponsored rows, while keeping apps reversible. The app provides a simple “OK” remote button to trigger the cleanup.",
+      "usefulness": "Designed for owners of older or sluggish Android TVs who want to improve performance and visual clutter without manual tinkering. Useful for hobbyists and developers looking for a quick AI‑assisted optimization.",
+      "uniqueness": "Leverages generative AI (Claude Code/Codex) to decide which system apps to disable, offering a one‑click cleanup that most traditional TV launchers lack. The undo feature ensures changes are reversible.",
+      "pros": [
+        "High star count and strong media coverage",
+        "One‑click AI‑driven cleanup",
+        "Reversible – apps are only disabled, not removed",
+        "Simple remote‑only interaction"
+      ],
+      "cons": [
+        "Works only on Android TV devices",
+        "Requires access to Claude Code or Codex (potential cost)",
+        "Documentation limited to README; no extensive developer guide"
+      ],
+      "audience": [
+        "android",
+        "tv",
+        "ai",
+        "mobile"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.708
+  },
+  {
+    "raw": {
+      "full_name": "wesbos/3d-model-anything",
+      "html_url": "https://github.com/wesbos/3d-model-anything",
+      "description": "Capture iPhone LiDAR and photos, reconstruct editable Three.js rooms, and explore them in a browser.",
+      "stars": 1307,
+      "forks": 217,
+      "language": "Swift",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-21T19:38:50Z",
+      "pushed_at": "2026-10-22T13:10:22Z",
+      "topics": [],
+      "readme_excerpt": "# 3D Model Anything\n\n[![Watch the video: 3D Model Anything](docs/images/thumb-1.png)](https://www.youtube.com/watch?v=JGQCcCzuS88)\n\nCapture a room on an iPhone, then use its geometry and photographs to build an editable Three.js scene with an AI coding agent.\n\n[Open the office viewer](https://wesbos.github.io/3d-model-anything/) · [App support](https://wesbos.github.io/3d-model-anything/support.html)\n\nThis repository includes the **3D Model Anything iPhone app**, a **Three.js viewer**, the **scan-to-threejs agent skill**, and **Wes’s detailed office demo**.\n\nThe app records the evidence. The skill guides an agent through measurement, modeling and matched-camera visual comparisons. This is an iterative reconstruction workflow, not a one-click scan-to-perfect-model converter. The current workflow focuses on rooms and interiors.\n\n## Run the viewer\n\nUse Node.js 22.12+ (or a newer supported release).\n\n```sh\nnpm ci\nnpm run dev\n```\n\nOpen http://localhost:5188. Explore the office in dollhouse, walking, overhead, wireframe and knolling views. The playground is at `/play.html?room=office-v4&mode=fpv`.\n\n```sh\nnpm run build\nnpm run preview\n```\n\nThe demo includes the reconstructed office and selected textures. Original scans and photo collections are not distributed; Scan and Overlay are disabled for this example. Those modes remain available for your own rooms with reference assets.\n\n## Capture your own space\n\nSee [the iPhone app](apps/house-capture/README.md) for building with Xcode, device requirements, scanning and sharing. Scanning needs a LiDAR-equipped iPhone or iPad. Non-LiDAR devices can import and review scans.\n\nThe app is source-available here; an App Store release is a separate distribution step. Do not assume an App Store download is available yet.\n\nExport a room or session through the system share sheet and extract it into an ignored `data/captures-in/<room>/` directory. Exports keep the existing `house-capture/5` contract; changing the app name does not change the files.\n\n## Use the skill\n\nThe skill lives at `.agents/skills/scan-to-threejs/SKILL.md`. Open this repository in an agent that supports local skills and ask it to use **scan-to-threejs** with your extracted export. You can also copy that skill directory into your agent's skill directory; the companion viewer/runtime in this repo is still needed for its capture workflow.\n\nExample request:\n\n> Use scan-to-threejs to rebuild the room in data/captures-in/my-room. Inspect the measurements and photos, create an editable scene, and compare rendered views with the original photographs.\n\nStart with [the format guide](.agents/skills/scan-to-threejs/references/house-capture.md) and [project layout](.agents/skills/scan-to-threejs/references/project-layout.md). Helpers need Python 3; photo comparisons need Pillow, and optional depth reconstruction needs NumPy, Open3D and Pillow. Capture scripts use the `agent-browser` CLI.\n\nA new room goes in `demos/<id>/` and is registered in `demos/index.ts`. The office example retains its earlier reconstruction layers (`office-v2`, `office-latest`, `office-v4`) to preserve the final geometry.\n\n## Privacy and licensing\n\nOnly the office example is distributed. No other rooms, connected-house layout, original scan bundles, or development Git history are included. Keep your captures private; inspect assets before publishing your own demo.\n\nReusable source code and the skill are MIT licensed. The supplied office images/textures have separate [asset terms](ASSETS-LICENSE.md). Third-party marks, artwork and depicted products are not licensed by the code license.\n\nSee [release status](docs/release-status.md) for validation and iPhone distribution steps.\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "wesbos/3d-model-anything",
+      "summary": "The project provides an iPhone app that captures rooms using LiDAR or photos and reconstructs them into editable Three.js scenes, plus a web viewer and an AI‑driven scan‑to‑threejs skill. It enables users to explore reconstructed interiors in a browser and integrate the workflow with AI agents.",
+      "usefulness": "Designed for developers and designers building AR/VR, interior‑design, or architecture tools who need a pipeline from mobile LiDAR capture to web‑based 3D visualization and AI‑assisted modeling.",
+      "uniqueness": "Combines on‑device LiDAR capture, an open‑source Three.js viewer, and a dedicated AI skill for iterative reconstruction—an end‑to‑end workflow not commonly found in single‑purpose scanning tools.",
+      "pros": [
+        "Comprehensive end‑to‑end pipeline (capture, processing, viewer)",
+        "Open‑source code with MIT‑compatible licensing",
+        "Active recent commits and clear README",
+        "AI skill integration for automated modeling"
+      ],
+      "cons": [
+        "No official App Store release yet, limiting easy distribution",
+        "Requires LiDAR‑equipped iPhone/iPad for full functionality",
+        "License metadata shows NOASSERTION, causing some ambiguity"
+      ],
+      "audience": [
+        "mobile",
+        "ar",
+        "3d",
+        "web",
+        "ai"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.706
+  },
+  {
+    "raw": {
+      "full_name": "xevrion/hatchzip",
+      "html_url": "https://github.com/xevrion/hatchzip",
+      "description": "Extract huge archives in place: the archive shrinks as your files hatch, so you only need room for the output. ZIP, 7z, tar, split archives.",
+      "stars": 1242,
+      "forks": 25,
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "created_at": "2026-10-21T17:29:28Z",
+      "pushed_at": "2026-10-23T14:28:39Z",
+      "topics": [
+        "7z",
+        "archive",
+        "cli",
+        "crash-safe",
+        "disk-space",
+        "extract",
+        "extractor",
+        "gui",
+        "rust",
+        "tar",
+        "unzip",
+        "zip"
+      ],
+      "readme_excerpt": "<h1 align=\"center\">HatchZip</h1>\n\n<p align=\"center\">\n  Extract huge archives in place. The archive shrinks as your files hatch,<br>\n  so you only need free space for the output, not for the output <em>and</em> the archive.\n</p>\n\n<h4 align=\"center\">\n  <a href=\"#installation\">Installation</a> |\n  <a href=\"#usage\">Usage</a> |\n  <a href=\"#is-it-safe\">Safety</a> |\n  <a href=\"docs/how-it-works.md\">How it works</a> |\n  <a href=\"CONTRIBUTING.md\">Contributing</a>\n</h4>\n\n<p align=\"center\">\n  <a href=\"https://github.com/xevrion/hatchzip/actions/workflows/ci.yml\"><img src=\"https://github.com/xevrion/hatchzip/actions/workflows/ci.yml/badge.svg\" alt=\"CI\" /></a>\n  <a href=\"#license\"><img src=\"https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg\" alt=\"MIT or Apache-2.0 licensed\" /></a>\n  <img src=\"https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-blue.svg\" alt=\"Linux, Windows and macOS\" />\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/media/hatchzip.gif\" width=\"720\" alt=\"HatchZip extracts the last part of the archive, then cuts it off the archive file, so the disk never holds the archive and all the files at once\" />\n</p>\n\nA 180 GB game download that unpacks to 200 GB needs 380 GB of disk with WinRAR, 7-Zip or `unzip`, because the archive and everything extracted from it have to exist at the same time. HatchZip needs a little over 200 GB. It extracts the archive from the end and cuts each finished part off the archive file as it goes, so the space the archive gives back is reused for the next files.\n\nIt checks that the extraction will fit before it changes anything, keeps a safety margin of free space the whole way through, and can be stopped or crash at any moment and pick up where it left off. It reads ZIP, 7z, tar, `.tar.gz` and split archives.\n\n### Get it\n\nNo coding needed. **[Download for Windows](https://github.com/xevrion/hatchzip/releases/latest/download/HatchZip-x64-setup.exe)** (Windows 10 and 11), or for [macOS (Apple Silicon)](https://github.com/xevrion/hatchzip/releases/latest/download/HatchZip-aarch64.dmg), [macOS (Intel)](https://github.com/xevrion/hatchzip/releases/latest/download/HatchZip-x86_64.dmg) and [Linux](#installation).\n\n1. Run the installer. Windows may show \"Windows protected your PC\" because HatchZip is not code-signed yet: choose **More info**, then **Run anyway**.\n2. Right-click the archive, choose **HatchZip**, then **Extract here**. On Windows 11 the menu is under **Show more options**.\n3. Or open HatchZip from the Start menu, open the archive, and choose **Extract**.\n\nHatchZip shows whether the files will fit before it changes anything. The archive is used up as the files come out, so when it finishes, only the extracted files are left.\n\n## Highlights\n\nThe same 200 MB of game data (21 files), packed by the real tools, extracted on a 220 MiB disk with about 50 MB free:\n\n| Archive | `unzip` / 7-Zip | HatchZip |\n|---|---|---|\n| ZIP, 180 MB | `unzip` ran out of space at file 6 of 21 | Finished, every file byte-identical |\n| 7z from 7-Zip 25.01, `-ms=20m` (10 solid blocks) | Needs 380 MB | Finished in 0.64 s, every file byte-identical |\n| 7z split into 5 volumes of 40 MB | Needs 380 MB | Finished; volumes deleted one at a time, peak 210 MB used |\n| tar from GNU tar, 200 MB | Needs 400 MB | Finished in 0.12 s, every file byte-identical |\n| 7z from 7-Zip with default settings (1 solid block) | Needs 380 MB | Refused before touching anything: one solid block can't be freed until all of it is out, so it needs 200 MB free |\n\n| | Result |\n|---|---|\n| ZIP extraction speed, same data | 0.25 to 0.35 s, against 1.48 to 1.50 s for `unzip` 6.00, including an fsync `unzip` skips |\n| Crash safety | Killed at both unsafe moments of a batch at many points of each format's run; every resume finished with identical output |\n| Works on | Any filesystem that can shrink a file: ext4, btrfs, XFS, NTFS, APFS, and also exFAT and FAT32 USB drives |\n\nMeasured on Fedora 43, Intel Core i7-14700HX, SK Hynix ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "xevrion/hatchzip",
+      "summary": "HatchZip extracts large archives directly in place, shrinking the archive as files are unpacked so only the final output size is needed on disk. It supports ZIP, 7z, tar and split archives on Linux, Windows and macOS.",
+      "usefulness": "Useful for users who need to unpack massive archives on storage‑constrained systems, such as gamers, sysadmins, or developers handling large data bundles.",
+      "uniqueness": "Unlike traditional extractors, HatchZip reads from the end of the archive and truncates it on‑the‑fly, guaranteeing crash‑safety and minimal peak disk usage.",
+      "pros": [
+        "Zero‑copy extraction reduces required free space",
+        "Cross‑platform CLI and GUI installers",
+        "Crash‑safe – can resume after interruption",
+        "Fast extraction compared to standard tools"
+      ],
+      "cons": [
+        "Windows binary is not code‑signed yet",
+        "Documentation is limited to README and short docs",
+        "No built‑in support for encrypted archives"
+      ],
+      "audience": [
+        "cli",
+        "archive",
+        "filesystem",
+        "rust",
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.705
+  },
+  {
+    "raw": {
+      "full_name": "colinhacks/reylo",
+      "html_url": "https://github.com/colinhacks/reylo",
+      "description": "Import .sql files into TypeScript with full type inference and zero codegen.",
+      "stars": 1105,
+      "forks": 8,
+      "language": "Rust",
+      "license": "MIT",
+      "created_at": "2026-10-21T00:16:54Z",
+      "pushed_at": "2026-10-24T04:54:52Z",
+      "topics": [],
+      "readme_excerpt": "<h1 align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"site/public/readme-logo-dark.svg\" />\n    <img src=\"site/public/readme-logo-light.svg\" width=\"160\" alt=\"Reylo\" />\n  </picture>\n</h1>\n\n<p align=\"center\">Import <code>.sql</code> files into your TypeScript code with full type inference</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/colinhacks/reylo/actions/workflows/test.yml\"><img src=\"https://github.com/colinhacks/reylo/actions/workflows/test.yml/badge.svg?branch=main\" alt=\"test status\" /></a>\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/github/license/colinhacks/reylo?style=flat\" alt=\"License: MIT\" /></a>\n  <a href=\"https://www.npmjs.com/package/reylo\"><img src=\"https://img.shields.io/github/v/release/colinhacks/reylo?label=npm\" alt=\"npm version\" /></a>\n  <a href=\"https://github.com/colinhacks/reylo\"><img src=\"https://img.shields.io/github/stars/colinhacks/reylo\" alt=\"GitHub stars\" /></a>\n</p>\n\n<div align=\"center\">\n  <a href=\"https://reylo.dev\">Read the docs →</a>\n</div>\n\n<br/>\n\n<p align=\"center\">\n  <img src=\"site/public/readme-demo.gif\" alt=\"An editor: hovering a query's result shows its type, which follows the SQL as the SQL changes\" />\n</p>\n\n<br/>\n\nIf you have a file like this:\n\n```sql\n-- get_author.sql\nselect u.id, u.name, count(p.id)::int as post_count\nfrom users u\nleft join posts p on p.user_id = u.id\nwhere u.id = :id::int\ngroup by u.id\n```\n\nYou can import it directly from a TypeScript file like this:\n\n```ts\n// main.ts\nimport postgres from \"postgres\";\nimport getAuthor from \"./get_author.sql\";\n\nconst db = postgres(process.env.DATABASE_URL);\n\nconst author = await getAuthor.run(db, { id: 1 });\n// { id: number; name: string; post_count: number } | null\n```\n\nReylo is powered by TypeScript [content mappers](https://github.com/microsoft/typescript-go/pull/4712), introduced in TypeScript 7.1 (currently [in beta](https://devblogs.microsoft.com/typescript/announcing-typescript-7-1-beta/)), which let you dynamically define static types for external file types and integrate them directly into TypeScript compilation.\n\nReylo is the perfect option for the agent era:\n\n- 💪 **The full power of SQL** — any statement, function, operator or syntax your database supports, in its own dialect.\n- 🌵 **DRY** — the types come from the SQL itself: no hand-written row types, no schema file to keep in sync.\n- 🎯 **Checked against your database** — a misspelled column, a wrong parameter or a dropped table is a type error, in `tsc` and in your editor.\n- 🤖 **Agent-friendly** — each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed.\n- 🧩 **Postgres, MySQL and SQLite** — bring your own driver: `pg`, postgres.js, `mysql2`, `better-sqlite3`, `Bun.sql`, Cloudflare D1 and [more](#supported-drivers).\n- ⚡ **No codegen** — the type checker asks Reylo directly: no generated files, no watcher.\n\n## Setup\n\nTo install Reylo, you'll need:\n\n- **TypeScript 7.1 (currently in beta).** The first release with content mappers.\n- **Node 24 or later.**\n- **A running dev database.** Postgres, MySQL 8.0.22 or later, or a SQLite file: Reylo reads your current schema from it.\n\nInstall Reylo, the engine for your database and TypeScript 7.1:\n\n```sh\nnpm install reylo\nnpm install -D @reylosql/postgres  # or mysql, sqlite\nnpm install -D typescript@beta\n```\n\nAdd Reylo to `tsconfig.json`, for `.sql` files and for its project file, `.reylo.yaml` or `.reylo.yml`:\n\n```jsonc\n// tsconfig.json\n{\n  \"compilerOptions\": { /* ... */ },\n  \"contentMappers\": [\n    { \"package\": \"reylo\", \"extensions\": [\".sql\", \".reylo.yaml\", \".reylo.yml\"] }\n  ]\n}\n```\n\nThen type-check with `--runExternalCode`, which lets `tsc` run content mappers:\n\n```jsonc\n// package.json\n{\n  \"scripts\": {\n    \"typecheck\": \"tsc --noEmit --runExternalCode\"\n  }\n}\n```\n\nPoint Reylo at your dev database with `DATABASE_URL`, in your environment or in `.env`. Its scheme tells Reylo which database you ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0. Не запускались: semgrep, bandit, gitleaks, osv-scanner"
+    },
+    "analysis": {
+      "full_name": "colinhacks/reylo",
+      "summary": "Reylo lets you import .sql files directly into TypeScript code with full type inference, eliminating the need for manual type definitions or code generation. It uses TypeScript content mappers (beta in TS 7.1) to derive types from the actual SQL queries and the connected database schema.",
+      "usefulness": "Helps TypeScript backend developers and data‑access layer authors keep SQL queries type‑safe without extra schema files, improving developer productivity and reducing runtime errors.",
+      "uniqueness": "First tool to provide zero‑codegen, full‑type inference for arbitrary SQL via TypeScript content mappers, supporting multiple databases (Postgres, MySQL, SQLite) and working at compile time rather than runtime.",
+      "pros": [
+        "Zero code generation – types are resolved during type‑checking",
+        "Supports any SQL dialect supported by the target database",
+        "Types are derived directly from queries, staying in sync automatically",
+        "Works with popular drivers (pg, mysql2, better‑sqlite3, etc.)"
+      ],
+      "cons": [
+        "Requires TypeScript 7.1 beta, which is not yet stable",
+        "Project is very new (created Oct 2026), so ecosystem and community are still forming",
+        "Documentation is decent but relies on external site; no built‑in examples for all drivers"
+      ],
+      "audience": [
+        "backend",
+        "typescript",
+        "cli",
+        "database"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.702
+  }
+]
