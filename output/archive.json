@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-24T10:28:37+00:00",
-  "count": 20,
+  "updated_at": "2026-10-24T11:07:45+00:00",
+  "count": 23,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -110,6 +110,15 @@
       "score": 3.212,
       "html_url": "https://github.com/ikow/php2shell-poc"
     },
+    "justrach/nanoui": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.382,
+      "html_url": "https://github.com/justrach/nanoui"
+    },
     "lesnolie/Tigris": {
       "releases": [
         "2026-10-24"
@@ -164,6 +173,15 @@
       "score": 3.03,
       "html_url": "https://github.com/simbasjungles/free-my-tv"
     },
+    "torrentplayer/torrentplayer": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.984,
+      "html_url": "https://github.com/torrentplayer/torrentplayer"
+    },
     "wesbos/3d-model-anything": {
       "releases": [
         "2026-10-24"
@@ -181,6 +199,15 @@
       "last": "2026-10-24",
       "score": 3.605,
       "html_url": "https://github.com/xevrion/hatchzip"
+    },
+    "xiaoyang111222/cn-math-taxonomy": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.424,
+      "html_url": "https://github.com/xiaoyang111222/cn-math-taxonomy"
     }
   }
 }
