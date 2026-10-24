@@ -14,9 +14,11 @@ logger = logging.getLogger(__name__)
 SCANNER_TIMEOUT = 120
 CLONE_TIMEOUT = 180
 
-_CRITICAL_WORDS = {"CRITICAL", "ERROR", "BLOCKER"}
-_HIGH_WORDS = {"HIGH", "WARNING", "MAJOR"}
-_MEDIUM_WORDS = {"MEDIUM", "MODERATE", "MINOR"}
+# Отсекает выпуск только CRITICAL. Semgrep-«ERROR» — это обычная находка правила,
+# их на молодых репозиториях десятки; считать их критичными значит публиковать по 2-3 проекта.
+_CRITICAL_WORDS = {"CRITICAL", "BLOCKER"}
+_HIGH_WORDS = {"HIGH", "ERROR", "MAJOR"}
+_MEDIUM_WORDS = {"MEDIUM", "MODERATE", "WARNING", "MINOR"}
 
 
 def _which(binary: str) -> bool:

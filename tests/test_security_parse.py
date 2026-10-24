@@ -37,7 +37,8 @@ OSV = {
 
 
 def test_parse_semgrep_counts_severities():
-    assert parse_semgrep(SEMGREP) == (3, 1, 1)
+    # ERROR от semgrep — это high, а не critical: иначе выпуски схлопываются до 2-3 репозиториев
+    assert parse_semgrep(SEMGREP) == (3, 0, 1)
 
 
 def test_parse_bandit_counts_high():

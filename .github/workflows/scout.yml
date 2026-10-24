@@ -71,6 +71,7 @@ jobs:
           MIN_RELEASE_REPOS: "3"
           MIN_STARS: "100"
           LOOKBACK_DAYS: "3"
+          CANDIDATE_LIMIT: "20"
         run: python -m src.main
 
       - name: Коммит результата
