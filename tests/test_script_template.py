@@ -23,6 +23,7 @@ def test_fallback_contains_every_repo_and_link(make_repo, make_analysis, passed_
     assert "Всем привет!" in text
     assert "Спасибо за просмотр" in text
     assert _words(text) >= 800
+    assert _words(text) <= 1500, f"шаблонный сценарий слишком длинный: {_words(text)} слов"
 
 
 def test_validate_script_reports_missing_repo(make_repo, make_analysis, passed_security):

@@ -21,8 +21,19 @@ def release_date(now: datetime | None = None) -> str:
     return (now or datetime.now(timezone.utc)).astimezone(timezone.utc).date().isoformat()
 
 
+def _release_dir(output_dir: Path, date_str: str) -> Path:
+    """Каталог выпуска: если за эту дату уже есть выпуск, добавляем суффикс -2, -3…"""
+    target = output_dir / date_str
+    if not target.exists():
+        return target
+    counter = 2
+    while (output_dir / f"{date_str}-{counter}").exists():
+        counter += 1
+    return output_dir / f"{date_str}-{counter}"
+
+
 def _write_release_dir(output_dir: Path, date_str: str, script: str, repos: list[ScoredRepo]) -> Path:
-    release = output_dir / date_str
+    release = _release_dir(output_dir, date_str)
     release.mkdir(parents=True, exist_ok=True)
     (release / "script.md").write_text(script, encoding="utf-8")
     raws: list[RepoRaw] = [item.raw for item in repos]
@@ -47,7 +58,7 @@ def rebuild_index(output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     rows: list[str] = []
     for entry in sorted(output_dir.iterdir(), reverse=True):
-        if not entry.is_dir() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", entry.name):
+        if not entry.is_dir() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}(-\d+)?", entry.name):
             continue
         if not (entry / "script.md").exists():
             continue
