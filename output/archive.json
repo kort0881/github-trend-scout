@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-24T09:54:43+00:00",
-  "count": 20,
+  "updated_at": "2026-10-24T10:28:37+00:00",
+  "count": 21,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -10,6 +10,15 @@
       "last": "2026-10-24",
       "score": 3.008,
       "html_url": "https://github.com/Ansub/tv-detox"
+    },
+    "Apolinario-coder/SkyRecomp": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.78,
+      "html_url": "https://github.com/Apolinario-coder/SkyRecomp"
     },
     "Domainsun/awesome-chinese-secondhand-slang": {
       "releases": [
