@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-24T11:07:45+00:00",
-  "count": 23,
+  "updated_at": "2026-10-24T11:33:49+00:00",
+  "count": 26,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -19,6 +19,15 @@
       "last": "2026-10-24",
       "score": 3.385,
       "html_url": "https://github.com/Domainsun/awesome-chinese-secondhand-slang"
+    },
+    "ELY-Open-Source/ElyOffice": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.999,
+      "html_url": "https://github.com/ELY-Open-Source/ElyOffice"
     },
     "Hugo-Dz/spritefusion-sprite-normals": {
       "releases": [
@@ -46,6 +55,15 @@
       "last": "2026-10-24",
       "score": 3.681,
       "html_url": "https://github.com/K0NL/B2recomp"
+    },
+    "Snapintosh/Snapintosh": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.196,
+      "html_url": "https://github.com/Snapintosh/Snapintosh"
     },
     "UniXNU/UniXNU": {
       "releases": [
@@ -91,6 +109,15 @@
       "last": "2026-10-24",
       "score": 3.089,
       "html_url": "https://github.com/dominikmartn/harp"
+    },
+    "eagle-hq/EAGLE-4": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.999,
+      "html_url": "https://github.com/eagle-hq/EAGLE-4"
     },
     "humblemuzzu/dumbtv": {
       "releases": [

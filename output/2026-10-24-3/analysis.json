@@ -1,0 +1,162 @@
+[
+  {
+    "raw": {
+      "full_name": "eagle-hq/EAGLE-4",
+      "html_url": "https://github.com/eagle-hq/EAGLE-4",
+      "description": "Official Inference Code of EAGLE-4",
+      "stars": 958,
+      "forks": 31,
+      "language": "Python",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-20T14:03:04Z",
+      "pushed_at": "2026-10-24T08:34:16Z",
+      "topics": [
+        "eagle",
+        "gpu",
+        "llm-inference",
+        "sglang",
+        "speculative-decoding",
+        "tokenspeed",
+        "vllm"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/assets/Eagle.svg\" alt=\"Eagle\" width=\"180\">\n\n<h1>EAGLE-4</h1>\n\n<p>\n  <b>One Flexible Drafter for All Batch Sizes and Hardware</b>\n</p>\n\n<p>\n  <a href=\"EAGLE4_Paper.pdf\"><b>Paper (EAGLE-4)</b></a> ·\n  <a href=\"https://huggingface.co/EAGLE-Corp/Qwen3.8-27B-EAGLE4\"><b>EAGLE-4 draft for Qwen3.8-27B</b></a> ·\n  <a href=\"docs/README.md\"><b>Documentation</b></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://pypi.org/project/eagle-harness/\"><img src=\"https://img.shields.io/pypi/v/eagle-harness?label=eagle-harness&color=orange\" alt=\"eagle-harness on PyPI\"></a>\n  <a href=\"https://github.com/eagle-hq/EAGLE-4/issues\" target=\"_blank\"><img src=\"https://img.shields.io/badge/Maintained%3F-yes-green.svg\" alt=\"Maintenance\"></a>\n  <a href=\"https://github.com/eagle-hq/EAGLE-4/pulls\" target=\"_blank\"><img src=\"https://img.shields.io/badge/Contributions-welcome-brightgreen.svg\" alt=\"Contributions welcome\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://eagle.ai/\"><img src=\"https://img.shields.io/badge/Website-eagle.ai-FCCC36?labelColor=171819&color=FCCC36\" alt=\"Eagle website\"></a>\n  <a href=\"https://www.linkedin.com/company/eagle/posts/?feedView=all\"><img src=\"https://img.shields.io/badge/LinkedIn-Eagle-FCCC36?logo=linkedin&labelColor=171819&color=2B2D30&logoColor=FCCC36\" alt=\"Eagle on LinkedIn\"></a>\n  <a href=\"https://x.com/EagleCorp\"><img src=\"https://img.shields.io/badge/X-@EagleCorp-FCCC36?logo=x&labelColor=171819&color=2B2D30&logoColor=FCCC36\" alt=\"Eagle on X\"></a>\n  <a href=\"https://github.com/eagle-hq\"><img src=\"https://img.shields.io/badge/GitHub-eagle--hq-FCCC36?logo=github&labelColor=171819&color=2B2D30&logoColor=FCCC36\" alt=\"GitHub organization\"></a>\n  <a href=\"https://huggingface.co/EAGLE-Corp\" target=\"_blank\"><img src=\"https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-EAGLE--Corp-FCCC36\" alt=\"HuggingFace\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-Eagle--4-FCCC36\" alt=\"License\"></a>\n</p>\n\n</div>\n\n<br />\n\n<p align=\"center\">\n  <img src=\"docs/assets/paper_results.png\" alt=\"EAGLE-4 single-request speedup over vanilla decoding, from the paper\" width=\"65%\">\n</p>\n\n<p align=\"center\">\n  <sub>\n    Figure 1(a) of the EAGLE-4 paper: Qwen3.8-27B on the SPEED-Bench qualitative split, 4× NVIDIA B300, one request, temperature 0.\n    The numbers this release measured with EAGLE-4 are in the <a href=\"docs/support-matrix.md\">support matrix</a>.\n  </sub>\n</p>\n\n## EAGLE-4\n\n**Leave speculation on. EAGLE-4 adapts to your hardware, batch and workload.**\n\nFor high load, serve SGLang on four B300 GPUs with the [high-load recipe](docs/quickstart-sglang.md#high-load), which\nkeeps pace with plain decoding up to 512 concurrent requests.\n\nEAGLE-4 (Extrapolation Algorithm for Greater Language-model Efficiency) speeds up LLM inference with\nspeculative decoding. EAGLE-4 draft models are built to run with `eagle-harness`, which decides how far to\nspeculate from measured costs on your setup, so every draft tree fits the batch size, the hardware and the\nworkload. The output stays exactly what the target model would generate on its own: up to 3.4× faster\ngeneration on Qwen3.8-27B, with the same answers. [Measured speedups](#measured-speedup)\n\nThis repository holds `eagle-harness`, the package that brings EAGLE-4 to SGLang, vLLM and TokenSpeed.\nInstall it, point your engine at an EAGLE-4 draft model, and it serves with EAGLE-4.\n\n## Quick start\n\nThe quick start serves on one GPU and is tested on one NVIDIA B300 with Linux and a CUDA 13 driver.\n[Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) and its\n[EAGLE-4 draft](https://huggingface.co/EAGLE-Corp/Qwen3.8-27B-EAGLE4) download on the first start (about 62 GB).\nThe [measured speedups](#measured-speedup) use four B300 GPUs. Add `--tp-size 4` to either serve command to serve\non four, and see the [engine guides](#more) for the exact measured commands.\n\nStart an SGLang server with Docker:\n\n```bash\ndocker run --gpus all --ipc host -",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 1855,
+      "gitleaks_findings": 1,
+      "critical_count": 0,
+      "high_count": 2,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 1855, gitleaks: 1, osv: 0; critical=0, high=2"
+    },
+    "analysis": {
+      "full_name": "eagle-hq/EAGLE-4",
+      "summary": "Официальный код инференса для EAGLE-4, системы спекулятивного декодирования, обеспечивающая ускорение генерации токенов для LLM. Проект поддерживает различные размеры батчей и аппаратные конфигурации, интегрируясь с популярными фреймворками вроде vLLM и SGLang.",
+      "usefulness": "Нужен инженерам по ML-инференсу и DevOps-специалистам для оптимизации скорости и стоимости вывода больших языковых моделей на GPU.",
+      "uniqueness": "Отличается от аналогов универсальностью: один драфтер работает для всех размеров батчей и типов оборудования, что упрощает развёртывание по сравнению с решениями, требующими специфических настроек под каждый сценарий.",
+      "pros": [
+        "Поддержка популярных бэкендов инференса (vLLM, SGLang, TokenSpeed)",
+        "Наличие научной статьи и документации",
+        "Активное развитие и поддержка сообщества"
+      ],
+      "cons": [
+        "Отсутствие стандартной лицензии (NOASSERTION) создаёт юридические риски",
+        "Высокое количество предупреждений безопасности (1855 от Bandit, 2 high)",
+        "Проект очень молодой (создан в 2026), зрелость кодовой базы не подтверждена длительной эксплуатацией"
+      ],
+      "audience": [
+        "backend",
+        "ml-inference",
+        "gpu",
+        "llm",
+        "performance"
+      ],
+      "score": 6.5
+    },
+    "final_score": 2.999
+  },
+  {
+    "raw": {
+      "full_name": "ELY-Open-Source/ElyOffice",
+      "html_url": "https://github.com/ELY-Open-Source/ElyOffice",
+      "description": "Ely Office: offline-first desktop apps in Rust and GPUI",
+      "stars": 954,
+      "forks": 61,
+      "language": "Rust",
+      "license": "MIT",
+      "created_at": "2026-10-19T23:04:42Z",
+      "pushed_at": "2026-10-23T14:58:55Z",
+      "topics": [],
+      "readme_excerpt": "# Ely Office\n\nOffline-first desktop apps in Rust and GPUI. Files stay in your folders; no account, no cloud service.\n\nDownload from [office.elygpui.com](https://office.elygpui.com) or the [latest release](https://github.com/ELY-Open-Source/ElyOffice/releases/latest): Windows, macOS (Apple silicon and Intel) and Linux (AppImage, deb, rpm, Arch, Nix; Debian 11 and Ubuntu 20.04 or newer).\n\n| App | Does | Engine |\n| --- | --- | --- |\n| ElyDoc | Word processing (DOCX, ODT) | LibreOfficeKit |\n| ElyTable | Spreadsheets (XLSX, ODS, CSV) | LibreOfficeKit |\n| ElyShow | Presentations (PPTX, ODP) | LibreOfficeKit, system media |\n| ElyPDF | PDF reading and editing, OCR, signatures | MuPDF, Tesseract |\n| ElyMail | Mail over IMAP, POP3 and SMTP; follows the system proxy | own IMAP and POP3, mail-send, SQLite |\n| ElyTree | Git client | Git |\n| ElyMark | Markdown | markdown-rs, RaTeX, mermaid-rs-renderer |\n| ElyAgent | Second release | Kigi CLI |\n\nElyMail signs in to Microsoft with OAuth, and to Gmail and iCloud with an app password.\n\n## Build\n\n```sh\nscripts/doctor.sh                 # toolchain versions\nscripts/fetch-references.sh       # upstream sources at pinned commits\nscripts/build-libreoffice.sh      # patched LibreOffice 26.2.6.3 (about an hour)\nscripts/build-mupdf.sh            # patched MuPDF 1.28.5\nscripts/build-git.sh && scripts/fetch-git-lfs.sh\nscripts/fetch-tessdata.sh\ncargo build -p ely-lok --bins -p ely-pdf-engine --bins\ncargo run -p ely-doc              # or ely-table, ely-show, ely-pdf, ely-mail, ely-tree, ely-mark\n```\n\nElyMail needs a Microsoft client ID at build time: put `ELY_MICROSOFT_CLIENT_ID=<id>` in `cred.txt` at the repository root (git ignores it).\n\nThe scripts run on macOS, on Windows (LibreOffice under Cygwin, MuPDF with MSBuild) and on Linux inside `packaging/linux/container.sh`, an AlmaLinux 8 image that keeps the binaries on glibc 2.28.\n\n## Release\n\nPushing a `v*` tag runs `.github/workflows/release.yml`. Self-hosted runners build macOS (arm64, and Intel under Rosetta), Windows and Linux with `scripts/ci.sh` and upload each app's packages, update manifests and the source archives to the GitHub release. macOS builds are signed and notarized.\n\n## Tests\n\n`cargo test --workspace`; the script tests in `tests/scripts` (the window tests need macOS Accessibility permission; Linux tests run in containers); the benchmarks `tests/perf/bench.py` and `tests/perf/folder-search.rs`.\n\n## Documents\n\n| | |\n| --- | --- |\n| `PRD.md` | Requirements |\n| `agents.md` | Stack, rules and commands; the single source of truth |\n| `tasks/TASKS.md` | Progress |\n| `docs/decisions.md` | Decision log, by date |\n| `docs/help.md` | Help: opening and saving, panels, recovery, offline limits, repositories, mail |\n| `docs/compatibility.md` | Compatibility list for the current release |\n| `docs/accessibility.md` | Accessibility and language review |\n| `docs/perf/` | Benchmark records |\n| `docs/licenses.md` | Licences and sources |\n| `CONTRIBUTING.md` | Opening a pull request |\n\n## Licence\n\nMIT (`LICENSE`). Third-party components keep their own licences; see `docs/licenses.md`.\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 57,
+      "gitleaks_findings": 1,
+      "critical_count": 0,
+      "high_count": 3,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 57, gitleaks: 1, osv: 42; critical=0, high=3"
+    },
+    "analysis": {
+      "full_name": "ELY-Open-Source/ElyOffice",
+      "summary": "ElyOffice — это набор офлайн-ориентированных настольных приложений на Rust и GPUI, включающий текстовый редактор, таблицы, презентации, PDF-просмотрщик, почтовый клиент и другие инструменты. Проект позиционируется как приватная альтернатива облачным офисным пакетам, где данные хранятся локально.",
+      "usefulness": "Нужен пользователям, которые хотят работать с офисными документами, PDF и электронной почтой без отправки данных в облако и без обязательной регистрации аккаунта. Подходит для разработчиков, интересующихся созданием кроссплатформенных десктопных приложений на Rust с использованием GPUI.",
+      "uniqueness": "Отличается от аналогов (LibreOffice, OnlyOffice) полностью офлайн-архитектурой, отсутствием облачных сервисов и использованием современного стека Rust + GPUI для UI, а также интеграцией различных движков (LibreOfficeKit, MuPDF, Tesseract) в единый экосистемный пакет.",
+      "pros": [
+        "Полная приватность: файлы остаются локально, нет облака и обязательных аккаунтов",
+        "Кроссплатформенность: поддержка Windows, macOS (Intel/ARM) и Linux (разные пакеты)",
+        "Широкий функционал: 8 приложений покрывают основные офисные задачи и работу с Git",
+        "Открытый исходный код под лицензией MIT"
+      ],
+      "cons": [
+        "Проект очень молодой (создан в октябре 2026), низкая зрелость и стабильность",
+        "Сложная сборка: требует патченных версий LibreOffice и MuPDF, длительные скрипты подготовки",
+        "Найдены 3 high-уровня уязвимости в отчёте безопасности, что требует внимания"
+      ],
+      "audience": [
+        "backend",
+        "desktop",
+        "privacy",
+        "rust",
+        "office-suite",
+        "cli"
+      ],
+      "score": 6.5
+    },
+    "final_score": 2.999
+  },
+  {
+    "raw": {
+      "full_name": "Snapintosh/Snapintosh",
+      "html_url": "https://github.com/Snapintosh/Snapintosh",
+      "description": "EL2 hypervisor and toolchain that boots macOS on the ASUS A16 (Snapdragon X2 Elite), with an Adreno Metal/IOGPU stack",
+      "stars": 819,
+      "forks": 46,
+      "language": "Python",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-22T01:40:05Z",
+      "pushed_at": "2026-10-23T08:23:24Z",
+      "topics": [],
+      "readme_excerpt": "# Snapintosh\n\n![Snapintosh — macOS on Snapdragon; ASCII hands reaching toward a red chip](docs/assets/snapintosh-ascii-chip-red.png)\n\nSnapintosh boots Apple's macOS 27 (build 26A428) on an ASUS Zenbook A16 laptop\nwith a Qualcomm Snapdragon X2 Elite (X2E-96-100). It is an EL2 monitor\n(hypervisor) and the toolchain around it. The monitor runs Apple's stock\nkernelcache (the J700/T8140 kernel) unmodified by default. It supplies the\nplatform contracts that the kernel expects from Apple silicon: the SPTM and TXM\nmonitor calls, translation of the kernel's 16 KiB page tables, and the Apple\ndevices the kernel looks for.\n\nGraphics run on the laptop's own Adreno X2-90 GPU through a driver stack\nwritten for this project:\n\n- **AdrenoMetal.bundle**: a Metal driver plug-in.\n- **AdrenoX2**: an IOGPU kernel extension, with **AdrenoDisplay** driving the\n  internal panel.\n- **air2ir3**: a shader compiler that translates Apple's AIR (Metal's IR) into\n  Mesa's ir3 for the Adreno.\n\nThere is no software, CPU or paravirtual rendering path.\n\nThe project also includes an I2C-HID keyboard and touchpad driver (SnapI2CHID),\nnative QCC2072 Wi-Fi work, and NVMe storage through an emulated Apple storage\ncontroller.\n\nSnapintosh is used together with [q1n1](https://github.com/Snapintosh/q1n1), a\nUEFI EL2 proxy forked from Asahi Linux's m1n1. q1n1 takes the machine at EL2\nafter UEFI and serves m1n1's proxy protocol over USB-C to a Mac host, which\ndrives Snapintosh from there.\n\n## Status\n\nThis is experimental software, written for one laptop model.\n\n| Area | State |\n| --- | --- |\n| macOS desktop on the A16 | Boots to the desktop with GPU acceleration. Rendering is correct: the pixel checks across the desktop test scenes pass. |\n| Smoothness | In progress. Interaction is usable but not yet smooth. The target is a steady ~60 Hz first and the panel's 120 Hz later. |\n| Input | The built-in keyboard and touchpad work, including trackpad gestures, Mission Control and app switching. |\n| Wi-Fi (QCC2072) | Scanning, a WPA2 connection, DHCP and ping work through a host-proxy harness driven from the Mac. Joining from the macOS Wi-Fi menu does not work yet. |\n| Storage | macOS is installed on, and boots from, the internal NVMe. |\n| Other hardware | Audio, cameras, Bluetooth, sleep and external displays are not supported. |\n\n[docs/STATUS.md](docs/STATUS.md) has the details, the known issues and the\nroadmap.\n\n## Required hardware\n\n- An **ASUS Zenbook A16 with the Snapdragon X2 Elite X2E-96-100** (UX3607OA).\n  Nothing else is supported. The monitor, device tables, clocks and register\n  addresses are specific to this machine.\n- A **Mac host** running macOS 27, connected to the A16 over USB-C. q1n1 brings\n  up a USB NCM network link on that cable, and every boot, upload and log\n  capture goes over it.\n- AC power is strongly recommended. The tools refuse to boot or write the SSD\n  below a battery threshold.\n\n## Architecture in brief\n\n```mermaid\nflowchart TD\n    UEFI[\"A16 UEFI firmware\"] --> Q1N1\n    Q1N1[\"q1n1: UEFI EL2 proxy<br/>(USB-C NCM link to the Mac host)\"] --> MON\n    MON[\"Snapintosh EL2 monitor<br/>SPTM/TXM call emulation, 16K-to-4K shadow page tables,<br/>Apple device models (AIC, ANS2 NVMe, DART, ...), GPU ring and SMMU mediation\"] --> XNU\n    XNU[\"Stock macOS kernel at EL1 + AuxKC<br/>(AdrenoX2 + AdrenoDisplay, SnapI2CHID, ...)\"] --> USER\n    USER[\"macOS userspace<br/>WindowServer, Core Animation, apps<br/>AdrenoMetal.bundle + air2ir3 compiler runtime\"]\n    HOST[\"Mac host: tools/cycle.py, q1n1 proxy client\"] -. USB-C NCM .-> Q1N1\n```\n\n```\nA16 UEFI -> q1n1 (EL2 proxy) -> Snapintosh monitor (EL2) -> XNU + AuxKC (EL1) -> userspace + Metal plug-in (EL0)\n```\n\n[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains each layer.\n\n## Repository layout\n\n| Path | Contents |\n| --- | --- |\n| `compat/` | the EL2 monitor: SPTM/TXM contracts, CPU, interrupt, timer and device emulation, the GPU ring and SMMU mediation, the NVMe backend |\n| `shadow/` | the page-table walker and the 16 Ki",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 7134,
+      "gitleaks_findings": 7,
+      "critical_count": 0,
+      "high_count": 13,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 7134, gitleaks: 7; critical=0, high=13"
+    },
+    "analysis": {
+      "full_name": "Snapintosh/Snapintosh",
+      "summary": "Экспериментальный гипервизор уровня EL2 и инструментарий для запуска macOS на ноутбуках с процессором Qualcomm Snapdragon X2 Elite. Проект обеспечивает работу нативного графического стека Adreno через кастомные драйверы Metal и IOGPU, эмулируя аппаратные контракты Apple Silicon.",
+      "usefulness": "Для энтузиастов и исследователей, заинтересованных в портировании macOS на ARM-архитектуру Qualcomm, а также для разработчиков драйверов GPU, изучающих взаимодействие Metal с не-Apple железом.",
+      "uniqueness": "Единственный известный проект, запускающий macOS на Snapdragon X2 Elite с полноценной аппаратной ускоренной графикой Adreno без использования CPU-рендеринга или паравиртуализации, что отличает его от стандартных эмуляторов или портов на Apple Silicon.",
+      "pros": [
+        "Запуск macOS с аппаратным ускорением графики Adreno X2-90",
+        "Работа нативных драйверов ввода (клавиатура, тачпад) и Wi-Fi",
+        "Собственный компилятор шейдеров air2ir3 для перевода AIR в ir3"
+      ],
+      "cons": [
+        "Критически высокая уязвимость кода: 7134 находки Bandit и 13 high-рисков в отчёте безопасности",
+        "Отсутствие лицензии (NOASSERTION) ограничивает легальное использование и встраивание",
+        "Экспериментальный статус, поддержка только одной модели ноутбука (ASUS A16), нестабильная плавность интерфейса"
+      ],
+      "audience": [
+        "os-development",
+        "hypervisor",
+        "gpu-drivers",
+        "embedded",
+        "reverse-engineering"
+      ],
+      "score": 4.5
+    },
+    "final_score": 2.196
+  }
+]
