@@ -21,7 +21,7 @@ def test_second_release_same_day_gets_suffix(tmp_path, make_repo, make_analysis,
     assert first.name == "2026-10-24"
     assert second.name == "2026-10-24-2"
     assert third.name == "2026-10-24-3"
-    assert (first / "script.md").read_text(encoding="utf-8") == "раз"
+    assert (first / "review.md").read_text(encoding="utf-8") == "раз"
 
 
 def test_index_lists_releases_with_suffix(tmp_path, make_repo, make_analysis, passed_security):

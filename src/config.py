@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
-DEFAULT_MODEL = "openai/gpt-oss-120b"
+DEFAULT_MODEL = "openai/gpt-oss-20b"
 DEFAULT_FALLBACKS = ["qwen/qwen3.8-27b", "llama-3.3-70b-versatile"]
 
 

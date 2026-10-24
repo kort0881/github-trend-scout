@@ -13,9 +13,9 @@ from .ingestion import ingest
 from .llm import GroqLLM
 from .models import RepoRaw, ScoredRepo
 from .prefilter import prefilter
-from .publish import publish
+from .publish import publish, release_date as release_page_date
 from .scoring import rank
-from .script_gen import generate_script
+from .review import generate_review
 from .security import scan_all
 from .storage import Storage
 
@@ -144,9 +144,9 @@ def run_pipeline(
         )
         return stats
 
-    # 6. Сценарий
-    script, source = generate_script(top, config.prompts_dir, llm=llm)
-    stats.script_source = "Groq" if source == "llm" else "шаблон (fallback)"
+    # 6. Обзор (без LLM: только факты из анализа)
+    script = generate_review(top, config.output_dir, release_page_date())
+    stats.script_source = "обзор из данных анализа"
 
     # 7. Публикация — критичный этап
     try:

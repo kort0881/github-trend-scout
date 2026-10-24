@@ -19,7 +19,7 @@ def test_publish_writes_three_files_and_index(tmp_path, make_repo, make_analysis
     release = publish(repos, "Всем привет! ...", tmp_path / "output", root_readme, now=datetime(2026, 10, 24, tzinfo=timezone.utc))
 
     assert release.name == "2026-10-24"
-    assert (release / "script.md").exists()
+    assert (release / "review.md").exists()
     repos_json = json.loads((release / "repos.json").read_text(encoding="utf-8"))
     analysis_json = json.loads((release / "analysis.json").read_text(encoding="utf-8"))
     assert repos_json[0]["full_name"] == "owner/repo1"
@@ -32,7 +32,7 @@ def test_publish_writes_three_files_and_index(tmp_path, make_repo, make_analysis
 
 def test_rebuild_index_skips_non_release_dirs(tmp_path):
     (tmp_path / "2026-10-01").mkdir()
-    (tmp_path / "2026-10-01" / "script.md").write_text("x", encoding="utf-8")
+    (tmp_path / "2026-10-01" / "review.md").write_text("x", encoding="utf-8")
     (tmp_path / "cache").mkdir()
     (tmp_path / "notes.md").write_text("x", encoding="utf-8")
     text = rebuild_index(tmp_path).read_text(encoding="utf-8")

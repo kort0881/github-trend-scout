@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 LAST_RELEASE_START = "<!-- LAST_RELEASE:START -->"
 LAST_RELEASE_END = "<!-- LAST_RELEASE:END -->"
-TABLE_HEADER = "| Дата | Кол-во репо | Сценарий |\n|---|---|---|"
+TABLE_HEADER = "| Дата | Кол-во репо | Обзор |\n|---|---|---|"
 ROW_RE = re.compile(r"^\|\s*(\d{4}-\d{2}-\d{2})\s*\|")
 
 
@@ -35,7 +35,7 @@ def _release_dir(output_dir: Path, date_str: str) -> Path:
 def _write_release_dir(output_dir: Path, date_str: str, script: str, repos: list[ScoredRepo]) -> Path:
     release = _release_dir(output_dir, date_str)
     release.mkdir(parents=True, exist_ok=True)
-    (release / "script.md").write_text(script, encoding="utf-8")
+    (release / "review.md").write_text(script, encoding="utf-8")
     raws: list[RepoRaw] = [item.raw for item in repos]
     (release / "repos.json").write_text(
         json.dumps([raw.model_dump(mode="json") for raw in raws], ensure_ascii=False, indent=2),
@@ -60,7 +60,7 @@ def rebuild_index(output_dir: Path) -> Path:
     for entry in sorted(output_dir.iterdir(), reverse=True):
         if not entry.is_dir() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}(-\d+)?", entry.name):
             continue
-        if not (entry / "script.md").exists():
+        if not (entry / "review.md").exists():
             continue
         count = 0
         repos_file = entry / "repos.json"
@@ -69,7 +69,7 @@ def rebuild_index(output_dir: Path) -> Path:
                 count = len(json.loads(repos_file.read_text(encoding="utf-8")))
             except (OSError, json.JSONDecodeError):
                 count = 0
-        rows.append(f"| {entry.name} | {count} | [script.md]({entry.name}/script.md) |")
+        rows.append(f"| {entry.name} | {count} | [review.md]({entry.name}/review.md) |")
 
     content = "# Выпуски\n\nАвтоматический индекс. Формируется пайплайном.\n\n" + TABLE_HEADER + "\n"
     content += ("\n".join(rows) if rows else "| — | 0 | — |") + "\n"
@@ -86,13 +86,13 @@ def update_root_readme(readme_path: Path, date_str: str, count: int, output_dir:
         return False
     text = readme_path.read_text(encoding="utf-8")
     try:
-        rel_link = (output_dir / date_str / "script.md").relative_to(readme_path.parent).as_posix()
+        rel_link = (output_dir / date_str / "review.md").relative_to(readme_path.parent).as_posix()
     except ValueError:
-        rel_link = f"output/{date_str}/script.md"
+        rel_link = f"output/{date_str}/review.md"
     block = (
         f"{LAST_RELEASE_START}\n"
         f"**Последний выпуск:** {date_str} — {count} репозиториев — "
-        f"[сценарий]({rel_link}) · [все выпуски]({rel_link.split('/')[0]}/README.md)\n"
+        f"[обзор]({rel_link}) · [все выпуски]({rel_link.split('/')[0]}/README.md)\n"
         f"{LAST_RELEASE_END}"
     )
     if LAST_RELEASE_START in text and LAST_RELEASE_END in text:
