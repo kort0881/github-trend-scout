@@ -1,7 +1,16 @@
 {
-  "updated_at": "2026-10-24T09:43:34+00:00",
-  "count": 10,
+  "updated_at": "2026-10-24T09:54:43+00:00",
+  "count": 20,
   "repos": {
+    "Ansub/tv-detox": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.008,
+      "html_url": "https://github.com/Ansub/tv-detox"
+    },
     "Domainsun/awesome-chinese-secondhand-slang": {
       "releases": [
         "2026-10-24"
@@ -29,6 +38,24 @@
       "score": 3.098,
       "html_url": "https://github.com/Jakeschincariol/day-trader-skill"
     },
+    "K0NL/B2recomp": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.681,
+      "html_url": "https://github.com/K0NL/B2recomp"
+    },
+    "UniXNU/UniXNU": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.197,
+      "html_url": "https://github.com/UniXNU/UniXNU"
+    },
     "aicodeking/leanrea": {
       "releases": [
         "2026-10-24"
@@ -37,6 +64,15 @@
       "last": "2026-10-24",
       "score": 3.412,
       "html_url": "https://github.com/aicodeking/leanrea"
+    },
+    "alchaincyf/huashu-motion": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.01,
+      "html_url": "https://github.com/alchaincyf/huashu-motion"
     },
     "assetnote/php2shell-scanner": {
       "releases": [
@@ -56,6 +92,24 @@
       "score": 3.089,
       "html_url": "https://github.com/dominikmartn/harp"
     },
+    "humblemuzzu/dumbtv": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.408,
+      "html_url": "https://github.com/humblemuzzu/dumbtv"
+    },
+    "ikow/php2shell-poc": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.212,
+      "html_url": "https://github.com/ikow/php2shell-poc"
+    },
     "lesnolie/Tigris": {
       "releases": [
         "2026-10-24"
@@ -64,6 +118,24 @@
       "last": "2026-10-24",
       "score": 3.182,
       "html_url": "https://github.com/lesnolie/Tigris"
+    },
+    "mihirgupta0900/tv-home": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 2.882,
+      "html_url": "https://github.com/mihirgupta0900/tv-home"
+    },
+    "pengchujin/aerial-tv": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.231,
+      "html_url": "https://github.com/pengchujin/aerial-tv"
     },
     "realskyrin/ns-game-apple-arm-port": {
       "releases": [
@@ -82,6 +154,24 @@
       "last": "2026-10-24",
       "score": 3.681,
       "html_url": "https://github.com/rossark0/rossark-motion-skill"
+    },
+    "simbasjungles/free-my-tv": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.03,
+      "html_url": "https://github.com/simbasjungles/free-my-tv"
+    },
+    "wesbos/3d-model-anything": {
+      "releases": [
+        "2026-10-24"
+      ],
+      "times": 1,
+      "last": "2026-10-24",
+      "score": 3.006,
+      "html_url": "https://github.com/wesbos/3d-model-anything"
     },
     "xevrion/hatchzip": {
       "releases": [
