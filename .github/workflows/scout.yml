@@ -32,11 +32,17 @@ jobs:
           pip install semgrep bandit
 
       - name: Установка gitleaks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG=$(curl -s https://api.github.com/repos/gitleaks/gitleaks/releases/latest \
-            | grep -o '"tag_name": "v[^"]*"' | cut -d'"' -f4)
-          echo "gitleaks $TAG"
-          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/${TAG}/gitleaks_${TAG#v}_linux_x64.tar.gz" \
+          TAG=$(curl -s -H "Authorization: Bearer ${GH_TOKEN}" \
+            https://api.github.com/repos/gitleaks/gitleaks/releases/latest | jq -r '.tag_name // empty')
+          if [ -z "$TAG" ]; then
+            TAG=v8.30.1
+            echo "не удалось узнать latest, беру проверенный ${TAG}"
+          fi
+          echo "gitleaks ${TAG}"
+          curl -fsSL "https://github.com/gitleaks/gitleaks/releases/download/${TAG}/gitleaks_${TAG#v}_linux_x64.tar.gz" \
             | sudo tar -xz -C /usr/local/bin gitleaks
           gitleaks version
 
