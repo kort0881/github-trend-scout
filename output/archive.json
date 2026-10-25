@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-24T11:33:49+00:00",
-  "count": 26,
+  "updated_at": "2026-10-25T10:56:12+00:00",
+  "count": 29,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -46,6 +46,15 @@
       "last": "2026-10-24",
       "score": 3.098,
       "html_url": "https://github.com/Jakeschincariol/day-trader-skill"
+    },
+    "JustAResearcher/gpu-unlock-ada": {
+      "releases": [
+        "2026-10-25"
+      ],
+      "times": 1,
+      "last": "2026-10-25",
+      "score": 3.612,
+      "html_url": "https://github.com/JustAResearcher/gpu-unlock-ada"
     },
     "K0NL/B2recomp": {
       "releases": [
@@ -164,6 +173,15 @@
       "score": 2.882,
       "html_url": "https://github.com/mihirgupta0900/tv-home"
     },
+    "nthnclrk/CleanFrame": {
+      "releases": [
+        "2026-10-25"
+      ],
+      "times": 1,
+      "last": "2026-10-25",
+      "score": 3.589,
+      "html_url": "https://github.com/nthnclrk/CleanFrame"
+    },
     "pengchujin/aerial-tv": {
       "releases": [
         "2026-10-24"
@@ -199,6 +217,15 @@
       "last": "2026-10-24",
       "score": 3.03,
       "html_url": "https://github.com/simbasjungles/free-my-tv"
+    },
+    "stackedlol/ascii-sharks": {
+      "releases": [
+        "2026-10-25"
+      ],
+      "times": 1,
+      "last": "2026-10-25",
+      "score": 3.896,
+      "html_url": "https://github.com/stackedlol/ascii-sharks"
     },
     "torrentplayer/torrentplayer": {
       "releases": [

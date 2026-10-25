@@ -1,0 +1,154 @@
+[
+  {
+    "raw": {
+      "full_name": "stackedlol/ascii-sharks",
+      "html_url": "https://github.com/stackedlol/ascii-sharks",
+      "description": "ascii shark components in typescript",
+      "stars": 820,
+      "forks": 63,
+      "language": "TypeScript",
+      "license": "MIT",
+      "created_at": "2026-10-19T21:54:19Z",
+      "pushed_at": "2026-10-24T16:07:32Z",
+      "topics": [],
+      "readme_excerpt": "# ascii sharks\n\n```\n                            ;'\n                             %%'\n                              .t;.               .oooo\n                               S;:S%              %8S8.\n                                ;:tt%t '..        XX%%S\nt'                            ''XSSS8SSX%XX8#.    %XSX%\n :;'               ;.''X8%8XX%%S%%S%SStt%tSX8S#X8't%ttt.\n  ::%'       ''8XXXSSt%Stttttt%8@%%@%8@8%Sttt%%%%SSSSS%tt.\n  'SXXtt%t%%%S%:;StS%ttSS%tSXSt88@@%8%@8%tStS%%X%SS%%S%;;t\n .@##88#@...'@@@@#@8@88X88#XXXSX8SX88SX8%SS%S%%S88St%t%%%.\n  %;%t             :.    '.'##@###@X#888XX##8@@@#.X%XS%.\n .%t                            ;%%%#@@##@@@.     SXS%%\n t.                            .%;%%%.            %%XXS\n                              '%t:t              .SXSS'\n                             '::.                ooooo\n                            .S'\n                            .\n```\n\nFish and sharks drawn as ASCII on a canvas. Zero dependencies.\n\n```sh\nnpm install && npm run dev\n```\n\n```ts\nimport { OceanEngine } from \"./src\";\n\nconst engine = new OceanEngine(canvas, [{ kind: \"hammerhead\", size: 1 }]);\n```\n\nMIT\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "stackedlol/ascii-sharks",
+      "summary": "ascii-sharks – библиотека компонентов для рисования акул и рыб в ASCII-стиле на канвасе, написанная на TypeScript.",
+      "usefulness": "Подходит для веб‑приложений, где требуется визуализация морских существ без сторонних зависимостей, например, в играх, чат‑ботах или интерактивных демо.",
+      "uniqueness": "Уникальна тем, что полностью без зависимостей, использует чистый TypeScript и Canvas API, а также предоставляет готовые компоненты с различными видами акул.",
+      "pros": [
+        "Zero dependencies",
+        "TypeScript support",
+        "Simple API",
+        "ASCII art rendered on canvas"
+      ],
+      "cons": [
+        "Отсутствует подробная документация и примеры использования",
+        "Малая активность обновлений (последний push 5 дней назад)",
+        "Нет тестов"
+      ],
+      "audience": [
+        "frontend",
+        "devops",
+        "cli",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.896
+  },
+  {
+    "raw": {
+      "full_name": "JustAResearcher/gpu-unlock-ada",
+      "html_url": "https://github.com/JustAResearcher/gpu-unlock-ada",
+      "description": "GPU tensor unlock source for RTX 4090 and experimental RTX 4070 Ti SUPER; firmware generated locally",
+      "stars": 1709,
+      "forks": 214,
+      "language": "C",
+      "license": "GPL-2.0",
+      "created_at": "2026-10-23T21:00:53Z",
+      "pushed_at": "2026-10-24T22:55:49Z",
+      "topics": [],
+      "readme_excerpt": "# GPU unlock 1.1.1 — RTX 4090, RTX 4070 Ti SUPER and RTX 4060 Ti 16GB\n\nNew to this project? Start with the [copy-paste Quick Start](QUICKSTART.md).\n\nThis Linux kernel module enables the SM speed-select override before the stock\nNVIDIA driver starts. RTX 4090 (`10de:2684`, AD102) support has demonstrated\napproximately **2× FP16 and BF16 tensor throughput with FP32 accumulation**:\n\n| Mode | Before | After |\n|---|---:|---:|\n| FP16 → FP32 accumulate | 165.6 TF/s | 331.6 TF/s |\n| BF16 → FP32 accumulate | 165.5 TF/s | 330.6 TF/s |\n\nThe override survived PCIe Function Level Reset (FLR), stock NVIDIA `615.78.08`\ninitialization and CUDA benchmarks. INT8, `dp4a` and scalar FP32 stayed near their\nbaseline rates. The original transaction preceded the repository cleanup; see\nthe [technical report](rtx4090-register-report.md) and\n[original evidence](docs/evidence/rtx4090/README.md).\n\nAn independent owner run of revision `8855e7b` also completed the RTX 4090\ntransaction and NVIDIA driver handoff on Linux `7.2.11-arch1-1`. Matched\nstock/unlocked measurements with NVIDIA `615.78.08` and the same 450 W cap\nfound FP16/FP32 instruction throughput **160.4 → 320.4 TF/s** and BF16/FP32\n**159.7 → 320.2 TF/s**. All exercised numerical checks passed. Real cuBLAS\nGEMM median throughput varied by shape: FP16 gained 12–34%, BF16 gained\n16–20% at two shapes and was essentially unchanged at 4096³. These are one\nmatched run pair with the desktop active, not whole-application speedups or\nan extended stability test. See the [matched evidence and limits](docs/evidence/rtx4090-pr1-matched/README.md)\nand [testing workflow](docs/testing.md).\n\nA separate cold test of the Ada port on one RTX 4070 Ti SUPER\n(`10de:2705`) with NVIDIA `580.178.04` measured FP16/FP32 tensor issue rate\nat **95.0 → 189.9 TF/s** and BF16/FP32 at **95.0 → 189.7 TF/s** under the\nsame 240 W power cap. INT8 stayed at 379.5 TOP/s. The stock driver loaded,\nthe NVIDIA RM getter reported full FMLA32 rate, deterministic FP16/BF16 GEMM\noutputs matched exactly, and owner mining recovered with fresh accepted shares.\nA second matched instruction benchmark found **TF32/FP32 47.49 → 94.51 TF/s**\n(1.99×), with its FP16/FP32 control also near 2×. Unsigned INT4/INT32 stayed\nat approximately **754.8 TOP/s** in both states. These are register-resident\nissue rates, not application GEMM or inference speedups.\nA matched, verified E4M3 FP8/FP32 CUTLASS GEMM measured **59.326 TF/s stock →\n59.495 TF/s unlocked** on this card, a 0.3% difference. This single GEMM did\nnot show a meaningful FP8 gain; other FP8 kernels remain untested.\nThis is one card; the unlock succeeded on two cold boots and two ordinary\nwarm reboots, the last from a persistent EFI default. Throughput was measured\non the first cold boot. See the [2705 canary report](docs/ada-2705-report.md)\nand its [sanitized raw benchmark output](docs/evidence/ada2705/README.md).\n\nThe AD102 payload and its debug-booter analysis come from\n**[TOTORONG/AD103_win_unlocker](https://huggingface.co/TOTORONG/AD103_win_unlocker)**.\nThis fork integrates that published payload into\n**[Zagitta/gpu-unlock](https://github.com/Zagitta/gpu-unlock)**'s Linux module,\nfirmware generation and boot packaging. The payload is essential to the result.\n\n## Experimental Windows contribution — Latence.app\n\nA separate [MSI RTX 4070 Ti AD104 Windows UEFI reference port](windows/ad104-msi/README.md)\nrecords one successful manual boot with NVIDIA 616.56 and matched cuBLAS FP16/FP32\n**+80.1%**, BF16/FP32 **+76.4%** measurements. It is tied to one captured MSI Z490\nprofile; it does **not** add AD104 admission to the Linux module. See the\n[report and limitations](docs/ad104-windows-latence-app.md). No firmware/Windows/ROM\nbinaries or automatic boot installer are distributed. Contribution by **Latence.app**;\noriginal upstream credits and licences are retained.\n\n## Supported targets\n\nThe module selects the AD102 firmware and payload automatically for RTX 4090\n`10de:2684`. The original GeForce/CMP GA10",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 49,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 1,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 49, gitleaks: 0, osv: 0; critical=0, high=1"
+    },
+    "analysis": {
+      "full_name": "JustAResearcher/gpu-unlock-ada",
+      "summary": "GPU unlock 1.1.1 – kernel module that overrides SM speed-select for RTX 4090, RTX 4070 Ti SUPER and RTX 4060 Ti 16GB, enabling doubled FP16/BF16 tensor throughput.",
+      "usefulness": "Нужен разработчикам и исследователям, работающим с высокопроизводительными графическими картами, которые хотят получить максимальную производительность без изменения драйвера.",
+      "uniqueness": "В отличие от обычных драйверов, модуль работает на уровне ядра, не требует обновления NVIDIA‑драйвера и сохраняет стабильность после FLR и перезагрузки.",
+      "pros": [
+        "Двойная производительность FP16/BF16",
+        "Поддержка нескольких моделей RTX",
+        "Локальная генерация прошивки",
+        "Подробные измерения и отчёты"
+      ],
+      "cons": [
+        "Ограниченная документация (только фрагменты README)",
+        "Наличие одного high‑severity уязвимости в bandit",
+        "Требует ручной сборки и установки kernel‑модуля",
+        "Не покрывает все модели RTX"
+      ],
+      "audience": [
+        "devops",
+        "cli",
+        "security",
+        "hardware",
+        "data-science"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.612
+  },
+  {
+    "raw": {
+      "full_name": "nthnclrk/CleanFrame",
+      "html_url": "https://github.com/nthnclrk/CleanFrame",
+      "description": "A personal home screen for Samsung The Frame. A starting point to fork and adapt.",
+      "stars": 590,
+      "forks": 102,
+      "language": "JavaScript",
+      "license": "MIT",
+      "created_at": "2026-10-20T04:40:07Z",
+      "pushed_at": "2026-10-20T04:40:58Z",
+      "topics": [],
+      "readme_excerpt": "# CleanFrame\n\nA quieter home screen for Samsung The Frame. Your apps, a photograph and the time, with an interface made for the TV remote.\n\n![CleanFrame browser preview using the bundled Manrope font](docs/images/cleanframe-dock.jpg)\n\nI built CleanFrame for one TV: my own Samsung The Frame, running Tizen. I'm sharing the code and setup notes as a starting point for other people to build on.\n\n**Use it at your own risk.** Most of the work has gone into making it work well on my TV. Very little has gone into making it portable. The setup scripts reflect my computer, TV and firmware, so expect to adapt them and test the result on your own hardware.\n\nI highly recommend forking it and building on top of it, ideally with a coding agent that can help you understand and adapt the setup. Start with the browser preview, make the interface your own, then work through TV installation when you're ready. Native Home/startup changes need particular care; the setup guide covers the risks and recovery steps.\n\n## Try the interface\n\nYou need Node.js 22+ and Python 3.10+ to run the browser preview.\n\n```sh\ngit clone https://github.com/nthnclrk/CleanFrame.git\ncd CleanFrame\nnpm ci\nnpm run dev:public\n```\n\nOpen [localhost:4795/home/](http://localhost:4795/home/). Use the arrow keys, Enter and Escape, or click the controls. App launches and Samsung screens require a TV; the preview reports that limitation when you select them.\n\nThe public preview uses the included Manrope, Geist and Newsreader fonts.\n\n## What you can change\n\n- Choose a List or Dock layout, with icons, names or both.\n- Use a photograph, light or dark background, with a simple 12-hour clock.\n- Adjust typography, focus and glass materials through the same Settings interface.\n- Choose and reorder Home apps; discover installed apps on the TV.\n- Select from fifteen wallpapers and save your preferences locally.\n\nThe glass and blur are rendered ahead of time. The TV loads the finished images and uses transforms and opacity for focus feedback.\n\n## Use a coding agent\n\nOpen this repo in a local coding agent and give it a bounded change:\n\n```text\nRead AGENTS.md, docs/development.md and docs/interaction-behaviour.md.\nHelp me adapt CleanFrame. Start with the public-font browser preview.\nMy first change is: <describe one change>.\nPreserve remote navigation, saved preferences and the ES5 runtime.\nRun the source checks and relevant browser checks. Show the result.\nThis task is browser-only: do not connect to a TV, sign or install a\npackage, or change Home/startup settings.\n```\n\nSee [working with an agent](docs/for-agents.md) for the TV setup prompt and the distinction between UI work, app installation and native Home changes. An agent needs local computer access for TV work; a hosted chat cannot reach your TV merely by reading this repo.\n\n## Put it on a TV\n\nUse the staged [Samsung The Frame setup guide](docs/agent-tv-setup-guide.md) to understand the process used on my TV and adapt it to yours. It covers the remote's Developer Mode sequence, official Samsung tools, your own certificates and app identity, installation, visible checks and recovery.\n\nThe signing and TV scripts are specific to my setup. Your agent will need to adapt the paths, signing profile, identity checks and installed-app IDs, then verify each stage with you. Installing the app and assigning the remote Home button are separate steps.\n\n| Area | Evidence and limits |\n| --- | --- |\n| Reference hardware | Samsung QA55LS03DAWXXY / LS03D, firmware 2130.0, Tizen 9.0, 32-bit ARM |\n| App installation | Signed installation and launch commands succeeded through 0.6.1. Latest rendering and remote feel still need physical observation. |\n| App launch and Home | Netflix/YouTube launch and physical Home from Netflix were confirmed on the reference setup. |\n| Still open | Normal power-on after streaming/Art Mode, corrected Smart Hub escape and native Art Mode destinations need definite physical checks. |\n| Other TVs | No compatibility claim. This is Ti",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 39,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 39, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "nthnclrk/CleanFrame",
+      "summary": "CleanFrame – персональный домашний экран для Samsung The Frame, показывающий приложения, фотографию и время с интерфейсом, управляемым пультом.",
+      "usefulness": "Подходит для владельцев Samsung The Frame, желающих заменить стандартный экран на более спокойный и настраиваемый, а также для разработчиков, которые хотят быстро развернуть и модифицировать UI.",
+      "uniqueness": "Фокусируется на конкретном устройстве, предоставляет готовый набор UI‑компонентов и скрипты установки, что упрощает настройку по сравнению с общими фреймворками.",
+      "pros": [
+        "MIT лицензия",
+        "Подробный README с инструкциями",
+        "Поддержка Node.js 22+ и Python 3.10+",
+        "Готовый набор шрифтов и тем"
+      ],
+      "cons": [
+        "Ограничена только Samsung The Frame",
+        "Мало документации по расширению",
+        "Нужно адаптировать скрипты под свою систему"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "frontend",
+        "iot"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.589
+  }
+]
