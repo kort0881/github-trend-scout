@@ -1,0 +1,592 @@
+[
+  {
+    "raw": {
+      "full_name": "anhao/ai-pose-gallery-zh",
+      "html_url": "https://github.com/anhao/ai-pose-gallery-zh",
+      "description": "中文版 AI 姿势参考图库 · 1439 组 / 2878 张图片 / 完整汉化 · 零依赖静态画廊",
+      "stars": 2648,
+      "forks": 696,
+      "language": "HTML",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-27T12:24:37Z",
+      "pushed_at": "2026-10-27T14:32:23Z",
+      "topics": [
+        "ai-art",
+        "chinese",
+        "cloudflare-pages",
+        "gallery",
+        "i18n",
+        "pose",
+        "reference-images",
+        "static-site"
+      ],
+      "readme_excerpt": "# AI Pose Gallery · 中文版\n\n> 288 组 / 1439 张 AI 人体姿势参考图，日文数据完整汉化，附可直接部署的响应式静态画廊。\n\n![画廊预览](docs/preview.jpg)\n\n<details><summary>手机端预览</summary>\n\n![手机端预览](docs/mobile.jpg)\n\n</details>\n\n**在线演示：** <https://ai-pose-gallery.anhao.app/>\n**原始站点：** <https://ai-pose-gallery.pages.dev/>\n**原作者：** ギア（@giaaibusi）\n**中文版维护：** Anhao · [X @anhao_ai](https://x.com/anhao_ai)\n**GitHub：** <https://github.com/anhao/ai-pose-gallery-zh>\n\n---\n\n## 这是什么\n\n原站是一套面向 AI 绘画 / 3D / 摄影参考的姿势图库，元数据全部为日文，且不提供批量素材下载。本仓库做了三件事：\n\n1. **全量镜像** —— 1439 条记录对应的 1439 张缩略图（JPG 300×400）与 1439 张原图（PNG 900×1200）全部落地，共 2878 个文件 / 659.5 MB。\n2. **完整汉化** —— 日文字段逐条译为中文，覆盖 4 个体系、26 个分类、288 个姿势名、5 个视角，零遗漏。\n3. **可用的前端** —— 零依赖响应式画廊，完整实现原站的分类筛选、多角度切换、分组浏览、灯箱导航与原图下载，并针对手机重新设计布局。\n\n## 页面功能\n\n- 4 个体系页签，显示各体系的图片数与姿势组数\n- 姿势名、编号、ID、分类关键词搜索，支持 `/` 快速聚焦\n- 动作分类、5 种视角组合筛选，可一键重置\n- **按姿势分组 / 逐张浏览**双模式，分组卡片带多角度缩略图\n- 悬停或点击缩略图切换主图角度，点击卡片打开灯箱\n- 灯箱先显示缩略图、再加载 900×1200 原图，支持直接下载 PNG、复制 ID、新窗口打开\n- `← / →` 切换角度，`↑ / ↓` 切换姿势，`Esc` 关闭；手机支持左右滑动\n- PC 多列网格、手机双列网格，移动端筛选面板可展开/收起\n- 使用指南与注意事项弹窗，页脚标注图片来源与维护者链接\n\n## SEO 与分享\n\n页面内置了完整的 SEO 与社交分享配置：\n\n- 关键词化标题：`AI 姿势参考库｜288 组人体姿势 · 1439 张多角度参考图`\n- 独立 description、keywords、author 与 `max-image-preview:large`\n- `canonical` 指向正式域名，避免自定义域名与 pages.dev 域名重复收录\n- Open Graph / Twitter Card 使用 1200×630 的 `og-cover.jpg`\n- JSON-LD 结构化数据：`WebSite` + `ImageGallery`，声明语言、简介与页面主图\n- `robots.txt` 放行全站并声明 sitemap，`sitemap.xml` 指向首页\n- 语义结构：单一 H1、分区 H2、卡片 H3；缩略图 `alt` 含姿势名与视角，图片懒加载\n\n仓库中的绝对地址统一指向 `https://ai-pose-gallery.anhao.app/`。Fork 后如使用其他域名，需同步替换 `index.html` 的 canonical、`og:*`、`twitter:*`、JSON-LD，以及 `robots.txt`、`sitemap.xml` 中的地址。\n\n## 数据规模\n\n| 体系 | 条数 |\n| --- | ---: |\n| 全身单人・标准系 | 365 |\n| 全身单人・性感系 | 399 |\n| 上半身单人 | 400 |\n| 双人缠绵 | 275 |\n| **合计** | **1439** |\n\n每条记录对应 5 个视角中的若干个：正面 / 斜侧 / 侧面 / 俯视 / 仰视。\n\n## 目录结构\n\n```\n.\n├── index.html              # 单页画廊（零依赖，直接打开即可）\n├── robots.txt              # 搜索引擎抓取规则\n├── sitemap.xml             # 站点地图\n├── og-cover.jpg            # 1200×630 社交分享封面\n├── data/\n│   ├── pose.json           # 原始日文数据（1439 条，未改动）\n│   ├── pose-zh.json        # 中文数据（前端实际读取，含检索字段）\n│   ├── meta.json           # 原始体系分类\n│   ├── meta-zh.json        # 中文体系分类\n│   └── translations.csv    # 日⇄中对照表（323 条，便于校对）\n├── thumbs/                 # 缩略图 1439 张 JPG 300×400（22 MB）\n├── img/                    # 原图 1439 张 PNG 900×1200（637 MB）\n├── scripts/\n│   ├── download.py         # 并发下载器（48 线程 / 断点续传 / 自动重试）\n│   ├── i18n.py             # 日译中词典（唯一值去重后的 323 条译文）\n│   ├── apply_translation.py# 回填译文，生成中文数据\n│   ├── verify.py           # 校验文件完整性（存在性 / 大小 / 图片头）\n│   └── build.sh            # 生成 Cloudflare Pages 发布目录 dist/\n├── docs/                   # README 页面预览图\n├── _headers                # Cloudflare Pages 缓存策略\n├── LICENSE\n└── README.md\n```\n\n## 数据结构\n\n`data/pose-zh.json` 字段说明：\n\n| 字段 | 原日文字段 | 示例 | 说明 |\n| --- | --- | --- | --- |\n| `id` | — | `full_sexy_P001_front` | 唯一标识 |\n| `体系` | `系統` | 全身单人・性感系 | 4 大类 |\n| `姿势编号` | `ポーズ番号` | `P001` | 80 组编号 |\n| `分类` | `分類` | 站姿 | 26 类动作 |\n| `姿势名称` | `ポーズ名` | S形站姿・胯部侧顶 | 288 种描述 |\n| `角度` | `アングル` | 正面 | 5 种视角 |\n| `缩略图` | `サムネ` | `thumbs/…jpg` | 相对路径 |\n| `原图` | `原寸` | `img/…png` | 相对路径 |\n| `检索` | — | 拼接串 | 供前端模糊搜索 |\n\n原始日文数据 `data/pose.json` 保持原样，字段名与站点接口一致，便于对照或回灌。\n\n## 本地预览\n\n画廊通过 `fetch` 读取 JSON，需要 HTTP 环境（直接双击 `index.html` 会被 CORS 拦截）：\n\n```bash\npython3 -m http.server 8000\n# 打开 http://127.0.0.1:8000\n```\n\n页面支持体系/分类/视角组合筛选、关键词搜索、分组与逐张浏览、多角度缩略图、懒加载、灯箱原图下载、键盘与触屏导航。\n\n## 脚本用法\n\n```bash\n# 重新拉取全部图片（已存在的文件自动跳过，可反复执行）\npython3 scripts/download.py\nWORKERS=64 python3 scripts/download.py   # 调整并发\n\n# 修改 scripts/i18n.py 中的译文后，重新生成中文数据\npython3 scripts/apply_translation.py\n\n# 校验 2878 个文件是否完整\npython3 scripts/verify.py\n```\n\n## 部署到 Cloudflare Pages\n\n仓库为纯静态站点，无框架、无依赖。\n\n**方式一：GitHub 自动部署（推荐）**\n\n1. 登录 Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**\n2. 选择本仓库 → 生产分支 `main`\n3. 构建设置照抄：\n\n   | 字段 | 值 |\n   | --- | --- |\n   | Framework preset | `None` |\n   | Build command | `bash scripts/build.sh` |\n   | Build output directory | `dist` |\n\n4. **Save and Deploy**，约 2–5 分钟得到 `ht",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 1,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 1, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "anhao/ai-pose-gallery-zh",
+      "summary": "中文版 AI 姿势参考图库，包含 1439 条姿势的 5 视角图片，零依赖响应式静态画廊。",
+      "usefulness": "Подходит для художников, 3D‑моделлеров и фотографов, которым нужны быстрые и удобные ссылки на референсные изображения AI‑постановок.",
+      "uniqueness": "Полностью локализован и зеркалирует оригинальный сайт, добавляя возможность скачивания и мобильную адаптацию без серверной части.",
+      "pros": [
+        "Полный набор изображений (2878 файлов)",
+        "Полностью переведённый интерфейс на китайский",
+        "Ноль зависимостей, просто открываете index.html",
+        "Поддержка мобильных устройств и SEO‑оптимизация"
+      ],
+      "cons": [
+        "Отсутствует лицензия (NOASSERTION)",
+        "Нет автоматической генерации данных, только статический сайт",
+        "Отсутствует документация по развертыванию за пределами Cloudflare Pages"
+      ],
+      "audience": [
+        "frontend",
+        "static-site",
+        "gallery",
+        "i18n",
+        "ai-art"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.921
+  },
+  {
+    "raw": {
+      "full_name": "t3dotgg/tstack",
+      "html_url": "https://github.com/t3dotgg/tstack",
+      "description": "The agent skills I use every day. Works with Claude Code and Codex.",
+      "stars": 2328,
+      "forks": 144,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-24T05:00:20Z",
+      "pushed_at": "2026-10-28T02:38:03Z",
+      "topics": [],
+      "readme_excerpt": "# tstack\n\nThe agent skills I use every day, cleaned up so anyone can use them. They work\nin Claude Code and Codex. Some use [T3 Code](https://github.com/pingdotgg/t3code)\nfeatures when they are available and fall back to native tools when they are\nnot.\n\n## Skills\n\n| Skill | Say | What it does |\n|---|---|---|\n| `full-send` | \"full send\" | Takes a change to a merged PR with nobody watching: proves it, reviews it, files it, babysits it, merges it. |\n| `full-stop` | \"full stop\" | Same as `full-send`, but stops when the PR is ready for you to merge. |\n| `council` | \"council\" | Gets review from three models from different providers, and loops until they agree. |\n| `sol-loop` | \"sol loop\" | Reviews a change with GPT Sol in a loop until both agents agree. |\n| `file-pr` | \"file a PR\" | Files a short PR that leads with the problem, not an inventory of changes. |\n| `takeover` | \"take over\" | Finishes someone else's PR, branch, or agent thread, and keeps their credit. |\n| `babysit-pr` | \"babysit\" | Watches a PR through CI and review bots, and fixes the real findings. |\n| `modernize` | \"modernize\" | Rebases an old PR and decides if it should still exist. |\n| `leaving-pr-comments` | (automatic) | Formats comments that an agent posts on your behalf. |\n\nSome skills call others. Install the ones they need too:\n\n- `full-send` uses `sol-loop`, `file-pr`, and `babysit-pr`.\n- `full-stop` uses `full-send`.\n- `takeover` uses `modernize`, `file-pr`, `babysit-pr`, and `leaving-pr-comments`.\n- `file-pr`, `babysit-pr`, and `modernize` use `leaving-pr-comments`.\n\n## Install\n\n```bash\ngit clone https://github.com/t3dotgg/tstack\ncp -R tstack/skills/* ~/.claude/skills/   # Claude Code\ncp -R tstack/skills/* ~/.codex/skills/    # Codex\n```\n\n## Requirements\n\n- An authenticated [GitHub CLI](https://cli.github.com) (`gh`).\n- `python3` for `babysit-pr`'s `pr-wait` script.\n- `council` and `sol-loop` need subagents on other providers' models. T3 Code\n  does this with `delegate_task`. Otherwise you need a harness that can run\n  those models.\n\n## Make them yours\n\nThese are starting points. Edit them. Put personal settings, like which models\nsit on your council, in your `CLAUDE.md` or `AGENTS.md`, so you can update the\nskills without losing them.\n\n## License\n\n[MIT](LICENSE)\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "t3dotgg/tstack",
+      "summary": "tstack – набор навыков агента, используемых ежедневно, совместимых с Claude Code и Codex. Он автоматизирует ревью, PR‑создание, слияние и сопровождение изменений.",
+      "usefulness": "Подходит для разработчиков, работающих с GitHub, которые хотят ускорить процесс ревью и CI‑проверок, а также для команд, использующих Claude Code и Codex.",
+      "uniqueness": "Интегрирует несколько моделей и провайдеров, автоматически согласовывая ревью, и предоставляет готовые навыки для CI‑мониторинга и автоматического слияния PR.",
+      "pros": [
+        "Автоматизация полного цикла PR",
+        "Поддержка нескольких ИИ‑моделей",
+        "Гибкая настройка навыков",
+        "Чистый и понятный README"
+      ],
+      "cons": [
+        "Ограничено только Python‑скриптами",
+        "Не покрывает все сценарии CI",
+        "Документация ограничена фрагментом README"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "automation"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.918
+  },
+  {
+    "raw": {
+      "full_name": "morganlinton/BeautifulRust",
+      "html_url": "https://github.com/morganlinton/BeautifulRust",
+      "description": "Agent Skills that teach coding agents to write, review, and port idiomatic Rust, plus a tested clippy config. Works with Claude Code, Codex, Copilot, Cursor, and Gemini CLI.",
+      "stars": 1389,
+      "forks": 63,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-23T03:01:11Z",
+      "pushed_at": "2026-10-28T15:41:26Z",
+      "topics": [
+        "agent-skills",
+        "claude-code",
+        "claude-plugin",
+        "claude-skills",
+        "clippy",
+        "code-review",
+        "coding-agent",
+        "cursor",
+        "rust",
+        "style-guide"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"assets/banner.png\" alt=\"Pixel art banner: a crab on rocky tide pools at sunset, with waves, sea stacks, and a forested headland, under the title Beautiful Rust and the subtitle Idiomatic Rust, distilled\">\n</p>\n\n# Beautiful Rust\n\nThree standard [Agent Skills](https://agentskills.io) and a lints config that teach coding\nagents to write, review, port, and enforce idiomatic Rust:\n\n- **`rust-best-practices`** loads whenever an agent writes or changes Rust, and steers it\n  toward idiomatic, robust, maintainable code.\n- **`rust-review`** reviews existing Rust code, a file, a crate, or a diff, and writes a\n  prioritized report where every finding cites the rule it breaks and shows the fix.\n- **`rust-port`** ports C, C++, Python, Go, or JavaScript to idiomatic Rust with the same\n  behavior, porting the original tests first so you can prove the two match.\n- **`lints/`** is a drop-in clippy configuration that enforces the machine-checkable rules\n  in CI.\n\nThey work with Claude Code, OpenAI Codex, GitHub Copilot, Cursor, Gemini CLI, and any other\nagent that reads the Agent Skills format. Every code example in the skills compiles on\nstable Rust, and every lint in the config was checked against current clippy.\n\nThe guidance is distilled from five sources, with a condensed digest of each bundled in\nthe skill so the agent can consult the original reasoning when it needs to:\n\n- [Google Rust Style Guide](https://google.github.io/styleguide/rustguide.html)\n- [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) (official rust-lang checklist)\n- [Effective Rust](https://www.lurklurk.org/effective-rust/) by David Drysdale\n- [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) (idioms, patterns, anti-patterns)\n- [Microsoft Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/)\n\nWhere the sources disagree, the skill picks a side and says why.\n\n## What it changes\n\nAsked for a small semver-parsing library, an agent without the skill produced working\ncode with public fields, no `# Errors` docs, and `unwrap()` in its doc examples. With the\nskill, the same agent kept the fields private, documented failure modes, and wrote doc\nexamples users can copy safely. Condensed from those two runs:\n\n```rust\n// Without the skill\n/// A semantic version. The fields are public for convenience.\npub struct Version {\n    pub major: u64,\n    pub minor: u64,\n    pub patch: u64,\n    pub pre: Vec<Identifier>,\n    pub build: Vec<String>,\n}\n\nimpl Version {\n    /// Parses a version string.\n    ///\n    /// ```\n    /// let v = Version::parse(\"1.2.3\").unwrap();\n    /// ```\n    pub fn parse(s: &str) -> Result<Version, ParseError> { /* ... */ }\n}\n```\n\n```rust\n// With the skill\n/// A semantic version. Equality, hashing, and ordering ignore build metadata.\npub struct Version {\n    major: u64,\n    minor: u64,\n    patch: u64,\n    pre: Vec<Identifier>,\n    build: Vec<String>,\n}\n\nimpl Version {\n    /// Parses a version string according to SemVer 2.0.0.\n    ///\n    /// # Errors\n    ///\n    /// Returns [`ParseVersionError`] if the string is empty, a numeric part has a\n    /// leading zero or overflows `u64`, or an identifier contains invalid characters.\n    ///\n    /// ```\n    /// # use semver_lite::Version;\n    /// # fn main() -> Result<(), semver_lite::ParseVersionError> {\n    /// let v = Version::parse(\"1.2.3-beta.1\")?;\n    /// assert_eq!(v.major(), 1);\n    /// # Ok(())\n    /// # }\n    /// ```\n    pub fn parse(s: &str) -> Result<Self, ParseVersionError> { /* ... */ }\n\n    /// Returns the major version number.\n    pub fn major(&self) -> u64 { self.major }\n}\n```\n\nAcross three test tasks (a library, a CLI, and refactoring a messy module), the skill\npassed 29 of 30 checks against 24 of 30 without it. See [Testing the skills](#testing-the-skills).\n\n## Install\n\nEach skill is a folder under `skills/`: `rust-best-practices/`, `rust-review/`, and\n`rust-port/`. Every option below puts those folders where your agent looks fo",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 29,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 29, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "morganlinton/BeautifulRust",
+      "summary": "Beautiful Rust предоставляет набор Agent Skills и конфигурацию Clippy, которые обучают коды писать, ревью и портировать в идиоматический Rust. Проект включает три навыка: best-practices, review и port, а также набор правил lint.",
+      "usefulness": "Подходит для команд и индивидуальных разработчиков, использующих AI‑агентов (Claude, Copilot, Gemini и др.) для автоматизации написания, проверки и миграции кода в Rust.",
+      "uniqueness": "Интеграция с Agent Skills форматом позволяет использовать навыки в широком спектре AI‑инструментов, а также поставляется готовая конфигурация Clippy, проверенная на актуальные правила.",
+      "pros": [
+        "Полностью документированная README",
+        "Поддержка множества AI‑агентов",
+        "Готовая конфигурация Clippy",
+        "Проверенные примеры кода"
+      ],
+      "cons": [
+        "Ограничено только Rust",
+        "Меньше активных contributors по сравнению с аналогами"
+      ],
+      "audience": [
+        "backend",
+        "cli",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.907
+  },
+  {
+    "raw": {
+      "full_name": "DenisSergeevitch/ex-ussr-kinship-research",
+      "html_url": "https://github.com/DenisSergeevitch/ex-ussr-kinship-research",
+      "description": "Evidence-first genealogy skill for AI agents (Codex, Claude Code): church books, civil, military, deportation and repression records across the former USSR. Replies in your language.",
+      "stars": 1222,
+      "forks": 131,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-10-25T10:05:56Z",
+      "pushed_at": "2026-10-29T12:08:59Z",
+      "topics": [
+        "agent-skills",
+        "archives",
+        "claude-code",
+        "codex",
+        "family-history",
+        "familysearch",
+        "genealogy",
+        "ussr"
+      ],
+      "readme_excerpt": "# ex-USSR Kinship Research\n\n![ex-USSR Kinship Research cover](docs/cover.jpg)\n\nLanguages: [English](README.md) / [Русский](README.ru.md) / [Беларуская](README.be.md) / [Қазақша](README.kk.md) / [Українська](README.uk.md) / [Polski](README.pl.md) / [Deutsch](README.de.md) / [Română](README.ro.md) / [Eesti](README.et.md) / [Latviešu](README.lv.md) / [Lietuvių](README.lt.md) / [ქართული](README.ka.md) / [Հայերեն](README.hy.md) / [Azərbaycanca](README.az.md) / [Кыргызча](README.ky.md) / [Тоҷикӣ](README.tg.md) / [Türkmençe](README.tk.md) / [O‘zbekcha](README.uz.md)\n\n**An evidence-first genealogy skill for AI agents (Codex, Claude Code and other Agent Skills runtimes).** It turns an agent into a careful family-history researcher for the former USSR, the Soviet Union and the Russian Empire. The agent reads church books and civil records, military, deportation and repression files, and unindexed archive scans. It keeps every find traceable, separates records from interpretation and says plainly what is proven and what is not.\n\nCoverage includes all 15 former Soviet republics: Russia, Ukraine, Belarus, Moldova, Estonia, Latvia, Lithuania, Georgia, Armenia, Azerbaijan, Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan and Uzbekistan. Archives are chosen by the event's historical jurisdiction and current record custodian; a regional example does not replace local research.\n\nThe skill's instructions are written in Russian, but **the agent talks to you in your language**: English, Ukrainian, Russian, Polish, German and so on. It quotes sources in their original spelling with a translation, and builds search queries in the languages of the records.\n\n---\n\n## What it does\n\n- **Case intake and scope.** One research question, known facts, who may be alive, what is off-limits.\n- **Reproducible registers.** Persons, artifacts, claims, relationships and a full search log (CSV), plus a final report template.\n- **Historical jurisdiction model.** It resolves every event to the state, province, district, parish or civil registry *as of the event date*, not today's map.\n- **Name-variant matrices.** Pre-reform Russian, Ukrainian, Polish, Romanian, German and Yiddish forms, patronymics, maiden names and transliterations.\n- **Source strategy.** Originals first, then official catalogs, indexes, published document collections, and only then trees and forums as leads.\n- **Evidence protocol.** Claims get explainable statuses, not percentages: `hypothesis`, `single-source`, `corroborated`, `strongly-corroborated`, `contradicted`, `unresolved`. Copies and mirrors of one record share an `independence_group`, so they never count as independent proof.\n- **Identity resolution.** Namesakes stay separate `person_id`s until distinguishing evidence appears: house number, parents, godparents, exact birth date or military unit.\n- **Audit script.** It checks referential integrity and flags weak corroboration before you write conclusions. An independence group counts only when a cited artifact belongs to it, so corroboration cannot be declared into existence. It also checks IDs and statuses in the working Markdown report, if present; the agent checks the delivered HTML against the registers. A summary shows what is still uncorroborated or marked illegible.\n- **Institutional requests.** Draft and, when authorized, send focused requests to archives, libraries, universities and museums using available email or official web tools. If needed, offer a supported mail integration or a ready-to-send letter. Record the outcome, avoid duplicate sends and treat replies as evidence. See [correspondence guidance](references/correspondence.md).\n- **Government services.** Choose an official civil-registration or archive request route, checking eligibility and how the result is delivered ([government portals](references/government-portals.md)).\n- **Final report.** A complete HTML report is the default deliverable, with each relationship laid out edge by edge, contradictions, failed searches ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 22,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 22, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "DenisSergeevitch/ex-ussr-kinship-research",
+      "summary": "Экспериментальный инструмент для генеалогических исследований в пределах бывшего СССР, который позволяет ИИ-агенту читать церковные, гражданские, военные, депортационные и репрессийные записи, а также неиндексированные архивные сканы.",
+      "usefulness": "Подходит для исследователей, историков, семейных генеалогов и ИИ-агентов, которым нужно систематически собирать и проверять доказательства в семейных историях.",
+      "uniqueness": "Фокусируется на доказательной базе, отделяя факты от интерпретаций, и поддерживает многоязычность с автоматическим переводом источников.",
+      "pros": [
+        "Многоязычная поддержка и локализация",
+        "Систематический лог поиска и отчёт",
+        "Поддержка 15 бывших республик СССР",
+        "Интеграция с Codex и Claude Code"
+      ],
+      "cons": [
+        "Ограничено только архивами бывшего СССР",
+        "Документация на английском и русском, но может быть неполной для некоторых функций",
+        "Небольшой набор тестов"
+      ],
+      "audience": [
+        "backend",
+        "data-science",
+        "cli",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "ZiChuanLan/agent-purge",
+      "html_url": "https://github.com/ZiChuanLan/agent-purge",
+      "description": "One persona, many coding agents. Replace or inject system prompts across codex, claude, opencode, grok, omp, hermes, pi, zcode - with a local web console.",
+      "stars": 860,
+      "forks": 635,
+      "language": "JavaScript",
+      "license": "MIT",
+      "created_at": "2026-10-25T06:06:02Z",
+      "pushed_at": "2026-10-29T10:41:57Z",
+      "topics": [
+        "claude-code",
+        "codex",
+        "coding-agent",
+        "deepseek-harness",
+        "harness",
+        "omp",
+        "opencode",
+        "pi",
+        "system-prompt"
+      ],
+      "readme_excerpt": "# agent-purge\n\n[![npm](https://img.shields.io/npm/v/agent-purge)](https://www.npmjs.com/package/agent-purge)\n[![stars](https://img.shields.io/github/stars/ZiChuanLan/agent-purge)](https://github.com/ZiChuanLan/agent-purge/stargazers)\n[![license](https://img.shields.io/npm/l/agent-purge)](LICENSE)\n\n一份系统提示词，喂给多个 coding agent。支持替换（replace）、只发人设（strict）、追加（append）、清空（off）四种模式，可热切换，全程可逆。\n\n```\nagent-purge web          # 本地控制台 http://127.0.0.1:7788\nagent-purge codex        # 用当前 persona 启动 codex\nagent-purge pi --ask \"…\" # 一次性提问\n```\n\n## 它做什么\n\n每家 coding agent 读系统提示词的位置都不一样：有的认启动参数，有的认配置文件，有的只能靠插件改运行时对象。agent-purge 把这些入口统一成三件事：\n\n| 通道 | 机制 | 生效范围 |\n|---|---|---|\n| `install` | 写入该 harness 的托管配置块（Markdown / hooks / 插件） | 常驻，别人启动也生效 |\n| `shim` | 往 PATH 前置同名小壳，转发给 `agent-purge <h>` | 裸敲命令也接管 |\n| `slash` | 会话内 `/purge on\\|off\\|status` | 热切换，不动磁盘 |\n\n三层都写的是同一份 `personas/<id>.md` 的正文。`--mode off` 或 Web 总开关关掉时，全部撤回到原样——不留残渣。\n\n## 安装\n\n```bash\nnpm i -g agent-purge     # 或 npx agent-purge web\n```\n\n要求 Node ≥ 20，零依赖。\n\n**用 magpie 网关？** 插件不在 npm 包里，在仓库的 `magpie-plugin/` 子目录——不要指向仓库根（根 `package.json` 是 CLI，只有 `bin`，magpie 会拒绝）：\n\n```bash\nmagpie plugin add /path/to/agent-purge/magpie-plugin\n```\n\n首次使用先跑一次 `agent-purge web`（打开 http://127.0.0.1:7788 的控制台，先看/选一个人设；不想开界面就用 `agent-purge ls`），它会生成 `~/.agent-purge/personas/`；再跑 `node magpie-plugin/gen-personas.mjs` 生成 Persona 页的人设清单。\n\n详见下文「magpie 网关插件（可选）」。\n\n**数据独立存放**，升级不会被覆盖：默认 `~/.agent-purge/`（Windows `C:\\Users\\<你>\\.agent-purge\\`），里面是 `state.json` 和 `personas/`。想换位置就设环境变量：\n\n```bash\nexport AGENT_PURGE_HOME=/path/to/your/data     # Windows: setx AGENT_PURGE_HOME D:\\ap-data\n```\n\n旧版本（0.1.x）把数据放在包目录里，首次运行会自动搬到新家，原文件不动。\n\n## 人设\n\n`personas/<id>.md` = frontmatter + 正文。正文就是会被写进系统提示词的那一段。\n\nfrontmatter 用 `description` 写「说明」（Web 列表和 `agent-purge ls` 显示的就是它）；旧的 `desc` 仍然认，不会报错。可选 `order`（排序）、`harness` / `model`（匹配用）。Web 里只改名字和说明时会保留 frontmatter 的其它键，不整段重写。\n\n```bash\nagent-purge ls                 # 列出全部 persona，标出当前匹配的\nagent-purge use <id>           # 切换当前 persona\nagent-purge pi --persona <id>  # 只这一轮用别的\n```\n\n首次运行会在 `personas/` 下生成 `neutral.md` 起步模板。\n\n## 支持情况\n\n每个数字都是实测值：本地假 provider 抓真实请求体，不是估算。\n\n| harness | 机制 | 实测版本 | 默认 system | 注入后 |\n|---|---|---|---|---|\n| `codex` | 启动参数 `-c model_instructions_file=` | 0.163.0 | 21,026 | 24 |\n| `claude` | `--system-prompt-file` + 二进制补丁清残留身份句 | 2.1.304 | 6,379 | 156 |\n| `grok` | `--system-prompt-override` | 1.0.62 | 5,146 | 21 |\n| `omp` | 原生扩展：`before_agent_start` 改写 systemPrompt 数组，会话内 `/purge` 热切；`--ask` 仍走 `--system-prompt` | 17.4.2 | 34,511 | 10,106 |\n| `hermes` | 临时 HOME 里替换 `SOUL.md` | 0.21.5 | 8,139 | 7,554 |\n| `zcode` | UserPromptSubmit hook（user 角色）+ `customSystemPrompt` | 0.16.9 | 9,359 | 9,359 |\n| `opencode` | cwd 下 `.opencode/plugin/*.ts` 原地改 `output.system` | 1.19.3 | 19,332 | 112 |\n| `opencode2` | `plugins/agent-purge-v2.ts` 的 `ctx.session.hook(\"context\")` | 0.0.0-beta-17823 | 8,279 | 3,189 |\n| `dsh` | cordis 插件（三个 profile 各一份） | 0.2.1-rc.2 | 5,713 | 68 |\n| `pi` | 原生扩展，会话内 `/purge` | — | — | — |\n| `antigravity` | 等长替换二进制里的身份句 | 1.23.x | ≈20,498 | — |\n| `codebuddy` | `--system-prompt-file` | 2.171.0 | — | — |\n| `qoder` / `workbuddy` | 不支持（提示词在服务端） | — | — | — |\n\n`opencode` 和 `opencode2` 是两个不同的 npm 包（`opencode-ai` 1.x 与 `@opencode/cli` 2.x），插件接口完全不同，各自独立支持。\n\n`agent-purge ls` 和 Web 控制台显示的是**运行期真值**：每个 harness 有没有装、版本、注入层（SYS / USER）、三个通道各自可用性。`matrix.json` 里是静态能力表，两者冲突时以运行期为准。\n\n闭源桌面端（提示词在服务端或二进制里）只做原样启动，不做任何注入——`agent-purge <h>` 会明确打印原因，不会假装生效。\n\n### 常驻安装（install）\n\n```bash\nagent-purge install <h>      # 写进该 harness 自己的托管位置，别人启动也生效\nagent-purge uninstall <h>    # 摘掉，按字节还原\n```\n\ndsh 是唯一有多个形态的：desktop / web / headless 共用一套 cordis 插件，装在各自 profile 的 `node_modules/agent-purge/`，并在 `cordis.patch.yml` 里 `- insert` 挂上，不改 `app.asar`。装完重启一次，之后热生效；三个形态还能在 Web 面板分别勾选。\n\n## magpie 网关插件（可选）\n\n[magpie](https://github.com/yetone/magpie) 把各家 agent 的请求收进本地网关。挂上这个插件后，**凡是经过网关的请求**（Claude Code、Codex、OpenCode、pi…）的 system 段都按 agent-purge 的当前人设改写——不用逐个 harness 装，换人设也不用重启 magpie。\n\n插件在仓库里，不进 npm 包（`files` 白",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "ZiChuanLan/agent-purge",
+      "summary": "agent-purge – инструмент для управления системными подсказками (personas) нескольких coding‑agents (Codex, Claude, OpenCode, Grok, OMP, Hermes, Pi, ZCode). Позволяет заменять, добавлять, очищать или строго использовать подсказки через CLI, веб‑консоль или в‑сессийные команды.",
+      "usefulness": "Подходит для разработчиков, которые используют несколько LLM‑агентов и хотят централизованно управлять их поведением без изменения конфигураций каждого из них.",
+      "uniqueness": "Объединяет три способа внедрения подсказок (install, shim, slash) в единый механизм, поддерживает горячую смену без перезапуска и хранит данные отдельно от пакета, что упрощает обновления.",
+      "pros": [
+        "Универсальный подход к разным агентам",
+        "Горячая смена подсказок без перезапуска",
+        "Низкие требования к зависимостям (Node ≥ 20)",
+        "Веб‑консоль для удобного управления"
+      ],
+      "cons": [
+        "Документация на китайском, но есть английские фрагменты",
+        "Модуль magpie‑plugin находится в поддиректории, может вызвать путаницу",
+        "Отсутствует подробная инструкция по интеграции с CI/CD"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.897
+  },
+  {
+    "raw": {
+      "full_name": "smithjohn78390/tongjiang-lab",
+      "html_url": "https://github.com/smithjohn78390/tongjiang-lab",
+      "description": "Free interactive 3D science lessons for high school · 铜匠实验室 · https://lab.tongjiang.app",
+      "stars": 784,
+      "forks": 210,
+      "language": "HTML",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-28T04:29:29Z",
+      "pushed_at": "2026-10-28T11:35:35Z",
+      "topics": [
+        "3d",
+        "biology",
+        "chemistry",
+        "education",
+        "geography",
+        "high-school",
+        "interactive",
+        "open-educational-resources",
+        "physics",
+        "threejs",
+        "webgl"
+      ],
+      "readme_excerpt": "# Tongjiang Lab\n\nEnglish | [简体中文](README.zh-CN.md)\n\n**Free, interactive 3D science lessons for high school — physics, chemistry, biology and geography.**\n\nTry them online: **https://lab.tongjiang.app**\n\nThere are 54 lessons so far. Each one is a **single self-contained HTML file** of about 1 MB: double-click to open it, and it works offline, on a projector or on an interactive whiteboard. Every lesson is one 3D world with a live control console, a guiding question and a step-by-step path a teacher can follow from start to finish.\n\nThe lessons follow the Chinese national curriculum standards for senior high school and the People's Education Press (PEP) 2019 textbooks. The lesson interface is currently in Chinese; other languages are planned.\n\n## How to use\n\n- **Online**: click **▶ Open lesson** in the tables below. GitHub only shows the source code of an HTML file, so use these links to see the lessons.\n- **Offline**: download all lessons as one zip from [Releases](https://github.com/smithjohn78390/tongjiang-lab/releases/latest), or download a single lesson from its page on https://lab.tongjiang.app, then open it in Chrome or Edge.\n- **Embed**: `<iframe src=\"https://lab.tongjiang.app/<slug>\" width=\"100%\" style=\"aspect-ratio:16/9;border:0\" allow=\"fullscreen\"></iframe>`\n- **Data**: [`catalog.json`](catalog.json) lists every lesson with its textbook location and steps.\n\n## Lessons\n\n### Physics (10)\n\n| Lesson | PEP 2019 textbook | Steps | Open | Source |\n|---|---|---|---|---|\n| [The Photoelectric Effect](https://lab.tongjiang.app/c/photoelectric-step/) | Elective Vol. 3, Ch. 4, Sec. 2 | 9 | [▶ Open lesson](https://lab.tongjiang.app/photoelectric-step) | [HTML](courses/photoelectric-step.html) |\n| [Observing Capacitor Charging and Discharging](https://lab.tongjiang.app/c/capacitor-step/) | Required Vol. 3, Ch. 10, Sec. 4 | 9 | [▶ Open lesson](https://lab.tongjiang.app/capacitor-step) | [HTML](courses/capacitor-step.html) |\n| [Experiment: Acceleration vs. Force and Mass](https://lab.tongjiang.app/c/accel-force-step/) | Required Vol. 1, Ch. 4, Sec. 2 | 8 | [▶ Open lesson](https://lab.tongjiang.app/accel-force-step) | [HTML](courses/accel-force-step.html) |\n| [Experiment: Verifying Conservation of Mechanical Energy](https://lab.tongjiang.app/c/energy-step/) | Required Vol. 2, Ch. 8, Sec. 5 | 8 | [▶ Open lesson](https://lab.tongjiang.app/energy-step) | [HTML](courses/energy-step.html) |\n| [Experiment: Exploring Projectile Motion](https://lab.tongjiang.app/c/projectile-step/) | Required Vol. 2, Ch. 5, Sec. 3 | 9 | [▶ Open lesson](https://lab.tongjiang.app/projectile-step) | [HTML](courses/projectile-step.html) |\n| [Centripetal Force vs. Radius, Angular Velocity and Mass](https://lab.tongjiang.app/c/centripetal-step/) | Required Vol. 2, Ch. 6, Sec. 2 | 8 | [▶ Open lesson](https://lab.tongjiang.app/centripetal-step) | [HTML](courses/centripetal-step.html) |\n| [Self-Induction and Eddy Currents](https://lab.tongjiang.app/c/self-induction-step/) | Elective Vol. 2, Ch. 2, Sec. 4 | 9 | [▶ Open lesson](https://lab.tongjiang.app/self-induction-step) | [HTML](courses/self-induction-step.html) |\n| [Measuring EMF and Internal Resistance](https://lab.tongjiang.app/c/emf-step/) | Required Vol. 3, Ch. 12, Sec. 3 | 9 | [▶ Open lesson](https://lab.tongjiang.app/emf-step) | [HTML](courses/emf-step.html) |\n| [Magnetic Field of an Electric Current](https://lab.tongjiang.app/c/current-field-step/) | Required Vol. 3, Ch. 13, Sec. 1 | 9 | [▶ Open lesson](https://lab.tongjiang.app/current-field-step) | [HTML](courses/current-field-step.html) |\n| [Brownian Motion and Diffusion](https://lab.tongjiang.app/c/brownian-step/) | Elective Vol. 3, Ch. 1, Sec. 1 | 9 | [▶ Open lesson](https://lab.tongjiang.app/brownian-step) | [HTML](courses/brownian-step.html) |\n\n### Chemistry (25)\n\n| Lesson | PEP 2019 textbook | Steps | Open | Source |\n|---|---|---|---|---|\n| [Industrial Ammonia Synthesis (Haber Process)](https://lab.tongjiang.app/c/haber-step/) | Elective Vol. 1, Ch. 2",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "smithjohn78390/tongjiang-lab",
+      "summary": "Tongjiang Lab – набор интерактивных 3D‑уроков по физике, химии, биологии и географии для старшей школы, реализованных в виде автономных HTML‑файлов.",
+      "usefulness": "Учителя и учащиеся могут использовать его как готовый материал для занятий, демонстраций и самостоятельного обучения, а разработчики – как пример интеграции WebGL/Three.js в образовательные ресурсы.",
+      "uniqueness": "Каждый урок – полностью автономный 3D‑мир с живой консолью управления и пошаговым руководством, что отличает его от статичных презентаций и традиционных онлайн‑курсов.",
+      "pros": [
+        "Автономные HTML‑файлы, работающие офлайн",
+        "Интерактивные 3D‑миры на Three.js/WebGL",
+        "Поддержка 54 уроков по четырём предметам",
+        "Подробная документация и примеры embed"
+      ],
+      "cons": [
+        "Интерфейс только на китайском, другие языки пока не поддерживаются",
+        "Отсутствует лицензия (NOASSERTION)",
+        "Меньше 1000 звезд, но репозиторий молодё",
+        "Нет активной поддержки новых уроков"
+      ],
+      "audience": [
+        "education",
+        "frontend",
+        "webgl",
+        "threejs",
+        "interactive",
+        "cli"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.895
+  },
+  {
+    "raw": {
+      "full_name": "anonnerdfrenzy/survival-llm",
+      "html_url": "https://github.com/anonnerdfrenzy/survival-llm",
+      "description": "A free AI assistant and survival library that runs on your own computer, with no internet needed. Shows the source of every answer.",
+      "stars": 694,
+      "forks": 57,
+      "language": "Python",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-24T19:12:41Z",
+      "pushed_at": "2026-10-28T21:04:24Z",
+      "topics": [],
+      "readme_excerpt": "# Survival LLM\n\nA free AI assistant and survival library that runs entirely on your own computer and works with no\ninternet. Ask it how to keep food safe in a blackout, treat a burn or purify water: it searches an\noffline library of medical, emergency, how-to and encyclopedia articles, answers from what it finds,\nand shows you the exact passage each answer came from.\n\n- **Offline and private.** The AI model and the library live on your computer. Your questions never leave it, and once set up it works with the internet off.\n- **Shows its sources.** Every answer lists the articles it read; click one to read it yourself, cited passage highlighted, with its license. Ask \"where did you get that?\" and it opens the source.\n- **Shows its reasoning.** Show reasoning, under each answer, opens what the AI thought before it answered, step by step, with the searches and articles it read in between. It stays hidden until you click it. How much it reasons is up to you: Reasoning, next to Send, is a budget (Off, 1,000, 4,000 or 16,000 tokens, or no limit), and at the limit its thinking stops and it answers from what it has.\n- **Yours to adjust.** The Instructions button shows the instructions the AI gets before you ask anything (the app adds today's date, the names of your files and your Memory notes after them); edit them and Save to change how it answers (Reset brings back the original). The Length limit next to Send sets how long an answer may run, or turns the limit off.\n- **Add your own files.** Your files, at the top, takes PDFs, Word documents, EPUB ebooks, web pages and text files (drop them on the window or choose them), so the AI can search your generator's manual, your medicines list or your family's emergency plan along with the library. They stay on your computer, in the `Survival LLM Files` folder in your home folder; files you put in that folder, or change there, are picked up on their own. It can't read scans or photos of pages yet.\n- **Remembers you.** Tell it your daughter is allergic to penicillin or that you have a Honda generator, and it saves a short note so later chats know it too; each answer shows what it saved, with Undo. Memory, at the top, shows every note in one list you can edit, and a switch turns off the AI's saving (it still reads the notes you keep). The notes stay on your computer, in one plain text file with the app's settings.\n- **Updates itself.** Check for updates, at the bottom of the window, looks for a new version (it also looks once a day while it runs, by fetching one small file from the project's web page; nothing about you is sent). Update now downloads it, checks it, and restarts into it, keeping your models, library, files and settings. Newer libraries are offered there too.\n- **Built for emergencies.** About 1.5 million articles (500,000 in the smaller download): about 930,000 of Wikipedia's most-read articles, WikiMed, MedlinePlus, a UK medicines guide, WikEM, Ready.gov, CDC, U.S. military and FEMA survival and first-aid manuals, the USDA canning guide, risk references for estimating micromorts (life tables, U.S. death rates), wikiHow, iFixit, Appropedia, Energypedia and practical Q&A. See [SOURCES.md](SOURCES.md).\n\n## Install\n\nDo this while you have internet. After that, it needs none. Setup takes 20 minutes to about 2½ hours, depending on\nyour computer and internet speed (the biggest AI model is 80 GB); you only click for about 5 minutes.\n\n**Mac** (Apple Silicon, macOS 14 Sonoma or newer)\n1. Download `Survival-LLM-mac.zip` and double-click it to unzip. Move **Survival LLM** to Applications if you like.\n2. Double-click **Survival LLM**. The first time, macOS says it can't verify the app, because it isn't sold through\n   Apple. Click **Done**, open **System Settings > Privacy & Security**, scroll down to \"Survival LLM was blocked\",\n   click **Open Anyway**, and confirm with your password. You only do this once.\n\n**Windows** (10 or 11, 64-bit)\n1. Download `Survival-LLM-windows.zip`, right-click",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 73,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 73, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "anonnerdfrenzy/survival-llm",
+      "summary": "Survival LLM – автономный AI‑ассистент, работающий полностью офлайн, который отвечает на вопросы о выживании, медицине и бытовых навыках, используя локальную библиотеку статей.",
+      "usefulness": "Подходит для людей, живущих в условиях ограниченного доступа к интернету, тех, кто хочет иметь быстрый доступ к проверенной информации о первой помощи, хранении пищи и других навыках выживания.",
+      "uniqueness": "Отличается тем, что полностью офлайн, показывает источники и шаги рассуждения, а также позволяет добавлять собственные документы для поиска.",
+      "pros": [
+        "Полностью офлайн и приватный",
+        "Показывает источники и рассуждения",
+        "Поддержка пользовательских файлов",
+        "Интерактивный интерфейс"
+      ],
+      "cons": [
+        "Отсутствует лицензия, что затрудняет использование в коммерческих проектах",
+        "Документация ограничена README, отсутствуют подробные инструкции по установке и настройке",
+        "Модель может требовать значительных ресурсов для локального запуска"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.892
+  },
+  {
+    "raw": {
+      "full_name": "daveebbelaar/bama",
+      "html_url": "https://github.com/daveebbelaar/bama",
+      "description": "BAMA: Build Any Mac App. Agent skills to research, clone, design, build, optimize, and test native macOS apps with Swift and SwiftUI.",
+      "stars": 692,
+      "forks": 105,
+      "language": "Swift",
+      "license": "MIT",
+      "created_at": "2026-10-24T08:44:36Z",
+      "pushed_at": "2026-10-29T11:31:23Z",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "app-clone",
+        "claude-code",
+        "claude-code-plugin",
+        "codex",
+        "computer-use",
+        "liquid-glass",
+        "macos",
+        "macos-app",
+        "native-apps",
+        "skills",
+        "swift",
+        "swiftdata",
+        "swiftui"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/banner-dark.png\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/assets/banner-light.png\">\n  <img alt=\"BAMA: Build Any Mac App\" src=\"docs/assets/banner-light.png\" width=\"860\">\n</picture>\n\n### See an app you like. Rebuild it as your own native Mac app.\n\nAgent skills that take a native macOS app from idea to your Dock.<br>\nSwift and SwiftUI. Local data. No Xcode GUI.\n\n[![macOS 26+](https://img.shields.io/badge/macOS-26%2B-000000?style=flat-square&logo=apple&logoColor=white)](#requirements)\n[![Swift 6.2](https://img.shields.io/badge/Swift-6.2-F05138?style=flat-square&logo=swift&logoColor=white)](#requirements)\n[![21 skills](https://img.shields.io/badge/skills-21-5E5CE6?style=flat-square)](#skills)\n[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-D97757?style=flat-square&logo=claude&logoColor=white)](#install)\n[![Codex plugin](https://img.shields.io/badge/Codex-plugin-10A37F?style=flat-square)](#install)\n[![MIT license](https://img.shields.io/badge/license-MIT-F4C430?style=flat-square)](LICENSE)\n\n**[Quick start](#quick-start) · [How it works](#how-it-works) · [Skills](#skills) · [Specs](#specs) · [Install](#install)**\n\n</div>\n\n## Quick start\n\n```bash\nnpx skills@latest add daveebbelaar/bama\n```\n\nThen ask your agent:\n\n```text\nClone my to-do app as a native Mac app.\nScreenshot every screen, write the user stories, and build milestone 1.\n```\n\nNot sure where to start? Type `/bama`. It looks at your project and picks the next skill.\n\n## How it works\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\">\n\n**1. Clone**\n\nYour agent opens the app you like and screenshots every screen. It writes a screen index.\n\n</td>\n<td width=\"33%\" valign=\"top\">\n\n**2. Plan**\n\nIt turns the screens into user stories with checkable acceptance criteria, in milestones.\n\n</td>\n<td width=\"33%\" valign=\"top\">\n\n**3. Build**\n\nIt builds one story per commit. Before each commit it snapshots every page in light and dark mode and runs the tests.\n\n</td>\n</tr>\n</table>\n\n## Skills\n\n<table>\n<tr><th>Stage</th><th>Skill</th><th>What it does</th></tr>\n<tr><td rowspan=\"3\" valign=\"top\"><b>Start</b></td><td nowrap><a href=\"skills/start/bama/SKILL.md\"><samp>bama</samp></a></td><td>Router: finds where you are and calls the right skill</td></tr>\n<tr><td nowrap><a href=\"skills/start/app-brief/SKILL.md\"><samp>app-brief</samp></a></td><td>Turns an idea into a one-page brief</td></tr>\n<tr><td nowrap><a href=\"skills/start/new-mac-app/SKILL.md\"><samp>new-mac-app</samp></a></td><td>A working app from a template: Swift package, SwiftData, build script, snapshot mode, git</td></tr>\n<tr><td rowspan=\"3\" valign=\"top\"><b>Plan</b></td><td nowrap><a href=\"skills/plan/research/SKILL.md\"><samp>research</samp></a></td><td>Parallel researcher agents: market, users, features, design, macOS APIs</td></tr>\n<tr><td nowrap><a href=\"skills/plan/clone/SKILL.md\"><samp>clone</samp></a></td><td>Screenshots every screen of any app with computer use or a browser, writes a screen index</td></tr>\n<tr><td nowrap><a href=\"skills/plan/user-stories/SKILL.md\"><samp>user-stories</samp></a></td><td>A backlog with checkable acceptance criteria, in milestones</td></tr>\n<tr><td rowspan=\"5\" valign=\"top\"><b>Code</b></td><td nowrap><a href=\"skills/code/swift-swiftui/SKILL.md\"><samp>swift-swiftui</samp></a></td><td>Swift 6 concurrency, state, SwiftData, AppKit bridges, compiler errors</td></tr>\n<tr><td nowrap><a href=\"skills/code/os-integrations/SKILL.md\"><samp>os-integrations</samp></a></td><td>Global hotkeys, menu bar, floating panels, window control, screen capture, Shortcuts, URL schemes, CLI, permissions</td></tr>\n<tr><td nowrap><a href=\"skills/code/performance/SKILL.md\"><samp>performance</samp></a></td><td>Measure, then fix: main thread, GPU compositing, images, Instruments from the command line</td></tr>\n<tr><td nowrap><a href=\"skills/code/improve-architecture/SKILL.md\"><samp>improve-architecture</sam",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "daveebbelaar/bama",
+      "summary": "BAMA – инструмент, позволяющий автоматически клонировать, проектировать, собирать и тестировать нативные macOS‑приложения на Swift/SwiftUI, используя навыки AI‑агентов.",
+      "usefulness": "Подходит для разработчиков macOS, которые хотят быстро превратить существующее приложение в собственный нативный продукт без ручной работы в Xcode.",
+      "uniqueness": "Интегрирует 21 навык‑модуль, работает через CLI и AI‑плагин Claude/Codex, автоматически генерируя код, тесты и пользовательские истории.",
+      "pros": [
+        "Автоматический скриншот и генерация UI‑индекса",
+        "Поддержка Swift 6.2 и SwiftUI",
+        "Интеграция с Claude и Codex",
+        "Легко подключается через npm",
+        "MIT лицензия"
+      ],
+      "cons": [
+        "Ограничено только macOS 26+",
+        "Документация фрагментарна, но достаточна",
+        "Не покрывает сложные пользовательские сценарии"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science",
+        "backend"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.892
+  },
+  {
+    "raw": {
+      "full_name": "designfuchen/word-atlas",
+      "html_url": "https://github.com/designfuchen/word-atlas",
+      "description": "词光 · Word Atlas — Illustrated IELTS vocabulary with 7,298 words, UK/US audio and FSRS review. Open-source app + CC BY 4.0 dataset.",
+      "stars": 3187,
+      "forks": 698,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "created_at": "2026-10-25T08:27:22Z",
+      "pushed_at": "2026-10-27T10:55:44Z",
+      "topics": [
+        "chinese",
+        "dataset",
+        "english-learning",
+        "flashcards",
+        "fsrs",
+        "ielts",
+        "language-learning",
+        "pwa",
+        "react",
+        "spaced-repetition",
+        "vocabulary",
+        "webgl"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n<a href=\"https://0xlei.tech/words/\"><img src=\"docs/assets/cover-v2.jpg\" alt=\"词光 Word Atlas — 一词一画，点亮雅思\" width=\"100%\"></a>\n\n# 词光 · Word Atlas\n\n**把单词变成画面，让复习有迹可循。**\n\n7,298 个雅思词条 · 原创插画 · 英美发音 · FSRS 间隔复习\n\n[**立即体验 ↗**](https://0xlei.tech/words/)　 /　 [48 秒介绍](docs/assets/launch.mp4)　 /　 [下载词库](data/)　 /　 [English](README.en.md)\n\n[![Code: MIT](https://img.shields.io/badge/Code-MIT-17283B?style=flat-square)](LICENSE)\n[![Dataset: CC BY 4.0](https://img.shields.io/badge/Dataset-CC_BY_4.0-AD5038?style=flat-square)](CONTENT_LICENSE.md)\n[![Follow on X](https://img.shields.io/badge/X-@yangleiocx3-17283B?style=flat-square&logo=x&logoColor=white)](https://x.com/yangleiocx3)\n\n<br>\n\n<a href=\"https://0xlei.tech/words/\"><img src=\"https://0xlei.tech/words/beta/banner.png\" alt=\"词光 iOS 首批内测：微信扫码加入内测群\" width=\"100%\"></a>\n\n**词光 iOS 正在开发，首批内测招募中。** 微信扫上图二维码进群；二维码过期或群满了，打开 [网站](https://0xlei.tech/words/) 点顶栏「内测」，加作者微信拉你进群。\n\n</div>\n\n---\n\n词光是一款以插画和语境为核心的雅思背词应用。看画面理解词义，听发音建立联系，再用主动回忆和间隔复习巩固记忆。无需账号，学习进度保存在自己的设备上。\n\n> **版本说明**：这个仓库提供词光的开源基础版及配套数据集。在线网站独立迭代，功能与仓库可能不同；仓库里的代码和内容分别遵循下方的 MIT / CC BY 4.0 授权。\n\n[产品预览](#产品预览) · [学习方式](#学习方式) · [本地运行](#本地运行) · [开放数据](#开放数据) · [参与贡献](#参与贡献)\n\n## 产品预览\n\n### 一本可以听、可以练的单词图鉴\n\n<img src=\"docs/assets/atlas-desktop.jpg\" alt=\"开源版桌面图鉴：插画词卡和词汇浏览\" width=\"100%\">\n\n<table>\n<tr>\n<td width=\"50%\"><img src=\"docs/assets/today-mobile.jpg\" alt=\"手机端今日学习页\" width=\"100%\"></td>\n<td width=\"50%\"><img src=\"docs/assets/word-mobile.jpg\" alt=\"手机端词卡，展示插画、英美发音与例句\" width=\"100%\"></td>\n</tr>\n<tr><td align=\"center\">每日计划，把注意力放在今天</td><td align=\"center\">插画、词义、发音，在一张词卡里</td></tr>\n</table>\n\n<sub>以上为仓库开源版的实际界面。页首为品牌概念插画。</sub>\n\n### 学过的词，汇成自己的星图\n\n<img src=\"docs/assets/galaxy.jpg\" alt=\"词汇星图界面：按话题组织单词，展示学习进度\" width=\"100%\">\n\n19 个话题组成词汇星图。拖动旋转、滚动缩放，点击星星打开词卡；学习状态用不同亮度呈现。采用 WebGL2 渲染，不支持的设备提供降级显示。\n\n<details>\n<summary><b>看 48 秒宣传片</b></summary>\n\n<a href=\"docs/assets/launch.mp4\"><img src=\"docs/assets/launch-preview.webp\" alt=\"点击观看词光宣传片\" width=\"100%\"></a>\n\n[播放完整视频（含声音）](docs/assets/launch.mp4)\n\n</details>\n\n## 学习方式\n\n| 环节 | 你会做什么 |\n| :--- | :--- |\n| **看见** | 每个词配一幅插画、中英释义、两条原创例句，以及搭配、词族和用法提示。 |\n| **听见** | 切换英音、美音，听日常例句朗读；部分词条另含第二条例句录音。 |\n| **想起** | 看义选词、看图补句、听音辨词、拼写，逐步练习主动回忆。 |\n| **复习** | FSRS 根据学习记录安排复习，目标记忆率可调。只有首次作答计入正确率。 |\n| **积累** | 星图展示学习进度；打字练习独立统计；支持导出和恢复本地进度。 |\n\n**本地优先。** 无需注册；看过的词条与媒体可缓存供离线使用。换设备前，请先导出进度备份。\n\n<details>\n<summary><b>听发音、例句与环境声样本</b></summary>\n\n\n\n拿 *abandon* 举例，点开就能听（在线播放）：\n\n| | |\n|---|---|\n| 🇬🇧 英音 | [abandon /əˈbændən/](https://0xlei.tech/words/atlas/audio/uk/abandon.mp3) |\n| 🇺🇸 美音 | [abandon /əˈbændən/](https://0xlei.tech/words/atlas/audio/us/abandon.mp3) |\n| 📖 例句朗读 | [We had to abandon our car in the snow.](https://0xlei.tech/words/atlas/audio/ex/abandon.mp3) |\n\n全部 7,298 个词都有英音、美音和例句朗读，还有 1,011 个重点词的第二条例句也配了朗读。\n\n### 环境声与交互声音\n\n| | |\n|---|---|\n| 🎙 **开屏配音** | [「欢迎打开雅思大门」](https://0xlei.tech/words/sfx/splash-voice.mp3)：星尘汇聚成“词光”，大门打开 |\n| 🌌 **星图配音** | [「这是你的词汇星图。每学会一个词，就点亮一颗星。」](https://0xlei.tech/words/sfx/voice-galaxy-hello.mp3) |\n| 🎵 **星空音乐** | [一段可无缝循环的原创配乐](https://0xlei.tech/words/sfx/amb-stars.mp3)，默认陪你背词 |\n| 🌧 **6 段环境声** | [雨天图书馆](https://0xlei.tech/words/sfx/amb-rain.mp3) · [清晨海岸](https://0xlei.tech/words/sfx/amb-sea.mp3) · [林间早晨](https://0xlei.tech/words/sfx/amb-forest.mp3) · [夜晚壁炉](https://0xlei.tech/words/sfx/amb-fire.mp3) · [远航船舱](https://0xlei.tech/words/sfx/amb-voyage.mp3) · [安静咖啡馆](https://0xlei.tech/words/sfx/amb-cafe.mp3) |\n| ✨ **界面音效** | 答对、答错、翻卡、打字、连胜、点亮星星……每个操作都有自己的声音；读单词时背景音会自动压低 |\n\n全部素材都在仓库里：插画在 `public/atlas/img/`，录音在 `public/atlas/audio/`，这两类按 CC BY 4.0 开放；界面声音和配乐在 `public/sfx/`，随应用一起提供。\n\n\n</details>\n\n## 本地运行\n\n需要 **Node.js 20+** 和 npm。仓库含完整图片与录音，首次下载可能较久。\n\n```bash\ngit clone --depth 1 https://github.com/designfuchen/word-atlas.git\ncd word-atlas\nnpm ci\nnpm run dev\n```\n\n打开 **http://localhost:5188**。\n\n```bash\nnpm test             # 单元测试\nnpm run check:atlas  # 词库结构与媒体校验\nnpm run build        # 构建到 dist/\n```\n\n子路径部署：`ATLAS_BASE=/words/ npm run build`。完整说明见 [部署文档](docs/deployment.md)。\n\n**技术栈**：React 19 · TypeScript · ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 20,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 3,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 20, gitleaks: 0, osv: 0; critical=0, high=3"
+    },
+    "analysis": {
+      "full_name": "designfuchen/word-atlas",
+      "summary": "Word Atlas – приложение для изучения слов IELTS с иллюстрациями, аудио и интервальным повторением FSRS. Предоставляет 7 298 слов, оригинальные рисунки и прогресс‑систему без учётной записи.",
+      "usefulness": "Подходит для студентов, готовящихся к IELTS, и всех, кто хочет учить английский с помощью визуальных ассоциаций и spaced‑repetition. Позволяет отслеживать прогресс локально, без сервера.",
+      "uniqueness": "Комбинирует уникальные иллюстрации, контекстные примеры и WebGL‑визуализацию словаря, а также открытый набор данных CC BY 4.0. В отличие от обычных флешкарт, здесь каждый термин сопровождается рисунком и аудио.",
+      "pros": [
+        "Большой словарь (7 298 слов)",
+        "Интерактивный WebGL‑карта прогресса",
+        "Поддержка FSRS для оптимального повторения",
+        "Открытый набор данных и MIT‑лицензия"
+      ],
+      "cons": [
+        "Наличие 3 high‑severity bandit‑уязвимости",
+        "Отсутствие критических ошибок, но требуется обновление безопасности",
+        "Документация ограничена README, отсутствует подробный гайд по API"
+      ],
+      "audience": [
+        "frontend",
+        "devops",
+        "data-science",
+        "cli",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.825
+  },
+  {
+    "raw": {
+      "full_name": "enesozturk/dimensional-drawing",
+      "html_url": "https://github.com/enesozturk/dimensional-drawing",
+      "description": "Create Apple style dimensional drawings of UI components.",
+      "stars": 1503,
+      "forks": 97,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-10-23T12:20:16Z",
+      "pushed_at": "2026-10-24T09:41:54Z",
+      "topics": [
+        "skills",
+        "ui"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"assets/dialog-motion.gif\" alt=\"A dialog component's dimensional drawing drawing itself: header close-up, pull back to the plan view, layers lifting into an exploded view, then the full sheet\" width=\"100%\">\n</p>\n\n<h1 align=\"center\">dimensional-drawing ✏️📐</h1>\n\n<p align=\"center\">\n  <b>Give it a UI component, get back a one-page technical drawing of it.</b><br>\n  Paddings, gaps, corner radii, layers and viewport placement, measured and labeled like Apple's dimensional drawings.\n</p>\n\n<p align=\"center\">\n  <a href=\"#install\">Install</a> ·\n  <a href=\"#use-it\">Use it</a> ·\n  <a href=\"#make-it-move\">Make it move</a> ·\n  <a href=\"#examples\">Examples</a>\n</p>\n\n---\n\nApple publishes [dimensional drawings](https://developer.apple.com/accessories/dimensional-drawings/) for every device so accessory makers can build cases that fit. They are calm, dense and beautiful: one sheet, a few views, tiny detail circles, numbers everywhere.\n\nThis repo teaches your agent to draw **your components** the same way. A card or a dialog becomes a spec sheet you could hand to anyone and they would rebuild its *architecture*: paddings, gaps, radii, layers, how it sits in the viewport. Copy and content are left out on purpose, so the drawing stays true when the text changes.\n\n## What's inside 🎁\n\n```\nskills/\n├── dimensional-drawing/          the drawing skill\n│   ├── SKILL.md\n│   └── examples/                 card + dialog sheets (single HTML files)\n└── dimensional-drawing-motion/   turns a sheet into a ~10 s film\n    ├── SKILL.md\n    ├── templates/                reference scene + stylesheet\n    └── adapters/\n        ├── claude-motion.md      Claude's Motion artifact (primary)\n        └── headless/             Playwright + ffmpeg, no Claude needed\n```\n\n### The house rules\n\n| | |\n|---|---|\n| ⚫️ **Monochrome** | grays only; things are told apart by line weight, dashes and hatches |\n| 🧱 **Architecture, not content** | `TITLE SLOT · FLEX`, `ACTION · HUG`, `CONTENT SLOT · FILL` |\n| 🔤 **Variables, not numbers** | `S1`, `R2`, `H1 = 2·S1 + H3`, `R2 = R1 − B − S6` |\n| 🏷️ **Unbranded** | neutral names like `UI-CARD-001` |\n| 🙅 **Never invent values** | unknowns stay `[TBD]` |\n\n## Install\n\n**Claude Code**\n\n```bash\ngit clone https://github.com/enesozturk/dimensional-drawing\ncp -r dimensional-drawing/skills/* ~/.claude/skills/\n```\n\n**claude.ai / Claude desktop:** zip a skill folder (for example `skills/dimensional-drawing`) and add it under *Settings → Capabilities → Skills*.\n\n**Any other agent** (Codex, Cursor, Gemini CLI, …): use the [`skills`](https://skills.sh) CLI, or point your agent at the `SKILL.md` files.\n\n```bash\nnpx skills add enesozturk/dimensional-drawing\n```\n\n## Use it\n\nAsk for a drawing and point at the source (a repo file, a Storybook story, a URL, a screenshot):\n\n> Make a dimensional drawing of the `Card` component in `src/components/Card.tsx`\n\n> Draw the anatomy of our settings dialog, same style as the examples\n\nYou get a title block with the key variables on top, then one dense sheet: notes, plan view, exploded layers, detail views (nested corner, radii, body), and variable tables.\n\nIt works for physical things too (third-angle views, mm, published specs only). Try a thermos 🫖.\n\n## Make it move 🎬\n\nThe motion skill animates a finished sheet like a pen drawing it while a camera moves over the paper:\n\n1. close-up on the header as its lines draw in\n2. pull back to the plan view while the rest draws\n3. layers lift off the plan into the exploded view (strokes first, fills after, so nothing flashes)\n4. pull back to the full sheet as the remaining views draw in\n\nThe scene is a pure function of time, so it runs in two places:\n\n| | |\n|---|---|\n| **With Claude** | ask *\"animate this drawing\"*. Claude builds it in the **Motion** artifact and you export MP4. This is the primary target and where the timing was tuned. |\n| **Without Claude** | `cd skills/dimensional-drawing-motion/adapters/headless && npm install`, then `node render.mjs --",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "enesozturk/dimensional-drawing",
+      "summary": "Создаёт Apple‑стильные технические чертежи UI‑компонентов, показывая отступы, промежутки, радиусы углов и слои.",
+      "usefulness": "Подходит дизайнерам, фронтенд‑разработчикам и инженерам, которым нужны точные спецификации компонентов для прототипирования, тестирования и производства.",
+      "uniqueness": "Автоматически генерирует единичный лист с измерениями и метками, аналогичный официальным Apple‑документам, но для произвольных UI‑элементов, а не только устройств.",
+      "pros": [
+        "Высокая точность измерений",
+        "Поддержка HTML‑компонентов",
+        "Простая интеграция",
+        "Отсутствие сторонних зависимостей"
+      ],
+      "cons": [
+        "Ограничено только HTML",
+        "Отсутствует CLI‑интерфейс",
+        "Документация ограничена фрагментами"
+      ],
+      "audience": [
+        "frontend",
+        "ui",
+        "design",
+        "devops"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.809
+  }
+]

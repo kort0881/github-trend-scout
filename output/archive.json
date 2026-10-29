@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-25T10:56:12+00:00",
-  "count": 29,
+  "updated_at": "2026-10-29T12:31:53+00:00",
+  "count": 39,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -10,6 +10,15 @@
       "last": "2026-10-24",
       "score": 3.008,
       "html_url": "https://github.com/Ansub/tv-detox"
+    },
+    "DenisSergeevitch/ex-ussr-kinship-research": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.904,
+      "html_url": "https://github.com/DenisSergeevitch/ex-ussr-kinship-research"
     },
     "Domainsun/awesome-chinese-secondhand-slang": {
       "releases": [
@@ -83,6 +92,15 @@
       "score": 3.197,
       "html_url": "https://github.com/UniXNU/UniXNU"
     },
+    "ZiChuanLan/agent-purge": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.897,
+      "html_url": "https://github.com/ZiChuanLan/agent-purge"
+    },
     "aicodeking/leanrea": {
       "releases": [
         "2026-10-24"
@@ -101,6 +119,24 @@
       "score": 3.01,
       "html_url": "https://github.com/alchaincyf/huashu-motion"
     },
+    "anhao/ai-pose-gallery-zh": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.921,
+      "html_url": "https://github.com/anhao/ai-pose-gallery-zh"
+    },
+    "anonnerdfrenzy/survival-llm": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.892,
+      "html_url": "https://github.com/anonnerdfrenzy/survival-llm"
+    },
     "assetnote/php2shell-scanner": {
       "releases": [
         "2026-10-24"
@@ -109,6 +145,24 @@
       "last": "2026-10-24",
       "score": 3.685,
       "html_url": "https://github.com/assetnote/php2shell-scanner"
+    },
+    "daveebbelaar/bama": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.892,
+      "html_url": "https://github.com/daveebbelaar/bama"
+    },
+    "designfuchen/word-atlas": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.825,
+      "html_url": "https://github.com/designfuchen/word-atlas"
     },
     "dominikmartn/harp": {
       "releases": [
@@ -127,6 +181,15 @@
       "last": "2026-10-24",
       "score": 2.999,
       "html_url": "https://github.com/eagle-hq/EAGLE-4"
+    },
+    "enesozturk/dimensional-drawing": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.809,
+      "html_url": "https://github.com/enesozturk/dimensional-drawing"
     },
     "humblemuzzu/dumbtv": {
       "releases": [
@@ -173,6 +236,15 @@
       "score": 2.882,
       "html_url": "https://github.com/mihirgupta0900/tv-home"
     },
+    "morganlinton/BeautifulRust": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.907,
+      "html_url": "https://github.com/morganlinton/BeautifulRust"
+    },
     "nthnclrk/CleanFrame": {
       "releases": [
         "2026-10-25"
@@ -218,6 +290,15 @@
       "score": 3.03,
       "html_url": "https://github.com/simbasjungles/free-my-tv"
     },
+    "smithjohn78390/tongjiang-lab": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.895,
+      "html_url": "https://github.com/smithjohn78390/tongjiang-lab"
+    },
     "stackedlol/ascii-sharks": {
       "releases": [
         "2026-10-25"
@@ -226,6 +307,15 @@
       "last": "2026-10-25",
       "score": 3.896,
       "html_url": "https://github.com/stackedlol/ascii-sharks"
+    },
+    "t3dotgg/tstack": {
+      "releases": [
+        "2026-10-29"
+      ],
+      "times": 1,
+      "last": "2026-10-29",
+      "score": 3.918,
+      "html_url": "https://github.com/t3dotgg/tstack"
     },
     "torrentplayer/torrentplayer": {
       "releases": [
