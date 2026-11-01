@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-29T12:31:53+00:00",
-  "count": 39,
+  "updated_at": "2026-11-01T12:53:36+00:00",
+  "count": 49,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -10,6 +10,33 @@
       "last": "2026-10-24",
       "score": 3.008,
       "html_url": "https://github.com/Ansub/tv-detox"
+    },
+    "Arjun-Ingole/hop": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.899,
+      "html_url": "https://github.com/Arjun-Ingole/hop"
+    },
+    "BryceYuuu/RUN": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.802,
+      "html_url": "https://github.com/BryceYuuu/RUN"
+    },
+    "D3voz/openjutsu": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.899,
+      "html_url": "https://github.com/D3voz/openjutsu"
     },
     "DenisSergeevitch/ex-ussr-kinship-research": {
       "releases": [
@@ -37,6 +64,15 @@
       "last": "2026-10-24",
       "score": 2.999,
       "html_url": "https://github.com/ELY-Open-Source/ElyOffice"
+    },
+    "HRuiCcc/RuiC-PoseAtlas": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.898,
+      "html_url": "https://github.com/HRuiCcc/RuiC-PoseAtlas"
     },
     "Hugo-Dz/spritefusion-sprite-normals": {
       "releases": [
@@ -155,6 +191,15 @@
       "score": 3.892,
       "html_url": "https://github.com/daveebbelaar/bama"
     },
+    "deepseek-ai/dsh-superagent-prototype": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.737,
+      "html_url": "https://github.com/deepseek-ai/dsh-superagent-prototype"
+    },
     "designfuchen/word-atlas": {
       "releases": [
         "2026-10-29"
@@ -190,6 +235,24 @@
       "last": "2026-10-29",
       "score": 3.809,
       "html_url": "https://github.com/enesozturk/dimensional-drawing"
+    },
+    "haydenschmitty/floorplan": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.703,
+      "html_url": "https://github.com/haydenschmitty/floorplan"
+    },
+    "heydamir/unslop": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.931,
+      "html_url": "https://github.com/heydamir/unslop"
     },
     "humblemuzzu/dumbtv": {
       "releases": [
@@ -254,6 +317,24 @@
       "score": 3.589,
       "html_url": "https://github.com/nthnclrk/CleanFrame"
     },
+    "paipiange/nvzhuang": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.913,
+      "html_url": "https://github.com/paipiange/nvzhuang"
+    },
+    "patch-gg/pixelfx": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.916,
+      "html_url": "https://github.com/patch-gg/pixelfx"
+    },
     "pengchujin/aerial-tv": {
       "releases": [
         "2026-10-24"
@@ -262,6 +343,15 @@
       "last": "2026-10-24",
       "score": 3.231,
       "html_url": "https://github.com/pengchujin/aerial-tv"
+    },
+    "physicsdolphin/nv-uefi-unlocker": {
+      "releases": [
+        "2026-11-01"
+      ],
+      "times": 1,
+      "last": "2026-11-01",
+      "score": 3.897,
+      "html_url": "https://github.com/physicsdolphin/nv-uefi-unlocker"
     },
     "realskyrin/ns-game-apple-arm-port": {
       "releases": [
