@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-01T12:53:36+00:00",
-  "count": 49,
+  "updated_at": "2026-11-05T14:16:38+00:00",
+  "count": 59,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -110,6 +110,33 @@
       "score": 3.681,
       "html_url": "https://github.com/K0NL/B2recomp"
     },
+    "KKKKhazix/agent-autoloop": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 4.124,
+      "html_url": "https://github.com/KKKKhazix/agent-autoloop"
+    },
+    "N1nEmAn/sapper-v2": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.904,
+      "html_url": "https://github.com/N1nEmAn/sapper-v2"
+    },
+    "NiazMorshed2007/reanimate": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.802,
+      "html_url": "https://github.com/NiazMorshed2007/reanimate"
+    },
     "Snapintosh/Snapintosh": {
       "releases": [
         "2026-10-24"
@@ -127,6 +154,15 @@
       "last": "2026-10-24",
       "score": 3.197,
       "html_url": "https://github.com/UniXNU/UniXNU"
+    },
+    "Verlintas/NOIR": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.919,
+      "html_url": "https://github.com/Verlintas/NOIR"
     },
     "ZiChuanLan/agent-purge": {
       "releases": [
@@ -182,6 +218,15 @@
       "score": 3.685,
       "html_url": "https://github.com/assetnote/php2shell-scanner"
     },
+    "caru-ini/stack-diagram": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.913,
+      "html_url": "https://github.com/caru-ini/stack-diagram"
+    },
     "daveebbelaar/bama": {
       "releases": [
         "2026-10-29"
@@ -227,6 +272,15 @@
       "score": 2.999,
       "html_url": "https://github.com/eagle-hq/EAGLE-4"
     },
+    "elvarofficial/teardown": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 4.016,
+      "html_url": "https://github.com/elvarofficial/teardown"
+    },
     "enesozturk/dimensional-drawing": {
       "releases": [
         "2026-10-29"
@@ -235,6 +289,15 @@
       "last": "2026-10-29",
       "score": 3.809,
       "html_url": "https://github.com/enesozturk/dimensional-drawing"
+    },
+    "govijr/terminal-mac": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.913,
+      "html_url": "https://github.com/govijr/terminal-mac"
     },
     "haydenschmitty/floorplan": {
       "releases": [
@@ -281,6 +344,15 @@
       "score": 2.382,
       "html_url": "https://github.com/justrach/nanoui"
     },
+    "kevinraymond/florilegium": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.908,
+      "html_url": "https://github.com/kevinraymond/florilegium"
+    },
     "lesnolie/Tigris": {
       "releases": [
         "2026-10-24"
@@ -307,6 +379,15 @@
       "last": "2026-10-29",
       "score": 3.907,
       "html_url": "https://github.com/morganlinton/BeautifulRust"
+    },
+    "mromidev/claude-animated-shorts": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.811,
+      "html_url": "https://github.com/mromidev/claude-animated-shorts"
     },
     "nthnclrk/CleanFrame": {
       "releases": [
@@ -370,6 +451,15 @@
       "last": "2026-10-24",
       "score": 3.681,
       "html_url": "https://github.com/rossark0/rossark-motion-skill"
+    },
+    "s1dashu/quiet-md": {
+      "releases": [
+        "2026-11-05"
+      ],
+      "times": 1,
+      "last": "2026-11-05",
+      "score": 3.799,
+      "html_url": "https://github.com/s1dashu/quiet-md"
     },
     "simbasjungles/free-my-tv": {
       "releases": [
