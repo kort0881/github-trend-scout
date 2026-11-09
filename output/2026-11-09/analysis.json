@@ -1,0 +1,550 @@
+[
+  {
+    "raw": {
+      "full_name": "livliv-dev/player",
+      "html_url": "https://github.com/livliv-dev/player",
+      "description": "A lightweight 2.5D character player for the web, with lip sync and webcam face tracking.",
+      "stars": 1386,
+      "forks": 145,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "created_at": "2026-11-04T03:28:33Z",
+      "pushed_at": "2026-11-09T06:08:52Z",
+      "topics": [
+        "avatar",
+        "character",
+        "face-tracking",
+        "lip-sync",
+        "pngtuber",
+        "vrm",
+        "vtuber",
+        "webgl2"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"media/livliv-player-wordmark-white.svg\">\n    <img alt=\"LivLiv Player\" src=\"media/livliv-player-wordmark-2000.png\" width=\"360\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  A lightweight 2.5D character player for the web, with lip sync and webcam face tracking. A few lines of code put a character in a page, a stream overlay or an app.<br>\n  Comes with 21 featured characters in different styles, ready to use.\n</p>\n\n<p align=\"center\"><b>English</b> · <a href=\"README.zh-CN.md\">中文</a> · <a href=\"README.ja.md\">日本語</a> · <a href=\"README.vi.md\">Tiếng Việt</a></p>\n\n<p align=\"center\"><img src=\"media/demo.gif\" alt=\"Featured characters breathing, blinking, turning their heads and talking\" width=\"720\"></p>\n\n- WebGL2, no dependencies, about 30 KB gzipped for the core\n- Lip sync (microphone, audio, video) and webcam face tracking (MediaPipe), both in the browser, imported only when you need them\n- Plays LivLiv, VRM and PNGTuber characters through the same API\n- 21 featured characters in [`characters/`](characters/), ready to use\n\n## Try it\n\n- **Online**: the examples run on [livliv-dev.github.io/player](https://livliv-dev.github.io/player/).\n- **Here**: `npm install && npm run build`, serve this folder with any static server and open `/example/demo.html`\n  (expressions, actions, microphone, camera; `?model=../characters/<id>/` picks another character).\n  `/example/png.html` and `/example/vrm.html` show a PNGTuber and a VRM.\n- **On livliv.ai**: each character's page there plays it with the same renderer. Start at\n  [livliv.ai/discover](https://livliv.ai/discover).\n\n## Project LivLiv\n\nWe want the art of creating characters to belong to everyone.\n\nWe're open-sourcing our AI tools for character creation, the player and its playback protocol, and a stage\nwhere your characters can meet an audience.\n\nCome say hello on [Discord](https://discord.gg/ac5qF36T2H) and follow us on [X (Twitter)](https://x.com/livliv_ai).\n\n## Use it in your page\n\n```sh\nnpm install @livliv-dev/player\n```\n\n```js\nimport { Player } from '@livliv-dev/player'\n\nconst player = new Player(document.querySelector('canvas'))\nawait player.load('characters/k01/')   // a folder with model.json and textures/, or a .livliv file\n\nplayer.setExpression('smile')          // ids are in player.expressions\nplayer.act('nod')\nplayer.params.mouthOpen = 0.6          // 0..1\n```\n\nLip sync and face tracking:\n\n```js\nimport { createSpeech } from '@livliv-dev/player/voice'\nimport { startFaceTracking } from '@livliv-dev/player/tracking'   // needs @mediapipe/tasks-vision\n\nconst speech = createSpeech(player)\nbutton.onclick = () => { speech.unlock(); speech.say('/reply.mp3') }\n\nawait startFaceTracking(player)\n```\n\nA VRM or a PNGTuber, on the same API:\n\n```js\nimport { BodyPlayer } from '@livliv-dev/player/body'\nimport { VrmBody } from '@livliv-dev/player/vrm'    // needs three and @pixiv/three-vrm\nimport { PngBody } from '@livliv-dev/player/png'\n\nconst vrm = new BodyPlayer(canvasA, new VrmBody())\nawait vrm.load('/avatars/me.vrm')\nconst png = new BodyPlayer(canvasB, new PngBody())\nawait png.load({ closed: 'me-closed.png', open: 'me-open.png' })\n```\n\nThe whole API is in [API.md](API.md): options, params, expressions and actions, drivers, VRM and PNGTuber characters,\nthe limits on untrusted files, the model package and the format version. The LivLiv package format (`.livliv`,\n`model.json` v4) is in [FORMAT.md](FORMAT.md), with a JSON Schema in [`schema/`](schema/); packages exported before v4\nare described in [FORMAT-v3.md](FORMAT-v3.md) and still play.\n\n> The npm package is the player alone. The featured characters are in this repository's [`characters/`](characters/): copy\n> the ones you use next to your page, with their licence.\n\n## Featured characters\n\n`characters/` holds 21 characters, ready to `load()`. They carry a small LivLiv mark in the bottom-right corner, which\nthe player draws. They are **not** covered by the Apache L",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "livliv-dev/player",
+      "summary": "LivLiv Player – легковесный 2.5D‑плеер для веб‑страниц, поддерживающий синхронизацию губ и отслеживание лица через веб‑камеру.",
+      "usefulness": "Подходит для веб‑разработчиков, создателей VTuber‑контента и интерактивных приложений, которым нужен быстрый и простой способ внедрить анимированного персонажа.",
+      "uniqueness": "Объединяет WebGL2‑рендеринг, Lip‑Sync и MediaPipe‑face‑tracking в одном небольшом пакете (≈30 KB gzipped) и поддерживает несколько форматов персонажей (LivLiv, VRM, PNGTuber) через единый API.",
+      "pros": [
+        "Небольшой размер и отсутствие зависимостей",
+        "Поддержка нескольких форматов персонажей",
+        "Встроенная синхронизация губ и отслеживание лица",
+        "Пример кода «несколько строк» для внедрения"
+      ],
+      "cons": [
+        "Документация ограничена фрагментами README, отсутствует подробный гайд по API",
+        "Меньше примеров использования в реальных проектах",
+        "Тесты отсутствуют"
+      ],
+      "audience": [
+        "frontend",
+        "webgl",
+        "devops",
+        "cli",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.907
+  },
+  {
+    "raw": {
+      "full_name": "shanselman/gputaskman",
+      "html_url": "https://github.com/shanselman/gputaskman",
+      "description": "A GPU task manager for Windows, Linux, and WSL: per-process VRAM, GPU activity, and LLM model/KV-cache insights (Windows AMD and NVIDIA).",
+      "stars": 1377,
+      "forks": 67,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-11-03T00:49:34Z",
+      "pushed_at": "2026-11-09T10:28:16Z",
+      "topics": [],
+      "readme_excerpt": "# gputaskman\n\n**An `htop` for what's inside your GPU, not just how full it is.**\n\nWindows + NVIDIA/AMD, with Linux and WSL support (NVIDIA everywhere, AMD and Intel on native Linux; see\n[Linux and WSL](#linux-and-wsl)) and macOS on Apple Silicon (see [macOS](#macos-apple-silicon)). A terminal UI\nthat connects per-process GPU memory and engine activity with loaded runtimes, model files, and\nLLM buffer breakdowns.\n\nTask Manager says \"15 GB used.\" This tries to answer: *by what? Model weights? KV cache?\nYour browser? The desktop compositor? And why is so much GPU memory in system RAM?*\n\n**Scope: local GPU workloads, not cloud services.** Decision models, vision, speech, LLM inference,\ntraining/fine-tuning (including Unsloth), graphics, and video all belong here. Visibility varies:\nprocess memory and engine activity are measured; identifying individual models and their work\nrequires supporting evidence. A PyTorch/CUDA DLL alone cannot identify a model or prove training,\nand a mapped file does not prove that model is resident on the GPU or being exercised.\nCPU-only, NPU-only, and cloud workloads are out of scope.\n\n![Live GPU overview with an LLM's weights, KV cache, and compute buffer breakdown](docs/screenshots/overview.png)\n\n> Early, experimental software. Device and process counters are measurements; classifications\n> and GGUF-derived breakdowns are estimates. This does not dump VRAM or enumerate a game's textures.\n\n## Install from PyPI\n\n[gputaskman is on PyPI](https://pypi.org/project/gputaskman/). No repository clone is needed:\n\n```powershell\nuv tool install gputaskman\ngputaskman\n```\n\nOr, with [pipx](https://pipx.pypa.io/):\n\n```powershell\npipx install gputaskman\ngputaskman\n```\n\nWorks on Windows, Linux/WSL, and macOS with Python 3.11+ and the supported GPU/driver\nconfiguration described below. Both installers keep the app in an isolated environment.\nThe shorter `gtm` command is also available. Upgrade with `uv tool upgrade gputaskman`\nor `pipx upgrade gputaskman`. For Windows without Python, use the portable download below.\n\n## Portable Windows download\n\nThe [Releases page](https://github.com/shanselman/gputaskman/releases) is where tagged builds\npublish two portable ZIPs: `gputaskman-VERSION-windows-x64.zip` for Intel/AMD Windows PCs, and\n`gputaskman-VERSION-windows-arm64.zip` for native Windows ARM64. These are separate native builds,\nnot a universal executable.\n\nExtract the **entire ZIP**, keeping `_internal` beside `gputaskman.exe`. Open Windows Terminal\nor PowerShell in the extracted folder:\n\n```powershell\n.\\gputaskman.exe\n.\\gputaskman.exe --once\n.\\gputaskman.exe --json\n```\n\nNo Python, uv, CUDA Toolkit, model download, or installation is needed. A supported GPU with a\ncurrent Windows WDDM driver is required. Builds are currently **unsigned**; code signing\nand an installer are not part of this initial distribution. Each ZIP includes licenses and a\n`.zip.sha256` companion file is published for integrity checks.\n\n## Clone and run\n\nUse **64-bit Windows 10/11**, an **NVIDIA or AMD GPU with a current WDDM driver**, and a terminal\n(Windows Terminal is recommended). Live workload checks have included an RTX 4080 SUPER and an\nRTX Spark N1X on Windows ARM64. CUDA workloads are supported on ARM64 with a compatible NVIDIA\ndriver and ARM64 CUDA runtime.\n\nAMD live check: Radeon 860M Graphics on Windows 11 Enterprise build 26300, AMD driver 32.0.22050.1003.\nDuring desktop/browser activity, WDDM reported per-process VRAM and AMD ADL reported GPU utilization,\nclocks, and ASIC power; temperature, memory activity, and PCIe readings were unavailable. Vulkan/ROCm\nworkloads were not tested on this machine.\n\nInstall [Git for Windows](https://git-scm.com/downloads/win) and\n[uv](https://docs.astral.sh/uv/getting-started/installation/) if needed. With WinGet:\n\n```powershell\nwinget install --id Git.Git --exact\nwinget install --id astral-sh.uv --exact\n```\n\nOpen a new PowerShell window so those tools are on `PATH`, then:\n\n```powershell\ngit clone https",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 23,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 23, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "shanselman/gputaskman",
+      "summary": "gputaskman – терминальный менеджер задач GPU, показывающий использование памяти, активности и детали моделей LLM на Windows, Linux, WSL и macOS.",
+      "usefulness": "Подходит для разработчиков и исследователей, которым нужно понять, какие процессы и модели используют GPU, и как распределяется память и вычислительные ресурсы.",
+      "uniqueness": "В отличие от стандартных мониторов, он связывает процессы с конкретными моделями и их буферами, предоставляя подробный разбор VRAM, KV‑кэша и вычислительных буферов.",
+      "pros": [
+        "Поддержка Windows, Linux, WSL и macOS",
+        "Интерактивный UI, похожий на htop",
+        "Интеграция с PyPI и pipx",
+        "Подробный разбор LLM‑моделей"
+      ],
+      "cons": [
+        "Ограничен локальными задачами, не облачными",
+        "Документация неполная, отсутствуют примеры использования",
+        "Небольшой набор тестов"
+      ],
+      "audience": [
+        "cli",
+        "data-science",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.907
+  },
+  {
+    "raw": {
+      "full_name": "egoist/mygo-music",
+      "html_url": "https://github.com/egoist/mygo-music",
+      "description": "A native music player you extend with plugins",
+      "stars": 1088,
+      "forks": 173,
+      "language": "Go",
+      "license": "AGPL-3.0",
+      "created_at": "2026-11-04T13:27:14Z",
+      "pushed_at": "2026-11-09T11:19:25Z",
+      "topics": [],
+      "readme_excerpt": "# MyGo Music\n\nA native desktop music player written in Go with [MyGo](https://github.com/egoist/mygo), no WebView. It plays your local files out of the box, and everything else comes from plugins.\n\n## Features\n\n- Local files (MP3, FLAC, Ogg Vorbis, WAV, and ALAC, FLAC or AAC in .m4a and .aac) with tags, covers and `.lrc` lyrics\n- Playlists, liked songs, search, albums and artists\n- Now Playing with lyric stage styles, cover wall, queue, shuffle and repeat\n- Notch player on macOS, tray, media keys\n- Audio cache, fades on pause and seek, loudness normalization\n- Session restore\n- Podcast captions, written down on the device as episodes play\n- English and Simplified Chinese\n- Plugins can add accounts, catalogs, podcasts, stations, comments and pages of their own\n\n## Build\n\n```bash\ngo tool mygo dev     # run in development\ngo tool mygo build   # package into build/\ngo test ./internal/...\n```\n\n## Podcast captions\n\nEpisodes are written down on the device as they play, with [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) and Qwen3-ASR, which the app downloads when the listener asks for them. The libraries come from this repository's `sherpa-onnx-<version>` prerelease, which only changes with that version:\n\n```bash\ngo run ./scripts/sherpa -sign \"Developer ID Application: …\"\ngh release create sherpa-onnx-2.0.1 --prerelease --latest=false build/sherpa/*\n```\n\n## Plugins\n\nA plugin is a folder in the app's `plugins` directory (Settings > Plugins > + > Show Plugins Folder) with a `plugin.json` and one JavaScript or TypeScript file. Install one with the + in Settings > Plugins from GitHub, by its repository or its address, or from its folder or a zip of it on this computer, or drop the folder in by hand. Remove one from its ⋯ menu there. There's nothing to build, and the same plugin runs on every platform. [`examples/demo-plugin`](examples/demo-plugin) does everything a plugin can with made-up data: copy it to start.\n\n```json\n{\n  \"id\": \"example\",\n  \"name\": \"Example\",\n  \"version\": \"1.0.0\",\n  \"minAppVersion\": \"0.1.8\",\n  \"main\": \"index.js\",\n  \"playback\": \"stream\",\n  \"permissions\": { \"network\": [\"api.example.com\"] },\n  \"settings\": [{ \"key\": \"apiKey\", \"label\": \"API Key\", \"help\": \"From your account page\", \"link\": \"https://example.com/keys\" }],\n  \"navigation\": [\n    { \"builtin\": \"home\" },\n    { \"title\": \"Charts\", \"page\": \"charts\", \"icon\": \"chart\" },\n    { \"title\": \"Stations\", \"builtin\": \"stations\" }\n  ]\n}\n```\n\n```js\nexport async function search({ query, kind, offset }) {\n  const res = await fetch(`https://api.example.com/search?q=${encodeURIComponent(query)}&type=${kind}&offset=${offset}`, {\n    headers: { authorization: `Bearer ${host.setting(\"apiKey\")}` },\n  });\n  return { tracks: (await res.json()).items.map(toTrack), more: false };\n}\n\nexport function stream({ id, quality }) {\n  return { url: `https://api.example.com/audio/${id}.mp3`, type: \"mp3\" };\n}\n```\n\nExport a function for each thing the plugin does. Each takes one object of parameters and returns a value or a promise. What it doesn't export, the app leaves out of its pages.\n\n| Export | Parameters | Returns |\n| --- | --- | --- |\n| `signIn`, `signOut`, `account` | | `{id, name, imageUrl, page}`; `account` returns `null` when signed out. `page` is a `browse` page of the listener's own, which the account menu opens as My Page |\n| `setSetting` | `{key, value}` | |\n| `home` | | `Browse` |\n| `browse` | `{page}` | `Browse` |\n| `search` | `{query, kind, offset}`, where `kind` is `tracks`, `albums`, `artists`, `playlists` or `shows` | `{tracks or albums or ..., more}` |\n| `suggest` | `{query}` | `[string]` |\n| `recent` | | `[Track]` |\n| `played` | `{id}` | |\n| `liked` | `{offset}` | `{tracks, more}` |\n| `isLiked` | `{ids}` | `{id: bool}` |\n| `like`, `likeEpisode` | `{id, on}` | `like` likes a song, and `likeEpisode` an episode: without it, episodes show no heart |\n| `album` | `{id}` | `{album, tracks}` |\n| `artist` | `{id}` | `{artist, tracks, albums}` |\n| `saveAlbum`, `followArtist`, `savePlay",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 7; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "egoist/mygo-music",
+      "summary": "MyGo Music – нативный десктопный музыкальный плеер на Go, который воспроизводит локальные файлы и расширяется через плагины.",
+      "usefulness": "Подходит для пользователей, ищущих простой, кроссплатформенный плеер с возможностью расширения функционала через плагины, а также для разработчиков, желающих интегрировать собственные источники музыки.",
+      "uniqueness": "Отличается отсутствием WebView, полной нативностью, поддержкой широкого спектра аудио‑форматов и возможностью добавлять новые сервисы через плагины без перекомпиляции.",
+      "pros": [
+        "Нативный Go‑плеер без WebView",
+        "Поддержка большинства аудио‑форматов",
+        "Модульная система плагинов",
+        "Кроссплатформенность"
+      ],
+      "cons": [
+        "Документация ограничена фрагментами README",
+        "Отсутствие тем оформления",
+        "Нет упоминаний о CI/CD"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.902
+  },
+  {
+    "raw": {
+      "full_name": "jamesondh/chimera-vocal-synth",
+      "html_url": "https://github.com/jamesondh/chimera-vocal-synth",
+      "description": "the ultimate vocal synthesizer - sing, speak, beatbox, and more",
+      "stars": 1025,
+      "forks": 118,
+      "language": "Rust",
+      "license": "MIT",
+      "created_at": "2026-11-05T19:10:42Z",
+      "pushed_at": "2026-11-09T06:03:41Z",
+      "topics": [],
+      "readme_excerpt": "# CHIMERA\n\nA physical-modeling voice synthesizer in the browser. Every sound comes from a simulated\nairway (lungs, vocal folds or syrinx, a branched vocal tract, lips, nose), not from samples.\nThe engine is Rust, compiled to WebAssembly for an AudioWorklet; the same code runs natively\nfor tests and the `chimera` CLI.\n\n## What it does\n\n- **Play**: drag the tongue, lips and jaw in a live cutaway of the head; vowel pad, encoders,\n  computer keyboard and Web MIDI.\n- **Speak**: English text (CMUdict with a letter-to-sound fallback) or IPA, turned into\n  gestures and prosody, with the gestural score and a consonant chart on screen.\n- **Sing**: piano roll with lyrics per note; consonants land before the beat.\n- **Beatbox**: pads and a step sequencer, every drum an articulatory gesture.\n- **Bestiary**: songbird (two-voice syrinx), seal, alligator and elephant.\n- **Duet** (`?show=<id>`): two 3D heads replay a pre-rendered song.\n\nMale, female and child bodies blend continuously. Everything on screen animates from live\nengine state: pressure in the airway, airflow, the vocal folds, spectra and formants.\n\n## Run it\n\nNeeds Rust with the `wasm32-unknown-unknown` target, and Bun.\n\n```sh\nbun install\nbun run dev        # builds the wasm, then Vite on 127.0.0.1:5317\nbun run test       # wasm build, cargo test --workspace, bun test tests\n```\n\nThe AudioWorklet needs a secure context, so open it on localhost or over HTTPS (for example\n`tailscale serve`). Vercel builds it with `vercel.json`.\n\nOffline renders and measurement:\n\n```sh\ncargo run --release -p chimera-cli -- render speech|text|song|notes|beatbox|creature|vowels …\ncargo run --release -p chimera-cli -- diagnose       # nasal leakage, formants, bandwidths, pitch\ncargo run --release -p chimera-cli -- compare csd    # against a real singer (docs/csd-comparison.md)\ncargo run --release -p chimera-cli -- compare tsp    # against 23 real speakers (docs/speech-comparison.md)\nbun tools/spectrogram.ts in.wav out.png\n```\n\n## Docs\n\n- [docs/architecture.md](docs/architecture.md): the acoustic model (FDTD airway, sources,\n  anatomy, gestures).\n- [docs/rust-engine.md](docs/rust-engine.md): the engine's real-time and determinism contract,\n  and the browser boundary.\n- [docs/ui-redesign.md](docs/ui-redesign.md) and [docs/mockups/](docs/mockups/): the vector\n  display look.\n- [docs/csd-comparison.md](docs/csd-comparison.md): scoring the voice against the Children's\n  Song Dataset.\n- [docs/speech-comparison.md](docs/speech-comparison.md): scoring the speech against real\n  speakers, phone by phone (the TSP speech database).\n- [docs/hill-climb/](docs/hill-climb/): the rules and log for tuning the voice one measured\n  step at a time.\n\nAgents: see [AGENTS.md](AGENTS.md).\n\n## License\n\n[MIT](LICENSE). Bundled third-party files keep their own licenses: the CMU Pronouncing\nDictionary ([public/data/CMUDICT-LICENSE.txt](public/data/CMUDICT-LICENSE.txt)) and the fonts\n([public/fonts/](public/fonts/)).\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 2,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 2, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "jamesondh/chimera-vocal-synth",
+      "summary": "Численный синтезатор речи, который моделирует физиологию дыхательной системы и голосовых органов, позволяя создавать вокальные звуки, говорить, петь и бить биты в браузере.",
+      "usefulness": "Инструмент для музыкантов, исследователей речи и разработчиков, которым нужен реалистичный голосовой синтез без сэмплов, а также для создания обучающих материалов и интерактивных прототипов.",
+      "uniqueness": "Использует физическое моделирование вместо сэмплов, поддерживает несколько голосовых моделей (синтез, пение, бэйтбокс), а также предоставляет CLI и WebAssembly‑модуль, что делает его гибким и кроссплатформенным.",
+      "pros": [
+        "Физическое моделирование без сэмплов",
+        "Поддержка WebAssembly и нативного CLI",
+        "Интерактивный 3D‑визуализация",
+        "Документация и примеры"
+      ],
+      "cons": [
+        "Отсутствуют темы, что затрудняет поиск",
+        "Малая активность вне основной ветки",
+        "Документация не покрывает все детали API"
+      ],
+      "audience": [
+        "audio",
+        "music-tech",
+        "devops",
+        "cli",
+        "web"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.901
+  },
+  {
+    "raw": {
+      "full_name": "Sandflow-ai/sand3d",
+      "html_url": "https://github.com/Sandflow-ai/sand3d",
+      "description": "3D modeling in Python, built for LLMs.",
+      "stars": 1582,
+      "forks": 175,
+      "language": "HTML",
+      "license": "Apache-2.0",
+      "created_at": "2026-11-03T08:23:03Z",
+      "pushed_at": "2026-11-06T11:03:55Z",
+      "topics": [
+        "3d",
+        "blender",
+        "cad",
+        "llm",
+        "procedural-modeling",
+        "python",
+        "usd"
+      ],
+      "readme_excerpt": "<h1>\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/sandflow-symbol-white.svg\">\n    <img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/sandflow-symbol-black.svg\" alt=\"Sandflow\" height=\"26\">\n  </picture>\n  &nbsp;sand3d\n</h1>\n\n**3D modeling in Python, built for LLMs.**\n\nsand3d is a Python library for writing 3D objects as short programs: profiles, solids,\nedits, frames, joints and assemblies, over Blender's `bpy`. A program says *how* a shape\nis made, part by part and in its own words, so a model writes it in a few hundred tokens\nand a person can read it.\n\n<p align=\"center\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/hero.png\" alt=\"Objects written in sand3d\" width=\"830\"></p>\n\n<p align=\"center\">\n  <a href=\"https://sandflow.ai/sand3d/\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/sandflow-symbol-white.svg\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/sandflow-symbol-black.svg\" alt=\"\" height=\"16\" align=\"absmiddle\"></picture>&nbsp;Website</a> ·\n  <a href=\"https://sand3d.sandflow.ai/\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/lucide-book-open-white.svg\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/lucide-book-open.svg\" alt=\"\" height=\"16\" align=\"absmiddle\"></picture>&nbsp;Docs</a> ·\n  <a href=\"https://huggingface.co/collections/Sandflow/sand3d-6aec268fbdcd3bc174236168\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/hf-logo.svg\" alt=\"\" height=\"16\" align=\"absmiddle\">&nbsp;Datasets</a> ·\n  <a href=\"https://huggingface.co/spaces/Sandflow/sand3d-explorer\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/lucide-box-white.svg\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/lucide-box.svg\" alt=\"\" height=\"16\" align=\"absmiddle\"></picture>&nbsp;Explorer</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Sandflow-ai/sand3d/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/badge/license-Apache--2.0-793CFF\"></a>\n  <img alt=\"Python 3.11 and 3.13\" src=\"https://img.shields.io/badge/python-3.11%20%7C%203.13-121117\">\n  <img alt=\"bpy 4.5 and 5.2\" src=\"https://img.shields.io/badge/bpy-4.5%20%7C%205.2-121117\">\n  <a href=\"https://github.com/Sandflow-ai/sand3d/actions/workflows/tests.yml\"><img alt=\"tests\" src=\"https://github.com/Sandflow-ai/sand3d/actions/workflows/tests.yml/badge.svg\"></a>\n</p>\n\n## Why sand3d\n\n<p align=\"center\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/tokens.png\" alt=\"Tokens per part, median: the same part takes 4.0 times sand3d's tokens in Blender Python, 2.3 in CadQuery, 6.0 in FeatureScript, 2.0 in the Articraft SDK\" width=\"830\"><br>\n<a href=\"https://sand3d.sandflow.ai/tokens.html\">How it is measured, part by part</a></p>\n\n- **Short.** A part takes 2 to 6× fewer tokens than the same part in Blender Python, CadQuery or FeatureScript ([details](https://sand3d.sandflow.ai/tokens.html)).\n- **The whole API fits in a prompt**, about 3,600 tokens ([the API](https://sand3d.sandflow.ai/api.html)).\n- **Named, not computed.** Parts, edges and faces are reached by name, never by hand-computed coordinates.\n- **Deterministic.** The same program builds the same mesh, bit for bit.\n\n## A whole object, part by part\n\n<p align=\"center\"><img src=\"https://raw.githubusercontent.com/Sandflow-ai/sand3d/main/docs/readme/washer.png\" alt=\"A washing machine written in sand3d: its part tree, its four joints, and the three files it exports\" width=\"830\"></p>\n\nA front-loading washing machine in 38 lines of code ([play it and read it](https://sand3d.sandf",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 20,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 20, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Sandflow-ai/sand3d",
+      "summary": "sand3d – Python‑библиотека для генерации 3D‑объектов как коротких программ, работающая поверх Blender API.",
+      "usefulness": "Подходит для разработчиков, исследователей и инженеров, которые хотят быстро создавать и модифицировать 3D‑модели с помощью кода, а также для LLM‑проектов, где модели описывают объекты в естественном языке.",
+      "uniqueness": "В отличие от традиционных CAD‑средств, sand3d позволяет описывать геометрию как читаемый код, упрощая интеграцию с LLM‑моделями и автоматизацию процедурного моделирования.",
+      "pros": [
+        "Мощный API поверх Blender",
+        "Поддержка LLM‑интеграции",
+        "Читаемый код‑описатель объектов",
+        "Активное сообщество"
+      ],
+      "cons": [
+        "Ограниченная документация по некоторым функциям",
+        "Зависимость от Blender, что усложняет установку",
+        "Небольшой набор примеров"
+      ],
+      "audience": [
+        "backend",
+        "data-science",
+        "devops",
+        "cli",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.81
+  },
+  {
+    "raw": {
+      "full_name": "janestreet/agent_skills",
+      "html_url": "https://github.com/janestreet/agent_skills",
+      "description": "Agent skills",
+      "stars": 1368,
+      "forks": 77,
+      "language": null,
+      "license": "MIT",
+      "created_at": "2026-11-03T16:50:21Z",
+      "pushed_at": "2026-11-03T18:14:13Z",
+      "topics": [],
+      "readme_excerpt": "# Agent skills from Jane Street\n\nA collection of skills for AI agents and chatbots.\nEach skill is a directory containing a `SKILL.md` file\nwith instructions for the agent.\n\n## Skills\n\n- **socratic-tutor** — turns an LLM into a strict personal tutor that teaches a\n  topic of your choice using the Socratic method: a diagnostic, a skill map with\n  levels 0-5, one question at a time, spaced review, and a final assessment.\n\n## How to use\n\nWith a coding agent that supports the common `SKILL.md` format, copy the skill\ndirectory into your agent's skills folder, then ask the agent to use it\n(\"teach me X\").\n\nWith a plain chatbot, paste the body of the skill's `SKILL.md` into the chat\n(or into a custom/system prompt), followed by what you want it to do.\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "janestreet/agent_skills",
+      "summary": "Сборник навыков для ИИ‑агентов и чат‑ботов, каждый из которых описан в файле SKILL.md.",
+      "usefulness": "Подходит для разработчиков, создающих обучающие, консультирующие или вспомогательные агенты, которым нужны готовые сценарии взаимодействия.",
+      "uniqueness": "Формат SKILL.md совместим с большинством агентских платформ, упрощая интеграцию и расширение функционала без изменения кода.",
+      "pros": [
+        "Высокая популярность (1368 звезд)",
+        "Чёткая структура каталогов",
+        "Поддержка Socratic‑метода в одном из навыков",
+        "MIT‑лицензия"
+      ],
+      "cons": [
+        "Отсутствуют темы и подробная документация по каждому навыку",
+        "Меньше примеров использования в README"
+      ],
+      "audience": [
+        "ai",
+        "chatbot",
+        "devops",
+        "cli"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.807
+  },
+  {
+    "raw": {
+      "full_name": "Leviidev/Henge",
+      "html_url": "https://github.com/Leviidev/Henge",
+      "description": "Emulate macOS on iOS and iPadOS",
+      "stars": 1478,
+      "forks": 107,
+      "language": "C",
+      "license": "GPL-2.0",
+      "created_at": "2026-11-02T01:13:51Z",
+      "pushed_at": "2026-11-09T15:03:19Z",
+      "topics": [],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"docs/icon.png\" width=\"120\" height=\"120\" alt=\"Henge\">\n</p>\n\n<h1 align=\"center\">Henge</h1>\n\n<p align=\"center\">macOS on your iPhone and iPad.</p>\n\n<p align=\"center\">\n  <a href=\"#install\">Install</a>\n  ·\n  <a href=\"docs/architecture.md\">How it works</a>\n  ·\n  <a href=\"https://itslevii.dev\">Website</a>\n  ·\n  <a href=\"https://github.com/Leviidev/Henge/releases\">Releases</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Leviidev/Henge/releases\"><img src=\"https://img.shields.io/github/downloads/Leviidev/Henge/total?style=flat-square&color=2E6BFF&labelColor=111111\" alt=\"Downloads\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/github/license/Leviidev/Henge?style=flat-square&color=2E6BFF&labelColor=111111\" alt=\"GPL-2.0-or-later\"></a>\n</p>\n\nDownload macOS, install it on the device, and use it.\n\n- **Own emulator** — iOS gives apps no hypervisor, so Henge runs the Mac's arm64 code through its own JIT, with its own MMU and devices. It doesn't use QEMU or Virtualization.framework.\n- **Installs on the device** — Henge downloads Apple's restore image and restores it the way a Mac does. No Mac needed, and nothing is decrypted or patched.\n- **Graphics** — macOS draws through a virtual GPU, and Henge replays its commands with Metal. Safari and Electron apps like Discord draw on it.\n- **Touch** — The screen is a trackpad: hold to drag, two fingers to scroll. Esc, Tab, Control, Option and Command sit above the keyboard.\n- **Keyboard and mouse** — On iPad, a Magic Keyboard or a Bluetooth keyboard and mouse drive the Mac directly.\n- **External display** — During a Mac session, connect a display with a video-capable USB-C cable or a USB-C/HDMI dock. The mode activates automatically: the monitor shows the Mac, while the iPhone or iPad keeps its trackpad and keyboard controls. Disconnect to return the image to the device. The existing guest resolution is preserved. On iOS 17–26 the same happens through an older iOS route, not yet tried on hardware; outside a Mac session the display mirrors the device. USB-C video is user-confirmed on an iPhone 17 Pro running iOS 27 (development build 0.1/2).\n- **Sharing** — Copy and paste between macOS and the device, and a shared folder that shows up in Files and on the Mac.\n- **Fits the screen** — On iPad, a new Mac gets a screen the shape of the iPad's, so there are no black bars.\n\nOn an iPhone 17 Pro, macOS reaches the lock screen in about 15 seconds. Discord installs, opens in about 15 seconds, logs in and sends messages.\n\n## Install\n\nSideload `Henge.ipa` from [Releases](https://github.com/Leviidev/Henge/releases) with SideStore or AltStore, or install `Henge.tipa` with TrollStore or TrollStore Lite. iOS or iPadOS 17 or later, on an A14 or M1 chip or newer. So far it's tested only on an iPhone 17 Pro: iPad support is new and hasn't run on a real iPad yet.\n\n- **JIT** is required: StikDebug, TrollStore (which stops at iOS 17.0), TrollStore Lite (which needs a jailbreak), a jailbreak on its own, or the StikJIT helper built into Henge (iOS 26 or later).\n- **Storage:** about 43 GB free for macOS Sequoia. That's 17 GB for the download, which you can delete afterwards, and 26 GB for the Mac.\n- **Memory:** a Mac gets 4, 6 or 8 GB. Sign Henge with the increased memory limit entitlement if your certificate has it.\n\nThen open the Install tab, pick macOS Sequoia 15.6.1, and keep Henge open with the device plugged in. Tahoe 26.6.2 and macOS 27.2 are offered too, but they aren't tested yet.\n\n## Sharing with the Mac\n\nDo this once for each Mac: open Terminal on the Mac, then in Henge open Details and tap **Type the Set Up Command**. Press Return on the Mac, and choose Allow when macOS asks about `henge-agent` and local networks. It needs the Mac's keyboard layout to be U.S.\n\nThen a Henge folder in the Mac's home folder is the same folder as Files › Henge › Shared. What you copy on the Mac is copied on the device too, and the paste button pastes from the device into the Mac.\n\n## Kn",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 4,
+      "critical_count": 0,
+      "high_count": 4,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 4; critical=0, high=4"
+    },
+    "analysis": {
+      "full_name": "Leviidev/Henge",
+      "summary": "Henge – собственный эмулятор macOS для iOS и iPadOS, который запускает ARM64‑код macOS через собственный JIT, MMU и виртуальный GPU, без использования QEMU.",
+      "usefulness": "Нужен разработчикам и энтузиастам, которые хотят использовать macOS на iPhone/iPad без Mac‑компьютера, а также тем, кто хочет тестировать macOS‑приложения на мобильных устройствах.",
+      "uniqueness": "В отличие от QEMU‑based решений, Henge полностью реализует гипервизор и виртуальный GPU, а также поддерживает подключение внешних дисплеев и периферии через USB‑C/HDMI.",
+      "pros": [
+        "Собственный JIT без сторонних гипервизоров",
+        "Поддержка внешних мониторов и периферии",
+        "Полностью совместим с macOS‑приложениями",
+        "Активное сообщество и регулярные релизы"
+      ],
+      "cons": [
+        "Наличие 4 high‑severity уязвимости в gitleaks",
+        "Отсутствие тем и ограниченная документация по настройке",
+        "Может требовать обновлений iOS для новых функций"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.805
+  },
+  {
+    "raw": {
+      "full_name": "voyager-so/vork",
+      "html_url": "https://github.com/voyager-so/vork",
+      "description": "Headless 3D and VFX engine for agents. Research preview.",
+      "stars": 1251,
+      "forks": 91,
+      "language": "Rust",
+      "license": "NOASSERTION",
+      "created_at": "2026-11-05T22:37:07Z",
+      "pushed_at": "2026-11-09T06:09:36Z",
+      "topics": [
+        "3d",
+        "ai-agents",
+        "gpu",
+        "metal",
+        "ray-tracing",
+        "rendering",
+        "rust",
+        "slang",
+        "vfx",
+        "vulkan"
+      ],
+      "readme_excerpt": "<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/images/readme-header-dark.png\">\n  <img alt=\"vork by Voyager\" src=\"docs/images/readme-header-light.png\" width=\"800\">\n</picture>\n\n<p>\n  <a href=\"https://discord.com/invite/voyagerai\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Fv10%2Finvites%2Fvoyagerai%3Fwith_counts%3Dtrue&query=%24.approximate_presence_count&suffix=%20online&label=Discord&logo=discord&logoColor=white&color=5865F2\"></a>\n  <a href=\"https://www.npmjs.com/package/@voyager-so/vork\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/@voyager-so/vork?label=npm&color=black\"></a>\n  <a href=\"https://pypi.org/project/vork/\"><img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/vork?label=PyPI&color=black\"></a>\n  <a href=\"https://x.com/ravisparikh\"><img alt=\"Follow @ravisparikh on X\" src=\"https://img.shields.io/badge/X-@ravisparikh-black?logo=x&logoColor=white\"></a>\n</p>\n\n**vork is a 3D and VFX engine built for AI agents.**\n\nAgents write the whole scene as code, including their own shaders, materials,\ncameras and physics, and vork renders it on the GPU. The core API fits in about\n2,500 tokens.\n\nhttps://github.com/user-attachments/assets/03cfa020-be40-483a-89af-1ef77467b7a0\n\n**One million birds, each on its own path.** 192 frames at 1080p rendered in\n97 seconds on a single NVIDIA L4. Blender EEVEE at the same sample count is\nprojected at 13–18 minutes. [How we measured](#million-birds-measured-movies-projected-blender-times) ·\n[how it's made](examples/murmuration/) · [credits](examples/murmuration/CREDITS)\n\n- **Built for agents:** a small API that agents can extend with their own GPU programs.\n- **Fast:** 1.1–2.3× faster than EEVEE on default stills and movies, and about 8–11× on the bird flock.\n  [Speed, with the qualifications](#speed-with-the-qualifications).\n- **Native GPU engine:** written in Rust and Slang, runs on Vulkan and Metal (Linux, Windows, macOS).\n\n## Paste this to your agent\n\n[Install vork](#install), then paste:\n\n> Run `vork init my-shot`, read `vork help`, render a preview and inspect the image.\n> Refine the camera and lighting before rendering at final quality. Read the\n> relevant help topic when you need a feature the first page doesn't explain.\n\nvork is written in Rust and Slang, with GPU rendering through Vulkan and Metal.\nAn agent writes a scene,\nrenders it, looks at the result and revises the code. There is no editor to drive.\n\nMost creative tools expose controls that a person can operate. An agent can also\nwrite a shader in the middle of a shot. vork gives it geometry, ray queries and\nGPU execution, then lets scene programs define materials, cameras, light\npropagation, simulation and compositing. Ordinary shots need only scene data;\nthe programming hooks are there when the shot needs something unusual.\n\nSource-available and free during the research preview.\n\n## Start here\n\nAfter [installing vork](#install), create a working project:\n\n```sh\nvork init my-shot\ncd my-shot\nvork render scene.json --out render.png\nvork help\n```\n\nOpen `render.png`, change a colour or camera position in `scene.json`, and render\nagain. The starter uses only bundled sphere, box and grid primitives: no downloads,\nno GPU needed to initialize. Use `vork init my-shot --language typescript` or\n`--language python` for editable `scene.ts` or `scene.py` alongside the ready-to-render\nJSON. The generated README explains regeneration and SDK requirements. Existing\nfiles are never overwritten. The default `std/final` profile is warmed by setup; use `--profile std/draft` for quicker previews.\n\n## What you can make\n\nThe examples include code, preparation commands and credits. Large downloaded\nassets and footage stay outside Git; the recipes fetch them or accept a local path.\nThe images here are stills from these shots. Keep each credit with its image.\n\n### [Million birds](examples/murmuration/)\n\n![A ribbon of starlings crossing the low sun above a lagoon](docs/images/",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 112,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 112, gitleaks: 0, osv: 7; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "voyager-so/vork",
+      "summary": "vork – headless 3D и VFX‑движок, созданный для AI‑агентов. Позволяет агентам описывать сцену полностью через код, включая шейдеры, материалы и физику, а затем рендерить её на GPU.",
+      "usefulness": "Подходит для разработчиков AI‑агентов, исследователей и художников, которым нужен быстрый, программируемый движок для генерации визуальных эффектов и 3D‑сцен.",
+      "uniqueness": "В отличие от традиционных движков, vork предоставляет компактный API (~2500 токенов) и полностью управляется кодом агента, поддерживая Vulkan и Metal с нативной производительностью Rust/Slang.",
+      "pros": [
+        "Низкоуровневый контроль над GPU через Rust и Slang",
+        "Высокая скорость рендеринга (до 8–11× быстрее EEVEE)",
+        "Поддержка Vulkan и Metal на всех основных ОС",
+        "Простая интеграция в AI‑агентские пайплайны"
+      ],
+      "cons": [
+        "Отсутствует подробная документация и примеры использования",
+        "Небольшой размер сообщества и ограниченные ресурсы поддержки",
+        "Отсутствует лицензия, что может затруднить коммерческое использование"
+      ],
+      "audience": [
+        "backend",
+        "data-science",
+        "devops",
+        "cli",
+        "security"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.705
+  },
+  {
+    "raw": {
+      "full_name": "IainKay/ram-altman",
+      "html_url": "https://github.com/IainKay/ram-altman",
+      "description": "Monitors your RAM and reports any \"quite terrible\" unused capacity directly to the CEO of OpenAI.",
+      "stars": 1195,
+      "forks": 31,
+      "language": "Shell",
+      "license": "Unlicense",
+      "created_at": "2026-11-05T16:16:41Z",
+      "pushed_at": "2026-11-06T15:58:11Z",
+      "topics": [
+        "bash",
+        "cron",
+        "dram",
+        "email",
+        "humor",
+        "linux",
+        "meminfo",
+        "memory",
+        "monitoring",
+        "openai",
+        "parody",
+        "ram",
+        "ram-altman",
+        "sam-altman",
+        "sam-altman-openai",
+        "shell-script",
+        "sysadmin"
+      ],
+      "readme_excerpt": "# Ram-Altman\n\n**A bash script that writes to Sam Altman once a day to report the RAM he missed.**\n\nRead the sample emails at **[ram-altman.lol](https://ram-altman.lol)**, no install needed.\n\n[![Website: ram-altman.lol](https://img.shields.io/badge/website-ram--altman.lol-0f5a43)](https://ram-altman.lol)\n![Global DRAM allocation: quite terrible](https://img.shields.io/badge/global%20DRAM%20allocation-quite%20terrible-red)\n![Utilization: maybe 5%](https://img.shields.io/badge/utilization-maybe%205%25-orange)\n![Emails: 1 per day](https://img.shields.io/badge/emails-1%20per%20day-blue)\n![Written in Bash, not Electron](https://img.shields.io/badge/written%20in-bash%2C%20not%20electron-brightgreen)\n\nThere is RAM in your computer. Right now. Just sitting there, in a *personal* computer, being personal.\n\nYou may have thought of this as \"a computer working normally\". On a recent episode of [Cheeky Pint](https://gizmodo.com/sam-altman-youre-completely-right-about-ram-im-sorry-for-the-confusion-heres-what-happened-2000835208), the CEO of OpenAI offered another view:\n\n> \"From a global allocation perspective, actually, it's quite terrible to have everybody have a bunch of the world's limited supply of DRAM sitting in their own computer\"\n>\n> — Sam Altman\n\nThat RAM, he added, is [\"being used maybe 5% of the time\"](https://www.xda-developers.com/sam-altman-says-its-quite-terrible-that-people-have-ram-in-their-pcs-during-a-shortage/).\n\nWhich raised an obvious question for a certain kind of person: *surely someone should be monitoring this?*\n\nSo we wrote a script. If your machine has more than 10% of its RAM available, it sends one email a day to let Sam know. It seemed only fair. He can't fix the problem if nobody tells him where the RAM is.\n\n## Features\n\n- Tracks total, used and available RAM, plus your standing with the global allocation authorities\n- Handles page cache correctly, which already puts it ahead of most arguments about RAM\n- Sends at most one email per day, because we're hoarders, not animals\n- Rotates 8 subject lines, 10 messages and 6 sign-offs, so the joke gets old at a carefully managed pace\n- Logs every sample to CSV for when the auditors arrive\n- Ships with 14 tests, more than the DRAM market has had sensible outcomes\n- Is written in bash, as an Electron version would have solved the problem by using all the RAM\n\n## A sample of today's correspondence\n\n```text\nSubject: You missed a spot\n\nHi Sam,\n\nPlease don't be alarmed, but there is 8.6 GiB of RAM on my desk that isn't in\na data centre. That's 56.2% of what's installed here, and as far as I can tell\nit has no plans today.\n\nHoarding responsibly,\nA concerned RAM owner\n\n--\nSent automatically, at most once a day, by a small script on one PC.\nReply if you'd like it to stop.\n```\n\nThe figures are real. They come from your machine. That's the worrying part.\n\n## What counts as \"used\"?\n\n```text\nused = MemTotal - MemAvailable\n```\n\n`MemAvailable` is the kernel's own estimate of how much memory programs could claim without swapping. Free RAM counts as available. So does cache the kernel can reclaim. tmpfs and shared memory don't, because they can't simply be handed back.\n\nEvery sysadmin has spent years explaining that [Linux didn't eat your RAM](https://www.linuxatemyram.com/) and that free RAM is wasted RAM. It took decades for someone important to agree with the second part, and he'd like it shipped to him.\n\nStrictly speaking, the page cache is doing useful work, so counting it as available is a generous concession to the other side. Think of it as a plea bargain.\n\nOn kernels older than 3.14, which have no `MemAvailable`, the script estimates it from free memory plus reclaimable cache. If you're on one of those, your RAM may be safe. Nobody's coming for that.\n\n## Installation\n\nYou'll need Linux, bash, and a working `sendmail`, `msmtp` or `mail` command. Your RAM is assumed.\n\n```bash\ngit clone https://github.com/IainKay/ram-altman.git\ncd ram-altman\nchmod +x ram-altman.sh test-ram-altm",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "IainKay/ram-altman",
+      "summary": "Батник на Bash, который ежедневно отправляет письмо в адрес Sam Altman, сообщая о свободной оперативной памяти на компьютере пользователя.",
+      "usefulness": "Подходит системным администраторам и любителям мемов, желающим отслеживать неиспользуемый RAM и шутливо информировать о нём руководителя OpenAI.",
+      "uniqueness": "Уникален тем, что сочетает простоту Bash‑скрипта с автоматической рассылкой писем, ориентированными на конкретного человека, и использует метрики DRAM в стиле мемов.",
+      "pros": [
+        "Простой Bash‑скрипт без зависимостей",
+        "Автоматическая рассылка по cron",
+        "Отсутствие сложной установки",
+        "Хорошая визуализация статуса в README"
+      ],
+      "cons": [
+        "Отсутствует подробная документация",
+        "Небольшой набор функций, ограничен только мониторингом RAM",
+        "Не поддерживает настройку получателя"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "humor",
+        "sysadmin"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.704
+  },
+  {
+    "raw": {
+      "full_name": "WoYun520/gif-factory",
+      "html_url": "https://github.com/WoYun520/gif-factory",
+      "description": "GIF 工厂：按风格制作像素、人物与宠物、粘土吉祥物、光栅卡与动态海报的 GIF Skill。",
+      "stars": 1007,
+      "forks": 120,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-11-05T04:08:24Z",
+      "pushed_at": "2026-11-09T14:36:39Z",
+      "topics": [],
+      "readme_excerpt": "# GIF 工厂\n\n[像素与游戏](#pixel-games) · [插画与二次元](#illustration-anime) · [真人与宠物](#people-pets) · [材质与吉祥物](#materials-mascots) · [卡片与变画](#cards-transforms) · [海报与文字](#posters-type) · [品牌短片](#brand-films) · [动态绘本](#storybooks)\n\n**挑一种风格，给一张参考图，把角色、相片和想法做成 GIF，也能延伸成动态绘本。**\n\n像素小人、人物与宠物、粘土吉祥物、光栅变画、漫画动态海报。\n先看效果，再换成你自己的角色和主题；拿不准就先做一张。\n\n**6 个 GIF 分类 · 10 个 GIF 风格入口 · 65 个动态案例，另有动态绘本和品牌短片**\n\n[浏览风格](styles/README.md) · [完整作品库](GALLERY.md) · [怎么使用](GUIDE.md) · [Skill](SKILL.md) · [下载项目](https://github.com/WoYun520/gif-factory/archive/refs/heads/main.zip)\n\n## 精选：漫画印刷动态海报\n\n人物、背景和大字一起设计。黑白打底，每个角色保留一种主色；从平静切到登场，字体也跟着展开，6 秒循环。\n\n<a href=\"examples/dynamic-posters/p5-integrated/preview.gif\"><img src=\"examples/dynamic-posters/p5-integrated/cover.jpg\" alt=\"九角色漫画印刷动态海报，点击播放合集 GIF\" width=\"720\"></a>\n\n[▶ 播放九宫格 GIF](examples/dynamic-posters/p5-integrated/preview.gif) · [使用这个风格](styles/comic-fusion/STYLE.md) · [九张独立 GIF](examples/dynamic-posters/p5-integrated/README.md)\n\n## 挑一种风格\n\n每个分类都放了多个角色、动作或场景。点击动图看原尺寸，点击风格名看制作方法；各风格详情页共有 **65 个动态案例**。100 张完整系列继续放在作品库，默认收起。\n\n<a id=\"pixel-games\"></a>\n\n### 像素与游戏\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/whale-maid/01-greetings/001.gif\"><img src=\"docs/previews/pixel-light.gif\" alt=\"鲸鱼娘·问候\" height=\"180\"></a><br>鲸鱼娘·问候<br><a href=\"styles/pixel-light/STYLE.md\">像素轻动效</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/01-replies/001.gif\"><img src=\"docs/previews/pixel-light-04.gif\" alt=\"小秘书·回消息\" height=\"180\"></a><br>小秘书·回消息<br><a href=\"styles/pixel-light/STYLE.md\">像素轻动效</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/06-daily-life/081.gif\"><img src=\"docs/previews/pixel-light-06.gif\" alt=\"小秘书·生活\" height=\"180\"></a><br>小秘书·生活<br><a href=\"styles/pixel-light/STYLE.md\">像素轻动效</a></td>\n</tr>\n<tr>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/pixel-actions/boy/01.gif\"><img src=\"docs/previews/pixel-actions.gif\" alt=\"眼镜男孩·冲鸭\" height=\"180\"></a><br>眼镜男孩·冲鸭<br><a href=\"styles/pixel-actions/STYLE.md\">像素完整动作</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/pixel-actions/hood/01.gif\"><img src=\"docs/previews/pixel-actions-03.gif\" alt=\"红帽女孩·你好呀\" height=\"180\"></a><br>红帽女孩·你好呀<br><a href=\"styles/pixel-actions/STYLE.md\">像素完整动作</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/pixel-actions/cat/01.gif\"><img src=\"docs/previews/pixel-actions-05.gif\" alt=\"太空猫·起飞啦\" height=\"180\"></a><br>太空猫·起飞啦<br><a href=\"styles/pixel-actions/STYLE.md\">像素完整动作</a></td>\n</tr>\n</table>\n\n[像素轻动效 · 全部 6 张](styles/pixel-light/STYLE.md) · [像素完整动作 · 全部 8 张](styles/pixel-actions/STYLE.md)\n\n<a id=\"illustration-anime\"></a>\n\n### 插画与二次元\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/mixed-actions/02-二次元/005.gif\"><img src=\"docs/previews/illustrated-actions.gif\" alt=\"鸣人·加油\" height=\"180\"></a><br>鸣人·加油<br><a href=\"styles/illustrated-actions/STYLE.md\">插画角色动作</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/mixed-actions/02-二次元/004.gif\"><img src=\"docs/previews/illustrated-actions-02.gif\" alt=\"路飞·冲鸭\" height=\"180\"></a><br>路飞·冲鸭<br><a href=\"styles/illustrated-actions/STYLE.md\">插画角色动作</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/illustrated-actions/01-miku.gif\"><img src=\"docs/previews/illustrated-actions-03.gif\" alt=\"初音·嗨呀\" height=\"180\"></a><br>初音·嗨呀<br><a href=\"styles/illustrated-actions/STYLE.md\">插画角色动作</a></td>\n</tr>\n<tr>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/illustrated-actions/02-princess-curtsy.gif\"><img src=\"docs/previews/illustrated-actions-04.gif\" alt=\"公主裙·提裙行礼\" height=\"180\"></a><br>公主裙·提裙行礼<br><a href=\"styles/illustrated-actions/STYLE.md\">插画角色动作</a></td>\n</tr>\n</table>\n\n[插画角色动作 · 全部 4 张](styles/illustrated-actions/STYLE.md)\n\n<a id=\"people-pets\"></a>\n\n### 真人与宠物\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/public-figures-hd/001.gif\"><img src=\"docs/previews/photo-people.gif\" alt=\"马斯克\" height=\"180\"></a><br>马斯克<br><a href=\"styles/photo-people/STYLE.md\">真人轻动效</a></td>\n<td width=\"33%\" valign=\"top\"><a href=\"examples/public-figures-hd/002.gif\"><img src=\"docs/previews/photo-people-02.gif\" alt=\"Tib",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 41,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 41, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "WoYun520/gif-factory",
+      "summary": "GIF 工厂是一套基于 Python 的工具集，支持按多种风格（像素、人物、宠物、粘土吉祥物、光栅卡、动态海报等）生成 GIF 动画，并可扩展为动态绘本和品牌短片。",
+      "usefulness": "Подходит для дизайнеров, иллюстраторов и маркетологов, которым нужно быстро создавать анимированные GIF‑файлы из статических изображений или концептов.",
+      "uniqueness": "В отличие от общих генераторов GIF, проект предоставляет готовые стили и шаблоны с подробными инструкциями, а также библиотеку 65+ готовых примеров, что ускоряет прототипирование.",
+      "pros": [
+        "Много готовых стилей и шаблонов",
+        "Подробная документация и примеры",
+        "MIT‑лицензия, свободно используется",
+        "Python‑реализация, легко интегрируется"
+      ],
+      "cons": [
+        "Отсутствуют темы и метки, что затрудняет поиск",
+        "Небольшая активность в последних PR, но проект стабилен",
+        "Документация на китайском, может быть непонятна носителям других языков"
+      ],
+      "audience": [
+        "cli",
+        "graphics",
+        "design",
+        "data-science"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.7
+  }
+]

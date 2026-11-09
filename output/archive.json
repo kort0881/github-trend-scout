@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-05T14:16:38+00:00",
-  "count": 59,
+  "updated_at": "2026-11-09T15:33:29+00:00",
+  "count": 69,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -83,6 +83,15 @@
       "score": 3.591,
       "html_url": "https://github.com/Hugo-Dz/spritefusion-sprite-normals"
     },
+    "IainKay/ram-altman": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.704,
+      "html_url": "https://github.com/IainKay/ram-altman"
+    },
     "Jakeschincariol/day-trader-skill": {
       "releases": [
         "2026-10-24"
@@ -119,6 +128,15 @@
       "score": 4.124,
       "html_url": "https://github.com/KKKKhazix/agent-autoloop"
     },
+    "Leviidev/Henge": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.805,
+      "html_url": "https://github.com/Leviidev/Henge"
+    },
     "N1nEmAn/sapper-v2": {
       "releases": [
         "2026-11-05"
@@ -136,6 +154,15 @@
       "last": "2026-11-05",
       "score": 3.802,
       "html_url": "https://github.com/NiazMorshed2007/reanimate"
+    },
+    "Sandflow-ai/sand3d": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.81,
+      "html_url": "https://github.com/Sandflow-ai/sand3d"
     },
     "Snapintosh/Snapintosh": {
       "releases": [
@@ -163,6 +190,15 @@
       "last": "2026-11-05",
       "score": 3.919,
       "html_url": "https://github.com/Verlintas/NOIR"
+    },
+    "WoYun520/gif-factory": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.7,
+      "html_url": "https://github.com/WoYun520/gif-factory"
     },
     "ZiChuanLan/agent-purge": {
       "releases": [
@@ -272,6 +308,15 @@
       "score": 2.999,
       "html_url": "https://github.com/eagle-hq/EAGLE-4"
     },
+    "egoist/mygo-music": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.902,
+      "html_url": "https://github.com/egoist/mygo-music"
+    },
     "elvarofficial/teardown": {
       "releases": [
         "2026-11-05"
@@ -335,6 +380,24 @@
       "score": 3.212,
       "html_url": "https://github.com/ikow/php2shell-poc"
     },
+    "jamesondh/chimera-vocal-synth": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.901,
+      "html_url": "https://github.com/jamesondh/chimera-vocal-synth"
+    },
+    "janestreet/agent_skills": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.807,
+      "html_url": "https://github.com/janestreet/agent_skills"
+    },
     "justrach/nanoui": {
       "releases": [
         "2026-10-24"
@@ -361,6 +424,15 @@
       "last": "2026-10-24",
       "score": 3.182,
       "html_url": "https://github.com/lesnolie/Tigris"
+    },
+    "livliv-dev/player": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.907,
+      "html_url": "https://github.com/livliv-dev/player"
     },
     "mihirgupta0900/tv-home": {
       "releases": [
@@ -461,6 +533,15 @@
       "score": 3.799,
       "html_url": "https://github.com/s1dashu/quiet-md"
     },
+    "shanselman/gputaskman": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.907,
+      "html_url": "https://github.com/shanselman/gputaskman"
+    },
     "simbasjungles/free-my-tv": {
       "releases": [
         "2026-10-24"
@@ -505,6 +586,15 @@
       "last": "2026-10-24",
       "score": 2.984,
       "html_url": "https://github.com/torrentplayer/torrentplayer"
+    },
+    "voyager-so/vork": {
+      "releases": [
+        "2026-11-09"
+      ],
+      "times": 1,
+      "last": "2026-11-09",
+      "score": 3.705,
+      "html_url": "https://github.com/voyager-so/vork"
     },
     "wesbos/3d-model-anything": {
       "releases": [
