@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-13T14:09:25+00:00",
-  "count": 79,
+  "updated_at": "2026-11-17T15:45:03+00:00",
+  "count": 89,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -82,6 +82,15 @@
       "last": "2026-11-13",
       "score": 3.904,
       "html_url": "https://github.com/Elegantic/designcenter-nx-desktop"
+    },
+    "Eynnzerr/TelemetryCleaner": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.908,
+      "html_url": "https://github.com/Eynnzerr/TelemetryCleaner"
     },
     "HRuiCcc/RuiC-PoseAtlas": {
       "releases": [
@@ -182,6 +191,15 @@
       "score": 3.802,
       "html_url": "https://github.com/NiazMorshed2007/reanimate"
     },
+    "Noniv/abyssal-garden": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.916,
+      "html_url": "https://github.com/Noniv/abyssal-garden"
+    },
     "Sandflow-ai/sand3d": {
       "releases": [
         "2026-11-09"
@@ -253,6 +271,15 @@
       "last": "2026-10-29",
       "score": 3.897,
       "html_url": "https://github.com/ZiChuanLan/agent-purge"
+    },
+    "ZiChuanLan/freebie-radar": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.907,
+      "html_url": "https://github.com/ZiChuanLan/freebie-radar"
     },
     "abdulmannanmalik13-wq/adobe-substance-3d-studio": {
       "releases": [
@@ -326,6 +353,15 @@
       "score": 3.892,
       "html_url": "https://github.com/daveebbelaar/bama"
     },
+    "deepseek-ai/chat-demo": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 4.033,
+      "html_url": "https://github.com/deepseek-ai/chat-demo"
+    },
     "deepseek-ai/dsh-superagent-prototype": {
       "releases": [
         "2026-11-01"
@@ -352,6 +388,15 @@
       "last": "2026-10-24",
       "score": 3.089,
       "html_url": "https://github.com/dominikmartn/harp"
+    },
+    "duwqijlk/muse-protocol": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.91,
+      "html_url": "https://github.com/duwqijlk/muse-protocol"
     },
     "eagle-hq/EAGLE-4": {
       "releases": [
@@ -470,6 +515,15 @@
       "score": 3.807,
       "html_url": "https://github.com/janestreet/agent_skills"
     },
+    "joshpuckett/allo": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.894,
+      "html_url": "https://github.com/joshpuckett/allo"
+    },
     "justrach/nanoui": {
       "releases": [
         "2026-10-24"
@@ -487,6 +541,15 @@
       "last": "2026-11-05",
       "score": 3.908,
       "html_url": "https://github.com/kevinraymond/florilegium"
+    },
+    "krisgfx9/Wireless-Device-Battery-Monitor": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 4.112,
+      "html_url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor"
     },
     "leanislizarzado/ibm-spss-desktop-suite": {
       "releases": [
@@ -506,6 +569,15 @@
       "score": 3.182,
       "html_url": "https://github.com/lesnolie/Tigris"
     },
+    "linknimiball1974/ai-texture-forge": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.892,
+      "html_url": "https://github.com/linknimiball1974/ai-texture-forge"
+    },
     "livliv-dev/player": {
       "releases": [
         "2026-11-09"
@@ -514,6 +586,15 @@
       "last": "2026-11-09",
       "score": 3.907,
       "html_url": "https://github.com/livliv-dev/player"
+    },
+    "meshy-dev/ThreeRT": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.886,
+      "html_url": "https://github.com/meshy-dev/ThreeRT"
     },
     "mihirgupta0900/tv-home": {
       "releases": [
@@ -658,6 +739,15 @@
       "last": "2026-10-25",
       "score": 3.896,
       "html_url": "https://github.com/stackedlol/ascii-sharks"
+    },
+    "sybil-solutions/inference-optimisation-skill": {
+      "releases": [
+        "2026-11-17"
+      ],
+      "times": 1,
+      "last": "2026-11-17",
+      "score": 3.892,
+      "html_url": "https://github.com/sybil-solutions/inference-optimisation-skill"
     },
     "t3dotgg/tstack": {
       "releases": [
