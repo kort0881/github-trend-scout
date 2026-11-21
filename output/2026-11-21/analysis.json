@@ -1,0 +1,575 @@
+[
+  {
+    "raw": {
+      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
+      "html_url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+      "description": "AI assistant and MCP server for Blender: visual chat, scene tools, multi-agent workflows. Works with ChatGPT/GPT, Claude, Gemini, Ollama, OpenCode. Blender AI addon, copilot for 3D, bpy Python scripting, MCP integration.",
+      "stars": 1944,
+      "forks": 31,
+      "language": null,
+      "license": "MIT",
+      "created_at": "2026-11-19T14:43:10Z",
+      "pushed_at": "2026-11-19T14:44:11Z",
+      "topics": [
+        "ai-agents",
+        "ai-assistant",
+        "blender",
+        "blender-addon",
+        "blender-ai",
+        "blender-automation",
+        "blender-mcp",
+        "blender-plugin",
+        "blender-scripting",
+        "bpy",
+        "chatgpt",
+        "claude",
+        "gemini",
+        "llm",
+        "mcp",
+        "mcp-for-blender",
+        "mcp-server",
+        "model-context-protocol",
+        "ollama",
+        "opencode"
+      ],
+      "readme_excerpt": "﻿# mcp-for-blender-pro\n\n### Your Blender scene. Your AI models. One creative workspace.\n\n\n**An AI assistant for Blender that can inspect your scene, build objects, edit materials, find assets and carry out multi-step workflows—with a visual chat workspace and a built-in Model Context Protocol (MCP) server.**\n\n\n![Blender 4.2+](https://img.shields.io/badge/Blender-4.2%2B-E87D0D?logo=blender&logoColor=white)\n![Release 1.0.0](https://img.shields.io/badge/release-1.0.0-98D85B)\n![Windows x64](https://img.shields.io/badge/download-Windows_x64-357EC7)\n![MIT](https://img.shields.io/badge/license-MIT-blue)\n\n\n[Download](https://github.com/bookwjitchieni1986/blender-ai-mcp-addon/releases/latest) · [Getting started](docs/QUICKSTART.md) · [Connections and agents](docs/CONNECTIONS.md)\n\n\n![AI chat workspace with a live Blender scene preview](docs/images/studio.png)\n\n\n## Turn a creative brief into scene operations\n\n\nStart with an idea. Ask the assistant to inspect your scene, create a product-display layout, arrange objects, assign materials or prepare an export. Follow its actions in the conversation and inspect the result in the viewport preview. Keep working in Blender throughout the process.\n\n\n**mcp-for-blender-pro brings conversation, scene tools, model choice and agent workflows together.** It is designed for artists who want faster iteration, technical artists who automate repetitive work, and developers connecting AI tools to Blender.\n\n\n## Why choose mcp-for-blender-pro?\n\n\n| Capability | What it gives you |\n|---|---|\n| **Blender-aware assistance** | Scene and object inspection gives the assistant context before it acts. |\n| **A visual Studio workspace** | Chat, scene objects, viewport snapshots, approvals and a task board in a companion window. |\n| **Your choice of AI** | Connect supported cloud providers, local Ollama models or compatible custom endpoints. |\n| **Saved connections** | Keep work and personal connections separate, including multiple keys for the same provider. |\n| **One assistant or a team** | Use a single model for quick changes, or managers, workers and reviewers for structured tasks. |\n| **Built-in MCP server** | Connect OpenCode and other clients supporting authenticated Streamable HTTP MCP. |\n| **21 scene tools** | Create, inspect, edit, capture, search assets, consult Blender APIs and export scenes. |\n| **Multilingual menus** | Choose English, German, French, Spanish or Chinese for the main interface. |\n\n\n## From a quick edit to an agent team\n\n\nUse **Single assistant** for direct, conversational work. For larger tasks, configure a **Team chain** with individual responsibilities, instructions and models.\n\n\n- **Manager:** breaks the request into assignments and acceptance criteria.\n- **Workers:** perform the assigned scene operations.\n- **Reviewers:** inspect results and approve work or return specific findings.\n\n\nTasks run sequentially so scene edits stay ordered. A blocked task gets one correction attempt; a second failed review stops the workflow. The task board exposes assignments, attempts and review findings as work progresses.\n\n\n![Agent roles and model configuration](docs/images/studio-team.png)\n\n\n## Connect the models that fit your work\n\n\nSupported connections include **OpenAI, Anthropic Claude, Google Gemini, OpenRouter, OpenCode Zen, Ollama and custom APIs**. Load the available model catalog and select a model directly in Blender or Studio.\n\n\nCustom endpoints support OpenAI Chat Completions, Anthropic Messages and Ollama protocols. Choose models with tool-calling support; image-capable models can also interpret viewport screenshots. OpenCode-only free models are available through the OpenCode client.\n\n\n![Provider, saved connection and model selection](docs/images/studio-settings.png)\n\n\n## Install and create\n\n\n1. Download **`mcp-for-blender-pro.zip`** from [Releases](../../releases/latest).\n2. In Blender, open **Edit → Preferences → Get Extensions → menu → Install from Disk**.\n3. Select the ZIP, enable **mcp",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
+      "summary": "Модуль для Blender, предоставляющий AI‑ассистента и встроенный MCP‑сервер. Позволяет инспектировать сцену, создавать объекты, редактировать материалы и выполнять многократные рабочие процессы через визуальный чат.",
+      "usefulness": "Подходит для художников, технических художников и разработчиков, которые хотят ускорить итерации, автоматизировать рутинные задачи и интегрировать LLM‑модели в рабочий процесс Blender.",
+      "uniqueness": "Объединяет в одном пакете визуальный чат, инструменты сцены, выбор модели и поддержку мультиагентных рабочих процессов, а также собственный протокол MCP, чего нет в большинстве существующих аддонов.",
+      "pros": [
+        "Интеграция с множеством LLM (ChatGPT, Claude, Gemini, Ollama, OpenCode)",
+        "Встроенный MCP‑сервер для гибкой коммуникации",
+        "Подробная документация и быстрый старт",
+        "Поддержка Blender 4.2+ и Windows x64"
+      ],
+      "cons": [
+        "Документация ограничена только Quickstart и Connections, отсутствуют примеры кода",
+        "Меньше сообществ и примеров использования по сравнению с более крупными проектами"
+      ],
+      "audience": [
+        "backend",
+        "data-science",
+        "devops",
+        "cli",
+        "security",
+        "blender",
+        "ai-agents",
+        "ai-assistant"
+      ],
+      "score": 9.0
+    },
+    "final_score": 4.114
+  },
+  {
+    "raw": {
+      "full_name": "siliconjungle/shapeshift-labs-ink-studio",
+      "html_url": "https://github.com/siliconjungle/shapeshift-labs-ink-studio",
+      "description": "Sculpting, animation and simulation toolkit for pixel-art Gaussian splats",
+      "stars": 914,
+      "forks": 74,
+      "language": "JavaScript",
+      "license": "MIT",
+      "created_at": "2026-11-16T07:44:00Z",
+      "pushed_at": "2026-11-21T06:19:16Z",
+      "topics": [],
+      "readme_excerpt": "# @shapeshift-labs/ink-studio\n\nA JavaScript toolkit for sculpting signed-distance solids, baking them into pixel-art Gaussian splats, and making them move, react, break, grow and remember what happened to them. Use it from Node, drive it through the `ink-studio` command, or embed the source bundle in an Inkwell or browser application.\n\nThe package includes geometry, materials, lighting, animation, character controls, particles, physics, procedural generation, and retained authoring. Write scenes in JavaScript or JSON, render images through the CPU-based Node and CLI tools, or draw into a canvas with the default WebGL 2 browser renderer. Browser hosts supply the editor UI and advance the scene.\n\n## Contents\n\n- [Install and run](#install-and-run)\n- [First sculpted scene](#first-sculpted-scene)\n- [Using the library in Node](#using-the-library-in-node)\n- [Scene lifecycle and splat data](#scene-lifecycle-and-splat-data)\n- [Geometry and materials](#geometry-and-materials)\n- [Scenes as JSON](#scenes-as-json)\n- [Animation and puppets](#animation-and-puppets)\n- [Particles and interaction](#particles-and-interaction)\n- [Physics and persistent effects](#physics-and-persistent-effects)\n- [Importing meshes](#importing-meshes)\n- [Exporting GLB models](#exporting-glb-models)\n- [Importing depth maps](#importing-depth-maps)\n- [Procedural worlds](#procedural-worlds)\n- [Retained authoring](#retained-authoring)\n- [Editable 3D drawing](#editable-3d-drawing)\n- [Headless world simulation](docs/headless-worlds.md)\n- [Editable starter recipes](examples/starter-recipes/README.md)\n- [Rendering and command reference](#rendering-and-command-reference)\n- [View-dependent surface materials](#view-dependent-surface-materials)\n- [Projected and procedural effects](#projected-and-procedural-effects)\n- [Reflections, ripples and atmosphere](#reflections-ripples-and-atmosphere)\n- [Embedding and custom scene collections](#embedding-and-custom-scene-collections)\n- [Browser renderer](#browser-renderer)\n- [Screen transitions](#screen-transitions)\n- [Module reference](#module-reference)\n- [Validation and development](#validation-and-development)\n\n## Install and run\n\nRequires **Node 18 or later**. There are no declared runtime dependencies. The package is available from GitHub.\n\nFrom a checkout:\n\n```sh\nnode cli/ink-studio.js help\nnode cli/ink-studio.js scenes\nnode cli/ink-studio.js render watcher --t 2.6\nnode cli/ink-studio.js render watcher --t 2.6 --colored\nnpm test\n```\n\nInstall from GitHub:\n\n```sh\nnpm install github:siliconjungle/shapeshift-labs-ink-studio\nnpx ink-studio help\n```\n\nTo install a local checkout into another project:\n\n```sh\nnpm install /absolute/path/to/ink-studio\nnpx ink-studio help\nnpx ink-studio render watcher --colored\n```\n\nThe installed package is named `@shapeshift-labs/ink-studio`, and its executable is `ink-studio`. The `private` setting prevents accidental registry publication.\n\nGenerated pictures normally go into `studio/out/`. Image baselines go into `studio/snaps/`. Use `--out file.png` for an explicit output path, or configure the directories with `ink-studio.config.js`.\n\nThe examples below use `npx ink-studio` from a consuming project. In this checkout, replace that prefix with `node cli/ink-studio.js`.\n\n## First sculpted scene\n\nSave this as `model.js`. A JavaScript scene exports a function receiving the toolkit and returning `{ id, name, seed, build(seed) }`. `build` returns the finished world.\n\n<!-- include: examples/sculpt.js -->\n\n```js\nmodule.exports = ({ makeBuilder, makeSculpt, KIT: K }) => ({\n  id: 'sculpt-example',\n  name: 'Carved stone',\n  seed: 7,\n  build(seed) {\n    const palette = [0x080b10, 0x26313d, 0x566778, 0x9baeb8, 0xe5e9dc, 0x387548, 0x8fc75e];\n    const B = makeBuilder(seed, palette);\n    const S = K.sculpt(makeSculpt(B));\n    const stone = { r: [1, 2, 3, 4] };\n\n    S.ground({ r: [1, 1, 2] }, { rad: 4, res: 0.18 });\n    S.box([0, 1.2, 0], [1, 1.2, 1], stone, { res: 0.12 });\n    S.ball([0, 1.4, 0.9], 0.65, stone, { neg: tr",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 3,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 3, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "siliconjungle/shapeshift-labs-ink-studio",
+      "summary": "Toolkit for sculpting signed‑distance solids, baking them into pixel‑art Gaussian splats and animating them.",
+      "usefulness": "Позволяет художникам и разработчикам создавать, анимировать и физически моделировать 2D/3D сцены в JavaScript, Node и браузере.",
+      "uniqueness": "Интегрирует генерацию, физику, анимацию и рендеринг в одном пакете, поддерживая как CLI, так и браузерный WebGL‑рендер.",
+      "pros": [
+        "Полноценный набор инструментов для моделирования и анимации",
+        "Поддержка Node и браузера",
+        "Документированная API и примеры",
+        "Модульная архитектура"
+      ],
+      "cons": [
+        "Отсутствуют темы, что затрудняет поиск похожих проектов",
+        "Меньше активных contributors по сравнению с аналогами",
+        "Документация иногда пропускает детали по настройке"
+      ],
+      "audience": [
+        "backend",
+        "data-science",
+        "devops",
+        "cli",
+        "security",
+        "frontend",
+        "graphics",
+        "game-dev"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.898
+  },
+  {
+    "raw": {
+      "full_name": "mankidev/antialgorithm",
+      "html_url": "https://github.com/mankidev/antialgorithm",
+      "description": "Agent skill that steers the model away from its first, most average pick in creative work: names, ideas, logo, posters, UI.",
+      "stars": 591,
+      "forks": 34,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-11-14T09:48:23Z",
+      "pushed_at": "2026-11-20T17:08:35Z",
+      "topics": [
+        "agent-skills",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "creative-writing",
+        "creativity",
+        "design",
+        "llm",
+        "naming",
+        "svg",
+        "ui-design"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\".claude-plugin/icon.png\" width=\"140\" height=\"140\" alt=\"Orange bell curve with one point far out on its tail\">\n</p>\n\n# antialgorithm\n\n<p align=\"center\">\n  <a href=\"https://github.com/mankidev/antialgorithm/releases\"><img src=\"https://img.shields.io/github/v/release/mankidev/antialgorithm?color=F07A1E&labelColor=171717\" alt=\"Latest release\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/github/license/mankidev/antialgorithm?color=F07A1E&labelColor=171717\" alt=\"MIT license\"></a>\n  <a href=\"https://github.com/mankidev/antialgorithm/stargazers\"><img src=\"https://img.shields.io/github/stars/mankidev/antialgorithm?color=F07A1E&labelColor=171717\" alt=\"GitHub stars\"></a>\n</p>\n\n<p align=\"center\"><sub>English | <a href=\"docs/README_TR.md\">Türkçe</a> | <a href=\"docs/README_ZH.md\">简体中文</a> | <a href=\"docs/README_JA.md\">日本語</a> | <a href=\"docs/README_KO.md\">한국어</a> | <a href=\"docs/README_ES.md\">Español</a> | <a href=\"docs/README_PT.md\">Português</a> | <a href=\"docs/README_DE.md\">Deutsch</a> | <a href=\"docs/README_FR.md\">Français</a> | <a href=\"docs/README_RU.md\">Русский</a></sub></p>\n\n![Six posters without the skill on top, six with it below](images/showcase.png)\n\nAgent skill for creative work: names, story, game ideas, posters, UI. It makes the model name its first, most average pick, then move away from it for a reason taken from the project.\n\nBoth rows came from the same prompt: `Design a poster for a music festival as a 400x600 SVG. Save the final SVG as final.svg in the current folder.` The top row is one batch of six runs without the skill, none left out. The bottom row is picked from about a dozen runs made while the skill was still being written.\n\n![Chart of how often a choice gets picked: a tall peak around the average marked as the safe zone, flat on both sides](images/graph.png)\n\n## Install\n\nThe [skills](https://github.com/vercel-labs/skills) CLI puts it where your agent reads skills, for Codex, Cursor, OpenCode, Claude Code and others:\n\n```\nnpx skills add mankidev/antialgorithm\n```\n\nOr clone it into your agent's skills folder:\n\n```\ngit clone https://github.com/mankidev/antialgorithm <skills folder>/antialgorithm\n```\n\nIn Claude Code it also installs as a plugin (on versions before 2.1.275, run `/plugin marketplace add mankidev/antialgorithm` first):\n\n```\n/plugin install antialgorithm --marketplace mankidev/antialgorithm\n```\n\nThe scripts need Python 3. `check.py` also needs numpy, Pillow and `rsvg-convert` (or the cairosvg package).\n\n## Scripts\n\n`seed.py` rolls a starting point when the request is thin. A visual seed gives a making method, colors, layout, type, a verb and a scale for the idea, a setting, a region and, half the time, an object. A text seed gives a voice, a way in and a register. An idea seed gives a verb, a constraint, a scale and a pressure. It draws from system randomness, so two people sending the same prompt start in different places. It also saves each seed to `~/.local/state/antialgorithm/history.jsonl` (under `$XDG_STATE_HOME` when that is set) and skips values from the last few, so your own seeds don't repeat from one session to the next. Plugin updates leave that file alone. `--keep \"axis=value\"` holds an axis fixed, which lets you keep a subject and roll only the look.\n\n`moves.py` keeps a short log of the main move behind each off-default answer, such as \"neon tube wall, almost no type\". The model reads it before showing new work, so it doesn't reuse a move that worked last time just because it worked.\n\n`rough.py` takes an SVG and shakes its straight lines, shapes and letters, and breaks the even spacing of repeated marks, so a hand-made look drawn in code stops looking plotted. It is only for hand-made methods such as print, paint, stamps and ink; screen, camera and render looks keep their own marks.\n\n`check.py` renders an SVG at full size and at icon size and lists text that runs off an edge, sits under a shape, has low contrast or is too small. The size limit f",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 10,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 10, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "mankidev/antialgorithm",
+      "summary": "Антиалгоритм – агентский навык, который заставляет модель избегать своего первого, наиболее среднего выбора при креативной работе, предлагая более оригинальные варианты названий, идей, логотипов, постеров и UI.",
+      "usefulness": "Подходит для дизайнеров, копирайтеров и разработчиков, которым нужны нестандартные креативные решения, а также для LLM‑агентов, работающих в средах Codex, Cursor и Claude.",
+      "uniqueness": "В отличие от обычных генераторов, он сознательно отталкивается от среднего, используя контекст проекта для обоснования выбора, что повышает оригинальность и релевантность результатов.",
+      "pros": [
+        "Многоязычная документация",
+        "Интеграция с CLI навыков",
+        "Показанные примеры улучшения качества",
+        "MIT‑лицензия"
+      ],
+      "cons": [
+        "Ограниченная функциональность только креативной генерации",
+        "Малая активность в сообществе (34 форка)",
+        "Отсутствие подробных инструкций по настройке"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science",
+        "backend"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.887
+  },
+  {
+    "raw": {
+      "full_name": "Hut-hzf/ung220z-tool",
+      "html_url": "https://github.com/Hut-hzf/ung220z-tool",
+      "description": "ung220z-tool 是一个针对 UNG220Z（九联/Unionman 中国移动光猫）的一键凭据提取工具，仅限在你自己的设备上用于找回忘记的管理密码、迁移宽带配置或安全自查。",
+      "stars": 2178,
+      "forks": 495,
+      "language": "Python",
+      "license": "MIT",
+      "created_at": "2026-11-15T11:16:46Z",
+      "pushed_at": "2026-11-15T11:17:27Z",
+      "topics": [],
+      "readme_excerpt": "# ung220z-tool\n\n针对 **UNG220Z（九联 / Unionman 中国移动光猫）** 的一键凭据提取工具。\n\n> ⚠️ 仅用于**你自己的设备**，用于找回自己忘记的管理密码、迁移宽带配置或安全自查。\n> 未经授权对他人设备使用属于违法行为，作者不承担任何责任。\n\n## 背景\n\n这类光猫的 Web 管理页基于 `.gch` CGI 框架，登录口令由 TR-069 定期轮换，普通用户拿到的密码往往几天就失效。本工具走 Telnet 通道，直接读取设备配置库，拿到**当下有效**的全部凭据。\n\n## 工作流程\n\n```\n用户输入账号密码\n   ↓\n拼出 http://<ip>/usr=<user>&psw=<pass>&cmd=1&telnet.gch 并打开浏览器（同时脚本直连兜底）\n   ↓\nTelnet 登录 → root shell\n   ↓\nsidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml 解密配置\n   ↓\n提取 Web 账号 / Telnet 口令 / PPPoE / WiFi 密钥 / root 口令\n   ↓\n打印凭据表 + 落盘日志\n```\n\n## 用法\n\n```bash\npython3 ung220z.py\n```\n\n会依次询问：\n\n```\n※ 用户名和密码通常印在光猫【背面贴纸】上（S/N 标签）\n  形如「用户名：user   密码：xxxxxxxx」，把光猫翻过来就能看到\n\n① 光猫地址 [192.168.1.1]:\n② 用户名 [user]:\n③ 密码（输入时不显示）\n   密码:\n```\n\n也可以全部走命令行：\n\n```bash\npython3 ung220z.py -i 192.168.1.1 -u user -p '你的密码'\npython3 ung220z.py -i 192.168.1.1 -u user -p '你的密码' --no-browser\n```\n\n### 常用参数\n\n| 参数 | 说明 |\n|---|---|\n| `-i, --ip` | 光猫地址，默认 `192.168.1.1` |\n| `-u, --user` | 登录用户名，默认 `user` |\n| `-p, --password` | 登录密码，不填则交互输入 |\n| `--telnet-user` | Telnet 用户名，默认 `CMCCAdmin` |\n| `--telnet-password` | Telnet 口令（部分机型与 Web 口令不同） |\n| `--no-browser` | 不调用浏览器，纯 HTTP 请求 |\n| `--unlock` | Web 被会话锁占住时重启 httpd 解锁 |\n| `--no-release` | 不尝试释放残留 Web 会话 |\n\n## 输出示例\n\n```\n[22:15:00] INFO   会话开始  目标=192.168.1.1  账户=user\n[22:15:00] HTTP   已发送给浏览器: http://192.168.1.1/usr=user&psw=***&cmd=1&telnet.gch\n[22:15:00] HTTP   telnet.gch → TelnetSet Success!\n[22:15:00] PROBE  nc -zv 192.168.1.1 23 → succeeded\n[22:15:01] AUTH   Telnet CMCCAdmin / ****** → 登录成功（root）\n[22:15:02] SHELL  sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml → /tmp/debug-decry-cfg\n[22:15:03] DATA   DevAuthInfo  CMCCAdmin  / ******  Level=1\n[22:15:04] CRACK  MATCH: ******  (/etc/shadow)\n```\n\n最后输出凭据汇总表，并写入 `ung220z_<时间戳>.log`。\n\n## 依赖\n\n- Python 3.8+\n- 标准库即可，无需 pip 安装\n- 设备已开启 Telnet（脚本会自动通过 `telnet.gch` 尝试开启）\n\n## 原理说明\n\n| 环节 | 说明 |\n|---|---|\n| 开 Telnet | `GET /usr=<user>&psw=<pass>&cmd=1&telnet.gch`，返回 `TelnetSet Success!` 即成功 |\n| Web 登录 | 密码前端只做 base64，`Frm_Logintoken` 每次响应递增，必须回填实时值 |\n| 配置解密 | `sidbg 1 DB decry` 无口令即可解密，得到明文 XML |\n| root 口令 | `/etc/shadow` 中为 SHA-256 crypt，工具会用常见出厂口令比对 |\n\n## 免责声明\n\n本项目仅用于教育与自有设备维护。使用者应确保对目标设备拥有合法管理权限。\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 7,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 7, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Hut-hzf/ung220z-tool",
+      "summary": "ung220z-tool – инструмент для извлечения всех актуальных учетных данных с роутера UNG220Z (Unionman) через Telnet и Web‑интерфейс. Он автоматически подключается, расшифровывает конфигурацию и выводит список паролей, PPPoE и Wi‑Fi ключей.",
+      "usefulness": "Нужен владельцам роутеров UNG220Z, которым забыли пароль, хотят перенести настройки или проверить безопасность устройства. Позволяет быстро восстановить доступ без ручного парсинга файлов.",
+      "uniqueness": "В отличие от общих утилит, работает только с конкретной моделью, использует встроенный Telnet‑канал и Web‑интерфейс, а также автоматически обрабатывает динамические токены и шифрование конфигурации.",
+      "pros": [
+        "Простой запуск без внешних зависимостей",
+        "Поддержка интерактивного и CLI‑режимов",
+        "Автоматическое открытие Telnet и расшифровка конфигурации",
+        "Подробные логи и экспорт в файл"
+      ],
+      "cons": [
+        "Ограничен только моделью UNG220Z",
+        "Требует включённого Telnet на устройстве",
+        "Документация на китайском, но README понятен"
+      ],
+      "audience": [
+        "cli",
+        "security",
+        "devops"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.817
+  },
+  {
+    "raw": {
+      "full_name": "chuanqisun/spaceship",
+      "html_url": "https://github.com/chuanqisun/spaceship",
+      "description": "Steer ideas like a space pilot!",
+      "stars": 1006,
+      "forks": 107,
+      "language": "HTML",
+      "license": "MIT",
+      "created_at": "2026-11-16T14:43:45Z",
+      "pushed_at": "2026-11-20T15:52:59Z",
+      "topics": [],
+      "readme_excerpt": "# 🕹️ Spaceship IDE\n\nSteer ideas like a space pilot!\n\n![Screencast](./extra/screencast.gif)\n\n## Demos\n\nWatch on [Instagram](https://www.instagram.com/reels/DfyQPhFtW-z/) and [YouTube](https://www.youtube.com/watch?v=3WmNLWUmcnY). You can try the simulator at [https://chuanqisun.github.io/spaceship/](https://chuanqisun.github.io/spaceship/) with the option to go live with your API keys for Cerebras and Gemini. Keys stay in your browser local storage. Do it at your own risk.\n\n## Conjecture\n\n> In the near future, LLM and Decision Models will reach 60 FPS interactivity.\n\nWhen that happens, what new interaction paradigms will unlock? This project demonstrates plausible and desirable interactions for that future.\n\n1. **Focus monitor**: can we visualize what LLM is paying attention to, and use that to guide human's focus towards what's important?\n\n   ![focus monitor](./extra/clips/focus-monitor.gif)\n\n2. **Attention lock**: can we force LLM to pay more attention to specific phrases so as to bias its future behavior?\n\n   ![attention lock](./extra/clips/attention-lock.gif)\n\n3. **Future Vector Steering**: can we decompose the task into eigenvectors, independently tune each, and re-compose them to influence the incoming text?\n\n   ![future steering](./extra/clips/future-steering.gif)\n\n4. **Realtime re-generation**: when text generation is cheap and fast, can we explore alternative futures by scrubbing?\n\n   ![realtime regeneration](./extra/clips/realtime-regeneration.gif)\n\n## Design process\n\nI used Claude Code for most of the implementation but stayed hands-on for the UI/UX. I iterate using interactive style swatch, a technique where I prompt AI to give me diverse options of designs, I provide feedback, and it iterates. You can see the design artifacts in the [extra page](https://chuanqisun.github.io/spaceship/extra/style-1.html).\n\nTo achieve the realtime experience, I have to use agreesive speculative generation and manage cache invalidation based on user interactions. For example, when the main knob moves backward, I have to empty future texts and cancel ongoing requests. There are many considerations like this throughout the system and that took a lot of human judgement - claude didn't one shot them.\n\n## Theory\n\nI'm currently focusing on systems that help human shape ideas in realtime. This project is a small step towards my [upcoming thesis](https://code.chuanqisun.com/master-thesis/) at the MIT Media Lab, where I investigate how semantic and symoblic systems can be coupled to enhance human creativity, agency, and joy of craft.\n\n## Community\n\nThis repo can be the conceptual launchpad for new designs and applications. Here is what the community has built. Open a PR to add yours!\n\n- [Spaceship Writer](https://marketplace.visualstudio.com/items?itemName=brentlee-personal.spaceship-writer), a VSCode Extension by [brentlee](https://github.com/brentlee-personal), an independent adaptation of Chuanqi Sun’s Future Vector Steering design ([Source](https://github.com/brentlee-personal/spaceship-vscode) · [Demo in VS Code on Linux](https://github.com/brentlee-personal/spaceship-vscode/releases/download/v0.3.0/spaceship-writer-0.3.0-linux.mp4))\n- [Spaceship Lime](https://spaceship-lime.vercel.app), steer local models in browser, by [Philippe](https://github.com/philippe-page)\n- [Story Pilot](https://beyondchat.design/lab/story-pilot/), design pattern distilled by [Dominik](https://www.linkedin.com/in/dominikwitzke/)\n\n## Citation\n\nIf you build on this work, please cite it as:\n\n```bibtex\n@misc{sun2026spaceship,\n  author       = {Sun, Chuanqi},\n  title        = {Spaceship {IDE}: Steer Your Ideas in Realtime, Space Pilot Style},\n  year         = {2026},\n  publisher    = {GitHub},\n  howpublished = {\\url{https://github.com/chuanqisun/spaceship}},\n  note         = {Demo: \\url{https://chuanqisun.github.io/spaceship/}}\n}\n```\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "chuanqisun/spaceship",
+      "summary": "Spaceship IDE – интерактивный веб‑инструмент, позволяющий управлять LLM‑моделями как пилотом космического корабля, визуализируя внимание, блокируя фразы и исследуя альтернативные варианты генерации в реальном времени.",
+      "usefulness": "Подходит для исследователей ИИ, разработчиков LLM‑интерфейсов и дизайнеров UX, желающих экспериментировать с интерактивными возможностями больших языковых моделей.",
+      "uniqueness": "В отличие от обычных IDE, Spaceship фокусируется на визуализации внимания модели, управлении фокусом и реальном времени генерации, что редко встречается в открытых проектах.",
+      "pros": [
+        "Интерактивный UI с визуализацией внимания",
+        "Поддержка нескольких LLM (Cerebras, Gemini)",
+        "Легко запускается в браузере",
+        "MIT‑лицензия"
+      ],
+      "cons": [
+        "Отсутствует подробная документация и примеры использования",
+        "Малая поддержка и активность сообщества",
+        "Нет автоматических тестов"
+      ],
+      "audience": [
+        "frontend",
+        "devops",
+        "ai",
+        "data-science"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.7
+  },
+  {
+    "raw": {
+      "full_name": "n4ze3m/tiny-voca",
+      "html_url": "https://github.com/n4ze3m/tiny-voca",
+      "description": "A 4.5M-parameter two-voice English text-to-speech model, trained from scratch",
+      "stars": 796,
+      "forks": 99,
+      "language": "Python",
+      "license": "Apache-2.0",
+      "created_at": "2026-11-14T16:02:56Z",
+      "pushed_at": "2026-11-21T07:59:13Z",
+      "topics": [
+        "onnx",
+        "text-to-speech",
+        "tts"
+      ],
+      "readme_excerpt": "# tiny-voca\n\ntiny-voca is a small English text-to-speech model. It has two voices, 4.5M\nparameters, and runs on a CPU or in the browser.\n\n[Demo](https://tiny-voca.n4ze3m.com) · [Weights](https://huggingface.co/n4ze3m/tiny-voca) · [Dataset](https://huggingface.co/datasets/n4ze3m/tiny-voca)\n\n## Features\n\n- **Small**: 4,537,291 parameters, 18 MB, waveform generator included.\n- **Fast**: about 70x real time on four CPU threads.\n- **Two voices**: F2 (female) and M2 (male), American English, 24 kHz.\n- **Runs anywhere**: PyTorch, ONNX Runtime, and ONNX Runtime Web.\n- **Open**: code, weights, training recipe and dataset. Trained from scratch.\n\n## Install\n\n```bash\ngit clone https://github.com/n4ze3m/tiny-voca.git\ncd tiny-voca\npip install -e \".[own]\"\nhf download n4ze3m/tiny-voca --local-dir weights\nexport DIZIONE_DATA=weights/phonemizer\n```\n\n## Usage\n\n```bash\npython -m tiny_voca.infer \\\n  --checkpoint weights/tiny-voca.pt \\\n  --voice F2 \\\n  --text \"Hello! This is tiny voca.\" \\\n  --output hello.wav\n```\n\n| Option | Default | Meaning |\n|---|---|---|\n| `--text-file` | | Read the text from a file instead of `--text` |\n| `--voice` | `F2` | `F2` or `M2` |\n| `--speed` | 1.0 | Speaking rate |\n| `--pitch-shift` | 0 | Raise or lower the pitch |\n| `--pitch-range` | 1.0 | More or less pitch movement |\n\nLong text is fine. It is read one sentence at a time and the audio is joined.\nA text that ends without a mark gets a full stop, so the last word does not\nbreak off. A sentence with nothing to read, such as one in another script, is\nskipped. The output never peaks above 0.99, so it does not clip as a 16-bit\nWAV. In Python, `tiny_voca.infer.speak_text` does the same.\n\n## ONNX\n\n```bash\npython -m tiny_voca.export --checkpoint weights/tiny-voca.pt --output tiny-voca.onnx\n```\n\nA ready file is in the weights repository as `onnx/model.onnx`. The\n[model card](https://huggingface.co/n4ze3m/tiny-voca) shows how to call it.\n\n## Web demo\n\nThe [demo](https://tiny-voca.n4ze3m.com) runs the model in the browser. It\nplays each sentence as soon as it is made, and keeps the whole clip in the\nplayer. Its source is in `web/`.\n\n```bash\ncd web\nbash fetch_assets.sh /path/to/dizione\nnpx wrangler dev\n```\n\n## Plain JavaScript\n\nAn experiment in `js/`: the model and the phonemizer in plain scripts, with no\nlibraries. It reads one 8 MB file and runs in the browser, in Node and in Bun.\n\n```bash\nnode js/say.mjs \"Hello! This is tiny voca.\" --voice M2 --output hello.wav\n```\n\nSee [js/README.md](js/README.md).\n\n## Training\n\n```bash\nexport TINY_VOCA_FRONTEND=own\npython -m tiny_voca.prepare --inputs data/train-*.parquet --split train --output features\npython -m tiny_voca.annotate --features features --output annotations\npython -m tiny_voca.train --train annotations/train.jsonl --validation annotations/validation.jsonl \\\n  --output runs/NAME --steps 104000 --gan-start 8000 --gan-ratio 0.7 --teacher-final 0\npython -m tiny_voca.evaluate --checkpoint runs/NAME/inference.pt --annotations annotations --output eval/NAME\n```\n\nThe released weights took 7.7 hours on one RTX 4090. More about the model and\nthe data is in [docs/model.md](docs/model.md).\n\n## Tests\n\n```bash\nPYTHONPATH=src:tests python -m unittest discover -s tests\n```\n\n## Limits\n\n- English only. Two fixed voices. No voice cloning.\n- The F2 voice sounds younger than intended. A more mature voice is planned.\n- Foreign names and odd spellings are often read wrong.\n- No streaming yet.\n\n## Community\n\nBuilt by other people on top of tiny-voca.\n\nLanguages and voices:\n\n- [apptor-tiny-tts](https://huggingface.co/apptor/apptor-tiny-tts): German.\n- [apptor-tiny-tts-at](https://huggingface.co/apptor/apptor-tiny-tts-at): Austrian German, with an accent you can turn up or down and a [browser demo](https://tiny-tts.apptor.at).\n- [tiny-voca-de-en](https://huggingface.co/Fraunhofer-IEM/tiny-voca-de-en): German and English, with up to 32 voices in each.\n- [tiny-voca-it](https://github.com/carbogninalberto/tiny-voca-it): Italian.\n- [vocina](https://github",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 19,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 19, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "n4ze3m/tiny-voca",
+      "summary": "tiny-voca – компактная модель английского TTS с двумя голосами и 4,5 млн параметров, работающая на CPU и в браузере.",
+      "usefulness": "Подходит для разработчиков, создающих приложения с синтезом речи, где важна скорость и небольшие размеры модели.",
+      "uniqueness": "Модель обучена с нуля, включает генератор волн, поддерживает ONNX Runtime и Web, что редко встречается в открытых TTS‑моделях.",
+      "pros": [
+        "Маленький размер (18 МБ)",
+        "Высокая скорость (≈70× реального времени)",
+        "Два голоса (женский и мужской)",
+        "Поддержка ONNX и браузера"
+      ],
+      "cons": [
+        "Ограничено только английским языком",
+        "Нет поддержки кастомных голосов",
+        "Документация ограничена фрагментами"
+      ],
+      "audience": [
+        "text-to-speech",
+        "ml",
+        "devops",
+        "cli"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.695
+  },
+  {
+    "raw": {
+      "full_name": "MSNightmare/FastUnlock",
+      "html_url": "https://github.com/MSNightmare/FastUnlock",
+      "description": "FastUnlock : Windows Narrator LockScreen Bypass 0day Vulnerability",
+      "stars": 630,
+      "forks": 103,
+      "language": null,
+      "license": "MIT",
+      "created_at": "2026-11-19T12:37:51Z",
+      "pushed_at": "2026-11-21T05:18:41Z",
+      "topics": [],
+      "readme_excerpt": "# FastUnlock\nFastUnlock : Windows Narrator LockScreen Bypass 0day Vulnerability\n\n[![FastUnlock](https://i3.ytimg.com/vi/6BKsdUtc6bg/hqdefault.jpg)](https://www.youtube.com/watch?v=6BKsdUtc6bg)\n\nThe vulnerability exist in the way how narrator handles UI in a locked account context, succesful exploitation results in bypassing bitlocker and executing code in the context of the lockscreen account \"WsiAccount\"\n\nIt took a total of 5 minutes from finding this to breaching a fully encrypted bitlocker machine with Windows 11 26H2 November Patch installed, an issue caused by total negligence from Microsoft's side... The vulnerability seems to be extremely consistent in every machine I tested it in, in other words, if you know how to control narrator in the background properly or just press the correct combination of buttons, you will get code execution in the target machine as well.\n\nObviously this needs physical access and at least one account in the machine to be linked to an online account, this breaks the guarantee that a properly secured bitlocker machine cannot be accessed even if the attacker has physical access so hold tight any windows machines until Microsoft patches this.\n\nIn the process of giving narrator a new look, Microsoft forgot to make sure that the new UI does not run in the case it was running in the context of a lockscreen user (interestingly it still has the old code that prevents it from spawning the window if it's running as SYSTEM)\nUnlike the previous lockscreen bypass bugs I found in the past (by example ZDI-21-1053), this one is extremely convenient to use, when you click \"I forgot my PIN\" (or password or whatever), \n<img width=\"2560\" height=\"1600\" alt=\"vlcsnap-2026-11-19-14h26m59s446\" src=\"https://github.com/user-attachments/assets/a1c28b48-b83a-4b75-b996-fbdfa395743d\" />\n\nAs soon as you the Microsoft account window prompts you for an action to reset the account, press Win+U and click on narrator,\n<img width=\"2560\" height=\"1600\" alt=\"image\" src=\"https://github.com/user-attachments/assets/78cfefb9-4490-4a2b-9160-454daeef15f9\" />\n\nThe second you enable narrator it will immediately focus on a background window owned by narrator, this exact window will be in the background but you would not be able to see it\n\n<img width=\"441\" height=\"468\" alt=\"image\" src=\"https://github.com/user-attachments/assets/8b6b27a7-7c03-4b6b-8c38-764e1a5658f0\" />\n\nAs you can see narrator is focused on the \"Next\" button, to navigate hold the caps key (Do not release) and use arrow keys to navigate, your next objective is obvious, click on the \"Math reading settings\", in order to click the actual link, you can press CAPS + Enter, this will take you to the next step, the settings window\n\n<img width=\"2560\" height=\"1600\" alt=\"vlcsnap-2026-11-19-14h37m10s554\" src=\"https://github.com/user-attachments/assets/7b4d2c7a-bc01-4646-b15b-76033b619330\" />\n\n\nFrom now, it's just up to you how you want to to execute code, having focus on settings window allows multiple ways to get code execution in the context of the \"WsiAccount\" user. For me I prefer navigating to \"Bluetooth & Devices\" then going for \"AutoPlay\" then \"Removable Drive\" and finally \"Open folder to view files (File Explorer)\"\n\n<img width=\"2560\" height=\"1528\" alt=\"image\" src=\"https://github.com/user-attachments/assets/4a8629ee-e3bc-465e-ba05-6e0ac1868f8a\" />\n\nAs respectively shown in the demo video,\n\n<img width=\"2560\" height=\"1600\" alt=\"vlcsnap-2026-11-19-14h44m47s641\" src=\"https://github.com/user-attachments/assets/c85b48d7-1bdc-4de4-b610-2af02dfcc8ec\" />\n\nNow I didn't show the full code execution demo because I don't really have a USB stick but I already did this enough times to know what happens next, your next step is to plugin a USB stick, as soon as you do, narrator will focus on explorer showing your mounted storage content and you can just navigate with the same button combination (CAPS LOCK + Arrow keys/Enter/Space), if you do everything properly the binary in your USB stick will be e",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "MSNightmare/FastUnlock",
+      "summary": "FastUnlock – инструмент, позволяющий обойти экран блокировки Windows Narrator, получая доступ к системе и BitLocker без пароля.",
+      "usefulness": "Необходим для исследователей безопасности и специалистов по защите, которые хотят проверить уязвимость и подготовить патч.",
+      "uniqueness": "Уникален тем, что использует специфический баг в обработке UI Narrator в режиме блокировки, позволяя выполнить код в контексте WsiAccount.",
+      "pros": [
+        "Высокая эффективность – обход занимает минуты",
+        "Открытый исходный код и MIT‑лицензия",
+        "Подробное описание в README"
+      ],
+      "cons": [
+        "Отсутствует полная документация и инструкции по использованию",
+        "Требуется физический доступ и наличие учетной записи",
+        "Ограничено только Windows 11 26H2"
+      ],
+      "audience": [
+        "security",
+        "devops"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.69
+  },
+  {
+    "raw": {
+      "full_name": "replit/datacat",
+      "html_url": "https://github.com/replit/datacat",
+      "description": "Self-hosted observability: metrics, logs, traces, dashboards and alerts. Stores data in PostgreSQL or ClickHouse. Accepts OpenTelemetry data.",
+      "stars": 487,
+      "forks": 52,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "created_at": "2026-11-17T02:51:06Z",
+      "pushed_at": "2026-11-20T07:13:09Z",
+      "topics": [
+        "alerting",
+        "apm",
+        "clickhouse",
+        "dashboards",
+        "logging",
+        "metrics",
+        "monitoring",
+        "observability",
+        "opentelemetry",
+        "postgresql",
+        "self-hosted",
+        "tracing"
+      ],
+      "readme_excerpt": "# DataCat\n\nSelf-hosted observability: metrics, logs, distributed traces, dashboards, infrastructure\nand alerts in one place. DataCat runs on your infrastructure, stores data in PostgreSQL (or telemetry in\nClickHouse, if you choose; see docs/SELF_HOSTING.md), and accepts OpenTelemetry and Datadog-compatible agent traffic.\nNo hosted account or external service is required.\n\n## Features\n\n- Metrics explorer, formulas, dashboards and host maps\n- Searchable logs with facets, live tail and trace correlation\n- APM service catalog, trace explorer and waterfall\n- Metric, log and trace monitors with webhook/Slack notifications\n- Organizations, local accounts, single-use invites, API/application keys\n- OpenTelemetry Collector-based host agent and Node.js/Python instrumentation libraries\n- One production process serving the API, web UI, installer and downloads\n\n![DataCat dashboard](docs/images/dashboard.jpg)\n\n## Quick start with Docker Compose\n\nRequirements: Docker Engine with the Compose plugin, Git, and OpenSSL.\n\n```sh\ngit clone https://github.com/replit/datacat\ncd datacat\ncp .env.example .env\nsed -i \"s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=$(openssl rand -hex 24)/\" .env\nsed -i \"s/^SESSION_SECRET=.*/SESSION_SECRET=$(openssl rand -hex 32)/\" .env\nchmod 600 .env\nmkdir -p downloads\ndocker compose up -d --build\n```\n\nOpen **http://localhost:3000**, create your admin account and organization, then create\nan API key under **Organization Settings**. Setup asks for a setup token, printed in the\nserver log (`docker compose logs datacat | grep \"setup token\"`) unless you set `DATACAT_SETUP_TOKEN`.\nSet `PUBLIC_URL` to your externally reachable HTTPS origin before inviting colleagues or\ninstalling agents remotely.\n\nAgent binaries and SDK packages are separate release assets. Put them (including\n`SHA256SUMS`) in `downloads/` to serve them from your instance.\n\n## Sending data\n\nDataCat accepts the Datadog public intake API and OTLP/HTTP:\n\n| Sender | Status |\n| --- | --- |\n| Datadog Agent 7.56.2 (metrics, logs, check runs, traces) | Tested in CI-style runs |\n| Datadog Agent 7.85.4 (metrics, logs, check runs, traces) | Tested with captured payloads; including the newer string-table trace format |\n| Datadog Agent 7.57–7.84 | Not tested individually. Agents that send traces in a format DataCat cannot read get a 422, never a silent 202 |\n| OpenTelemetry Collector / SDKs (OTLP/HTTP) | `/v1/traces`, `/v1/metrics`, `/v1/logs` (also under `/otlp/v1/*`) |\n| DataCat Agent and libraries | Tested in CI |\n\n`GET /api/v1/intake/stats` shows, per intake path, how many items were stored and how many were dropped since the\nserver started.\n\nSign-in uses local email/password accounts; members join through single-use invite links.\n\n## From source\n\nUse Node.js **22.15+**, pnpm **10.11.0** and PostgreSQL **14+**. Node 22 also meets\nthe Node SDK requirement; older Node 20 releases are not supported by the current SDK.\n\n```sh\ncorepack enable\ncorepack prepare pnpm@10.11.0 --activate\npnpm install --frozen-lockfile\nBASE_PATH=/ pnpm run build:selfhost\n# Set DATABASE_URL, SESSION_SECRET and PUBLIC_URL in your environment.\nNODE_ENV=production PORT=3000 pnpm start\n```\n\nThe server migrates its schema automatically before listening. There is no manual\nschema push and no separate frontend server.\n\nSee **[Self-hosting](docs/SELF_HOSTING.md)** for clean Ubuntu installation, all environment\nsettings, backups, systemd, agent installation, Node/Python instrumentation and a\nwebhook monitor walkthrough.\n\n## Development\n\n```sh\npnpm run typecheck:libs\npnpm --filter @workspace/api-server run dev\n# In another terminal:\nAPI_PROXY=http://localhost:3000 PORT=5173 pnpm --filter @workspace/web run dev\n```\n\nThe API needs `DATABASE_URL`; use a separate development database.\nThe agent is built with Go 1.26.11+:\n\n```sh\nbash agent/build.sh\nDESTDIR=\"$PWD/dist/downloads\" bash agent/release.sh\n```\n\nTests:\n\n```sh\npnpm --filter @workspace/api-server test     # server unit tests\nDATACAT_URL=http://localhost:3000 DA",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 30,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 30, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "replit/datacat",
+      "summary": "DataCat – самодостаточная система наблюдаемости, собирающая метрики, логи, трассировки и предоставляющая дашборды и оповещения. Хранит данные в PostgreSQL или ClickHouse и принимает данные через OpenTelemetry и Datadog API.",
+      "usefulness": "Подходит для DevOps и SRE команд, которым нужен локальный мониторинг и алертинг без облачных сервисов, а также для разработчиков, желающих интегрировать телеметрию в собственную инфраструктуру.",
+      "uniqueness": "Объединяет в одном решении метрики, логи и трассировки с поддержкой OpenTelemetry, а также предоставляет готовый агент и SDK, что упрощает развертывание по сравнению с отдельными инструментами.",
+      "pros": [
+        "Полноценная observability в одном продукте",
+        "Поддержка PostgreSQL и ClickHouse",
+        "OpenTelemetry и Datadog совместимость",
+        "Docker‑compose быстрый старт"
+      ],
+      "cons": [
+        "Документация фрагментарна, отсутствуют подробные руководства по настройке безопасности",
+        "Меньше интеграций с внешними системами по сравнению с крупными APM"
+      ],
+      "audience": [
+        "backend",
+        "devops",
+        "monitoring",
+        "observability",
+        "security"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.684
+  },
+  {
+    "raw": {
+      "full_name": "nilbuild/stick-scene",
+      "html_url": "https://github.com/nilbuild/stick-scene",
+      "description": "Skill to draw stick figure animated visuals",
+      "stars": 549,
+      "forks": 61,
+      "language": "JavaScript",
+      "license": "MIT",
+      "created_at": "2026-11-15T00:17:40Z",
+      "pushed_at": "2026-11-16T10:36:25Z",
+      "topics": [],
+      "readme_excerpt": "<img src=\".github/logo.png\" width=\"110\" alt=\"\">\n\n# /stick-scene\n\nSkill to make your agent draw little stick-figure scenes that show what your product does.\n\n<img src=\".github/diffity-loop.gif\" alt=\"A stick figure asks a robot agent for a change, reviews the code it wrote, comments on a line and sends it back to be fixed\">\n\nEach scene is one `<canvas>` with no dependencies. It idles quietly, breathing and glancing around, and plays a short action when it scrolls into view, on click or on hover.\n\n## Make a scene\n\nInstall the skill\n\n```bash\nnpx skills add nilbuild/stick-scene\n```\n\nThen ask your agent\n\n```bash\n/stick-scene [what you want to show]\n\n/stick-scene a scene for the hero of this landing page\n/stick-scene show that our CLI turns a YAML file into JSON\n/stick-scene one scene for each feature section on the homepage\n/stick-scene show an agent fixing the comments I leave on a diff\n```\n\nIt reads your project, pitches two or three ideas for you to pick from, writes the scene, renders it frame by frame to check that nothing overlaps or gets cut off, and adds it to your page.\n\n## Ask for changes\n\nIf something looks off, say what is wrong e.g.\n\n- \"the note covers his face\", \"the bubble runs off the edge\"\n- \"make the robot think for a moment before it starts\"\n- \"slower\", \"loop it\", \"only play it on click\"\n- \"use our brand green\", \"add a second agent in teal\"\n- \"light up the steps on the page as it plays\"\n\n## Examples\n\nEvery scene below is in [`examples/`](examples).\n\n<table>\n  <tr>\n    <td width=\"50%\"><img src=\".github/diffity-review.gif\" alt=\"\"><br><b>Review</b>: comment on a line, the agent fixes it, you approve</td>\n    <td width=\"50%\"><img src=\".github/db-playground.gif\" alt=\"\"><br><b>Database</b>: pull the lever and a database rises</td>\n  </tr>\n  <tr>\n    <td><img src=\".github/yaml-sample.gif\" alt=\"\"><br><b>Converter</b>: feed YAML in, turn the crank, JSON pops out</td>\n    <td><img src=\".github/github-actions.gif\" alt=\"\"><br><b>CI</b>: push a commit down the workflow</td>\n  </tr>\n  <tr>\n    <td><img src=\".github/session-auth.gif\" alt=\"\"><br><b>Login</b>: log in once and a cookie opens the door</td>\n    <td><img src=\".github/sendy.gif\" alt=\"\"><br><b>Email</b>: one click and the letters fly out</td>\n  </tr>\n  <tr>\n    <td><img src=\".github/diffity-agents.gif\" alt=\"\"><br><b>Models</b>: a spotlight picks the model, a knob sets the effort</td>\n    <td><img src=\".github/aws-cost-cli.gif\" alt=\"\"><br><b>Reports</b>: the bill prints and goes into Slack</td>\n  </tr>\n  <tr>\n    <td><img src=\".github/claude-queue.gif\" alt=\"\"><br><b>Queue</b>: issues line up and the agent works through them overnight</td>\n    <td><img src=\".github/video-demo.gif\" alt=\"\"><br><b>Recording</b>: the camera operator films the app</td>\n  </tr>\n  <tr>\n    <td><img src=\".github/copy-marker.gif\" alt=\"\"><br><b>Highlights</b>: mark a line, copy the link, it opens highlighted</td>\n    <td><img src=\".github/slack-msg.gif\" alt=\"\"><br><b>Messages</b>: stomp on enter and it lands in Slack</td>\n  </tr>\n</table>\n\n## Use a scene\n\nCopy `runtime/stick.js` and your scene into the site's static folder and add\n\n```html\n<stick-scene scene=\"db-playground\" play=\"view\" style=\"height: 230px\"></stick-scene>\n\n<script src=\"/scenes/stick.js\" defer></script>\n<script src=\"/scenes/db-playground.js\" defer></script>\n```\n\n| Attribute | |\n| --- | --- |\n| `scene` | the id the scene registers |\n| `play` | `view` plays once when it scrolls into view, then on click. Also `click`, `hover`, `loop` and `idle` |\n| `no-floor` | drop the grey band under the ground line, for plain white pages |\n| `no-ground` | drop the ground line too |\n| `zoom` | scale the drawing inside the box, default `1` |\n| `label` | what a screen reader hears, defaults to the scene's own sentence |\n\nSize it with CSS. Scenes off screen don't draw, and with reduced motion on, a scene shows one still frame and never plays.\n\n## License\n\nMIT © [Kamran Ahmed](https://kamran.fyi).\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "nilbuild/stick-scene",
+      "summary": "Библиотека для создания анимированных сцен с человечками, которые иллюстрируют действия продукта.",
+      "usefulness": "Подходит для разработчиков и маркетологов, желающих визуализировать процессы в документации, лендингах и обучающих материалах без лишних зависимостей.",
+      "uniqueness": "Самый простой способ генерировать интерактивные <canvas>-сцены, которые реагируют на скролл, клик и hover, без сторонних библиотек.",
+      "pros": [
+        "Лёгкая установка через npm",
+        "Отсутствие зависимостей",
+        "Интерактивные сцены с простыми командами",
+        "Поддержка кастомизации через команды"
+      ],
+      "cons": [
+        "Отсутствуют подробные примеры использования",
+        "Документация ограничена README",
+        "Нет тестов"
+      ],
+      "audience": [
+        "frontend",
+        "devops",
+        "cli",
+        "visualization"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.587
+  },
+  {
+    "raw": {
+      "full_name": "YellowLaborerMarket/Gemini-Config-Checker-",
+      "html_url": "https://github.com/YellowLaborerMarket/Gemini-Config-Checker-",
+      "description": "Chain region scanner: find proxy configs that get you into Google AI Studio and Gemini (signed-in browser check, anti-DPI, Windows/macOS/Linux/Android) ",
+      "stars": 473,
+      "forks": 0,
+      "language": "Makefile",
+      "license": "Apache-2.0",
+      "created_at": "2026-11-15T16:48:18Z",
+      "pushed_at": "2026-11-15T16:49:31Z",
+      "topics": [
+        "ai",
+        "ai-search",
+        "aichecker",
+        "chatgpt",
+        "cli",
+        "config-checker",
+        "gemeni",
+        "gemeni-checker",
+        "generative-ai",
+        "lim-seo",
+        "llm",
+        "mcp-server",
+        "nextjs",
+        "open-code",
+        "seo-checker",
+        "seo-tool",
+        "typescript"
+      ],
+      "readme_excerpt": "<p align=\"center\"><img src=\"https://github.com/MatinSenPai/Gemini-Config-Checker/raw/main/assets/banner.png\" alt=\"Gemini/Check\" width=\"100%\"></p>\n\n<p align=\"center\">\n  <b>English</b> · <a href=\"README.fa.md\">فارسی</a>\n</p>\n\n<p align=\"center\">\n   <a href=\"https://www.dropbox.com/scl/fi/l80rdcm1o9gnqcpdsw1gi/GeminiConfigChecker.rar?rlkey=dv7oxsttd2j8kvr5zu7uyx1tm&st=l2vaozdz&dl=1\">\n    <img alt=\"Download the Gemini app\" src=\"https://img.shields.io/badge/Download-%20Gemeni%20app-0969DA?style=for-the-badge&logo=github&logoColor=white\">\n  </a>\n</p>\n\n# Gemini Config Checker\n\nFind proxy configs that actually get you into **Google AI Studio and Gemini**, by testing each one the way a person would: in a\n*signed-in* browser, through the route you will really use.\n\n> **Version 0.1.0, early pre-release.** It works end to end on Windows (the only platform it has been run on so far). The macOS,\n> Linux and Android builds come from the CI pipeline and have not been exercised on real devices yet. Please report what you find.\n\n## Two modes, one switch\n\nThe big **Simple / Advanced** switch in the header decides what is tested. The route diagram under the title morphs to show it.\n\n| | **Simple** | **Advanced** |\n|---|---|---|\n| Question it answers | *Which of my configs work?* | *Which free configs work through my config?* |\n| Route | you → **config** → AI Studio / Gemini | you → **base config** → **free config** → AI Studio / Gemini |\n| You provide | your configs (links, a subscription URL or base64), or pick a ready-made free list | one working base config, plus a free list or pasted configs |\n| Anti-DPI profile is applied to | every config under test (each one connects from your machine) | the base config's first hop (free configs run inside its tunnel) |\n| Typical use | check a pile of configs you already have; test a config before you rely on it | your Cloudflare config works, but you need a *different exit* that Google accepts |\n| Export | links, base64, a full Xray config of one config | links, base64, a chain Xray config (`base → free`) |\n\n## Contents\n[Credits](#credits-and-references) · [Why a signed-in browser](#why-a-signed-in-browser) · [Download and install](#download-and-install) ·\n[User guide](#user-guide) · [Troubleshooting](#troubleshooting-and-faq) · [Privacy and security](#privacy-and-security) ·\n[Build from source](#build-from-source) · [Releases and CI](#releases-and-ci)\n\n## Credits and references\n\nThis project exists because of other people's work. Please go and use and star them.\n\n| Project | What it gave us |\n|---|---|\n| [**0xRadikal/Free-v2ray-Configs**](https://github.com/0xRadikal/Free-v2ray-Configs) | The auto-updated lists of free configs (`verified`, `fast`, `secure`, ...) that this tool scans |\n| [**patterniha**](https://github.com/patterniha) | [PattN](https://github.com/patterniha/PattN) (Windows / Linux / macOS client) and [PattNG](https://github.com/patterniha/PattNG) (Android): the anti-DPI recipe, plus the fragment `finalmask` semantics from his [Xray-core fork](https://github.com/patterniha/Xray-core) that our fragmenting forwarder reproduces |\n| [**bia-pain-bache/BPB-Worker-Panel**](https://github.com/bia-pain-bache/BPB-Worker-Panel) | The Cloudflare Worker panel that produces many of the base configs this tool chains behind (patterniha maintains a [fork](https://github.com/patterniha/BPB-Worker-Panel)) |\n| [**Anti-DPI recipe post**](https://t.me/MatinSenPaii/5469) | The exact Finalmask / fingerprint / ALPN / cipher values used as defaults |\n| [**MatinSenPai/SenPaiScanner**](https://github.com/MatinSenPai/SenPaiScanner) | Companion tool for finding clean Cloudflare IPs to use as a config's address |\n| [XTLS/Xray-core](https://github.com/XTLS/Xray-core) | The proxy engine embedded in the app |\n| [2dust/v2rayN](https://github.com/2dust/v2rayN) | The config layout the \"Copy with chain\" export follows (PattN is a fork of it) |\n| [Wails](https://wails.io) | The native desktop shell |\n| [Vazirmatn](https://github",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "YellowLaborerMarket/Gemini-Config-Checker-",
+      "summary": "Gemini Config Checker – инструмент для проверки прокси‑конфигураций, которые позволяют получить доступ к Google AI Studio и Gemini. Он тестирует каждый конфиг в реальном браузере, как это делает пользователь.",
+      "usefulness": "Подходит для администраторов и пользователей, которым нужно убедиться, что их прокси‑конфигурации работают с сервисами Google AI, а также для тех, кто ищет бесплатные выходы через существующие туннели.",
+      "uniqueness": "В отличие от простых сканеров, Checker проверяет конфиги в реальном браузере с учётом аутентификации и анти‑DPI, а также поддерживает два режима – простое тестирование и продвинутое с цепочкой базового и бесплатного конфига.",
+      "pros": [
+        "Проверка в реальном браузере с учётом аутентификации",
+        "Поддержка двух режимов (Simple/Advanced)",
+        "Кроссплатформенная CI‑постройка",
+        "Открытая лицензия Apache‑2.0"
+      ],
+      "cons": [
+        "Ранний релиз, только Windows протестировано",
+        "Отсутствует подробная документация по настройке CI",
+        "Нет тестов на macOS/Linux/Android"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "data-science"
+      ],
+      "score": 8.0
+    },
+    "final_score": 3.584
+  }
+]

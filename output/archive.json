@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-17T15:45:03+00:00",
-  "count": 89,
+  "updated_at": "2026-11-21T14:25:48+00:00",
+  "count": 99,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -110,6 +110,15 @@
       "score": 3.591,
       "html_url": "https://github.com/Hugo-Dz/spritefusion-sprite-normals"
     },
+    "Hut-hzf/ung220z-tool": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.817,
+      "html_url": "https://github.com/Hut-hzf/ung220z-tool"
+    },
     "IainKay/ram-altman": {
       "releases": [
         "2026-11-09"
@@ -172,6 +181,15 @@
       "last": "2026-11-09",
       "score": 3.805,
       "html_url": "https://github.com/Leviidev/Henge"
+    },
+    "MSNightmare/FastUnlock": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.69,
+      "html_url": "https://github.com/MSNightmare/FastUnlock"
     },
     "N1nEmAn/sapper-v2": {
       "releases": [
@@ -263,6 +281,15 @@
       "score": 3.7,
       "html_url": "https://github.com/WoYun520/gif-factory"
     },
+    "YellowLaborerMarket/Gemini-Config-Checker-": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.584,
+      "html_url": "https://github.com/YellowLaborerMarket/Gemini-Config-Checker-"
+    },
     "ZiChuanLan/agent-purge": {
       "releases": [
         "2026-10-29"
@@ -335,6 +362,15 @@
       "score": 3.685,
       "html_url": "https://github.com/assetnote/php2shell-scanner"
     },
+    "bookwjitchieni1986/blender-ai-mcp-addon": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 4.114,
+      "html_url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon"
+    },
     "caru-ini/stack-diagram": {
       "releases": [
         "2026-11-05"
@@ -343,6 +379,15 @@
       "last": "2026-11-05",
       "score": 3.913,
       "html_url": "https://github.com/caru-ini/stack-diagram"
+    },
+    "chuanqisun/spaceship": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.7,
+      "html_url": "https://github.com/chuanqisun/spaceship"
     },
     "daveebbelaar/bama": {
       "releases": [
@@ -587,6 +632,15 @@
       "score": 3.907,
       "html_url": "https://github.com/livliv-dev/player"
     },
+    "mankidev/antialgorithm": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.887,
+      "html_url": "https://github.com/mankidev/antialgorithm"
+    },
     "meshy-dev/ThreeRT": {
       "releases": [
         "2026-11-17"
@@ -622,6 +676,24 @@
       "last": "2026-11-05",
       "score": 3.811,
       "html_url": "https://github.com/mromidev/claude-animated-shorts"
+    },
+    "n4ze3m/tiny-voca": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.695,
+      "html_url": "https://github.com/n4ze3m/tiny-voca"
+    },
+    "nilbuild/stick-scene": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.587,
+      "html_url": "https://github.com/nilbuild/stick-scene"
     },
     "nthnclrk/CleanFrame": {
       "releases": [
@@ -677,6 +749,15 @@
       "score": 3.085,
       "html_url": "https://github.com/realskyrin/ns-game-apple-arm-port"
     },
+    "replit/datacat": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.684,
+      "html_url": "https://github.com/replit/datacat"
+    },
     "rossark0/rossark-motion-skill": {
       "releases": [
         "2026-10-24"
@@ -712,6 +793,15 @@
       "last": "2026-11-09",
       "score": 3.907,
       "html_url": "https://github.com/shanselman/gputaskman"
+    },
+    "siliconjungle/shapeshift-labs-ink-studio": {
+      "releases": [
+        "2026-11-21"
+      ],
+      "times": 1,
+      "last": "2026-11-21",
+      "score": 3.898,
+      "html_url": "https://github.com/siliconjungle/shapeshift-labs-ink-studio"
     },
     "simbasjungles/free-my-tv": {
       "releases": [
