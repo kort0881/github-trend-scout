@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21T14:25:48+00:00",
-  "count": 99,
+  "updated_at": "2026-11-25T16:59:26+00:00",
+  "count": 109,
   "repos": {
     "Ansub/tv-detox": {
       "releases": [
@@ -28,6 +28,15 @@
       "last": "2026-11-01",
       "score": 3.899,
       "html_url": "https://github.com/Arjun-Ingole/hop"
+    },
+    "Avaneesh-Inamdar/Stream-Tube-Desktop": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.903,
+      "html_url": "https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop"
     },
     "BryceYuuu/RUN": {
       "releases": [
@@ -119,6 +128,15 @@
       "score": 3.817,
       "html_url": "https://github.com/Hut-hzf/ung220z-tool"
     },
+    "INK-Q/agy-fast": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 4.108,
+      "html_url": "https://github.com/INK-Q/agy-fast"
+    },
     "IainKay/ram-altman": {
       "releases": [
         "2026-11-09"
@@ -191,6 +209,15 @@
       "score": 3.69,
       "html_url": "https://github.com/MSNightmare/FastUnlock"
     },
+    "Marvisak/VIctory": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.955,
+      "html_url": "https://github.com/Marvisak/VIctory"
+    },
     "N1nEmAn/sapper-v2": {
       "releases": [
         "2026-11-05"
@@ -244,6 +271,15 @@
       "last": "2026-10-24",
       "score": 2.196,
       "html_url": "https://github.com/Snapintosh/Snapintosh"
+    },
+    "Umbra9179/clipboard-history-manager-windows": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.905,
+      "html_url": "https://github.com/Umbra9179/clipboard-history-manager-windows"
     },
     "UniXNU/UniXNU": {
       "releases": [
@@ -425,6 +461,15 @@
       "score": 3.825,
       "html_url": "https://github.com/designfuchen/word-atlas"
     },
+    "deterministic-machines/deslop-please": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.901,
+      "html_url": "https://github.com/deterministic-machines/deslop-please"
+    },
     "dominikmartn/harp": {
       "releases": [
         "2026-10-24"
@@ -487,6 +532,15 @@
       "last": "2026-10-29",
       "score": 3.809,
       "html_url": "https://github.com/enesozturk/dimensional-drawing"
+    },
+    "fxceless/victory-fork": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 4.123,
+      "html_url": "https://github.com/fxceless/victory-fork"
     },
     "govijr/terminal-mac": {
       "releases": [
@@ -577,6 +631,15 @@
       "last": "2026-10-24",
       "score": 2.382,
       "html_url": "https://github.com/justrach/nanoui"
+    },
+    "kai415-debug/ffmpeg-video-audio-converter": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.901,
+      "html_url": "https://github.com/kai415-debug/ffmpeg-video-audio-converter"
     },
     "kevinraymond/florilegium": {
       "releases": [
@@ -704,6 +767,15 @@
       "score": 3.589,
       "html_url": "https://github.com/nthnclrk/CleanFrame"
     },
+    "os6/nospeaker": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.913,
+      "html_url": "https://github.com/os6/nospeaker"
+    },
     "paipiange/nvzhuang": {
       "releases": [
         "2026-11-01"
@@ -739,6 +811,15 @@
       "last": "2026-11-01",
       "score": 3.897,
       "html_url": "https://github.com/physicsdolphin/nv-uefi-unlocker"
+    },
+    "qianyiai/kurocat": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.899,
+      "html_url": "https://github.com/qianyiai/kurocat"
     },
     "realskyrin/ns-game-apple-arm-port": {
       "releases": [
@@ -874,6 +955,15 @@
       "last": "2026-10-24",
       "score": 3.006,
       "html_url": "https://github.com/wesbos/3d-model-anything"
+    },
+    "xcl-dev/xcl": {
+      "releases": [
+        "2026-11-25"
+      ],
+      "times": 1,
+      "last": "2026-11-25",
+      "score": 3.946,
+      "html_url": "https://github.com/xcl-dev/xcl"
     },
     "xevrion/hatchzip": {
       "releases": [
